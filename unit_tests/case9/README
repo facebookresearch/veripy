@@ -1,0 +1,16 @@
+$clog2(ROW_SIZE); also ROW_SIZE is localparam 
+
+expected value
+// input [ROW-1:0][COL-1:0][WIDTH-1:0] array1;
+// input [COL-1:0][ROW-1:0][WIDTH-1:0] array2;
+// output reg [7:0][7:0][9:0] array3;
+
+
+actual results:
+  input        [ROW_SIZE-1:0][COL_SIZE-1:0][WIDTH-1:0]  array1,
+  input        [COL_SIZE-1:0][ROW_SIZE-1:0][WIDTH-1:0]  array2
+
+
+
+
+

@@ -1,0 +1,40 @@
+////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+// The following information is considered proprietary and confidential to Facebook,
+// and may not be disclosed to any third party nor be used for any purpose other
+// than to full fill service obligations to Facebook
+////////////////////////////////////////////////////////////////////////////////////
+
+&Module;
+
+
+&Logics;
+
+
+
+&FSM;
+FSM_REG
+    <- clken
+    st <ST_IDLE=st_nxt;
+
+FSM_INIT
+    st_nxt = st;
+
+FSM_DEFAULT
+    st_nxt = st;
+
+FSM_STATES
+    ST_IDLE:
+      ST_L0 <- start & mode_l0; # commeo
+      ST_L1 <- start & mode_l1; # comme2
+
+    ST_L0:
+      ST_L1 <- !mode_l1;
+      ST_DONE <- 1;
+
+    ST_L1:
+      ST_DONE <- 1;
+
+    ST_DONE:
+      ST_IDLE <- 1;
+&EndFSM;

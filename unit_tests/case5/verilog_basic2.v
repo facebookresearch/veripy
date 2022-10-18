@@ -1,0 +1,36 @@
+//&module;
+
+module verilog_basic2 (
+  input          b,
+  input          c,
+  input          d,
+  input          e,
+  output         aa,
+  output         bb,
+  output         cc,
+  output         dd,
+  output         ee,
+  output         ff
+); 
+// and_op (a, b, c);
+// output a;
+// input b, c;
+//&regs;
+//&wires;
+
+wire aa = b&c&d&e;
+wire bb = b&&c&&d&&e;
+
+reg cc;
+reg dd;
+reg ee;
+reg ff;
+
+always@(*) begin
+     cc=b&&c&&d&&e;
+     dd=b&&c&&d&&e;
+     ee=b||c||d||e;
+     ff=b||c||d||e;
+end
+endmodule
+

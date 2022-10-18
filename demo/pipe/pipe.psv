@@ -1,0 +1,27 @@
+////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+// The following information is considered proprietary and confidential to Facebook,
+// and may not be disclosed to any third party nor be used for any purpose other
+// than to full fill service obligations to Facebook
+////////////////////////////////////////////////////////////////////////////////////
+
+&Module;
+
+
+&Logics;
+
+
+// split with stall
+&Pipe(ss, 32, ss_i, ss_o);
+
+
+// split with valid/data
+&Pipe(sv, 32, sv_i, sv_o);
+
+
+// split first valid/data then stall
+&Pipe(svs, 32, svs_i, svs_o);
+
+
+// split first stall then valid/data
+&Pipe(ssv, 32, ssv_i, ssv_o);

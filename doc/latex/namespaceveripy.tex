@@ -1,0 +1,1439 @@
+\hypertarget{namespaceveripy}{\section{veripy Namespace Reference}
+\label{namespaceveripy}\index{veripy@{veripy}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespaceveripy_aa31f673a176e6344d30ade070309153d}{debug} = 0
+\item 
+string \hyperlink{namespaceveripy_a0d00d319a78d1019f3fe9eecfe1add32}{debug\-\_\-file} = \char`\"{}veripy.\-debug\char`\"{}
+\begin{DoxyCompactList}\small\item\em Opening debug file for debug dump. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceveripy_ae24d8c06b7040a72197b627d31e98657}{parser\-\_\-on} = 1
+\item 
+string \hyperlink{namespaceveripy_a2741464a2b91f4bed59350a121937e21}{parsing\-\_\-format} = \char`\"{}systemverilog\char`\"{}
+\item 
+int \hyperlink{namespaceveripy_af1eba550ad186f9ce48ced0faa2b8cf7}{remove\-\_\-code} = 0
+\item 
+list \hyperlink{namespaceveripy_a7d5b541d0e30b5abbc5760e3ea7b4da2}{incl\-\_\-dirs} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a5c1ad0dd8b61a07185f3e77b9912fad6}{package\-\_\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+int \hyperlink{namespaceveripy_ad4429b3a6163a9c588ca2433f0831fa1}{group\-\_\-ios\-\_\-on\-\_\-dir} = 1
+\item 
+int \hyperlink{namespaceveripy_add6f0c3ebf250f985c69973dd91397c2}{sort\-\_\-ios} = 0
+\item 
+int \hyperlink{namespaceveripy_a5d3c8544e0b626679631fadceac2ccb8}{parse\-\_\-generate} = 1
+\item 
+int \hyperlink{namespaceveripy_a69c679478700bfe8e617efd46659b04b}{generate\-\_\-stub} = 0
+\item 
+int \hyperlink{namespaceveripy_aeed0f7abed041e5ca9bbf9eba4a24416}{generate\-\_\-stub\-\_\-z} = 0
+\item 
+int \hyperlink{namespaceveripy_a4629f2bdb1a9239da0eb7ef127e1e48d}{generate\-\_\-stub\-\_\-0} = 0
+\item 
+int \hyperlink{namespaceveripy_ad9424faeeafd0573d461ca2eb5305c91}{found\-\_\-error} = 0
+\item 
+list \hyperlink{namespaceveripy_ad9b4c40dc5027b1736989cbf60b1d8b7}{hash\-\_\-define\-\_\-vars} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_ad46b6d39594cb67313a7af41ad69d489}{hash\-\_\-define\-\_\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+dictionary \hyperlink{namespaceveripy_aa9f520efe95ce8cdbd3fbe0ce8ef3aca}{stub\-\_\-override\-\_\-val} = \{\}
+\begin{DoxyCompactList}\small\item\em Loading hash define variables. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceveripy_ae6605e6272b7db04b7d3ea58595fdd10}{clock} = \char`\"{}clk\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a65e6d335aa5902f4a18967da2aca2e20}{async\-\_\-reset} = \char`\"{}arst\-\_\-n\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a010f1413a986d15ce37b5d2cb4170578}{sync\-\_\-reset} = \char`\"{}rst\-\_\-n\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_abd4a1cb335c94ddd87dca9c75dacce37}{reset\-\_\-type} = \char`\"{}A\-S\-Y\-N\-C\char`\"{}
+\item 
+tuple \hyperlink{namespaceveripy_a72fa9052a62ff431aca57cfc30c24cf5}{parser}
+\begin{DoxyCompactList}\small\item\em Command line arguments processing. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceveripy_af8a33045ea5c3ce576ddaf55a5ff3c8f}{default} = 'systemverilog'
+\item 
+string \hyperlink{namespaceveripy_a31b5807026890520c5308ce732ed4b9e}{help}
+\item 
+string \hyperlink{namespaceveripy_ab5498e8a8340e80959241b4ca4ba5dc5}{dest} = '\hyperlink{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}{output\-\_\-file}'
+\item 
+tuple \hyperlink{namespaceveripy_ad6c4cf7e3033a574cb4412b464af3966}{cmdline} = parser.\-parse\-\_\-args()
+\item 
+\hyperlink{namespaceveripy_af4fff95eb237e9d797e670d3c1a94b61}{in\-\_\-file} = cmdline.\-positional
+\item 
+\hyperlink{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}{output\-\_\-file} = cmdline.\-output\-\_\-file
+\item 
+\hyperlink{namespaceveripy_a375e1799aa8688667cbbc85190d8f362}{destination\-\_\-dir} = cmdline.\-destination\-\_\-dir
+\item 
+\hyperlink{namespaceveripy_ab788939628a978e809745e050df2e8b6}{interface\-\_\-spec\-\_\-files} = cmdline.\-intf\-\_\-specs
+\item 
+\hyperlink{namespaceveripy_a60752cd883c2e6bcead5142e8c8b33c6}{interface\-\_\-def\-\_\-files} = cmdline.\-intf\-\_\-defs
+\item 
+\hyperlink{namespaceveripy_ab56a15afcf8acd3e32e33fbb4cea7765}{module\-\_\-def\-\_\-files} = cmdline.\-mod\-\_\-defs
+\item 
+list \hyperlink{namespaceveripy_ab7b6cf37a53cdc1b33b264beff792b41}{files} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_afcb1d5102cf817e349a771a7df45f78e}{python\-\_\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a960ab18337782696026b9181761b16db}{file\-\_\-lists} = \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{namespaceveripy_aaa42df7d9bf399b8f41b39fd8e0d35ea}{verilog\-\_\-define\-\_\-files} = cmdline.\-verilog\-\_\-define\-\_\-files
+\item 
+\hyperlink{namespaceveripy_a18bec95d0fbc7d055d8eccf5f9d04060}{gen\-\_\-dependencies} = cmdline.\-generate\-\_\-dependancies
+\item 
+\hyperlink{namespaceveripy_a02329512579947b4e050bedace3bc009}{auto\-\_\-package\-\_\-load} = cmdline.\-auto\-\_\-package\-\_\-load
+\item 
+\hyperlink{namespaceveripy_a8b88691a75f930c9c74bc8e53e4a3ae7}{generate\-\_\-filelist} = cmdline.\-generate\-\_\-filelist
+\item 
+\hyperlink{namespaceveripy_acb8d40a5e53e8dfb03b5cc54272b1798}{disable\-\_\-tick\-\_\-ifdefs} = cmdline.\-disable\-\_\-tick\-\_\-ifdefs
+\item 
+tuple \hyperlink{namespaceveripy_aa41cbf123e5f09c0db694b12b8babbad}{dbg\-\_\-file} = open(\hyperlink{namespaceveripy_a0d00d319a78d1019f3fe9eecfe1add32}{debug\-\_\-file} + \char`\"{}.write\char`\"{}, 'w')
+\item 
+tuple \hyperlink{namespaceveripy_a1d45ff3e325dfaf68117ad7247341056}{filelist} = set()
+\begin{DoxyCompactList}\small\item\em Gatering all the files in the files list. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a19f042b78eb1792546d8fa9c3bf497c0}{list\-\_\-file} = list()
+\item 
+tuple \hyperlink{namespaceveripy_a6f22577aabdde3d295a3441ce0537364}{lline} = c\-\_\-file.\-rstrip('\textbackslash{}n')
+\item 
+tuple \hyperlink{namespaceveripy_aeec698b4635f08372de56311378d1526}{c\-\_\-file} = c\-\_\-file.\-rstrip()
+\item 
+tuple \hyperlink{namespaceveripy_af2b6d56f745ddde0e41f187cb2bfdf6b}{c\-\_\-filepath} = os.\-path.\-expandvars(\hyperlink{namespaceveripy_aeec698b4635f08372de56311378d1526}{c\-\_\-file})
+\item 
+tuple \hyperlink{namespaceveripy_a608d33395d3b79244c5869f6a0f081c6}{data} = re.\-sub(r'-\/\hyperlink{namespaceveripy_ae63271cecab2d5e49fee340d8d7f79e5}{f} ', r'', \hyperlink{namespaceveripy_af2b6d56f745ddde0e41f187cb2bfdf6b}{c\-\_\-filepath})
+\item 
+tuple \hyperlink{namespaceveripy_acd1090fc8e7408283bb12a2ff26d2750}{a} = recursive\-\_\-filelist(\hyperlink{namespaceveripy_a608d33395d3b79244c5869f6a0f081c6}{data})
+\item 
+tuple \hyperlink{namespaceveripy_a84ae1500ccef716a1a09a99a0e3711ec}{in\-\_\-file\-\_\-name} = re.\-sub(r'.$\ast$\textbackslash{}/', r'', \hyperlink{namespaceveripy_af4fff95eb237e9d797e670d3c1a94b61}{in\-\_\-file})
+\begin{DoxyCompactList}\small\item\em if no input file, then error out \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_aa088bc1dbe01082dd4220120602b06a5}{split\-\_\-arr} = in\-\_\-file.\-split(\char`\"{}.\char`\"{})
+\begin{DoxyCompactList}\small\item\em If no output file passed in command line, then outfile name is derived. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a6cf4d136450ca28b0d58dc5317ba74eb}{module\-\_\-name} = \hyperlink{namespaceveripy_aa088bc1dbe01082dd4220120602b06a5}{split\-\_\-arr}\mbox{[}0\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_aa6ea69d7177eeedc80f2e1c1ff8b00f6}{output\-\_\-list} = re.\-sub(r'\textbackslash{}.sv\$', r'.\hyperlink{namespaceveripy_ae63271cecab2d5e49fee340d8d7f79e5}{f}', \hyperlink{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}{output\-\_\-file})
+\item 
+string \hyperlink{namespaceveripy_afad07aa9410aaa39c3a55e59c48c67d2}{temporary\-\_\-file} = \hyperlink{namespaceveripy_af4fff95eb237e9d797e670d3c1a94b61}{in\-\_\-file}+\char`\"{}.expanded\char`\"{}
+\begin{DoxyCompactList}\small\item\em Error out if input file does not exist. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ae63271cecab2d5e49fee340d8d7f79e5}{f} = open(c\-\_\-py\-\_\-file, 'r')
+\begin{DoxyCompactList}\small\item\em Loading python files if any. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a1f71748b181889d37c2cfcf786822fef}{i\-\_\-codegen}
+\begin{DoxyCompactList}\small\item\em \subsection*{Step\-: 1 }
+
+Parse \#ifdef and work on only enabled code Expand embedded python code output \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_ac8745bd52ea5cd5e91036dc31970af88}{parse\-\_\-lines} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a3c84020f008e06bdb41e3f89811b8fc5}{temp\-\_\-file} = open(\hyperlink{namespaceveripy_afad07aa9410aaa39c3a55e59c48c67d2}{temporary\-\_\-file}, 'w')
+\begin{DoxyCompactList}\small\item\em Wrting out temporary\-\_\-file for debug T\-O\-D\-O\-: Need to enable dumping when error or debug mode enabled. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line} = line.\-rstrip()
+\item 
+tuple \hyperlink{namespaceveripy_ae26f09689713ff31ecbd1cc41f4d89e5}{i\-\_\-verilog\-\_\-parser}
+\begin{DoxyCompactList}\small\item\em Creating verilog\-\_\-parser object to parse the generated code. \end{DoxyCompactList}\item 
+dictionary \hyperlink{namespaceveripy_aebe879fba9bff8cd21ceb4e0ed71cfbd}{dependencies} = \{\}
+\item 
+\hyperlink{namespaceveripy_a31f321b7a4d58971598311ec1e9d65d5}{regs} = i\-\_\-verilog\-\_\-parser.\-regs
+\item 
+\hyperlink{namespaceveripy_a830a9b7ff5ad16c99be1ec8926435b58}{wires} = i\-\_\-verilog\-\_\-parser.\-wires
+\item 
+\hyperlink{namespaceveripy_af405930307c7e7f4310d7b720cf3c608}{signals} = i\-\_\-verilog\-\_\-parser.\-signals
+\item 
+\hyperlink{namespaceveripy_ad0eff554700802b50170079f6544c06d}{ports} = i\-\_\-verilog\-\_\-parser.\-ports
+\item 
+\hyperlink{namespaceveripy_a71e44f2f7882785c63f3a572b2d1dc95}{typedef\-\_\-structs} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-structs
+\item 
+\hyperlink{namespaceveripy_a20ec0a39494208c8aad3119964661091}{typedef\-\_\-unions} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-unions
+\item 
+\hyperlink{namespaceveripy_abc6a77d9ee05e424592ceb571f2b4dae}{typedef\-\_\-logics} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-logics
+\item 
+\hyperlink{namespaceveripy_a680f37dc5088c673d909d0871aa4d9a1}{typedef\-\_\-bindings} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-bindings
+\item 
+\hyperlink{namespaceveripy_a2c9a3299c6e29cd2d14411235ab6e41c}{functions\-\_\-list} = i\-\_\-verilog\-\_\-parser.\-functions\-\_\-list
+\item 
+\hyperlink{namespaceveripy_ab652869357ad8a97cd180a20659d3647}{params} = i\-\_\-verilog\-\_\-parser.\-params
+\item 
+\hyperlink{namespaceveripy_a2b7f6e748a1166c9272af6cc49f384bb}{sub\-\_\-inst\-\_\-ports} = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-ports
+\item 
+\hyperlink{namespaceveripy_a3d4e4d7b77fb2b4b84c418a101755e7c}{sub\-\_\-inst\-\_\-params} = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-params
+\item 
+\hyperlink{namespaceveripy_aaa9e0a3d2b05e047d295ee78848b3a89}{tick\-\_\-defines} = i\-\_\-verilog\-\_\-parser.\-tick\-\_\-defines
+\item 
+\hyperlink{namespaceveripy_aed29c63170d881d76a0845d94c3d6bdd}{auto\-\_\-reset\-\_\-data} = i\-\_\-verilog\-\_\-parser.\-auto\-\_\-reset\-\_\-data
+\item 
+\hyperlink{namespaceveripy_aa1d344d5e238d367dcaf3acb91dbcc6d}{force\-\_\-internals} = i\-\_\-verilog\-\_\-parser.\-force\-\_\-internals
+\item 
+\hyperlink{namespaceveripy_a807b041df84d51d3d521d3bef8fd0caa}{force\-\_\-widths} = i\-\_\-verilog\-\_\-parser.\-force\-\_\-widths
+\item 
+\hyperlink{namespaceveripy_a99c42ac13d96eb9d80f354e2a1e05c56}{module\-\_\-found} = i\-\_\-verilog\-\_\-parser.\-module\-\_\-found
+\item 
+\hyperlink{namespaceveripy_ad28afa9505ad0efeb718337fc56e525b}{module\-\_\-param\-\_\-line} = i\-\_\-verilog\-\_\-parser.\-module\-\_\-param\-\_\-line
+\item 
+\hyperlink{namespaceveripy_a0adf40cf6c1ebe154b70e8dc46889228}{sub\-\_\-inst\-\_\-files} = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-files
+\item 
+\hyperlink{namespaceveripy_abb8af7474ba6f1fe4499f0baf5e6c9da}{pkg2assign\-\_\-info} = i\-\_\-verilog\-\_\-parser.\-pkg2assign\-\_\-info
+\item 
+\hyperlink{namespaceveripy_a95394440df7568c06df836060d2c1f5e}{assign2pkg\-\_\-info} = i\-\_\-verilog\-\_\-parser.\-assign2pkg\-\_\-info
+\item 
+\hyperlink{namespaceveripy_a9a896686fd9fe466ad77dc1090ca93aa}{manual\-\_\-ports} = i\-\_\-verilog\-\_\-parser.\-manual\-\_\-ports
+\item 
+int \hyperlink{namespaceveripy_ad519db7b0f685cc6c804c7ecc3bc02b5}{pkg2assign\-\_\-index} = 0
+\item 
+int \hyperlink{namespaceveripy_ae065d2f646ed5d1156a25bb21084cbd6}{assign2pkg\-\_\-index} = 0
+\item 
+tuple \hyperlink{namespaceveripy_a680636d6f9937fd2b1957fd55a5389b8}{out\-\_\-file} = open(\hyperlink{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}{output\-\_\-file}, 'w')
+\item 
+tuple \hyperlink{namespaceveripy_ab36a4deea02c6b2d407e6896250e385c}{reg\-\_\-bitdef\-\_\-colon\-\_\-regex}
+\begin{DoxyCompactList}\small\item\em Printing all the gathered registers. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a4eec11a6d141b0afa891ea1ebd3c48ed}{signal\-\_\-bitdef\-\_\-colon\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_aa33d8fd3035f8d40742a86cdcabd1507}{wire\-\_\-bitdef\-\_\-colon\-\_\-regex}
+\item 
+int \hyperlink{namespaceveripy_ad2d051929b4f3a74a076b081dddd2c84}{signal\-\_\-found} = 0
+\begin{DoxyCompactList}\small\item\em Checking all the signals with regs and wires and update input ports. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ad5d479254f68163a413f993072a21670}{c\-\_\-internal} = re.\-sub(r';', r'', c\-\_\-internal)
+\begin{DoxyCompactList}\small\item\em Applying any force internal commands. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a06e433e8b950a487545be60f952e0667}{force\-\_\-internal\-\_\-slash\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H, \hyperlink{namespaceveripy_ad5d479254f68163a413f993072a21670}{c\-\_\-internal})
+\item 
+tuple \hyperlink{namespaceveripy_a5e677540fde9f9052f3c7c5a7d12243c}{regex\-\_\-width} = force\-\_\-internal\-\_\-slash\-\_\-regex.\-group(1)
+\item 
+tuple \hyperlink{namespaceveripy_a92e4c231594631dc5b0b3fa84f28c05d}{R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X} = re.\-compile(\hyperlink{namespaceveripy_a5e677540fde9f9052f3c7c5a7d12243c}{regex\-\_\-width})
+\item 
+int \hyperlink{namespaceveripy_a36080b835363b2f49375da1d2031699d}{match\-\_\-found} = 0
+\item 
+tuple \hyperlink{namespaceveripy_a7abce416f31880ab21237252118fad96}{c\-\_\-width} = re.\-sub(r';', r'', c\-\_\-width)
+\begin{DoxyCompactList}\small\item\em Applying any force width commands. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceveripy_a9822bb2309876404c811435995f2d238}{force\-\_\-bitdef} = \char`\"{}\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_abb92d8c13117ba4c4421ceb0de1dc6b8}{force\-\_\-uwdith} = \char`\"{}\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_af4d2239bb757aeee622c2066f0d4b766}{force\-\_\-lwdith} = \char`\"{}\char`\"{}
+\item 
+tuple \hyperlink{namespaceveripy_a13b3bfca586edc9ccb7a76161973958d}{force\-\_\-width\-\_\-split} = c\-\_\-width.\-split(\char`\"{} \char`\"{})
+\item 
+list \hyperlink{namespaceveripy_a562ab1159e6bb9e14c42054833922dba}{force\-\_\-name} = \hyperlink{namespaceveripy_a13b3bfca586edc9ccb7a76161973958d}{force\-\_\-width\-\_\-split}\mbox{[}0\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a16214fafff2c0c57bf66e31585f5d744}{force\-\_\-width} = \hyperlink{namespaceveripy_a13b3bfca586edc9ccb7a76161973958d}{force\-\_\-width\-\_\-split}\mbox{[}1\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_af5cff4136cdf82435499ac37785ac957}{width\-\_\-numbers\-\_\-regex} = re.\-search(R\-E\-\_\-\-N\-U\-M\-B\-E\-R\-S, \hyperlink{namespaceveripy_a16214fafff2c0c57bf66e31585f5d744}{force\-\_\-width})
+\item 
+tuple \hyperlink{namespaceveripy_a60a97a619c71da8223604f1b12408d8f}{force\-\_\-width\-\_\-val}
+\item 
+tuple \hyperlink{namespaceveripy_a030728d416c89f9e49833da5a3a36e8f}{force\-\_\-width\-\_\-slash\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H, \hyperlink{namespaceveripy_a562ab1159e6bb9e14c42054833922dba}{force\-\_\-name})
+\item 
+int \hyperlink{namespaceveripy_acebf2b0050dc39a37718a8ef927abc7c}{skip\-\_\-auto\-\_\-reset\-\_\-line} = 0
+\begin{DoxyCompactList}\small\item\em Remove if port is duplicated in wire/regs/signals. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceveripy_ab3ef77cc1c1bb3b758841e9926029532}{remove\-\_\-reset\-\_\-val} = 0
+\item 
+int \hyperlink{namespaceveripy_a796e24d0f42e97113536ef5675583aa3}{auto\-\_\-reset\-\_\-index} = 0
+\item 
+string \hyperlink{namespaceveripy_af6d3a3b592e0e9621179105b392ab262}{gendrive\-\_\-space} = \char`\"{}\char`\"{}
+\item 
+int \hyperlink{namespaceveripy_a3a1edb61e3fbeca505c17ea042672337}{line\-\_\-no} = 0
+\item 
+int \hyperlink{namespaceveripy_a62ad587d407c4f9be0fe319a908afcc9}{block\-\_\-comment} = 0
+\item 
+int \hyperlink{namespaceveripy_a9592e23a9639a28b61167a30ba6930c3}{look\-\_\-for\-\_\-instance\-\_\-cmds} = 0
+\item 
+int \hyperlink{namespaceveripy_a3ba39ef01b3512b93ff8c35da72555c3}{endmodule\-\_\-found} = 0
+\item 
+int \hyperlink{namespaceveripy_aa38fc4edf33670a01086cbc8d7aca1f8}{generate\-\_\-endmodule} = 0
+\item 
+int \hyperlink{namespaceveripy_a90f28d0208574d62b946c16a42d85318}{gather\-\_\-till\-\_\-semicolon} = 0
+\item 
+string \hyperlink{namespaceveripy_a716a6e8cf97f3b8c4bc93680674397cd}{prev\-\_\-line} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Print all other lines. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceveripy_aacb0f311e69b18de8f0222b583ca9d33}{doing\-\_\-python} = 0
+\item 
+\hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{original\-\_\-line} = \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line}
+\item 
+\hyperlink{namespaceveripy_abcadaeae6f3a929e198c9d9255100a7d}{block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex} = \textbackslash{}
+\begin{DoxyCompactList}\small\item\em Block comment skip. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_af8e07ad7fa073c970f410a7740e03386}{block\-\_\-comment\-\_\-begin\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-B\-E\-G\-I\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_aa1db3e87be026e6684d07c823dfa6e99}{block\-\_\-comment\-\_\-end\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-E\-N\-D, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a20dab80a7e8e079a2d6d78c4dc51b972}{semicolon\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-E\-M\-I\-C\-O\-L\-O\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a502cf9f0ccd059abedb0a0e98d783d56}{gendrivez\-\_\-verilog\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z\-\_\-\-V\-E\-R\-I\-L\-O\-G, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Stub generation from a verilog file where commands are commented out. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a8d38e767dc483e41e1e69ef6e81b514f}{gendrive0\-\_\-verilog\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-\_\-\-V\-E\-R\-I\-L\-O\-G, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a59d33ef53803dc897114e47da6616883}{gendrive0andz\-\_\-verilog\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_a842c59e3665a101ff8d4813809eae3ff}{print\-\_\-line} = gendrivez\-\_\-verilog\-\_\-regex.\-group(1)
+\item 
+\hyperlink{namespaceveripy_a314fe1312fbb83c74fb29a23eb5dd7b2}{single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_ac72c2df33623add620128261218cd038}{original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex}
+\begin{DoxyCompactList}\small\item\em Declare module definition if its called. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a3816a72d0c349d678a422f19923a5266}{original\-\_\-module\-\_\-space\-\_\-regex} = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E, \hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{original\-\_\-line})
+\item 
+tuple \hyperlink{namespaceveripy_a854da7683905a3b5cbf73256a6be33b4}{module\-\_\-def\-\_\-space\-\_\-regex} = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F\-\_\-\-S\-P\-A\-C\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_ae0aec319e1f286eaeeb8ec758137f7a9}{module\-\_\-space\-\_\-regex} = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_ae247f78446c024b1e35787cb67a44b2b}{begin\-\_\-space} = original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex.\-group(1)
+\item 
+tuple \hyperlink{namespaceveripy_afea06b60383bdad409732711cafd8d5e}{ampersand\-\_\-line} = re.\-sub(r'\&', r'//\&', \hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{original\-\_\-line}, 1)
+\item 
+tuple \hyperlink{namespaceveripy_a1185ea61fff03e646c641f6d6caf3bdb}{begin\-\_\-space\-\_\-regex}
+\item 
+int \hyperlink{namespaceveripy_a1ee51ba6e57cf9cc093a45eefcdb032e}{ii} = 1
+\item 
+list \hyperlink{namespaceveripy_a99fccb7245b05a502fd01a6cd7ed1c22}{port\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a1d80c92b030a306a025b82c2f229acac}{in\-\_\-port\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a2aa010b557e59bc1d12efd8479d6a242}{out\-\_\-port\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_ac40d1f9532d5dad37c9e4457b28b8298}{ports\-\_\-list} = sorted(ports.\-keys())
+\item 
+list \hyperlink{namespaceveripy_aa17b83309ed85682ee4b3d4da58a9bfc}{c\-\_\-port\-\_\-dir} = \hyperlink{namespaceveripy_ad0eff554700802b50170079f6544c06d}{ports}\mbox{[}c\-\_\-port\mbox{]}
+\item 
+\hyperlink{namespaceveripy_aead00c96f8f701052f787bc35a89ca39}{c\-\_\-port\-\_\-name} = c\-\_\-port
+\item 
+string \hyperlink{namespaceveripy_a80b7caf2bd3933ac6f3120703f632f77}{c\-\_\-port\-\_\-declare\-\_\-type} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a9505272117cc42bae0838d650df825ed}{c\-\_\-port\-\_\-bitdef} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a60d320c655f8b7e2bb3e3169045d9948}{c\-\_\-port\-\_\-signed} = \char`\"{}\#\char`\"{}
+\item 
+int \hyperlink{namespaceveripy_aef466e074087c0147f0f1fc1d73aa1ab}{bitdef\-\_\-has\-\_\-typedef} = 0
+\item 
+string \hyperlink{namespaceveripy_aee62390a4a6359636a358bf40e73d4f0}{bitdef\-\_\-typedef} = \char`\"{}\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a9213d8895de6b2b39f567f688a696762}{curr\-\_\-bitdef\-\_\-package} = \char`\"{}default\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a63f627df880e333c4aa052dcaf2cce59}{curr\-\_\-bitdef\-\_\-class} = \char`\"{}default\char`\"{}
+\item 
+\hyperlink{namespaceveripy_abbda04be83c86eaa60a0e18caace1444}{curr\-\_\-bitdef\-\_\-typedef\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_afec338099217bb624d104ae82fa12569}{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_af012741317b6a900adf187c07021b594}{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_aee8dfa1620d81a57b55d941b6bc353e9}{module\-\_\-param\-\_\-line\-\_\-array} = module\-\_\-param\-\_\-line.\-split(\char`\"{},\char`\"{})
+\item 
+tuple \hyperlink{namespaceveripy_a7dd3d81c188bf962f2192d44030c6c2f}{module\-\_\-param\-\_\-line\-\_\-array\-\_\-len} = len(\hyperlink{namespaceveripy_aee8dfa1620d81a57b55d941b6bc353e9}{module\-\_\-param\-\_\-line\-\_\-array})
+\item 
+int \hyperlink{namespaceveripy_a980086a5e8762e72c5a2804ac1901c71}{param\-\_\-line\-\_\-no} = 1
+\item 
+tuple \hyperlink{namespaceveripy_a1a9f35e27689bee768d00ee633d9b263}{num\-\_\-ports} = len(\hyperlink{namespaceveripy_a99fccb7245b05a502fd01a6cd7ed1c22}{port\-\_\-declarations})
+\item 
+tuple \hyperlink{namespaceveripy_a6bbb38d63d1a7dca8d7fe54bfcd9e40e}{ports\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-O\-R\-T\-S, \hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{original\-\_\-line})
+\begin{DoxyCompactList}\small\item\em Declare ports definition if its called. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ad074898a0ed151cd31c981e01863e64b}{port\-\_\-declarations\-\_\-size} = len(\hyperlink{namespaceveripy_a99fccb7245b05a502fd01a6cd7ed1c22}{port\-\_\-declarations})
+\item 
+int \hyperlink{namespaceveripy_ac0090bfe22807ee67cf30a98d6996df7}{c\-\_\-port\-\_\-index} = 1
+\item 
+tuple \hyperlink{namespaceveripy_a115fffb30dfd5bc7abf758cd49319c4b}{regs\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-E\-G\-S, \hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{original\-\_\-line})
+\begin{DoxyCompactList}\small\item\em Declare regs/logic definition if its called. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ae0b7b329f168ad945a5a19f369c6c1a3}{logics\-\_\-regex} = re.\-search(R\-E\-\_\-\-L\-O\-G\-I\-C\-S, \hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{original\-\_\-line})
+\item 
+list \hyperlink{namespaceveripy_a8e6f82dc889c14d2c0a5f7eff6fa3e5b}{reg\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_aa819d294a75b937f82b683bc7b600ce5}{binding\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+string \hyperlink{namespaceveripy_a28beb86ef22e1797f2a263e0b7bde37e}{c\-\_\-reg\-\_\-type} = \char`\"{}reg\char`\"{}
+\item 
+\hyperlink{namespaceveripy_afaf13bf78939e59406822568cf5b0a89}{c\-\_\-reg\-\_\-name} = c\-\_\-reg
+\item 
+string \hyperlink{namespaceveripy_a340fd491db72cef85a27ed7d34825e2f}{c\-\_\-reg\-\_\-signed} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_aac1a795f2897a14f50b950dbc2cfa757}{c\-\_\-reg\-\_\-declare\-\_\-type} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a2f11355e71ca5cd6780e85c1e9391a42}{c\-\_\-reg\-\_\-bitdef} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_ae01bdc8e4c1dee6732155756ad5a4cf2}{c\-\_\-reg\-\_\-bdef\-\_\-pkg} = \char`\"{}default\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_af15cb34afe7b4fe3faef8366db34a0a7}{c\-\_\-reg\-\_\-bitdef\-\_\-class} = \char`\"{}default\char`\"{}
+\item 
+\hyperlink{namespaceveripy_a4f676e8fb961627ab4608279f315bf91}{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a6ed1b232cf9fe15b7d975bb69a7c3ff1}{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a77d24d587b4bdcae0ae2a67c8bcf5849}{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a9f51ca42dc7f2f54aba501a90f9d804f}{packed\-\_\-bitdef} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_a7f5cee93cf9ba15ed101dff1c5c85a2b}{wires\-\_\-regex} = re.\-search(R\-E\-\_\-\-W\-I\-R\-E\-S, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Declare wires definition if its called. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a1bf7781cecfa001f9a1c00ad44cb8f59}{wire\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+string \hyperlink{namespaceveripy_a2f7c80ddc952aaaf80ea6413c4d397d5}{c\-\_\-wire\-\_\-type} = \char`\"{}wire\char`\"{}
+\item 
+\hyperlink{namespaceveripy_a7a0ef7d57ddc5b071192307405e285a8}{c\-\_\-wire\-\_\-name} = c\-\_\-wire
+\item 
+string \hyperlink{namespaceveripy_ad604c034cbcf22f36b69ac71bc8d0706}{c\-\_\-wire\-\_\-signed} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_ad71d972cd14cafa486e30a6fea57dd35}{c\-\_\-wire\-\_\-declare\-\_\-type} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a377a5b0657c1d4221cb91341adfdfe0e}{c\-\_\-wire\-\_\-bitdef} = \char`\"{}\#\char`\"{}
+\item 
+tuple \hyperlink{namespaceveripy_a182e7c6ae2aef981c047222e8d1c879a}{post\-\_\-python\-\_\-begin\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-B\-E\-G\-I\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Post Embedded python script processing. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a62ec90ed0de88469b45538484946a5b7}{post\-\_\-python\-\_\-end\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-E\-N\-D, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_ac27b8dbb034afa7793ce50076e0b68e3}{begin\-\_\-python\-\_\-space} = post\-\_\-python\-\_\-begin\-\_\-regex.\-group(1)
+\item 
+string \hyperlink{namespaceveripy_a08971c7a0053dfc5c58e4e443ce24122}{code\-\_\-block} = ''
+\item 
+tuple \hyperlink{namespaceveripy_a1767132c455069ae2f3d3eecfe441abd}{comment\-\_\-indent} = post\-\_\-python\-\_\-begin\-\_\-regex.\-group(1)
+\item 
+\hyperlink{namespaceveripy_a4fdf3a6b0a5f3ab656eb7e0bb38322de}{stdout\-\_\-} = sys.\-stdout
+\item 
+tuple \hyperlink{namespaceveripy_a5ab193beb474f15a242fa9d804d0ccb6}{stream} = io.\-String\-I\-O()
+\item 
+tuple \hyperlink{namespaceveripy_a3e3da32ab1aa18c45596c75506718d23}{exec\-\_\-data} = stream.\-getvalue()
+\item 
+tuple \hyperlink{namespaceveripy_ab6310f745bd0a9df4e151b1e5dede66f}{exec\-\_\-data\-\_\-array} = exec\-\_\-data.\-split('\textbackslash{}n')
+\item 
+tuple \hyperlink{namespaceveripy_a10641579d50981ec799455035259addc}{dum} = re.\-sub(r\char`\"{}$^\wedge$(\char`\"{} + \hyperlink{namespaceveripy_a1767132c455069ae2f3d3eecfe441abd}{comment\-\_\-indent} + r\char`\"{})\char`\"{}, r'', \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_ae4bac0ac3bb653fb2c6ccacc770d05f6}{begininstance\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-E\-G\-I\-N\-I\-N\-S\-T\-A\-N\-C\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Declare module instantiation. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ace16773ac50b8685d48f7b5c063e3c18}{endinstance\-\_\-regex} = re.\-search(R\-E\-\_\-\-E\-N\-D\-I\-N\-S\-T\-A\-N\-C\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a7f1757c2a06b63c4d45e1943eebdce18}{buildcommand\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-U\-I\-L\-D\-\_\-\-C\-O\-M\-M\-A\-N\-D, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a67e40ea20ac72f86e578403f7e1e3e22}{include\-\_\-regex} = re.\-search(R\-E\-\_\-\-I\-N\-C\-L\-U\-D\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a4270387eaf219f4390fc832df8e279d4}{param\-\_\-override\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-A\-R\-A\-M\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_aa1760ba945c51eae52f028d1bbbd7fc1}{connect\-\_\-regex} = re.\-search(R\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a872a1b904cb01bc1072ed8e34f3c468d}{begininstance\-\_\-space} = begininstance\-\_\-regex.\-group(1)
+\item 
+tuple \hyperlink{namespaceveripy_a0a3f7bc90b80f1eccaf884f40317af5c}{begininstance\-\_\-info} = begininstance\-\_\-regex.\-group(2)
+\item 
+tuple \hyperlink{namespaceveripy_a7b3d5c606eddfcb4f4e7e1d6c01fac6b}{begininstance\-\_\-info\-\_\-array} = begininstance\-\_\-info.\-split(\char`\"{} \char`\"{})
+\item 
+list \hyperlink{namespaceveripy_ad4f69029876b9bb2e6cb769770e15fd4}{submod\-\_\-name} = \hyperlink{namespaceveripy_a7b3d5c606eddfcb4f4e7e1d6c01fac6b}{begininstance\-\_\-info\-\_\-array}\mbox{[}0\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a7d88d1a02b6ed2027a623447589c4fcd}{inst\-\_\-name} = \hyperlink{namespaceveripy_a7b3d5c606eddfcb4f4e7e1d6c01fac6b}{begininstance\-\_\-info\-\_\-array}\mbox{[}1\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a5d77e0ab80b227fb0d6ea69a873da94c}{inst\-\_\-path}
+\item 
+string \hyperlink{namespaceveripy_a8f89f48fcf9323bd5bb9de7d5656a783}{inst\-\_\-line} = \hyperlink{namespaceveripy_a872a1b904cb01bc1072ed8e34f3c468d}{begininstance\-\_\-space}+\char`\"{}//F\-I\-L\-E\-: \char`\"{}
+\begin{DoxyCompactList}\small\item\em Instantiating a submodule. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a1be2f445d115897ce46823d58aff90c6}{inst\-\_\-array} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a72b25fc3b125307dcf8fff0f983bea47}{array\-\_\-size} = len(\hyperlink{namespaceveripy_a3d4e4d7b77fb2b4b84c418a101755e7c}{sub\-\_\-inst\-\_\-params}\mbox{[}\hyperlink{namespaceveripy_a7d88d1a02b6ed2027a623447589c4fcd}{inst\-\_\-name}\mbox{]})
+\item 
+tuple \hyperlink{namespaceveripy_a6b7c63fe728396ebc9152876b49a06d0}{topname\-\_\-sqbrct\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_a3b0f5f7cc0eeac48c1b8c8ca764faf0b}{sqbrct\-\_\-2d\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_aef963574b2302ef9e877156896ba492c}{double\-\_\-colon\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_a296a71c1d954e9620e163178151f0a5f}{clock\-\_\-regex} = re.\-search(R\-E\-\_\-\-C\-L\-O\-C\-K, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em \&Posedge, \&Negedge, \&Clock, \&Sync\-Reset and \&Asyncreset \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_aabfe96ccfbd96d91208eb10df3fad611}{asyncreset\-\_\-regex} = re.\-search(R\-E\-\_\-\-A\-S\-Y\-N\-C\-R\-E\-S\-E\-T, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a69ba54ab5fdc8fc7d6575a37675bdb8d}{syncreset\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-Y\-N\-C\-R\-E\-S\-E\-T, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a539ac3ffa8c747bee3236b8735881ca3}{posedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-P\-O\-S\-E\-D\-G\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a73d80450abbdcabc03a0ff6e4fbd5d48}{negedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-N\-E\-G\-E\-D\-G\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a756720df8d8fb83c52d7838e312cbb53}{auto\-\_\-reset\-\_\-space} = posedge\-\_\-regex.\-group(1)
+\item 
+list \hyperlink{namespaceveripy_a0b2d8a820c3d794138a0f30fe95f2617}{reset\-\_\-val} = \hyperlink{namespaceveripy_aed29c63170d881d76a0845d94c3d6bdd}{auto\-\_\-reset\-\_\-data}\mbox{[}\hyperlink{namespaceveripy_a796e24d0f42e97113536ef5675583aa3}{auto\-\_\-reset\-\_\-index}\mbox{]}
+\item 
+int \hyperlink{namespaceveripy_a6c7af7b6f61625967ad76e47ea97feb5}{c\-\_\-signal\-\_\-width} = 1
+\item 
+tuple \hyperlink{namespaceveripy_a236b47105aebf9535a23f5e3584fc8d5}{c\-\_\-signal\-\_\-bitdef\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_aed3cb62c9f8ae9fa7f95a39dd184db5b}{c\-\_\-signal\-\_\-ubitdef} = c\-\_\-signal\-\_\-bitdef\-\_\-regex.\-group(1)
+\item 
+\hyperlink{namespaceveripy_a0eeaafa3dcfb8500938d8b7fc674b564}{c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a941996ba01b912fdd56db5908c002a05}{c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_a9985df4799df5dec0cca48bdf7e184ac}{endnegedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-N\-E\-G\-E\-D\-G\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_afd21c96a818fcc01594b0a193e25f0f3}{endposgedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-P\-O\-S\-E\-D\-G\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a818213d44f5908b15037e7f70a2d5882}{pkg2assign\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-K\-G2\-A\-S\-S\-I\-G\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Writing out Pkg2\-Assign outputs. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_abab8384e1cd583db34af81db27a52544}{pkg2assign\-\_\-list} = \hyperlink{namespaceveripy_abb8af7474ba6f1fe4499f0baf5e6c9da}{pkg2assign\-\_\-info}\mbox{[}\hyperlink{namespaceveripy_ad519db7b0f685cc6c804c7ecc3bc02b5}{pkg2assign\-\_\-index}\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a7acecc4bebb723a0ef94b24f5130faac}{assign2pkg\-\_\-regex} = re.\-search(R\-E\-\_\-\-A\-S\-S\-I\-G\-N2\-P\-K\-G, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Writing out Assign2\-Pkg outputs. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a069ecdd68f4a51cf7151b361b4159f4a}{assign2pkg\-\_\-list} = \hyperlink{namespaceveripy_a95394440df7568c06df836060d2c1f5e}{assign2pkg\-\_\-info}\mbox{[}\hyperlink{namespaceveripy_ae065d2f646ed5d1156a25bb21084cbd6}{assign2pkg\-\_\-index}\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_af5876ef12bb1a85e8d8cd34cfafe054c}{force\-\_\-regex} = re.\-search(R\-E\-\_\-\-F\-O\-R\-C\-E, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Commenting out different \& calls. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a77acefbceb0478f3abeb04e6806324a2}{beginskip\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-B\-E\-G\-I\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a982e8b68ecc8da4b47d07fce69736f5c}{endskip\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-E\-N\-D, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_afcccb50dd7b0fb2b644b9c1d2323a3c1}{parser\-\_\-off\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-F\-F, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_acaab00af25a2a159e2accd5ec9f5ddf2}{parser\-\_\-on\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a32070d26198948bdf028e393cb565ade}{skipifdefbegin\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-B\-E\-G\-I\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a3e2775895f7dc417880c6298fcfbb5db}{skipifdefend\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-E\-N\-D, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a188398590a71f5e7c68337fd92a67bf7}{gendrivez\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Stub Generation. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_aa2af1923077c3d88816ed1449896be05}{gendrive0\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_ad9ca8c35b0ba3500e52cbaefc381ee77}{gennoifdefdrive0\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-N\-O\-I\-F\-D\-E\-F\-D\-R\-I\-V\-E0, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_a6882cd46af143e35f1d53de0c5961049}{gendrive0andz\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-A\-N\-D\-Z, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\item 
+tuple \hyperlink{namespaceveripy_ac385a661e564ea21a74143edbc147bb9}{endmodule\-\_\-regex} = re.\-search(R\-E\-\_\-\-E\-N\-D\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-C\-L\-A\-R\-A\-T\-I\-O\-N, \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{line})
+\begin{DoxyCompactList}\small\item\em Check if endmodule declaration by user. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a3c87219c0df570bcd1bebb41ee3c4adc}{out\-\_\-list} = open(\hyperlink{namespaceveripy_aa6ea69d7177eeedc80f2e1c1ff8b00f6}{output\-\_\-list}, 'w')
+\item 
+tuple \hyperlink{namespaceveripy_a20c975857dc6d80de2866942e40e05f5}{dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root}
+\item 
+\hyperlink{namespaceveripy_a53d32cc2c5a71562b7e9d2414bca5ccf}{c\-\_\-file\-\_\-abspath} = \hyperlink{namespaceveripy_aeec698b4635f08372de56311378d1526}{c\-\_\-file}
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespaceveripy_acd1090fc8e7408283bb12a2ff26d2750}{\index{veripy@{veripy}!a@{a}}
+\index{a@{a}!veripy@{veripy}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-a = recursive\-\_\-filelist({\bf data})}}\label{namespaceveripy_acd1090fc8e7408283bb12a2ff26d2750}
+\hypertarget{namespaceveripy_afea06b60383bdad409732711cafd8d5e}{\index{veripy@{veripy}!ampersand\-\_\-line@{ampersand\-\_\-line}}
+\index{ampersand\-\_\-line@{ampersand\-\_\-line}!veripy@{veripy}}
+\subsubsection[{ampersand\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-ampersand\-\_\-line = re.\-sub(r'\&', r'//\&', {\bf original\-\_\-line}, 1)}}\label{namespaceveripy_afea06b60383bdad409732711cafd8d5e}
+\hypertarget{namespaceveripy_a72b25fc3b125307dcf8fff0f983bea47}{\index{veripy@{veripy}!array\-\_\-size@{array\-\_\-size}}
+\index{array\-\_\-size@{array\-\_\-size}!veripy@{veripy}}
+\subsubsection[{array\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-array\-\_\-size = len({\bf sub\-\_\-inst\-\_\-params}\mbox{[}{\bf inst\-\_\-name}\mbox{]})}}\label{namespaceveripy_a72b25fc3b125307dcf8fff0f983bea47}
+\hypertarget{namespaceveripy_ae065d2f646ed5d1156a25bb21084cbd6}{\index{veripy@{veripy}!assign2pkg\-\_\-index@{assign2pkg\-\_\-index}}
+\index{assign2pkg\-\_\-index@{assign2pkg\-\_\-index}!veripy@{veripy}}
+\subsubsection[{assign2pkg\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-assign2pkg\-\_\-index = 0}}\label{namespaceveripy_ae065d2f646ed5d1156a25bb21084cbd6}
+\hypertarget{namespaceveripy_a95394440df7568c06df836060d2c1f5e}{\index{veripy@{veripy}!assign2pkg\-\_\-info@{assign2pkg\-\_\-info}}
+\index{assign2pkg\-\_\-info@{assign2pkg\-\_\-info}!veripy@{veripy}}
+\subsubsection[{assign2pkg\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-assign2pkg\-\_\-info = i\-\_\-verilog\-\_\-parser.\-assign2pkg\-\_\-info}}\label{namespaceveripy_a95394440df7568c06df836060d2c1f5e}
+\hypertarget{namespaceveripy_a069ecdd68f4a51cf7151b361b4159f4a}{\index{veripy@{veripy}!assign2pkg\-\_\-list@{assign2pkg\-\_\-list}}
+\index{assign2pkg\-\_\-list@{assign2pkg\-\_\-list}!veripy@{veripy}}
+\subsubsection[{assign2pkg\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-assign2pkg\-\_\-list = {\bf assign2pkg\-\_\-info}\mbox{[}{\bf assign2pkg\-\_\-index}\mbox{]}}}\label{namespaceveripy_a069ecdd68f4a51cf7151b361b4159f4a}
+\hypertarget{namespaceveripy_a7acecc4bebb723a0ef94b24f5130faac}{\index{veripy@{veripy}!assign2pkg\-\_\-regex@{assign2pkg\-\_\-regex}}
+\index{assign2pkg\-\_\-regex@{assign2pkg\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{assign2pkg\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-assign2pkg\-\_\-regex = re.\-search(R\-E\-\_\-\-A\-S\-S\-I\-G\-N2\-P\-K\-G, {\bf line})}}\label{namespaceveripy_a7acecc4bebb723a0ef94b24f5130faac}
+
+
+Writing out Assign2\-Pkg outputs. 
+
+\hypertarget{namespaceveripy_a65e6d335aa5902f4a18967da2aca2e20}{\index{veripy@{veripy}!async\-\_\-reset@{async\-\_\-reset}}
+\index{async\-\_\-reset@{async\-\_\-reset}!veripy@{veripy}}
+\subsubsection[{async\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-async\-\_\-reset = \char`\"{}arst\-\_\-n\char`\"{}}}\label{namespaceveripy_a65e6d335aa5902f4a18967da2aca2e20}
+\hypertarget{namespaceveripy_aabfe96ccfbd96d91208eb10df3fad611}{\index{veripy@{veripy}!asyncreset\-\_\-regex@{asyncreset\-\_\-regex}}
+\index{asyncreset\-\_\-regex@{asyncreset\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{asyncreset\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-asyncreset\-\_\-regex = re.\-search(R\-E\-\_\-\-A\-S\-Y\-N\-C\-R\-E\-S\-E\-T, {\bf line})}}\label{namespaceveripy_aabfe96ccfbd96d91208eb10df3fad611}
+\hypertarget{namespaceveripy_a02329512579947b4e050bedace3bc009}{\index{veripy@{veripy}!auto\-\_\-package\-\_\-load@{auto\-\_\-package\-\_\-load}}
+\index{auto\-\_\-package\-\_\-load@{auto\-\_\-package\-\_\-load}!veripy@{veripy}}
+\subsubsection[{auto\-\_\-package\-\_\-load}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-auto\-\_\-package\-\_\-load = cmdline.\-auto\-\_\-package\-\_\-load}}\label{namespaceveripy_a02329512579947b4e050bedace3bc009}
+\hypertarget{namespaceveripy_aed29c63170d881d76a0845d94c3d6bdd}{\index{veripy@{veripy}!auto\-\_\-reset\-\_\-data@{auto\-\_\-reset\-\_\-data}}
+\index{auto\-\_\-reset\-\_\-data@{auto\-\_\-reset\-\_\-data}!veripy@{veripy}}
+\subsubsection[{auto\-\_\-reset\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-auto\-\_\-reset\-\_\-data = i\-\_\-verilog\-\_\-parser.\-auto\-\_\-reset\-\_\-data}}\label{namespaceveripy_aed29c63170d881d76a0845d94c3d6bdd}
+\hypertarget{namespaceveripy_a796e24d0f42e97113536ef5675583aa3}{\index{veripy@{veripy}!auto\-\_\-reset\-\_\-index@{auto\-\_\-reset\-\_\-index}}
+\index{auto\-\_\-reset\-\_\-index@{auto\-\_\-reset\-\_\-index}!veripy@{veripy}}
+\subsubsection[{auto\-\_\-reset\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-auto\-\_\-reset\-\_\-index = 0}}\label{namespaceveripy_a796e24d0f42e97113536ef5675583aa3}
+\hypertarget{namespaceveripy_a756720df8d8fb83c52d7838e312cbb53}{\index{veripy@{veripy}!auto\-\_\-reset\-\_\-space@{auto\-\_\-reset\-\_\-space}}
+\index{auto\-\_\-reset\-\_\-space@{auto\-\_\-reset\-\_\-space}!veripy@{veripy}}
+\subsubsection[{auto\-\_\-reset\-\_\-space}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-auto\-\_\-reset\-\_\-space = posedge\-\_\-regex.\-group(1)}}\label{namespaceveripy_a756720df8d8fb83c52d7838e312cbb53}
+\hypertarget{namespaceveripy_ac27b8dbb034afa7793ce50076e0b68e3}{\index{veripy@{veripy}!begin\-\_\-python\-\_\-space@{begin\-\_\-python\-\_\-space}}
+\index{begin\-\_\-python\-\_\-space@{begin\-\_\-python\-\_\-space}!veripy@{veripy}}
+\subsubsection[{begin\-\_\-python\-\_\-space}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begin\-\_\-python\-\_\-space = post\-\_\-python\-\_\-begin\-\_\-regex.\-group(1)}}\label{namespaceveripy_ac27b8dbb034afa7793ce50076e0b68e3}
+\hypertarget{namespaceveripy_ae247f78446c024b1e35787cb67a44b2b}{\index{veripy@{veripy}!begin\-\_\-space@{begin\-\_\-space}}
+\index{begin\-\_\-space@{begin\-\_\-space}!veripy@{veripy}}
+\subsubsection[{begin\-\_\-space}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begin\-\_\-space = original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex.\-group(1)}}\label{namespaceveripy_ae247f78446c024b1e35787cb67a44b2b}
+\hypertarget{namespaceveripy_a1185ea61fff03e646c641f6d6caf3bdb}{\index{veripy@{veripy}!begin\-\_\-space\-\_\-regex@{begin\-\_\-space\-\_\-regex}}
+\index{begin\-\_\-space\-\_\-regex@{begin\-\_\-space\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{begin\-\_\-space\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begin\-\_\-space\-\_\-regex}}\label{namespaceveripy_a1185ea61fff03e646c641f6d6caf3bdb}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_BEGIN\_SPACE, \(\backslash\)
+2                                                       original\_line)
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a0a3f7bc90b80f1eccaf884f40317af5c}{\index{veripy@{veripy}!begininstance\-\_\-info@{begininstance\-\_\-info}}
+\index{begininstance\-\_\-info@{begininstance\-\_\-info}!veripy@{veripy}}
+\subsubsection[{begininstance\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begininstance\-\_\-info = begininstance\-\_\-regex.\-group(2)}}\label{namespaceveripy_a0a3f7bc90b80f1eccaf884f40317af5c}
+\hypertarget{namespaceveripy_a7b3d5c606eddfcb4f4e7e1d6c01fac6b}{\index{veripy@{veripy}!begininstance\-\_\-info\-\_\-array@{begininstance\-\_\-info\-\_\-array}}
+\index{begininstance\-\_\-info\-\_\-array@{begininstance\-\_\-info\-\_\-array}!veripy@{veripy}}
+\subsubsection[{begininstance\-\_\-info\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begininstance\-\_\-info\-\_\-array = begininstance\-\_\-info.\-split(\char`\"{} \char`\"{})}}\label{namespaceveripy_a7b3d5c606eddfcb4f4e7e1d6c01fac6b}
+\hypertarget{namespaceveripy_ae4bac0ac3bb653fb2c6ccacc770d05f6}{\index{veripy@{veripy}!begininstance\-\_\-regex@{begininstance\-\_\-regex}}
+\index{begininstance\-\_\-regex@{begininstance\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{begininstance\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begininstance\-\_\-regex = re.\-search(R\-E\-\_\-\-B\-E\-G\-I\-N\-I\-N\-S\-T\-A\-N\-C\-E, {\bf line})}}\label{namespaceveripy_ae4bac0ac3bb653fb2c6ccacc770d05f6}
+
+
+Declare module instantiation. 
+
+\hypertarget{namespaceveripy_a872a1b904cb01bc1072ed8e34f3c468d}{\index{veripy@{veripy}!begininstance\-\_\-space@{begininstance\-\_\-space}}
+\index{begininstance\-\_\-space@{begininstance\-\_\-space}!veripy@{veripy}}
+\subsubsection[{begininstance\-\_\-space}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-begininstance\-\_\-space = begininstance\-\_\-regex.\-group(1)}}\label{namespaceveripy_a872a1b904cb01bc1072ed8e34f3c468d}
+\hypertarget{namespaceveripy_a77acefbceb0478f3abeb04e6806324a2}{\index{veripy@{veripy}!beginskip\-\_\-regex@{beginskip\-\_\-regex}}
+\index{beginskip\-\_\-regex@{beginskip\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{beginskip\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-beginskip\-\_\-regex = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-B\-E\-G\-I\-N, {\bf line})}}\label{namespaceveripy_a77acefbceb0478f3abeb04e6806324a2}
+\hypertarget{namespaceveripy_aa819d294a75b937f82b683bc7b600ce5}{\index{veripy@{veripy}!binding\-\_\-declarations@{binding\-\_\-declarations}}
+\index{binding\-\_\-declarations@{binding\-\_\-declarations}!veripy@{veripy}}
+\subsubsection[{binding\-\_\-declarations}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-binding\-\_\-declarations = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_aa819d294a75b937f82b683bc7b600ce5}
+\hypertarget{namespaceveripy_aef466e074087c0147f0f1fc1d73aa1ab}{\index{veripy@{veripy}!bitdef\-\_\-has\-\_\-typedef@{bitdef\-\_\-has\-\_\-typedef}}
+\index{bitdef\-\_\-has\-\_\-typedef@{bitdef\-\_\-has\-\_\-typedef}!veripy@{veripy}}
+\subsubsection[{bitdef\-\_\-has\-\_\-typedef}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-bitdef\-\_\-has\-\_\-typedef = 0}}\label{namespaceveripy_aef466e074087c0147f0f1fc1d73aa1ab}
+\hypertarget{namespaceveripy_aee62390a4a6359636a358bf40e73d4f0}{\index{veripy@{veripy}!bitdef\-\_\-typedef@{bitdef\-\_\-typedef}}
+\index{bitdef\-\_\-typedef@{bitdef\-\_\-typedef}!veripy@{veripy}}
+\subsubsection[{bitdef\-\_\-typedef}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-bitdef\-\_\-typedef = \char`\"{}\char`\"{}}}\label{namespaceveripy_aee62390a4a6359636a358bf40e73d4f0}
+\hypertarget{namespaceveripy_a62ad587d407c4f9be0fe319a908afcc9}{\index{veripy@{veripy}!block\-\_\-comment@{block\-\_\-comment}}
+\index{block\-\_\-comment@{block\-\_\-comment}!veripy@{veripy}}
+\subsubsection[{block\-\_\-comment}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-block\-\_\-comment = 0}}\label{namespaceveripy_a62ad587d407c4f9be0fe319a908afcc9}
+\hypertarget{namespaceveripy_af8e07ad7fa073c970f410a7740e03386}{\index{veripy@{veripy}!block\-\_\-comment\-\_\-begin\-\_\-regex@{block\-\_\-comment\-\_\-begin\-\_\-regex}}
+\index{block\-\_\-comment\-\_\-begin\-\_\-regex@{block\-\_\-comment\-\_\-begin\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{block\-\_\-comment\-\_\-begin\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-block\-\_\-comment\-\_\-begin\-\_\-regex = re.\-search(R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-B\-E\-G\-I\-N, {\bf line})}}\label{namespaceveripy_af8e07ad7fa073c970f410a7740e03386}
+\hypertarget{namespaceveripy_abcadaeae6f3a929e198c9d9255100a7d}{\index{veripy@{veripy}!block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex@{block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex}}
+\index{block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex@{block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_abcadaeae6f3a929e198c9d9255100a7d}
+
+
+Block comment skip. 
+
+\hypertarget{namespaceveripy_aa1db3e87be026e6684d07c823dfa6e99}{\index{veripy@{veripy}!block\-\_\-comment\-\_\-end\-\_\-regex@{block\-\_\-comment\-\_\-end\-\_\-regex}}
+\index{block\-\_\-comment\-\_\-end\-\_\-regex@{block\-\_\-comment\-\_\-end\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{block\-\_\-comment\-\_\-end\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-block\-\_\-comment\-\_\-end\-\_\-regex = re.\-search(R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-E\-N\-D, {\bf line})}}\label{namespaceveripy_aa1db3e87be026e6684d07c823dfa6e99}
+\hypertarget{namespaceveripy_a7f1757c2a06b63c4d45e1943eebdce18}{\index{veripy@{veripy}!buildcommand\-\_\-regex@{buildcommand\-\_\-regex}}
+\index{buildcommand\-\_\-regex@{buildcommand\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{buildcommand\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-buildcommand\-\_\-regex = re.\-search(R\-E\-\_\-\-B\-U\-I\-L\-D\-\_\-\-C\-O\-M\-M\-A\-N\-D, {\bf line})}}\label{namespaceveripy_a7f1757c2a06b63c4d45e1943eebdce18}
+\hypertarget{namespaceveripy_aeec698b4635f08372de56311378d1526}{\index{veripy@{veripy}!c\-\_\-file@{c\-\_\-file}}
+\index{c\-\_\-file@{c\-\_\-file}!veripy@{veripy}}
+\subsubsection[{c\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-file = c\-\_\-file.\-rstrip()}}\label{namespaceveripy_aeec698b4635f08372de56311378d1526}
+\hypertarget{namespaceveripy_a53d32cc2c5a71562b7e9d2414bca5ccf}{\index{veripy@{veripy}!c\-\_\-file\-\_\-abspath@{c\-\_\-file\-\_\-abspath}}
+\index{c\-\_\-file\-\_\-abspath@{c\-\_\-file\-\_\-abspath}!veripy@{veripy}}
+\subsubsection[{c\-\_\-file\-\_\-abspath}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-file\-\_\-abspath = {\bf c\-\_\-file}}}\label{namespaceveripy_a53d32cc2c5a71562b7e9d2414bca5ccf}
+\hypertarget{namespaceveripy_af2b6d56f745ddde0e41f187cb2bfdf6b}{\index{veripy@{veripy}!c\-\_\-filepath@{c\-\_\-filepath}}
+\index{c\-\_\-filepath@{c\-\_\-filepath}!veripy@{veripy}}
+\subsubsection[{c\-\_\-filepath}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-filepath = os.\-path.\-expandvars({\bf c\-\_\-file})}}\label{namespaceveripy_af2b6d56f745ddde0e41f187cb2bfdf6b}
+\hypertarget{namespaceveripy_ad5d479254f68163a413f993072a21670}{\index{veripy@{veripy}!c\-\_\-internal@{c\-\_\-internal}}
+\index{c\-\_\-internal@{c\-\_\-internal}!veripy@{veripy}}
+\subsubsection[{c\-\_\-internal}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-internal = re.\-sub(r';', r'', c\-\_\-internal)}}\label{namespaceveripy_ad5d479254f68163a413f993072a21670}
+
+
+Applying any force internal commands. 
+
+\hypertarget{namespaceveripy_a9505272117cc42bae0838d650df825ed}{\index{veripy@{veripy}!c\-\_\-port\-\_\-bitdef@{c\-\_\-port\-\_\-bitdef}}
+\index{c\-\_\-port\-\_\-bitdef@{c\-\_\-port\-\_\-bitdef}!veripy@{veripy}}
+\subsubsection[{c\-\_\-port\-\_\-bitdef}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-port\-\_\-bitdef = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_a9505272117cc42bae0838d650df825ed}
+\hypertarget{namespaceveripy_a80b7caf2bd3933ac6f3120703f632f77}{\index{veripy@{veripy}!c\-\_\-port\-\_\-declare\-\_\-type@{c\-\_\-port\-\_\-declare\-\_\-type}}
+\index{c\-\_\-port\-\_\-declare\-\_\-type@{c\-\_\-port\-\_\-declare\-\_\-type}!veripy@{veripy}}
+\subsubsection[{c\-\_\-port\-\_\-declare\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-port\-\_\-declare\-\_\-type = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_a80b7caf2bd3933ac6f3120703f632f77}
+\hypertarget{namespaceveripy_aa17b83309ed85682ee4b3d4da58a9bfc}{\index{veripy@{veripy}!c\-\_\-port\-\_\-dir@{c\-\_\-port\-\_\-dir}}
+\index{c\-\_\-port\-\_\-dir@{c\-\_\-port\-\_\-dir}!veripy@{veripy}}
+\subsubsection[{c\-\_\-port\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-c\-\_\-port\-\_\-dir = {\bf ports}\mbox{[}c\-\_\-port\mbox{]}}}\label{namespaceveripy_aa17b83309ed85682ee4b3d4da58a9bfc}
+\hypertarget{namespaceveripy_ac0090bfe22807ee67cf30a98d6996df7}{\index{veripy@{veripy}!c\-\_\-port\-\_\-index@{c\-\_\-port\-\_\-index}}
+\index{c\-\_\-port\-\_\-index@{c\-\_\-port\-\_\-index}!veripy@{veripy}}
+\subsubsection[{c\-\_\-port\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-c\-\_\-port\-\_\-index = 1}}\label{namespaceveripy_ac0090bfe22807ee67cf30a98d6996df7}
+\hypertarget{namespaceveripy_aead00c96f8f701052f787bc35a89ca39}{\index{veripy@{veripy}!c\-\_\-port\-\_\-name@{c\-\_\-port\-\_\-name}}
+\index{c\-\_\-port\-\_\-name@{c\-\_\-port\-\_\-name}!veripy@{veripy}}
+\subsubsection[{c\-\_\-port\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-port\-\_\-name = c\-\_\-port}}\label{namespaceveripy_aead00c96f8f701052f787bc35a89ca39}
+\hypertarget{namespaceveripy_a60d320c655f8b7e2bb3e3169045d9948}{\index{veripy@{veripy}!c\-\_\-port\-\_\-signed@{c\-\_\-port\-\_\-signed}}
+\index{c\-\_\-port\-\_\-signed@{c\-\_\-port\-\_\-signed}!veripy@{veripy}}
+\subsubsection[{c\-\_\-port\-\_\-signed}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-c\-\_\-port\-\_\-signed = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_a60d320c655f8b7e2bb3e3169045d9948}
+\hypertarget{namespaceveripy_ae01bdc8e4c1dee6732155756ad5a4cf2}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-bdef\-\_\-pkg@{c\-\_\-reg\-\_\-bdef\-\_\-pkg}}
+\index{c\-\_\-reg\-\_\-bdef\-\_\-pkg@{c\-\_\-reg\-\_\-bdef\-\_\-pkg}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-bdef\-\_\-pkg}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-pkg = \char`\"{}default\char`\"{}}}\label{namespaceveripy_ae01bdc8e4c1dee6732155756ad5a4cf2}
+\hypertarget{namespaceveripy_a6ed1b232cf9fe15b7d975bb69a7c3ff1}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex@{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex}}
+\index{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex@{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_a6ed1b232cf9fe15b7d975bb69a7c3ff1}
+\hypertarget{namespaceveripy_a77d24d587b4bdcae0ae2a67c8bcf5849}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex@{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex}}
+\index{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex@{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_a77d24d587b4bdcae0ae2a67c8bcf5849}
+\hypertarget{namespaceveripy_a4f676e8fb961627ab4608279f315bf91}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex@{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex}}
+\index{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex@{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_a4f676e8fb961627ab4608279f315bf91}
+\hypertarget{namespaceveripy_a2f11355e71ca5cd6780e85c1e9391a42}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-bitdef@{c\-\_\-reg\-\_\-bitdef}}
+\index{c\-\_\-reg\-\_\-bitdef@{c\-\_\-reg\-\_\-bitdef}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-bitdef}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-reg\-\_\-bitdef = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_a2f11355e71ca5cd6780e85c1e9391a42}
+\hypertarget{namespaceveripy_af15cb34afe7b4fe3faef8366db34a0a7}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-bitdef\-\_\-class@{c\-\_\-reg\-\_\-bitdef\-\_\-class}}
+\index{c\-\_\-reg\-\_\-bitdef\-\_\-class@{c\-\_\-reg\-\_\-bitdef\-\_\-class}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-bitdef\-\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-reg\-\_\-bitdef\-\_\-class = \char`\"{}default\char`\"{}}}\label{namespaceveripy_af15cb34afe7b4fe3faef8366db34a0a7}
+\hypertarget{namespaceveripy_aac1a795f2897a14f50b950dbc2cfa757}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-declare\-\_\-type@{c\-\_\-reg\-\_\-declare\-\_\-type}}
+\index{c\-\_\-reg\-\_\-declare\-\_\-type@{c\-\_\-reg\-\_\-declare\-\_\-type}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-declare\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-reg\-\_\-declare\-\_\-type = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_aac1a795f2897a14f50b950dbc2cfa757}
+\hypertarget{namespaceveripy_afaf13bf78939e59406822568cf5b0a89}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-name@{c\-\_\-reg\-\_\-name}}
+\index{c\-\_\-reg\-\_\-name@{c\-\_\-reg\-\_\-name}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-reg\-\_\-name = c\-\_\-reg}}\label{namespaceveripy_afaf13bf78939e59406822568cf5b0a89}
+\hypertarget{namespaceveripy_a340fd491db72cef85a27ed7d34825e2f}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-signed@{c\-\_\-reg\-\_\-signed}}
+\index{c\-\_\-reg\-\_\-signed@{c\-\_\-reg\-\_\-signed}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-signed}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-c\-\_\-reg\-\_\-signed = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_a340fd491db72cef85a27ed7d34825e2f}
+\hypertarget{namespaceveripy_a28beb86ef22e1797f2a263e0b7bde37e}{\index{veripy@{veripy}!c\-\_\-reg\-\_\-type@{c\-\_\-reg\-\_\-type}}
+\index{c\-\_\-reg\-\_\-type@{c\-\_\-reg\-\_\-type}!veripy@{veripy}}
+\subsubsection[{c\-\_\-reg\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-reg\-\_\-type = \char`\"{}reg\char`\"{}}}\label{namespaceveripy_a28beb86ef22e1797f2a263e0b7bde37e}
+\hypertarget{namespaceveripy_a236b47105aebf9535a23f5e3584fc8d5}{\index{veripy@{veripy}!c\-\_\-signal\-\_\-bitdef\-\_\-regex@{c\-\_\-signal\-\_\-bitdef\-\_\-regex}}
+\index{c\-\_\-signal\-\_\-bitdef\-\_\-regex@{c\-\_\-signal\-\_\-bitdef\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{c\-\_\-signal\-\_\-bitdef\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-signal\-\_\-bitdef\-\_\-regex}}\label{namespaceveripy_a236b47105aebf9535a23f5e3584fc8d5}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_COLON, \(\backslash\)
+2                                                 regs[c\_signal][\textcolor{stringliteral}{'bitdef'}])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_aed3cb62c9f8ae9fa7f95a39dd184db5b}{\index{veripy@{veripy}!c\-\_\-signal\-\_\-ubitdef@{c\-\_\-signal\-\_\-ubitdef}}
+\index{c\-\_\-signal\-\_\-ubitdef@{c\-\_\-signal\-\_\-ubitdef}!veripy@{veripy}}
+\subsubsection[{c\-\_\-signal\-\_\-ubitdef}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-signal\-\_\-ubitdef = c\-\_\-signal\-\_\-bitdef\-\_\-regex.\-group(1)}}\label{namespaceveripy_aed3cb62c9f8ae9fa7f95a39dd184db5b}
+\hypertarget{namespaceveripy_a0eeaafa3dcfb8500938d8b7fc674b564}{\index{veripy@{veripy}!c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex@{c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex}}
+\index{c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex@{c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_a0eeaafa3dcfb8500938d8b7fc674b564}
+\hypertarget{namespaceveripy_a941996ba01b912fdd56db5908c002a05}{\index{veripy@{veripy}!c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex@{c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex}}
+\index{c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex@{c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_a941996ba01b912fdd56db5908c002a05}
+\hypertarget{namespaceveripy_a6c7af7b6f61625967ad76e47ea97feb5}{\index{veripy@{veripy}!c\-\_\-signal\-\_\-width@{c\-\_\-signal\-\_\-width}}
+\index{c\-\_\-signal\-\_\-width@{c\-\_\-signal\-\_\-width}!veripy@{veripy}}
+\subsubsection[{c\-\_\-signal\-\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-signal\-\_\-width = 1}}\label{namespaceveripy_a6c7af7b6f61625967ad76e47ea97feb5}
+\hypertarget{namespaceveripy_a7abce416f31880ab21237252118fad96}{\index{veripy@{veripy}!c\-\_\-width@{c\-\_\-width}}
+\index{c\-\_\-width@{c\-\_\-width}!veripy@{veripy}}
+\subsubsection[{c\-\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-c\-\_\-width = re.\-sub(r';', r'', c\-\_\-width)}}\label{namespaceveripy_a7abce416f31880ab21237252118fad96}
+
+
+Applying any force width commands. 
+
+\hypertarget{namespaceveripy_a377a5b0657c1d4221cb91341adfdfe0e}{\index{veripy@{veripy}!c\-\_\-wire\-\_\-bitdef@{c\-\_\-wire\-\_\-bitdef}}
+\index{c\-\_\-wire\-\_\-bitdef@{c\-\_\-wire\-\_\-bitdef}!veripy@{veripy}}
+\subsubsection[{c\-\_\-wire\-\_\-bitdef}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-wire\-\_\-bitdef = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_a377a5b0657c1d4221cb91341adfdfe0e}
+\hypertarget{namespaceveripy_ad71d972cd14cafa486e30a6fea57dd35}{\index{veripy@{veripy}!c\-\_\-wire\-\_\-declare\-\_\-type@{c\-\_\-wire\-\_\-declare\-\_\-type}}
+\index{c\-\_\-wire\-\_\-declare\-\_\-type@{c\-\_\-wire\-\_\-declare\-\_\-type}!veripy@{veripy}}
+\subsubsection[{c\-\_\-wire\-\_\-declare\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-wire\-\_\-declare\-\_\-type = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_ad71d972cd14cafa486e30a6fea57dd35}
+\hypertarget{namespaceveripy_a7a0ef7d57ddc5b071192307405e285a8}{\index{veripy@{veripy}!c\-\_\-wire\-\_\-name@{c\-\_\-wire\-\_\-name}}
+\index{c\-\_\-wire\-\_\-name@{c\-\_\-wire\-\_\-name}!veripy@{veripy}}
+\subsubsection[{c\-\_\-wire\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-wire\-\_\-name = c\-\_\-wire}}\label{namespaceveripy_a7a0ef7d57ddc5b071192307405e285a8}
+\hypertarget{namespaceveripy_ad604c034cbcf22f36b69ac71bc8d0706}{\index{veripy@{veripy}!c\-\_\-wire\-\_\-signed@{c\-\_\-wire\-\_\-signed}}
+\index{c\-\_\-wire\-\_\-signed@{c\-\_\-wire\-\_\-signed}!veripy@{veripy}}
+\subsubsection[{c\-\_\-wire\-\_\-signed}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-c\-\_\-wire\-\_\-signed = \char`\"{}\#\char`\"{}}}\label{namespaceveripy_ad604c034cbcf22f36b69ac71bc8d0706}
+\hypertarget{namespaceveripy_a2f7c80ddc952aaaf80ea6413c4d397d5}{\index{veripy@{veripy}!c\-\_\-wire\-\_\-type@{c\-\_\-wire\-\_\-type}}
+\index{c\-\_\-wire\-\_\-type@{c\-\_\-wire\-\_\-type}!veripy@{veripy}}
+\subsubsection[{c\-\_\-wire\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-c\-\_\-wire\-\_\-type = \char`\"{}wire\char`\"{}}}\label{namespaceveripy_a2f7c80ddc952aaaf80ea6413c4d397d5}
+\hypertarget{namespaceveripy_ae6605e6272b7db04b7d3ea58595fdd10}{\index{veripy@{veripy}!clock@{clock}}
+\index{clock@{clock}!veripy@{veripy}}
+\subsubsection[{clock}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-clock = \char`\"{}clk\char`\"{}}}\label{namespaceveripy_ae6605e6272b7db04b7d3ea58595fdd10}
+\hypertarget{namespaceveripy_a296a71c1d954e9620e163178151f0a5f}{\index{veripy@{veripy}!clock\-\_\-regex@{clock\-\_\-regex}}
+\index{clock\-\_\-regex@{clock\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{clock\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-clock\-\_\-regex = re.\-search(R\-E\-\_\-\-C\-L\-O\-C\-K, {\bf line})}}\label{namespaceveripy_a296a71c1d954e9620e163178151f0a5f}
+
+
+\&Posedge, \&Negedge, \&Clock, \&Sync\-Reset and \&Asyncreset 
+
+\hypertarget{namespaceveripy_ad6c4cf7e3033a574cb4412b464af3966}{\index{veripy@{veripy}!cmdline@{cmdline}}
+\index{cmdline@{cmdline}!veripy@{veripy}}
+\subsubsection[{cmdline}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-cmdline = parser.\-parse\-\_\-args()}}\label{namespaceveripy_ad6c4cf7e3033a574cb4412b464af3966}
+\hypertarget{namespaceveripy_a08971c7a0053dfc5c58e4e443ce24122}{\index{veripy@{veripy}!code\-\_\-block@{code\-\_\-block}}
+\index{code\-\_\-block@{code\-\_\-block}!veripy@{veripy}}
+\subsubsection[{code\-\_\-block}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-code\-\_\-block = ''}}\label{namespaceveripy_a08971c7a0053dfc5c58e4e443ce24122}
+\hypertarget{namespaceveripy_a1767132c455069ae2f3d3eecfe441abd}{\index{veripy@{veripy}!comment\-\_\-indent@{comment\-\_\-indent}}
+\index{comment\-\_\-indent@{comment\-\_\-indent}!veripy@{veripy}}
+\subsubsection[{comment\-\_\-indent}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-comment\-\_\-indent = post\-\_\-python\-\_\-begin\-\_\-regex.\-group(1)}}\label{namespaceveripy_a1767132c455069ae2f3d3eecfe441abd}
+\hypertarget{namespaceveripy_aa1760ba945c51eae52f028d1bbbd7fc1}{\index{veripy@{veripy}!connect\-\_\-regex@{connect\-\_\-regex}}
+\index{connect\-\_\-regex@{connect\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{connect\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-connect\-\_\-regex = re.\-search(R\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T, {\bf line})}}\label{namespaceveripy_aa1760ba945c51eae52f028d1bbbd7fc1}
+\hypertarget{namespaceveripy_a63f627df880e333c4aa052dcaf2cce59}{\index{veripy@{veripy}!curr\-\_\-bitdef\-\_\-class@{curr\-\_\-bitdef\-\_\-class}}
+\index{curr\-\_\-bitdef\-\_\-class@{curr\-\_\-bitdef\-\_\-class}!veripy@{veripy}}
+\subsubsection[{curr\-\_\-bitdef\-\_\-class}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-curr\-\_\-bitdef\-\_\-class = \char`\"{}default\char`\"{}}}\label{namespaceveripy_a63f627df880e333c4aa052dcaf2cce59}
+\hypertarget{namespaceveripy_a9213d8895de6b2b39f567f688a696762}{\index{veripy@{veripy}!curr\-\_\-bitdef\-\_\-package@{curr\-\_\-bitdef\-\_\-package}}
+\index{curr\-\_\-bitdef\-\_\-package@{curr\-\_\-bitdef\-\_\-package}!veripy@{veripy}}
+\subsubsection[{curr\-\_\-bitdef\-\_\-package}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-curr\-\_\-bitdef\-\_\-package = \char`\"{}default\char`\"{}}}\label{namespaceveripy_a9213d8895de6b2b39f567f688a696762}
+\hypertarget{namespaceveripy_af012741317b6a900adf187c07021b594}{\index{veripy@{veripy}!curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex@{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex}}
+\index{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex@{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_af012741317b6a900adf187c07021b594}
+\hypertarget{namespaceveripy_afec338099217bb624d104ae82fa12569}{\index{veripy@{veripy}!curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex@{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex}}
+\index{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex@{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_afec338099217bb624d104ae82fa12569}
+\hypertarget{namespaceveripy_abbda04be83c86eaa60a0e18caace1444}{\index{veripy@{veripy}!curr\-\_\-bitdef\-\_\-typedef\-\_\-regex@{curr\-\_\-bitdef\-\_\-typedef\-\_\-regex}}
+\index{curr\-\_\-bitdef\-\_\-typedef\-\_\-regex@{curr\-\_\-bitdef\-\_\-typedef\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{curr\-\_\-bitdef\-\_\-typedef\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-curr\-\_\-bitdef\-\_\-typedef\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_abbda04be83c86eaa60a0e18caace1444}
+\hypertarget{namespaceveripy_a608d33395d3b79244c5869f6a0f081c6}{\index{veripy@{veripy}!data@{data}}
+\index{data@{data}!veripy@{veripy}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-data = re.\-sub(r'-\/{\bf f} ', r'', {\bf c\-\_\-filepath})}}\label{namespaceveripy_a608d33395d3b79244c5869f6a0f081c6}
+\hypertarget{namespaceveripy_aa41cbf123e5f09c0db694b12b8babbad}{\index{veripy@{veripy}!dbg\-\_\-file@{dbg\-\_\-file}}
+\index{dbg\-\_\-file@{dbg\-\_\-file}!veripy@{veripy}}
+\subsubsection[{dbg\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-dbg\-\_\-file = open({\bf debug\-\_\-file} + \char`\"{}.write\char`\"{}, 'w')}}\label{namespaceveripy_aa41cbf123e5f09c0db694b12b8babbad}
+\hypertarget{namespaceveripy_aa31f673a176e6344d30ade070309153d}{\index{veripy@{veripy}!debug@{debug}}
+\index{debug@{debug}!veripy@{veripy}}
+\subsubsection[{debug}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-debug = 0}}\label{namespaceveripy_aa31f673a176e6344d30ade070309153d}
+\hypertarget{namespaceveripy_a0d00d319a78d1019f3fe9eecfe1add32}{\index{veripy@{veripy}!debug\-\_\-file@{debug\-\_\-file}}
+\index{debug\-\_\-file@{debug\-\_\-file}!veripy@{veripy}}
+\subsubsection[{debug\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-debug\-\_\-file = \char`\"{}veripy.\-debug\char`\"{}}}\label{namespaceveripy_a0d00d319a78d1019f3fe9eecfe1add32}
+
+
+Opening debug file for debug dump. 
+
+\hypertarget{namespaceveripy_af8a33045ea5c3ce576ddaf55a5ff3c8f}{\index{veripy@{veripy}!default@{default}}
+\index{default@{default}!veripy@{veripy}}
+\subsubsection[{default}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-default = 'systemverilog'}}\label{namespaceveripy_af8a33045ea5c3ce576ddaf55a5ff3c8f}
+\hypertarget{namespaceveripy_aebe879fba9bff8cd21ceb4e0ed71cfbd}{\index{veripy@{veripy}!dependencies@{dependencies}}
+\index{dependencies@{dependencies}!veripy@{veripy}}
+\subsubsection[{dependencies}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-dependencies = \{\}}}\label{namespaceveripy_aebe879fba9bff8cd21ceb4e0ed71cfbd}
+\hypertarget{namespaceveripy_ab5498e8a8340e80959241b4ca4ba5dc5}{\index{veripy@{veripy}!dest@{dest}}
+\index{dest@{dest}!veripy@{veripy}}
+\subsubsection[{dest}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-dest = '{\bf output\-\_\-file}'}}\label{namespaceveripy_ab5498e8a8340e80959241b4ca4ba5dc5}
+\hypertarget{namespaceveripy_a375e1799aa8688667cbbc85190d8f362}{\index{veripy@{veripy}!destination\-\_\-dir@{destination\-\_\-dir}}
+\index{destination\-\_\-dir@{destination\-\_\-dir}!veripy@{veripy}}
+\subsubsection[{destination\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-destination\-\_\-dir = cmdline.\-destination\-\_\-dir}}\label{namespaceveripy_a375e1799aa8688667cbbc85190d8f362}
+\hypertarget{namespaceveripy_acb8d40a5e53e8dfb03b5cc54272b1798}{\index{veripy@{veripy}!disable\-\_\-tick\-\_\-ifdefs@{disable\-\_\-tick\-\_\-ifdefs}}
+\index{disable\-\_\-tick\-\_\-ifdefs@{disable\-\_\-tick\-\_\-ifdefs}!veripy@{veripy}}
+\subsubsection[{disable\-\_\-tick\-\_\-ifdefs}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-disable\-\_\-tick\-\_\-ifdefs = cmdline.\-disable\-\_\-tick\-\_\-ifdefs}}\label{namespaceveripy_acb8d40a5e53e8dfb03b5cc54272b1798}
+\hypertarget{namespaceveripy_aacb0f311e69b18de8f0222b583ca9d33}{\index{veripy@{veripy}!doing\-\_\-python@{doing\-\_\-python}}
+\index{doing\-\_\-python@{doing\-\_\-python}!veripy@{veripy}}
+\subsubsection[{doing\-\_\-python}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-doing\-\_\-python = 0}}\label{namespaceveripy_aacb0f311e69b18de8f0222b583ca9d33}
+\hypertarget{namespaceveripy_a20c975857dc6d80de2866942e40e05f5}{\index{veripy@{veripy}!dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root@{dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root}}
+\index{dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root@{dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root}!veripy@{veripy}}
+\subsubsection[{dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root}}\label{namespaceveripy_a20c975857dc6d80de2866942e40e05f5}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_INFRA\_ASIC\_FPGA\_ROOT, \(\backslash\)
+2                     c\_file)
+\end{DoxyCode}
+\hypertarget{namespaceveripy_aef963574b2302ef9e877156896ba492c}{\index{veripy@{veripy}!double\-\_\-colon\-\_\-regex@{double\-\_\-colon\-\_\-regex}}
+\index{double\-\_\-colon\-\_\-regex@{double\-\_\-colon\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{double\-\_\-colon\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-double\-\_\-colon\-\_\-regex}}\label{namespaceveripy_aef963574b2302ef9e877156896ba492c}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_DOUBLE\_COLON, \(\backslash\)
+2                                 sub\_inst\_ports[inst\_name][c\_port][\textcolor{stringliteral}{'topbitdef'}])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a10641579d50981ec799455035259addc}{\index{veripy@{veripy}!dum@{dum}}
+\index{dum@{dum}!veripy@{veripy}}
+\subsubsection[{dum}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-dum = re.\-sub(r\char`\"{}$^\wedge$(\char`\"{} + {\bf comment\-\_\-indent} + r\char`\"{})\char`\"{}, r'', {\bf line})}}\label{namespaceveripy_a10641579d50981ec799455035259addc}
+\hypertarget{namespaceveripy_ace16773ac50b8685d48f7b5c063e3c18}{\index{veripy@{veripy}!endinstance\-\_\-regex@{endinstance\-\_\-regex}}
+\index{endinstance\-\_\-regex@{endinstance\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{endinstance\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-endinstance\-\_\-regex = re.\-search(R\-E\-\_\-\-E\-N\-D\-I\-N\-S\-T\-A\-N\-C\-E, {\bf line})}}\label{namespaceveripy_ace16773ac50b8685d48f7b5c063e3c18}
+\hypertarget{namespaceveripy_a3ba39ef01b3512b93ff8c35da72555c3}{\index{veripy@{veripy}!endmodule\-\_\-found@{endmodule\-\_\-found}}
+\index{endmodule\-\_\-found@{endmodule\-\_\-found}!veripy@{veripy}}
+\subsubsection[{endmodule\-\_\-found}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-endmodule\-\_\-found = 0}}\label{namespaceveripy_a3ba39ef01b3512b93ff8c35da72555c3}
+\hypertarget{namespaceveripy_ac385a661e564ea21a74143edbc147bb9}{\index{veripy@{veripy}!endmodule\-\_\-regex@{endmodule\-\_\-regex}}
+\index{endmodule\-\_\-regex@{endmodule\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{endmodule\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-endmodule\-\_\-regex = re.\-search(R\-E\-\_\-\-E\-N\-D\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-C\-L\-A\-R\-A\-T\-I\-O\-N, {\bf line})}}\label{namespaceveripy_ac385a661e564ea21a74143edbc147bb9}
+
+
+Check if endmodule declaration by user. 
+
+\hypertarget{namespaceveripy_a9985df4799df5dec0cca48bdf7e184ac}{\index{veripy@{veripy}!endnegedge\-\_\-regex@{endnegedge\-\_\-regex}}
+\index{endnegedge\-\_\-regex@{endnegedge\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{endnegedge\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-endnegedge\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-N\-E\-G\-E\-D\-G\-E, {\bf line})}}\label{namespaceveripy_a9985df4799df5dec0cca48bdf7e184ac}
+\hypertarget{namespaceveripy_afd21c96a818fcc01594b0a193e25f0f3}{\index{veripy@{veripy}!endposgedge\-\_\-regex@{endposgedge\-\_\-regex}}
+\index{endposgedge\-\_\-regex@{endposgedge\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{endposgedge\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-endposgedge\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-P\-O\-S\-E\-D\-G\-E, {\bf line})}}\label{namespaceveripy_afd21c96a818fcc01594b0a193e25f0f3}
+\hypertarget{namespaceveripy_a982e8b68ecc8da4b47d07fce69736f5c}{\index{veripy@{veripy}!endskip\-\_\-regex@{endskip\-\_\-regex}}
+\index{endskip\-\_\-regex@{endskip\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{endskip\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-endskip\-\_\-regex = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-E\-N\-D, {\bf line})}}\label{namespaceveripy_a982e8b68ecc8da4b47d07fce69736f5c}
+\hypertarget{namespaceveripy_a3e3da32ab1aa18c45596c75506718d23}{\index{veripy@{veripy}!exec\-\_\-data@{exec\-\_\-data}}
+\index{exec\-\_\-data@{exec\-\_\-data}!veripy@{veripy}}
+\subsubsection[{exec\-\_\-data}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-exec\-\_\-data = stream.\-getvalue()}}\label{namespaceveripy_a3e3da32ab1aa18c45596c75506718d23}
+\hypertarget{namespaceveripy_ab6310f745bd0a9df4e151b1e5dede66f}{\index{veripy@{veripy}!exec\-\_\-data\-\_\-array@{exec\-\_\-data\-\_\-array}}
+\index{exec\-\_\-data\-\_\-array@{exec\-\_\-data\-\_\-array}!veripy@{veripy}}
+\subsubsection[{exec\-\_\-data\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-exec\-\_\-data\-\_\-array = exec\-\_\-data.\-split('\textbackslash{}n')}}\label{namespaceveripy_ab6310f745bd0a9df4e151b1e5dede66f}
+\hypertarget{namespaceveripy_ae63271cecab2d5e49fee340d8d7f79e5}{\index{veripy@{veripy}!f@{f}}
+\index{f@{f}!veripy@{veripy}}
+\subsubsection[{f}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-f = open(c\-\_\-py\-\_\-file, 'r')}}\label{namespaceveripy_ae63271cecab2d5e49fee340d8d7f79e5}
+
+
+Loading python files if any. 
+
+\hypertarget{namespaceveripy_a960ab18337782696026b9181761b16db}{\index{veripy@{veripy}!file\-\_\-lists@{file\-\_\-lists}}
+\index{file\-\_\-lists@{file\-\_\-lists}!veripy@{veripy}}
+\subsubsection[{file\-\_\-lists}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-file\-\_\-lists = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a960ab18337782696026b9181761b16db}
+\hypertarget{namespaceveripy_a1d45ff3e325dfaf68117ad7247341056}{\index{veripy@{veripy}!filelist@{filelist}}
+\index{filelist@{filelist}!veripy@{veripy}}
+\subsubsection[{filelist}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-filelist = set()}}\label{namespaceveripy_a1d45ff3e325dfaf68117ad7247341056}
+
+
+Gatering all the files in the files list. 
+
+\hypertarget{namespaceveripy_ab7b6cf37a53cdc1b33b264beff792b41}{\index{veripy@{veripy}!files@{files}}
+\index{files@{files}!veripy@{veripy}}
+\subsubsection[{files}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-files = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_ab7b6cf37a53cdc1b33b264beff792b41}
+\hypertarget{namespaceveripy_a9822bb2309876404c811435995f2d238}{\index{veripy@{veripy}!force\-\_\-bitdef@{force\-\_\-bitdef}}
+\index{force\-\_\-bitdef@{force\-\_\-bitdef}!veripy@{veripy}}
+\subsubsection[{force\-\_\-bitdef}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-force\-\_\-bitdef = \char`\"{}\char`\"{}}}\label{namespaceveripy_a9822bb2309876404c811435995f2d238}
+\hypertarget{namespaceveripy_a06e433e8b950a487545be60f952e0667}{\index{veripy@{veripy}!force\-\_\-internal\-\_\-slash\-\_\-regex@{force\-\_\-internal\-\_\-slash\-\_\-regex}}
+\index{force\-\_\-internal\-\_\-slash\-\_\-regex@{force\-\_\-internal\-\_\-slash\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{force\-\_\-internal\-\_\-slash\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-force\-\_\-internal\-\_\-slash\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H, {\bf c\-\_\-internal})}}\label{namespaceveripy_a06e433e8b950a487545be60f952e0667}
+\hypertarget{namespaceveripy_aa1d344d5e238d367dcaf3acb91dbcc6d}{\index{veripy@{veripy}!force\-\_\-internals@{force\-\_\-internals}}
+\index{force\-\_\-internals@{force\-\_\-internals}!veripy@{veripy}}
+\subsubsection[{force\-\_\-internals}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-force\-\_\-internals = i\-\_\-verilog\-\_\-parser.\-force\-\_\-internals}}\label{namespaceveripy_aa1d344d5e238d367dcaf3acb91dbcc6d}
+\hypertarget{namespaceveripy_af4d2239bb757aeee622c2066f0d4b766}{\index{veripy@{veripy}!force\-\_\-lwdith@{force\-\_\-lwdith}}
+\index{force\-\_\-lwdith@{force\-\_\-lwdith}!veripy@{veripy}}
+\subsubsection[{force\-\_\-lwdith}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-force\-\_\-lwdith = \char`\"{}\char`\"{}}}\label{namespaceveripy_af4d2239bb757aeee622c2066f0d4b766}
+\hypertarget{namespaceveripy_a562ab1159e6bb9e14c42054833922dba}{\index{veripy@{veripy}!force\-\_\-name@{force\-\_\-name}}
+\index{force\-\_\-name@{force\-\_\-name}!veripy@{veripy}}
+\subsubsection[{force\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-force\-\_\-name = {\bf force\-\_\-width\-\_\-split}\mbox{[}0\mbox{]}}}\label{namespaceveripy_a562ab1159e6bb9e14c42054833922dba}
+\hypertarget{namespaceveripy_af5876ef12bb1a85e8d8cd34cfafe054c}{\index{veripy@{veripy}!force\-\_\-regex@{force\-\_\-regex}}
+\index{force\-\_\-regex@{force\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{force\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-force\-\_\-regex = re.\-search(R\-E\-\_\-\-F\-O\-R\-C\-E, {\bf line})}}\label{namespaceveripy_af5876ef12bb1a85e8d8cd34cfafe054c}
+
+
+Commenting out different \& calls. 
+
+\hypertarget{namespaceveripy_abb92d8c13117ba4c4421ceb0de1dc6b8}{\index{veripy@{veripy}!force\-\_\-uwdith@{force\-\_\-uwdith}}
+\index{force\-\_\-uwdith@{force\-\_\-uwdith}!veripy@{veripy}}
+\subsubsection[{force\-\_\-uwdith}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-force\-\_\-uwdith = \char`\"{}\char`\"{}}}\label{namespaceveripy_abb92d8c13117ba4c4421ceb0de1dc6b8}
+\hypertarget{namespaceveripy_a16214fafff2c0c57bf66e31585f5d744}{\index{veripy@{veripy}!force\-\_\-width@{force\-\_\-width}}
+\index{force\-\_\-width@{force\-\_\-width}!veripy@{veripy}}
+\subsubsection[{force\-\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-force\-\_\-width = {\bf force\-\_\-width\-\_\-split}\mbox{[}1\mbox{]}}}\label{namespaceveripy_a16214fafff2c0c57bf66e31585f5d744}
+\hypertarget{namespaceveripy_a030728d416c89f9e49833da5a3a36e8f}{\index{veripy@{veripy}!force\-\_\-width\-\_\-slash\-\_\-regex@{force\-\_\-width\-\_\-slash\-\_\-regex}}
+\index{force\-\_\-width\-\_\-slash\-\_\-regex@{force\-\_\-width\-\_\-slash\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{force\-\_\-width\-\_\-slash\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-force\-\_\-width\-\_\-slash\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H, {\bf force\-\_\-name})}}\label{namespaceveripy_a030728d416c89f9e49833da5a3a36e8f}
+\hypertarget{namespaceveripy_a13b3bfca586edc9ccb7a76161973958d}{\index{veripy@{veripy}!force\-\_\-width\-\_\-split@{force\-\_\-width\-\_\-split}}
+\index{force\-\_\-width\-\_\-split@{force\-\_\-width\-\_\-split}!veripy@{veripy}}
+\subsubsection[{force\-\_\-width\-\_\-split}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-force\-\_\-width\-\_\-split = c\-\_\-width.\-split(\char`\"{} \char`\"{})}}\label{namespaceveripy_a13b3bfca586edc9ccb7a76161973958d}
+\hypertarget{namespaceveripy_a60a97a619c71da8223604f1b12408d8f}{\index{veripy@{veripy}!force\-\_\-width\-\_\-val@{force\-\_\-width\-\_\-val}}
+\index{force\-\_\-width\-\_\-val@{force\-\_\-width\-\_\-val}!veripy@{veripy}}
+\subsubsection[{force\-\_\-width\-\_\-val}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-force\-\_\-width\-\_\-val}}\label{namespaceveripy_a60a97a619c71da8223604f1b12408d8f}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = i\_verilog\_parser.tickdef\_param\_getval(\textcolor{stringliteral}{"TOP"}, \(\backslash\)
+2                     force\_width, \textcolor{stringliteral}{""}, \textcolor{stringliteral}{""})
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a807b041df84d51d3d521d3bef8fd0caa}{\index{veripy@{veripy}!force\-\_\-widths@{force\-\_\-widths}}
+\index{force\-\_\-widths@{force\-\_\-widths}!veripy@{veripy}}
+\subsubsection[{force\-\_\-widths}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-force\-\_\-widths = i\-\_\-verilog\-\_\-parser.\-force\-\_\-widths}}\label{namespaceveripy_a807b041df84d51d3d521d3bef8fd0caa}
+\hypertarget{namespaceveripy_ad9424faeeafd0573d461ca2eb5305c91}{\index{veripy@{veripy}!found\-\_\-error@{found\-\_\-error}}
+\index{found\-\_\-error@{found\-\_\-error}!veripy@{veripy}}
+\subsubsection[{found\-\_\-error}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-found\-\_\-error = 0}}\label{namespaceveripy_ad9424faeeafd0573d461ca2eb5305c91}
+\hypertarget{namespaceveripy_a2c9a3299c6e29cd2d14411235ab6e41c}{\index{veripy@{veripy}!functions\-\_\-list@{functions\-\_\-list}}
+\index{functions\-\_\-list@{functions\-\_\-list}!veripy@{veripy}}
+\subsubsection[{functions\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-functions\-\_\-list = i\-\_\-verilog\-\_\-parser.\-functions\-\_\-list}}\label{namespaceveripy_a2c9a3299c6e29cd2d14411235ab6e41c}
+\hypertarget{namespaceveripy_a90f28d0208574d62b946c16a42d85318}{\index{veripy@{veripy}!gather\-\_\-till\-\_\-semicolon@{gather\-\_\-till\-\_\-semicolon}}
+\index{gather\-\_\-till\-\_\-semicolon@{gather\-\_\-till\-\_\-semicolon}!veripy@{veripy}}
+\subsubsection[{gather\-\_\-till\-\_\-semicolon}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-gather\-\_\-till\-\_\-semicolon = 0}}\label{namespaceveripy_a90f28d0208574d62b946c16a42d85318}
+\hypertarget{namespaceveripy_a18bec95d0fbc7d055d8eccf5f9d04060}{\index{veripy@{veripy}!gen\-\_\-dependencies@{gen\-\_\-dependencies}}
+\index{gen\-\_\-dependencies@{gen\-\_\-dependencies}!veripy@{veripy}}
+\subsubsection[{gen\-\_\-dependencies}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-gen\-\_\-dependencies = cmdline.\-generate\-\_\-dependancies}}\label{namespaceveripy_a18bec95d0fbc7d055d8eccf5f9d04060}
+\hypertarget{namespaceveripy_aa2af1923077c3d88816ed1449896be05}{\index{veripy@{veripy}!gendrive0\-\_\-regex@{gendrive0\-\_\-regex}}
+\index{gendrive0\-\_\-regex@{gendrive0\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gendrive0\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrive0\-\_\-regex = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0, {\bf line})}}\label{namespaceveripy_aa2af1923077c3d88816ed1449896be05}
+\hypertarget{namespaceveripy_a8d38e767dc483e41e1e69ef6e81b514f}{\index{veripy@{veripy}!gendrive0\-\_\-verilog\-\_\-regex@{gendrive0\-\_\-verilog\-\_\-regex}}
+\index{gendrive0\-\_\-verilog\-\_\-regex@{gendrive0\-\_\-verilog\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gendrive0\-\_\-verilog\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrive0\-\_\-verilog\-\_\-regex = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-\_\-\-V\-E\-R\-I\-L\-O\-G, {\bf line})}}\label{namespaceveripy_a8d38e767dc483e41e1e69ef6e81b514f}
+\hypertarget{namespaceveripy_a6882cd46af143e35f1d53de0c5961049}{\index{veripy@{veripy}!gendrive0andz\-\_\-regex@{gendrive0andz\-\_\-regex}}
+\index{gendrive0andz\-\_\-regex@{gendrive0andz\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gendrive0andz\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrive0andz\-\_\-regex = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-A\-N\-D\-Z, {\bf line})}}\label{namespaceveripy_a6882cd46af143e35f1d53de0c5961049}
+\hypertarget{namespaceveripy_a59d33ef53803dc897114e47da6616883}{\index{veripy@{veripy}!gendrive0andz\-\_\-verilog\-\_\-regex@{gendrive0andz\-\_\-verilog\-\_\-regex}}
+\index{gendrive0andz\-\_\-verilog\-\_\-regex@{gendrive0andz\-\_\-verilog\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gendrive0andz\-\_\-verilog\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrive0andz\-\_\-verilog\-\_\-regex}}\label{namespaceveripy_a59d33ef53803dc897114e47da6616883}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_GENDRIVE0ANDZ\_VERILOG, \(\backslash\)
+2                                                     line)
+\end{DoxyCode}
+\hypertarget{namespaceveripy_af6d3a3b592e0e9621179105b392ab262}{\index{veripy@{veripy}!gendrive\-\_\-space@{gendrive\-\_\-space}}
+\index{gendrive\-\_\-space@{gendrive\-\_\-space}!veripy@{veripy}}
+\subsubsection[{gendrive\-\_\-space}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrive\-\_\-space = \char`\"{}\char`\"{}}}\label{namespaceveripy_af6d3a3b592e0e9621179105b392ab262}
+\hypertarget{namespaceveripy_a188398590a71f5e7c68337fd92a67bf7}{\index{veripy@{veripy}!gendrivez\-\_\-regex@{gendrivez\-\_\-regex}}
+\index{gendrivez\-\_\-regex@{gendrivez\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gendrivez\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrivez\-\_\-regex = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z, {\bf line})}}\label{namespaceveripy_a188398590a71f5e7c68337fd92a67bf7}
+
+
+Stub Generation. 
+
+\hypertarget{namespaceveripy_a502cf9f0ccd059abedb0a0e98d783d56}{\index{veripy@{veripy}!gendrivez\-\_\-verilog\-\_\-regex@{gendrivez\-\_\-verilog\-\_\-regex}}
+\index{gendrivez\-\_\-verilog\-\_\-regex@{gendrivez\-\_\-verilog\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gendrivez\-\_\-verilog\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gendrivez\-\_\-verilog\-\_\-regex = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z\-\_\-\-V\-E\-R\-I\-L\-O\-G, {\bf line})}}\label{namespaceveripy_a502cf9f0ccd059abedb0a0e98d783d56}
+
+
+Stub generation from a verilog file where commands are commented out. 
+
+\hypertarget{namespaceveripy_aa38fc4edf33670a01086cbc8d7aca1f8}{\index{veripy@{veripy}!generate\-\_\-endmodule@{generate\-\_\-endmodule}}
+\index{generate\-\_\-endmodule@{generate\-\_\-endmodule}!veripy@{veripy}}
+\subsubsection[{generate\-\_\-endmodule}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-generate\-\_\-endmodule = 0}}\label{namespaceveripy_aa38fc4edf33670a01086cbc8d7aca1f8}
+\hypertarget{namespaceveripy_a8b88691a75f930c9c74bc8e53e4a3ae7}{\index{veripy@{veripy}!generate\-\_\-filelist@{generate\-\_\-filelist}}
+\index{generate\-\_\-filelist@{generate\-\_\-filelist}!veripy@{veripy}}
+\subsubsection[{generate\-\_\-filelist}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-generate\-\_\-filelist = cmdline.\-generate\-\_\-filelist}}\label{namespaceveripy_a8b88691a75f930c9c74bc8e53e4a3ae7}
+\hypertarget{namespaceveripy_a69c679478700bfe8e617efd46659b04b}{\index{veripy@{veripy}!generate\-\_\-stub@{generate\-\_\-stub}}
+\index{generate\-\_\-stub@{generate\-\_\-stub}!veripy@{veripy}}
+\subsubsection[{generate\-\_\-stub}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-generate\-\_\-stub = 0}}\label{namespaceveripy_a69c679478700bfe8e617efd46659b04b}
+\hypertarget{namespaceveripy_a4629f2bdb1a9239da0eb7ef127e1e48d}{\index{veripy@{veripy}!generate\-\_\-stub\-\_\-0@{generate\-\_\-stub\-\_\-0}}
+\index{generate\-\_\-stub\-\_\-0@{generate\-\_\-stub\-\_\-0}!veripy@{veripy}}
+\subsubsection[{generate\-\_\-stub\-\_\-0}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-generate\-\_\-stub\-\_\-0 = 0}}\label{namespaceveripy_a4629f2bdb1a9239da0eb7ef127e1e48d}
+\hypertarget{namespaceveripy_aeed0f7abed041e5ca9bbf9eba4a24416}{\index{veripy@{veripy}!generate\-\_\-stub\-\_\-z@{generate\-\_\-stub\-\_\-z}}
+\index{generate\-\_\-stub\-\_\-z@{generate\-\_\-stub\-\_\-z}!veripy@{veripy}}
+\subsubsection[{generate\-\_\-stub\-\_\-z}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-generate\-\_\-stub\-\_\-z = 0}}\label{namespaceveripy_aeed0f7abed041e5ca9bbf9eba4a24416}
+\hypertarget{namespaceveripy_ad9ca8c35b0ba3500e52cbaefc381ee77}{\index{veripy@{veripy}!gennoifdefdrive0\-\_\-regex@{gennoifdefdrive0\-\_\-regex}}
+\index{gennoifdefdrive0\-\_\-regex@{gennoifdefdrive0\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{gennoifdefdrive0\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-gennoifdefdrive0\-\_\-regex = re.\-search(R\-E\-\_\-\-G\-E\-N\-N\-O\-I\-F\-D\-E\-F\-D\-R\-I\-V\-E0, {\bf line})}}\label{namespaceveripy_ad9ca8c35b0ba3500e52cbaefc381ee77}
+\hypertarget{namespaceveripy_ad4429b3a6163a9c588ca2433f0831fa1}{\index{veripy@{veripy}!group\-\_\-ios\-\_\-on\-\_\-dir@{group\-\_\-ios\-\_\-on\-\_\-dir}}
+\index{group\-\_\-ios\-\_\-on\-\_\-dir@{group\-\_\-ios\-\_\-on\-\_\-dir}!veripy@{veripy}}
+\subsubsection[{group\-\_\-ios\-\_\-on\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-group\-\_\-ios\-\_\-on\-\_\-dir = 1}}\label{namespaceveripy_ad4429b3a6163a9c588ca2433f0831fa1}
+\hypertarget{namespaceveripy_ad46b6d39594cb67313a7af41ad69d489}{\index{veripy@{veripy}!hash\-\_\-define\-\_\-files@{hash\-\_\-define\-\_\-files}}
+\index{hash\-\_\-define\-\_\-files@{hash\-\_\-define\-\_\-files}!veripy@{veripy}}
+\subsubsection[{hash\-\_\-define\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-hash\-\_\-define\-\_\-files = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_ad46b6d39594cb67313a7af41ad69d489}
+\hypertarget{namespaceveripy_ad9b4c40dc5027b1736989cbf60b1d8b7}{\index{veripy@{veripy}!hash\-\_\-define\-\_\-vars@{hash\-\_\-define\-\_\-vars}}
+\index{hash\-\_\-define\-\_\-vars@{hash\-\_\-define\-\_\-vars}!veripy@{veripy}}
+\subsubsection[{hash\-\_\-define\-\_\-vars}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-hash\-\_\-define\-\_\-vars = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_ad9b4c40dc5027b1736989cbf60b1d8b7}
+\hypertarget{namespaceveripy_a31b5807026890520c5308ce732ed4b9e}{\index{veripy@{veripy}!help@{help}}
+\index{help@{help}!veripy@{veripy}}
+\subsubsection[{help}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-help}}\label{namespaceveripy_a31b5807026890520c5308ce732ed4b9e}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = \textcolor{stringliteral}{'Optional include directory to search for include files, \(\backslash\)}
+2 \textcolor{stringliteral}{            sub-module files. User can add multiple include directories. \(\backslash\)}
+3 \textcolor{stringliteral}{            First current directory is searched for submodule or include \(\backslash\)}
+4 \textcolor{stringliteral}{            files and then the order include directories in the command line.'}
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a1f71748b181889d37c2cfcf786822fef}{\index{veripy@{veripy}!i\-\_\-codegen@{i\-\_\-codegen}}
+\index{i\-\_\-codegen@{i\-\_\-codegen}!veripy@{veripy}}
+\subsubsection[{i\-\_\-codegen}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-i\-\_\-codegen}}\label{namespaceveripy_a1f71748b181889d37c2cfcf786822fef}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = \hyperlink{classsrc_1_1codegen_1_1codegen}{codegen}(in\_file, remove\_code, incl\_dirs, files, debug, \(\backslash\)
+2                         debug\_file, gen\_dependencies,cmdline)
+\end{DoxyCode}
+
+
+\subsection*{Step\-: 1 }
+
+Parse \#ifdef and work on only enabled code Expand embedded python code output 
+
+\hypertarget{namespaceveripy_ae26f09689713ff31ecbd1cc41f4d89e5}{\index{veripy@{veripy}!i\-\_\-verilog\-\_\-parser@{i\-\_\-verilog\-\_\-parser}}
+\index{i\-\_\-verilog\-\_\-parser@{i\-\_\-verilog\-\_\-parser}!veripy@{veripy}}
+\subsubsection[{i\-\_\-verilog\-\_\-parser}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-i\-\_\-verilog\-\_\-parser}}\label{namespaceveripy_ae26f09689713ff31ecbd1cc41f4d89e5}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = \hyperlink{classsrc_1_1verilog__parser_1_1verilog__parser}{verilog\_parser}(module\_name, parse\_lines, incl\_dirs, \(\backslash\)
+2             files, package\_files, i\_codegen.hash\_defines, parsing\_format, \(\backslash\)
+3             debug, debug\_file, disable\_tick\_ifdefs, verilog\_define\_files, \(\backslash\)
+4             i\_codegen.functions\_list,cmdline)
+\end{DoxyCode}
+
+
+Creating verilog\-\_\-parser object to parse the generated code. 
+
+\hypertarget{namespaceveripy_a1ee51ba6e57cf9cc093a45eefcdb032e}{\index{veripy@{veripy}!ii@{ii}}
+\index{ii@{ii}!veripy@{veripy}}
+\subsubsection[{ii}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-ii = 1}}\label{namespaceveripy_a1ee51ba6e57cf9cc093a45eefcdb032e}
+\hypertarget{namespaceveripy_af4fff95eb237e9d797e670d3c1a94b61}{\index{veripy@{veripy}!in\-\_\-file@{in\-\_\-file}}
+\index{in\-\_\-file@{in\-\_\-file}!veripy@{veripy}}
+\subsubsection[{in\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-in\-\_\-file = cmdline.\-positional}}\label{namespaceveripy_af4fff95eb237e9d797e670d3c1a94b61}
+\hypertarget{namespaceveripy_a84ae1500ccef716a1a09a99a0e3711ec}{\index{veripy@{veripy}!in\-\_\-file\-\_\-name@{in\-\_\-file\-\_\-name}}
+\index{in\-\_\-file\-\_\-name@{in\-\_\-file\-\_\-name}!veripy@{veripy}}
+\subsubsection[{in\-\_\-file\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-in\-\_\-file\-\_\-name = re.\-sub(r'.$\ast$\textbackslash{}/', r'', {\bf in\-\_\-file})}}\label{namespaceveripy_a84ae1500ccef716a1a09a99a0e3711ec}
+
+
+if no input file, then error out 
+
+\hypertarget{namespaceveripy_a1d80c92b030a306a025b82c2f229acac}{\index{veripy@{veripy}!in\-\_\-port\-\_\-declarations@{in\-\_\-port\-\_\-declarations}}
+\index{in\-\_\-port\-\_\-declarations@{in\-\_\-port\-\_\-declarations}!veripy@{veripy}}
+\subsubsection[{in\-\_\-port\-\_\-declarations}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-in\-\_\-port\-\_\-declarations = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a1d80c92b030a306a025b82c2f229acac}
+\hypertarget{namespaceveripy_a7d5b541d0e30b5abbc5760e3ea7b4da2}{\index{veripy@{veripy}!incl\-\_\-dirs@{incl\-\_\-dirs}}
+\index{incl\-\_\-dirs@{incl\-\_\-dirs}!veripy@{veripy}}
+\subsubsection[{incl\-\_\-dirs}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-incl\-\_\-dirs = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a7d5b541d0e30b5abbc5760e3ea7b4da2}
+\hypertarget{namespaceveripy_a67e40ea20ac72f86e578403f7e1e3e22}{\index{veripy@{veripy}!include\-\_\-regex@{include\-\_\-regex}}
+\index{include\-\_\-regex@{include\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{include\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-include\-\_\-regex = re.\-search(R\-E\-\_\-\-I\-N\-C\-L\-U\-D\-E, {\bf line})}}\label{namespaceveripy_a67e40ea20ac72f86e578403f7e1e3e22}
+\hypertarget{namespaceveripy_a1be2f445d115897ce46823d58aff90c6}{\index{veripy@{veripy}!inst\-\_\-array@{inst\-\_\-array}}
+\index{inst\-\_\-array@{inst\-\_\-array}!veripy@{veripy}}
+\subsubsection[{inst\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-inst\-\_\-array = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a1be2f445d115897ce46823d58aff90c6}
+\hypertarget{namespaceveripy_a8f89f48fcf9323bd5bb9de7d5656a783}{\index{veripy@{veripy}!inst\-\_\-line@{inst\-\_\-line}}
+\index{inst\-\_\-line@{inst\-\_\-line}!veripy@{veripy}}
+\subsubsection[{inst\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-inst\-\_\-line = {\bf begininstance\-\_\-space}+\char`\"{}//F\-I\-L\-E\-: \char`\"{}}}\label{namespaceveripy_a8f89f48fcf9323bd5bb9de7d5656a783}
+
+
+Instantiating a submodule. 
+
+Checking if P\-A\-R\-A\-M override is needed for this instance \hypertarget{namespaceveripy_a7d88d1a02b6ed2027a623447589c4fcd}{\index{veripy@{veripy}!inst\-\_\-name@{inst\-\_\-name}}
+\index{inst\-\_\-name@{inst\-\_\-name}!veripy@{veripy}}
+\subsubsection[{inst\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-inst\-\_\-name = {\bf begininstance\-\_\-info\-\_\-array}\mbox{[}1\mbox{]}}}\label{namespaceveripy_a7d88d1a02b6ed2027a623447589c4fcd}
+\hypertarget{namespaceveripy_a5d77e0ab80b227fb0d6ea69a873da94c}{\index{veripy@{veripy}!inst\-\_\-path@{inst\-\_\-path}}
+\index{inst\-\_\-path@{inst\-\_\-path}!veripy@{veripy}}
+\subsubsection[{inst\-\_\-path}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-inst\-\_\-path}}\label{namespaceveripy_a5d77e0ab80b227fb0d6ea69a873da94c}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.sub(\textcolor{stringliteral}{r'.*\(\backslash\)/infra\_asic\_fpga\(\backslash\)/'}, \(\backslash\)
+2                         \textcolor{stringliteral}{r'$INFRA\_ASIC\_FPGA\_ROOT/'},sub\_inst\_files[inst\_name])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a60752cd883c2e6bcead5142e8c8b33c6}{\index{veripy@{veripy}!interface\-\_\-def\-\_\-files@{interface\-\_\-def\-\_\-files}}
+\index{interface\-\_\-def\-\_\-files@{interface\-\_\-def\-\_\-files}!veripy@{veripy}}
+\subsubsection[{interface\-\_\-def\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-interface\-\_\-def\-\_\-files = cmdline.\-intf\-\_\-defs}}\label{namespaceveripy_a60752cd883c2e6bcead5142e8c8b33c6}
+\hypertarget{namespaceveripy_ab788939628a978e809745e050df2e8b6}{\index{veripy@{veripy}!interface\-\_\-spec\-\_\-files@{interface\-\_\-spec\-\_\-files}}
+\index{interface\-\_\-spec\-\_\-files@{interface\-\_\-spec\-\_\-files}!veripy@{veripy}}
+\subsubsection[{interface\-\_\-spec\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-interface\-\_\-spec\-\_\-files = cmdline.\-intf\-\_\-specs}}\label{namespaceveripy_ab788939628a978e809745e050df2e8b6}
+\hypertarget{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{\index{veripy@{veripy}!line@{line}}
+\index{line@{line}!veripy@{veripy}}
+\subsubsection[{line}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-line = line.\-rstrip()}}\label{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}
+\hypertarget{namespaceveripy_a3a1edb61e3fbeca505c17ea042672337}{\index{veripy@{veripy}!line\-\_\-no@{line\-\_\-no}}
+\index{line\-\_\-no@{line\-\_\-no}!veripy@{veripy}}
+\subsubsection[{line\-\_\-no}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-line\-\_\-no = 0}}\label{namespaceveripy_a3a1edb61e3fbeca505c17ea042672337}
+\hypertarget{namespaceveripy_a19f042b78eb1792546d8fa9c3bf497c0}{\index{veripy@{veripy}!list\-\_\-file@{list\-\_\-file}}
+\index{list\-\_\-file@{list\-\_\-file}!veripy@{veripy}}
+\subsubsection[{list\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-list\-\_\-file = list()}}\label{namespaceveripy_a19f042b78eb1792546d8fa9c3bf497c0}
+\hypertarget{namespaceveripy_a6f22577aabdde3d295a3441ce0537364}{\index{veripy@{veripy}!lline@{lline}}
+\index{lline@{lline}!veripy@{veripy}}
+\subsubsection[{lline}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-lline = c\-\_\-file.\-rstrip('\textbackslash{}n')}}\label{namespaceveripy_a6f22577aabdde3d295a3441ce0537364}
+\hypertarget{namespaceveripy_ae0b7b329f168ad945a5a19f369c6c1a3}{\index{veripy@{veripy}!logics\-\_\-regex@{logics\-\_\-regex}}
+\index{logics\-\_\-regex@{logics\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{logics\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-logics\-\_\-regex = re.\-search(R\-E\-\_\-\-L\-O\-G\-I\-C\-S, {\bf original\-\_\-line})}}\label{namespaceveripy_ae0b7b329f168ad945a5a19f369c6c1a3}
+\hypertarget{namespaceveripy_a9592e23a9639a28b61167a30ba6930c3}{\index{veripy@{veripy}!look\-\_\-for\-\_\-instance\-\_\-cmds@{look\-\_\-for\-\_\-instance\-\_\-cmds}}
+\index{look\-\_\-for\-\_\-instance\-\_\-cmds@{look\-\_\-for\-\_\-instance\-\_\-cmds}!veripy@{veripy}}
+\subsubsection[{look\-\_\-for\-\_\-instance\-\_\-cmds}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-look\-\_\-for\-\_\-instance\-\_\-cmds = 0}}\label{namespaceveripy_a9592e23a9639a28b61167a30ba6930c3}
+\hypertarget{namespaceveripy_a9a896686fd9fe466ad77dc1090ca93aa}{\index{veripy@{veripy}!manual\-\_\-ports@{manual\-\_\-ports}}
+\index{manual\-\_\-ports@{manual\-\_\-ports}!veripy@{veripy}}
+\subsubsection[{manual\-\_\-ports}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-manual\-\_\-ports = i\-\_\-verilog\-\_\-parser.\-manual\-\_\-ports}}\label{namespaceveripy_a9a896686fd9fe466ad77dc1090ca93aa}
+\hypertarget{namespaceveripy_a36080b835363b2f49375da1d2031699d}{\index{veripy@{veripy}!match\-\_\-found@{match\-\_\-found}}
+\index{match\-\_\-found@{match\-\_\-found}!veripy@{veripy}}
+\subsubsection[{match\-\_\-found}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-match\-\_\-found = 0}}\label{namespaceveripy_a36080b835363b2f49375da1d2031699d}
+\hypertarget{namespaceveripy_ab56a15afcf8acd3e32e33fbb4cea7765}{\index{veripy@{veripy}!module\-\_\-def\-\_\-files@{module\-\_\-def\-\_\-files}}
+\index{module\-\_\-def\-\_\-files@{module\-\_\-def\-\_\-files}!veripy@{veripy}}
+\subsubsection[{module\-\_\-def\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-module\-\_\-def\-\_\-files = cmdline.\-mod\-\_\-defs}}\label{namespaceveripy_ab56a15afcf8acd3e32e33fbb4cea7765}
+\hypertarget{namespaceveripy_a854da7683905a3b5cbf73256a6be33b4}{\index{veripy@{veripy}!module\-\_\-def\-\_\-space\-\_\-regex@{module\-\_\-def\-\_\-space\-\_\-regex}}
+\index{module\-\_\-def\-\_\-space\-\_\-regex@{module\-\_\-def\-\_\-space\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{module\-\_\-def\-\_\-space\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-module\-\_\-def\-\_\-space\-\_\-regex = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F\-\_\-\-S\-P\-A\-C\-E, {\bf line})}}\label{namespaceveripy_a854da7683905a3b5cbf73256a6be33b4}
+\hypertarget{namespaceveripy_a99c42ac13d96eb9d80f354e2a1e05c56}{\index{veripy@{veripy}!module\-\_\-found@{module\-\_\-found}}
+\index{module\-\_\-found@{module\-\_\-found}!veripy@{veripy}}
+\subsubsection[{module\-\_\-found}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-module\-\_\-found = i\-\_\-verilog\-\_\-parser.\-module\-\_\-found}}\label{namespaceveripy_a99c42ac13d96eb9d80f354e2a1e05c56}
+\hypertarget{namespaceveripy_a6cf4d136450ca28b0d58dc5317ba74eb}{\index{veripy@{veripy}!module\-\_\-name@{module\-\_\-name}}
+\index{module\-\_\-name@{module\-\_\-name}!veripy@{veripy}}
+\subsubsection[{module\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-module\-\_\-name = {\bf split\-\_\-arr}\mbox{[}0\mbox{]}}}\label{namespaceveripy_a6cf4d136450ca28b0d58dc5317ba74eb}
+\hypertarget{namespaceveripy_ad28afa9505ad0efeb718337fc56e525b}{\index{veripy@{veripy}!module\-\_\-param\-\_\-line@{module\-\_\-param\-\_\-line}}
+\index{module\-\_\-param\-\_\-line@{module\-\_\-param\-\_\-line}!veripy@{veripy}}
+\subsubsection[{module\-\_\-param\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-module\-\_\-param\-\_\-line = i\-\_\-verilog\-\_\-parser.\-module\-\_\-param\-\_\-line}}\label{namespaceveripy_ad28afa9505ad0efeb718337fc56e525b}
+\hypertarget{namespaceveripy_aee8dfa1620d81a57b55d941b6bc353e9}{\index{veripy@{veripy}!module\-\_\-param\-\_\-line\-\_\-array@{module\-\_\-param\-\_\-line\-\_\-array}}
+\index{module\-\_\-param\-\_\-line\-\_\-array@{module\-\_\-param\-\_\-line\-\_\-array}!veripy@{veripy}}
+\subsubsection[{module\-\_\-param\-\_\-line\-\_\-array}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-module\-\_\-param\-\_\-line\-\_\-array = module\-\_\-param\-\_\-line.\-split(\char`\"{},\char`\"{})}}\label{namespaceveripy_aee8dfa1620d81a57b55d941b6bc353e9}
+\hypertarget{namespaceveripy_a7dd3d81c188bf962f2192d44030c6c2f}{\index{veripy@{veripy}!module\-\_\-param\-\_\-line\-\_\-array\-\_\-len@{module\-\_\-param\-\_\-line\-\_\-array\-\_\-len}}
+\index{module\-\_\-param\-\_\-line\-\_\-array\-\_\-len@{module\-\_\-param\-\_\-line\-\_\-array\-\_\-len}!veripy@{veripy}}
+\subsubsection[{module\-\_\-param\-\_\-line\-\_\-array\-\_\-len}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-module\-\_\-param\-\_\-line\-\_\-array\-\_\-len = len({\bf module\-\_\-param\-\_\-line\-\_\-array})}}\label{namespaceveripy_a7dd3d81c188bf962f2192d44030c6c2f}
+\hypertarget{namespaceveripy_ae0aec319e1f286eaeeb8ec758137f7a9}{\index{veripy@{veripy}!module\-\_\-space\-\_\-regex@{module\-\_\-space\-\_\-regex}}
+\index{module\-\_\-space\-\_\-regex@{module\-\_\-space\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{module\-\_\-space\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-module\-\_\-space\-\_\-regex = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E, {\bf line})}}\label{namespaceveripy_ae0aec319e1f286eaeeb8ec758137f7a9}
+\hypertarget{namespaceveripy_a73d80450abbdcabc03a0ff6e4fbd5d48}{\index{veripy@{veripy}!negedge\-\_\-regex@{negedge\-\_\-regex}}
+\index{negedge\-\_\-regex@{negedge\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{negedge\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-negedge\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-\_\-\-N\-E\-G\-E\-D\-G\-E, {\bf line})}}\label{namespaceveripy_a73d80450abbdcabc03a0ff6e4fbd5d48}
+\hypertarget{namespaceveripy_a1a9f35e27689bee768d00ee633d9b263}{\index{veripy@{veripy}!num\-\_\-ports@{num\-\_\-ports}}
+\index{num\-\_\-ports@{num\-\_\-ports}!veripy@{veripy}}
+\subsubsection[{num\-\_\-ports}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-num\-\_\-ports = len({\bf port\-\_\-declarations})}}\label{namespaceveripy_a1a9f35e27689bee768d00ee633d9b263}
+\hypertarget{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{\index{veripy@{veripy}!original\-\_\-line@{original\-\_\-line}}
+\index{original\-\_\-line@{original\-\_\-line}!veripy@{veripy}}
+\subsubsection[{original\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-original\-\_\-line = {\bf line}}}\label{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}
+\hypertarget{namespaceveripy_ac72c2df33623add620128261218cd038}{\index{veripy@{veripy}!original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex@{original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex}}
+\index{original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex@{original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex}}\label{namespaceveripy_ac72c2df33623add620128261218cd038}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_MODULE\_DEF\_SPACE, \(\backslash\)
+2                 original\_line)
+\end{DoxyCode}
+
+
+Declare module definition if its called. 
+
+\hypertarget{namespaceveripy_a3816a72d0c349d678a422f19923a5266}{\index{veripy@{veripy}!original\-\_\-module\-\_\-space\-\_\-regex@{original\-\_\-module\-\_\-space\-\_\-regex}}
+\index{original\-\_\-module\-\_\-space\-\_\-regex@{original\-\_\-module\-\_\-space\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{original\-\_\-module\-\_\-space\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-original\-\_\-module\-\_\-space\-\_\-regex = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E, {\bf original\-\_\-line})}}\label{namespaceveripy_a3816a72d0c349d678a422f19923a5266}
+\hypertarget{namespaceveripy_a680636d6f9937fd2b1957fd55a5389b8}{\index{veripy@{veripy}!out\-\_\-file@{out\-\_\-file}}
+\index{out\-\_\-file@{out\-\_\-file}!veripy@{veripy}}
+\subsubsection[{out\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-out\-\_\-file = open({\bf output\-\_\-file}, 'w')}}\label{namespaceveripy_a680636d6f9937fd2b1957fd55a5389b8}
+\hypertarget{namespaceveripy_a3c87219c0df570bcd1bebb41ee3c4adc}{\index{veripy@{veripy}!out\-\_\-list@{out\-\_\-list}}
+\index{out\-\_\-list@{out\-\_\-list}!veripy@{veripy}}
+\subsubsection[{out\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-out\-\_\-list = open({\bf output\-\_\-list}, 'w')}}\label{namespaceveripy_a3c87219c0df570bcd1bebb41ee3c4adc}
+\hypertarget{namespaceveripy_a2aa010b557e59bc1d12efd8479d6a242}{\index{veripy@{veripy}!out\-\_\-port\-\_\-declarations@{out\-\_\-port\-\_\-declarations}}
+\index{out\-\_\-port\-\_\-declarations@{out\-\_\-port\-\_\-declarations}!veripy@{veripy}}
+\subsubsection[{out\-\_\-port\-\_\-declarations}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-out\-\_\-port\-\_\-declarations = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a2aa010b557e59bc1d12efd8479d6a242}
+\hypertarget{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}{\index{veripy@{veripy}!output\-\_\-file@{output\-\_\-file}}
+\index{output\-\_\-file@{output\-\_\-file}!veripy@{veripy}}
+\subsubsection[{output\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-output\-\_\-file = cmdline.\-output\-\_\-file}}\label{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}
+\hypertarget{namespaceveripy_aa6ea69d7177eeedc80f2e1c1ff8b00f6}{\index{veripy@{veripy}!output\-\_\-list@{output\-\_\-list}}
+\index{output\-\_\-list@{output\-\_\-list}!veripy@{veripy}}
+\subsubsection[{output\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-output\-\_\-list = re.\-sub(r'\textbackslash{}.sv\$', r'.{\bf f}', {\bf output\-\_\-file})}}\label{namespaceveripy_aa6ea69d7177eeedc80f2e1c1ff8b00f6}
+\hypertarget{namespaceveripy_a5c1ad0dd8b61a07185f3e77b9912fad6}{\index{veripy@{veripy}!package\-\_\-files@{package\-\_\-files}}
+\index{package\-\_\-files@{package\-\_\-files}!veripy@{veripy}}
+\subsubsection[{package\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-package\-\_\-files = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a5c1ad0dd8b61a07185f3e77b9912fad6}
+\hypertarget{namespaceveripy_a9f51ca42dc7f2f54aba501a90f9d804f}{\index{veripy@{veripy}!packed\-\_\-bitdef@{packed\-\_\-bitdef}}
+\index{packed\-\_\-bitdef@{packed\-\_\-bitdef}!veripy@{veripy}}
+\subsubsection[{packed\-\_\-bitdef}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-packed\-\_\-bitdef = \textbackslash{}}}\label{namespaceveripy_a9f51ca42dc7f2f54aba501a90f9d804f}
+\hypertarget{namespaceveripy_a980086a5e8762e72c5a2804ac1901c71}{\index{veripy@{veripy}!param\-\_\-line\-\_\-no@{param\-\_\-line\-\_\-no}}
+\index{param\-\_\-line\-\_\-no@{param\-\_\-line\-\_\-no}!veripy@{veripy}}
+\subsubsection[{param\-\_\-line\-\_\-no}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-param\-\_\-line\-\_\-no = 1}}\label{namespaceveripy_a980086a5e8762e72c5a2804ac1901c71}
+\hypertarget{namespaceveripy_a4270387eaf219f4390fc832df8e279d4}{\index{veripy@{veripy}!param\-\_\-override\-\_\-regex@{param\-\_\-override\-\_\-regex}}
+\index{param\-\_\-override\-\_\-regex@{param\-\_\-override\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{param\-\_\-override\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-param\-\_\-override\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-A\-R\-A\-M\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E, {\bf line})}}\label{namespaceveripy_a4270387eaf219f4390fc832df8e279d4}
+\hypertarget{namespaceveripy_ab652869357ad8a97cd180a20659d3647}{\index{veripy@{veripy}!params@{params}}
+\index{params@{params}!veripy@{veripy}}
+\subsubsection[{params}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-params = i\-\_\-verilog\-\_\-parser.\-params}}\label{namespaceveripy_ab652869357ad8a97cd180a20659d3647}
+\hypertarget{namespaceveripy_a5d3c8544e0b626679631fadceac2ccb8}{\index{veripy@{veripy}!parse\-\_\-generate@{parse\-\_\-generate}}
+\index{parse\-\_\-generate@{parse\-\_\-generate}!veripy@{veripy}}
+\subsubsection[{parse\-\_\-generate}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-parse\-\_\-generate = 1}}\label{namespaceveripy_a5d3c8544e0b626679631fadceac2ccb8}
+\hypertarget{namespaceveripy_ac8745bd52ea5cd5e91036dc31970af88}{\index{veripy@{veripy}!parse\-\_\-lines@{parse\-\_\-lines}}
+\index{parse\-\_\-lines@{parse\-\_\-lines}!veripy@{veripy}}
+\subsubsection[{parse\-\_\-lines}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-parse\-\_\-lines = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_ac8745bd52ea5cd5e91036dc31970af88}
+\hypertarget{namespaceveripy_a72fa9052a62ff431aca57cfc30c24cf5}{\index{veripy@{veripy}!parser@{parser}}
+\index{parser@{parser}!veripy@{veripy}}
+\subsubsection[{parser}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-parser}}\label{namespaceveripy_a72fa9052a62ff431aca57cfc30c24cf5}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = argparse.ArgumentParser(description=\textcolor{stringliteral}{'Veripy is a python based \(\backslash\)}
+2 \textcolor{stringliteral}{            automation for Verilog or SystemVerilog design. It autogenerates \(\backslash\)}
+3 \textcolor{stringliteral}{            module declaration, reg/logic/wire generation, instantiation, \(\backslash\)}
+4 \textcolor{stringliteral}{            embedded python. It has C-like preprocessing capabilities to \(\backslash\)}
+5 \textcolor{stringliteral}{            preprocess the input code with \(\backslash\)}
+6 \textcolor{stringliteral}{            #defines/#ifdef/#ifndef/#elsif/#else.'})
+\end{DoxyCode}
+
+
+Command line arguments processing. 
+
+\hypertarget{namespaceveripy_afcccb50dd7b0fb2b644b9c1d2323a3c1}{\index{veripy@{veripy}!parser\-\_\-off\-\_\-regex@{parser\-\_\-off\-\_\-regex}}
+\index{parser\-\_\-off\-\_\-regex@{parser\-\_\-off\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{parser\-\_\-off\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-parser\-\_\-off\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-F\-F, {\bf line})}}\label{namespaceveripy_afcccb50dd7b0fb2b644b9c1d2323a3c1}
+\hypertarget{namespaceveripy_ae24d8c06b7040a72197b627d31e98657}{\index{veripy@{veripy}!parser\-\_\-on@{parser\-\_\-on}}
+\index{parser\-\_\-on@{parser\-\_\-on}!veripy@{veripy}}
+\subsubsection[{parser\-\_\-on}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-parser\-\_\-on = 1}}\label{namespaceveripy_ae24d8c06b7040a72197b627d31e98657}
+\hypertarget{namespaceveripy_acaab00af25a2a159e2accd5ec9f5ddf2}{\index{veripy@{veripy}!parser\-\_\-on\-\_\-regex@{parser\-\_\-on\-\_\-regex}}
+\index{parser\-\_\-on\-\_\-regex@{parser\-\_\-on\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{parser\-\_\-on\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-parser\-\_\-on\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-N, {\bf line})}}\label{namespaceveripy_acaab00af25a2a159e2accd5ec9f5ddf2}
+\hypertarget{namespaceveripy_a2741464a2b91f4bed59350a121937e21}{\index{veripy@{veripy}!parsing\-\_\-format@{parsing\-\_\-format}}
+\index{parsing\-\_\-format@{parsing\-\_\-format}!veripy@{veripy}}
+\subsubsection[{parsing\-\_\-format}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-parsing\-\_\-format = \char`\"{}systemverilog\char`\"{}}}\label{namespaceveripy_a2741464a2b91f4bed59350a121937e21}
+\hypertarget{namespaceveripy_ad519db7b0f685cc6c804c7ecc3bc02b5}{\index{veripy@{veripy}!pkg2assign\-\_\-index@{pkg2assign\-\_\-index}}
+\index{pkg2assign\-\_\-index@{pkg2assign\-\_\-index}!veripy@{veripy}}
+\subsubsection[{pkg2assign\-\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-pkg2assign\-\_\-index = 0}}\label{namespaceveripy_ad519db7b0f685cc6c804c7ecc3bc02b5}
+\hypertarget{namespaceveripy_abb8af7474ba6f1fe4499f0baf5e6c9da}{\index{veripy@{veripy}!pkg2assign\-\_\-info@{pkg2assign\-\_\-info}}
+\index{pkg2assign\-\_\-info@{pkg2assign\-\_\-info}!veripy@{veripy}}
+\subsubsection[{pkg2assign\-\_\-info}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-pkg2assign\-\_\-info = i\-\_\-verilog\-\_\-parser.\-pkg2assign\-\_\-info}}\label{namespaceveripy_abb8af7474ba6f1fe4499f0baf5e6c9da}
+\hypertarget{namespaceveripy_abab8384e1cd583db34af81db27a52544}{\index{veripy@{veripy}!pkg2assign\-\_\-list@{pkg2assign\-\_\-list}}
+\index{pkg2assign\-\_\-list@{pkg2assign\-\_\-list}!veripy@{veripy}}
+\subsubsection[{pkg2assign\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-pkg2assign\-\_\-list = {\bf pkg2assign\-\_\-info}\mbox{[}{\bf pkg2assign\-\_\-index}\mbox{]}}}\label{namespaceveripy_abab8384e1cd583db34af81db27a52544}
+\hypertarget{namespaceveripy_a818213d44f5908b15037e7f70a2d5882}{\index{veripy@{veripy}!pkg2assign\-\_\-regex@{pkg2assign\-\_\-regex}}
+\index{pkg2assign\-\_\-regex@{pkg2assign\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{pkg2assign\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-pkg2assign\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-K\-G2\-A\-S\-S\-I\-G\-N, {\bf line})}}\label{namespaceveripy_a818213d44f5908b15037e7f70a2d5882}
+
+
+Writing out Pkg2\-Assign outputs. 
+
+\hypertarget{namespaceveripy_a99fccb7245b05a502fd01a6cd7ed1c22}{\index{veripy@{veripy}!port\-\_\-declarations@{port\-\_\-declarations}}
+\index{port\-\_\-declarations@{port\-\_\-declarations}!veripy@{veripy}}
+\subsubsection[{port\-\_\-declarations}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-port\-\_\-declarations = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a99fccb7245b05a502fd01a6cd7ed1c22}
+\hypertarget{namespaceveripy_ad074898a0ed151cd31c981e01863e64b}{\index{veripy@{veripy}!port\-\_\-declarations\-\_\-size@{port\-\_\-declarations\-\_\-size}}
+\index{port\-\_\-declarations\-\_\-size@{port\-\_\-declarations\-\_\-size}!veripy@{veripy}}
+\subsubsection[{port\-\_\-declarations\-\_\-size}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-port\-\_\-declarations\-\_\-size = len({\bf port\-\_\-declarations})}}\label{namespaceveripy_ad074898a0ed151cd31c981e01863e64b}
+\hypertarget{namespaceveripy_ad0eff554700802b50170079f6544c06d}{\index{veripy@{veripy}!ports@{ports}}
+\index{ports@{ports}!veripy@{veripy}}
+\subsubsection[{ports}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-ports = i\-\_\-verilog\-\_\-parser.\-ports}}\label{namespaceveripy_ad0eff554700802b50170079f6544c06d}
+\hypertarget{namespaceveripy_ac40d1f9532d5dad37c9e4457b28b8298}{\index{veripy@{veripy}!ports\-\_\-list@{ports\-\_\-list}}
+\index{ports\-\_\-list@{ports\-\_\-list}!veripy@{veripy}}
+\subsubsection[{ports\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-ports\-\_\-list = sorted(ports.\-keys())}}\label{namespaceveripy_ac40d1f9532d5dad37c9e4457b28b8298}
+\hypertarget{namespaceveripy_a6bbb38d63d1a7dca8d7fe54bfcd9e40e}{\index{veripy@{veripy}!ports\-\_\-regex@{ports\-\_\-regex}}
+\index{ports\-\_\-regex@{ports\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{ports\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-ports\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-O\-R\-T\-S, {\bf original\-\_\-line})}}\label{namespaceveripy_a6bbb38d63d1a7dca8d7fe54bfcd9e40e}
+
+
+Declare ports definition if its called. 
+
+\hypertarget{namespaceveripy_a539ac3ffa8c747bee3236b8735881ca3}{\index{veripy@{veripy}!posedge\-\_\-regex@{posedge\-\_\-regex}}
+\index{posedge\-\_\-regex@{posedge\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{posedge\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-posedge\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-\_\-\-P\-O\-S\-E\-D\-G\-E, {\bf line})}}\label{namespaceveripy_a539ac3ffa8c747bee3236b8735881ca3}
+\hypertarget{namespaceveripy_a182e7c6ae2aef981c047222e8d1c879a}{\index{veripy@{veripy}!post\-\_\-python\-\_\-begin\-\_\-regex@{post\-\_\-python\-\_\-begin\-\_\-regex}}
+\index{post\-\_\-python\-\_\-begin\-\_\-regex@{post\-\_\-python\-\_\-begin\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{post\-\_\-python\-\_\-begin\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-post\-\_\-python\-\_\-begin\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-B\-E\-G\-I\-N, {\bf line})}}\label{namespaceveripy_a182e7c6ae2aef981c047222e8d1c879a}
+
+
+Post Embedded python script processing. 
+
+\hypertarget{namespaceveripy_a62ec90ed0de88469b45538484946a5b7}{\index{veripy@{veripy}!post\-\_\-python\-\_\-end\-\_\-regex@{post\-\_\-python\-\_\-end\-\_\-regex}}
+\index{post\-\_\-python\-\_\-end\-\_\-regex@{post\-\_\-python\-\_\-end\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{post\-\_\-python\-\_\-end\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-post\-\_\-python\-\_\-end\-\_\-regex = re.\-search(R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-E\-N\-D, {\bf line})}}\label{namespaceveripy_a62ec90ed0de88469b45538484946a5b7}
+\hypertarget{namespaceveripy_a716a6e8cf97f3b8c4bc93680674397cd}{\index{veripy@{veripy}!prev\-\_\-line@{prev\-\_\-line}}
+\index{prev\-\_\-line@{prev\-\_\-line}!veripy@{veripy}}
+\subsubsection[{prev\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-prev\-\_\-line = \char`\"{}\char`\"{}}}\label{namespaceveripy_a716a6e8cf97f3b8c4bc93680674397cd}
+
+
+Print all other lines. 
+
+\hypertarget{namespaceveripy_a842c59e3665a101ff8d4813809eae3ff}{\index{veripy@{veripy}!print\-\_\-line@{print\-\_\-line}}
+\index{print\-\_\-line@{print\-\_\-line}!veripy@{veripy}}
+\subsubsection[{print\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-print\-\_\-line = gendrivez\-\_\-verilog\-\_\-regex.\-group(1)}}\label{namespaceveripy_a842c59e3665a101ff8d4813809eae3ff}
+\hypertarget{namespaceveripy_afcb1d5102cf817e349a771a7df45f78e}{\index{veripy@{veripy}!python\-\_\-files@{python\-\_\-files}}
+\index{python\-\_\-files@{python\-\_\-files}!veripy@{veripy}}
+\subsubsection[{python\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-python\-\_\-files = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_afcb1d5102cf817e349a771a7df45f78e}
+\hypertarget{namespaceveripy_a92e4c231594631dc5b0b3fa84f28c05d}{\index{veripy@{veripy}!R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X@{R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X}}
+\index{R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X@{R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X}!veripy@{veripy}}
+\subsubsection[{R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X = re.\-compile({\bf regex\-\_\-width})}}\label{namespaceveripy_a92e4c231594631dc5b0b3fa84f28c05d}
+\hypertarget{namespaceveripy_ab36a4deea02c6b2d407e6896250e385c}{\index{veripy@{veripy}!reg\-\_\-bitdef\-\_\-colon\-\_\-regex@{reg\-\_\-bitdef\-\_\-colon\-\_\-regex}}
+\index{reg\-\_\-bitdef\-\_\-colon\-\_\-regex@{reg\-\_\-bitdef\-\_\-colon\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{reg\-\_\-bitdef\-\_\-colon\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-reg\-\_\-bitdef\-\_\-colon\-\_\-regex}}\label{namespaceveripy_ab36a4deea02c6b2d407e6896250e385c}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_COLON, \(\backslash\)
+2                                                 regs[c\_signal][\textcolor{stringliteral}{'bitdef'}])
+\end{DoxyCode}
+
+
+Printing all the gathered registers. 
+
+dbg(debug,\char`\"{}\textbackslash{}n\textbackslash{}n\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\#\char`\"{}) Printing all the gathered wires Printing all the gathered signals Printing all the inputs and outputs Printing all the gathered structs Printing all the gathered unions Printing all the gathered logics Printing all the gathered typedef bindings Printing all the gathered functions Printing all the parameters Printing all the parameters Printing all the gathered auto reset signals and values Updating the bitdef between signals and wire/regs \hypertarget{namespaceveripy_a8e6f82dc889c14d2c0a5f7eff6fa3e5b}{\index{veripy@{veripy}!reg\-\_\-declarations@{reg\-\_\-declarations}}
+\index{reg\-\_\-declarations@{reg\-\_\-declarations}!veripy@{veripy}}
+\subsubsection[{reg\-\_\-declarations}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-reg\-\_\-declarations = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a8e6f82dc889c14d2c0a5f7eff6fa3e5b}
+\hypertarget{namespaceveripy_a5e677540fde9f9052f3c7c5a7d12243c}{\index{veripy@{veripy}!regex\-\_\-width@{regex\-\_\-width}}
+\index{regex\-\_\-width@{regex\-\_\-width}!veripy@{veripy}}
+\subsubsection[{regex\-\_\-width}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-regex\-\_\-width = force\-\_\-internal\-\_\-slash\-\_\-regex.\-group(1)}}\label{namespaceveripy_a5e677540fde9f9052f3c7c5a7d12243c}
+\hypertarget{namespaceveripy_a31f321b7a4d58971598311ec1e9d65d5}{\index{veripy@{veripy}!regs@{regs}}
+\index{regs@{regs}!veripy@{veripy}}
+\subsubsection[{regs}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-regs = i\-\_\-verilog\-\_\-parser.\-regs}}\label{namespaceveripy_a31f321b7a4d58971598311ec1e9d65d5}
+\hypertarget{namespaceveripy_a115fffb30dfd5bc7abf758cd49319c4b}{\index{veripy@{veripy}!regs\-\_\-regex@{regs\-\_\-regex}}
+\index{regs\-\_\-regex@{regs\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{regs\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-regs\-\_\-regex = re.\-search(R\-E\-\_\-\-R\-E\-G\-S, {\bf original\-\_\-line})}}\label{namespaceveripy_a115fffb30dfd5bc7abf758cd49319c4b}
+
+
+Declare regs/logic definition if its called. 
+
+\hypertarget{namespaceveripy_af1eba550ad186f9ce48ced0faa2b8cf7}{\index{veripy@{veripy}!remove\-\_\-code@{remove\-\_\-code}}
+\index{remove\-\_\-code@{remove\-\_\-code}!veripy@{veripy}}
+\subsubsection[{remove\-\_\-code}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-remove\-\_\-code = 0}}\label{namespaceveripy_af1eba550ad186f9ce48ced0faa2b8cf7}
+\hypertarget{namespaceveripy_ab3ef77cc1c1bb3b758841e9926029532}{\index{veripy@{veripy}!remove\-\_\-reset\-\_\-val@{remove\-\_\-reset\-\_\-val}}
+\index{remove\-\_\-reset\-\_\-val@{remove\-\_\-reset\-\_\-val}!veripy@{veripy}}
+\subsubsection[{remove\-\_\-reset\-\_\-val}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-remove\-\_\-reset\-\_\-val = 0}}\label{namespaceveripy_ab3ef77cc1c1bb3b758841e9926029532}
+\hypertarget{namespaceveripy_abd4a1cb335c94ddd87dca9c75dacce37}{\index{veripy@{veripy}!reset\-\_\-type@{reset\-\_\-type}}
+\index{reset\-\_\-type@{reset\-\_\-type}!veripy@{veripy}}
+\subsubsection[{reset\-\_\-type}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-reset\-\_\-type = \char`\"{}A\-S\-Y\-N\-C\char`\"{}}}\label{namespaceveripy_abd4a1cb335c94ddd87dca9c75dacce37}
+\hypertarget{namespaceveripy_a0b2d8a820c3d794138a0f30fe95f2617}{\index{veripy@{veripy}!reset\-\_\-val@{reset\-\_\-val}}
+\index{reset\-\_\-val@{reset\-\_\-val}!veripy@{veripy}}
+\subsubsection[{reset\-\_\-val}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-reset\-\_\-val = {\bf auto\-\_\-reset\-\_\-data}\mbox{[}{\bf auto\-\_\-reset\-\_\-index}\mbox{]}}}\label{namespaceveripy_a0b2d8a820c3d794138a0f30fe95f2617}
+\hypertarget{namespaceveripy_a20dab80a7e8e079a2d6d78c4dc51b972}{\index{veripy@{veripy}!semicolon\-\_\-regex@{semicolon\-\_\-regex}}
+\index{semicolon\-\_\-regex@{semicolon\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{semicolon\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-semicolon\-\_\-regex = re.\-search(R\-E\-\_\-\-S\-E\-M\-I\-C\-O\-L\-O\-N, {\bf line})}}\label{namespaceveripy_a20dab80a7e8e079a2d6d78c4dc51b972}
+\hypertarget{namespaceveripy_a4eec11a6d141b0afa891ea1ebd3c48ed}{\index{veripy@{veripy}!signal\-\_\-bitdef\-\_\-colon\-\_\-regex@{signal\-\_\-bitdef\-\_\-colon\-\_\-regex}}
+\index{signal\-\_\-bitdef\-\_\-colon\-\_\-regex@{signal\-\_\-bitdef\-\_\-colon\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{signal\-\_\-bitdef\-\_\-colon\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-signal\-\_\-bitdef\-\_\-colon\-\_\-regex}}\label{namespaceveripy_a4eec11a6d141b0afa891ea1ebd3c48ed}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_COLON, \(\backslash\)
+2                                                 signals[c\_signal][\textcolor{stringliteral}{'bitdef'}])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_ad2d051929b4f3a74a076b081dddd2c84}{\index{veripy@{veripy}!signal\-\_\-found@{signal\-\_\-found}}
+\index{signal\-\_\-found@{signal\-\_\-found}!veripy@{veripy}}
+\subsubsection[{signal\-\_\-found}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-signal\-\_\-found = 0}}\label{namespaceveripy_ad2d051929b4f3a74a076b081dddd2c84}
+
+
+Checking all the signals with regs and wires and update input ports. 
+
+Checking all the wires with signals and update output ports.
+
+Checking all the reg/logics with signals and update output ports. \hypertarget{namespaceveripy_af405930307c7e7f4310d7b720cf3c608}{\index{veripy@{veripy}!signals@{signals}}
+\index{signals@{signals}!veripy@{veripy}}
+\subsubsection[{signals}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-signals = i\-\_\-verilog\-\_\-parser.\-signals}}\label{namespaceveripy_af405930307c7e7f4310d7b720cf3c608}
+\hypertarget{namespaceveripy_a314fe1312fbb83c74fb29a23eb5dd7b2}{\index{veripy@{veripy}!single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex@{single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex}}
+\index{single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex@{single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex = \textbackslash{}}}\label{namespaceveripy_a314fe1312fbb83c74fb29a23eb5dd7b2}
+\hypertarget{namespaceveripy_acebf2b0050dc39a37718a8ef927abc7c}{\index{veripy@{veripy}!skip\-\_\-auto\-\_\-reset\-\_\-line@{skip\-\_\-auto\-\_\-reset\-\_\-line}}
+\index{skip\-\_\-auto\-\_\-reset\-\_\-line@{skip\-\_\-auto\-\_\-reset\-\_\-line}!veripy@{veripy}}
+\subsubsection[{skip\-\_\-auto\-\_\-reset\-\_\-line}]{\setlength{\rightskip}{0pt plus 5cm}int veripy.\-skip\-\_\-auto\-\_\-reset\-\_\-line = 0}}\label{namespaceveripy_acebf2b0050dc39a37718a8ef927abc7c}
+
+
+Remove if port is duplicated in wire/regs/signals. 
+
+Printing all the Final registers Printing all the Final wires Printing all the Final signals Printing all the Final inputs and outputs \subsection*{Step\-: 3 }
+
+Generated all the input/output/wire/reg declarations Expand post embedded python code output \hypertarget{namespaceveripy_a32070d26198948bdf028e393cb565ade}{\index{veripy@{veripy}!skipifdefbegin\-\_\-regex@{skipifdefbegin\-\_\-regex}}
+\index{skipifdefbegin\-\_\-regex@{skipifdefbegin\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{skipifdefbegin\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-skipifdefbegin\-\_\-regex = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-B\-E\-G\-I\-N, {\bf line})}}\label{namespaceveripy_a32070d26198948bdf028e393cb565ade}
+\hypertarget{namespaceveripy_a3e2775895f7dc417880c6298fcfbb5db}{\index{veripy@{veripy}!skipifdefend\-\_\-regex@{skipifdefend\-\_\-regex}}
+\index{skipifdefend\-\_\-regex@{skipifdefend\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{skipifdefend\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-skipifdefend\-\_\-regex = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-E\-N\-D, {\bf line})}}\label{namespaceveripy_a3e2775895f7dc417880c6298fcfbb5db}
+\hypertarget{namespaceveripy_add6f0c3ebf250f985c69973dd91397c2}{\index{veripy@{veripy}!sort\-\_\-ios@{sort\-\_\-ios}}
+\index{sort\-\_\-ios@{sort\-\_\-ios}!veripy@{veripy}}
+\subsubsection[{sort\-\_\-ios}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-sort\-\_\-ios = 0}}\label{namespaceveripy_add6f0c3ebf250f985c69973dd91397c2}
+\hypertarget{namespaceveripy_aa088bc1dbe01082dd4220120602b06a5}{\index{veripy@{veripy}!split\-\_\-arr@{split\-\_\-arr}}
+\index{split\-\_\-arr@{split\-\_\-arr}!veripy@{veripy}}
+\subsubsection[{split\-\_\-arr}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-split\-\_\-arr = in\-\_\-file.\-split(\char`\"{}.\char`\"{})}}\label{namespaceveripy_aa088bc1dbe01082dd4220120602b06a5}
+
+
+If no output file passed in command line, then outfile name is derived. 
+
+\hypertarget{namespaceveripy_a3b0f5f7cc0eeac48c1b8c8ca764faf0b}{\index{veripy@{veripy}!sqbrct\-\_\-2d\-\_\-regex@{sqbrct\-\_\-2d\-\_\-regex}}
+\index{sqbrct\-\_\-2d\-\_\-regex@{sqbrct\-\_\-2d\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{sqbrct\-\_\-2d\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-sqbrct\-\_\-2d\-\_\-regex}}\label{namespaceveripy_a3b0f5f7cc0eeac48c1b8c8ca764faf0b}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_CLOSE\_2D\_SQBRCT, \(\backslash\)
+2                         sub\_inst\_ports[inst\_name][c\_port][\textcolor{stringliteral}{'topbitdef'}])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a4fdf3a6b0a5f3ab656eb7e0bb38322de}{\index{veripy@{veripy}!stdout\-\_\-@{stdout\-\_\-}}
+\index{stdout\-\_\-@{stdout\-\_\-}!veripy@{veripy}}
+\subsubsection[{stdout\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-stdout\-\_\- = sys.\-stdout}}\label{namespaceveripy_a4fdf3a6b0a5f3ab656eb7e0bb38322de}
+\hypertarget{namespaceveripy_a5ab193beb474f15a242fa9d804d0ccb6}{\index{veripy@{veripy}!stream@{stream}}
+\index{stream@{stream}!veripy@{veripy}}
+\subsubsection[{stream}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-stream = io.\-String\-I\-O()}}\label{namespaceveripy_a5ab193beb474f15a242fa9d804d0ccb6}
+\hypertarget{namespaceveripy_aa9f520efe95ce8cdbd3fbe0ce8ef3aca}{\index{veripy@{veripy}!stub\-\_\-override\-\_\-val@{stub\-\_\-override\-\_\-val}}
+\index{stub\-\_\-override\-\_\-val@{stub\-\_\-override\-\_\-val}!veripy@{veripy}}
+\subsubsection[{stub\-\_\-override\-\_\-val}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-stub\-\_\-override\-\_\-val = \{\}}}\label{namespaceveripy_aa9f520efe95ce8cdbd3fbe0ce8ef3aca}
+
+
+Loading hash define variables. 
+
+Loading hash define files Calling code generation function \hypertarget{namespaceveripy_a0adf40cf6c1ebe154b70e8dc46889228}{\index{veripy@{veripy}!sub\-\_\-inst\-\_\-files@{sub\-\_\-inst\-\_\-files}}
+\index{sub\-\_\-inst\-\_\-files@{sub\-\_\-inst\-\_\-files}!veripy@{veripy}}
+\subsubsection[{sub\-\_\-inst\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-sub\-\_\-inst\-\_\-files = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-files}}\label{namespaceveripy_a0adf40cf6c1ebe154b70e8dc46889228}
+\hypertarget{namespaceveripy_a3d4e4d7b77fb2b4b84c418a101755e7c}{\index{veripy@{veripy}!sub\-\_\-inst\-\_\-params@{sub\-\_\-inst\-\_\-params}}
+\index{sub\-\_\-inst\-\_\-params@{sub\-\_\-inst\-\_\-params}!veripy@{veripy}}
+\subsubsection[{sub\-\_\-inst\-\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-sub\-\_\-inst\-\_\-params = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-params}}\label{namespaceveripy_a3d4e4d7b77fb2b4b84c418a101755e7c}
+\hypertarget{namespaceveripy_a2b7f6e748a1166c9272af6cc49f384bb}{\index{veripy@{veripy}!sub\-\_\-inst\-\_\-ports@{sub\-\_\-inst\-\_\-ports}}
+\index{sub\-\_\-inst\-\_\-ports@{sub\-\_\-inst\-\_\-ports}!veripy@{veripy}}
+\subsubsection[{sub\-\_\-inst\-\_\-ports}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-sub\-\_\-inst\-\_\-ports = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-ports}}\label{namespaceveripy_a2b7f6e748a1166c9272af6cc49f384bb}
+\hypertarget{namespaceveripy_ad4f69029876b9bb2e6cb769770e15fd4}{\index{veripy@{veripy}!submod\-\_\-name@{submod\-\_\-name}}
+\index{submod\-\_\-name@{submod\-\_\-name}!veripy@{veripy}}
+\subsubsection[{submod\-\_\-name}]{\setlength{\rightskip}{0pt plus 5cm}list veripy.\-submod\-\_\-name = {\bf begininstance\-\_\-info\-\_\-array}\mbox{[}0\mbox{]}}}\label{namespaceveripy_ad4f69029876b9bb2e6cb769770e15fd4}
+\hypertarget{namespaceveripy_a010f1413a986d15ce37b5d2cb4170578}{\index{veripy@{veripy}!sync\-\_\-reset@{sync\-\_\-reset}}
+\index{sync\-\_\-reset@{sync\-\_\-reset}!veripy@{veripy}}
+\subsubsection[{sync\-\_\-reset}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-sync\-\_\-reset = \char`\"{}rst\-\_\-n\char`\"{}}}\label{namespaceveripy_a010f1413a986d15ce37b5d2cb4170578}
+\hypertarget{namespaceveripy_a69ba54ab5fdc8fc7d6575a37675bdb8d}{\index{veripy@{veripy}!syncreset\-\_\-regex@{syncreset\-\_\-regex}}
+\index{syncreset\-\_\-regex@{syncreset\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{syncreset\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-syncreset\-\_\-regex = re.\-search(R\-E\-\_\-\-S\-Y\-N\-C\-R\-E\-S\-E\-T, {\bf line})}}\label{namespaceveripy_a69ba54ab5fdc8fc7d6575a37675bdb8d}
+\hypertarget{namespaceveripy_a3c84020f008e06bdb41e3f89811b8fc5}{\index{veripy@{veripy}!temp\-\_\-file@{temp\-\_\-file}}
+\index{temp\-\_\-file@{temp\-\_\-file}!veripy@{veripy}}
+\subsubsection[{temp\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-temp\-\_\-file = open({\bf temporary\-\_\-file}, 'w')}}\label{namespaceveripy_a3c84020f008e06bdb41e3f89811b8fc5}
+
+
+Wrting out temporary\-\_\-file for debug T\-O\-D\-O\-: Need to enable dumping when error or debug mode enabled. 
+
+\hypertarget{namespaceveripy_afad07aa9410aaa39c3a55e59c48c67d2}{\index{veripy@{veripy}!temporary\-\_\-file@{temporary\-\_\-file}}
+\index{temporary\-\_\-file@{temporary\-\_\-file}!veripy@{veripy}}
+\subsubsection[{temporary\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}string veripy.\-temporary\-\_\-file = {\bf in\-\_\-file}+\char`\"{}.expanded\char`\"{}}}\label{namespaceveripy_afad07aa9410aaa39c3a55e59c48c67d2}
+
+
+Error out if input file does not exist. 
+
+\hypertarget{namespaceveripy_aaa9e0a3d2b05e047d295ee78848b3a89}{\index{veripy@{veripy}!tick\-\_\-defines@{tick\-\_\-defines}}
+\index{tick\-\_\-defines@{tick\-\_\-defines}!veripy@{veripy}}
+\subsubsection[{tick\-\_\-defines}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-tick\-\_\-defines = i\-\_\-verilog\-\_\-parser.\-tick\-\_\-defines}}\label{namespaceveripy_aaa9e0a3d2b05e047d295ee78848b3a89}
+\hypertarget{namespaceveripy_a6b7c63fe728396ebc9152876b49a06d0}{\index{veripy@{veripy}!topname\-\_\-sqbrct\-\_\-regex@{topname\-\_\-sqbrct\-\_\-regex}}
+\index{topname\-\_\-sqbrct\-\_\-regex@{topname\-\_\-sqbrct\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{topname\-\_\-sqbrct\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-topname\-\_\-sqbrct\-\_\-regex}}\label{namespaceveripy_a6b7c63fe728396ebc9152876b49a06d0}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_OPEN\_SQBRCT, \(\backslash\)
+2                         sub\_inst\_ports[inst\_name][c\_port][\textcolor{stringliteral}{'topname'}])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a680f37dc5088c673d909d0871aa4d9a1}{\index{veripy@{veripy}!typedef\-\_\-bindings@{typedef\-\_\-bindings}}
+\index{typedef\-\_\-bindings@{typedef\-\_\-bindings}!veripy@{veripy}}
+\subsubsection[{typedef\-\_\-bindings}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-typedef\-\_\-bindings = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-bindings}}\label{namespaceveripy_a680f37dc5088c673d909d0871aa4d9a1}
+\hypertarget{namespaceveripy_abc6a77d9ee05e424592ceb571f2b4dae}{\index{veripy@{veripy}!typedef\-\_\-logics@{typedef\-\_\-logics}}
+\index{typedef\-\_\-logics@{typedef\-\_\-logics}!veripy@{veripy}}
+\subsubsection[{typedef\-\_\-logics}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-typedef\-\_\-logics = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-logics}}\label{namespaceveripy_abc6a77d9ee05e424592ceb571f2b4dae}
+\hypertarget{namespaceveripy_a71e44f2f7882785c63f3a572b2d1dc95}{\index{veripy@{veripy}!typedef\-\_\-structs@{typedef\-\_\-structs}}
+\index{typedef\-\_\-structs@{typedef\-\_\-structs}!veripy@{veripy}}
+\subsubsection[{typedef\-\_\-structs}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-typedef\-\_\-structs = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-structs}}\label{namespaceveripy_a71e44f2f7882785c63f3a572b2d1dc95}
+\hypertarget{namespaceveripy_a20ec0a39494208c8aad3119964661091}{\index{veripy@{veripy}!typedef\-\_\-unions@{typedef\-\_\-unions}}
+\index{typedef\-\_\-unions@{typedef\-\_\-unions}!veripy@{veripy}}
+\subsubsection[{typedef\-\_\-unions}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-typedef\-\_\-unions = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-unions}}\label{namespaceveripy_a20ec0a39494208c8aad3119964661091}
+\hypertarget{namespaceveripy_aaa42df7d9bf399b8f41b39fd8e0d35ea}{\index{veripy@{veripy}!verilog\-\_\-define\-\_\-files@{verilog\-\_\-define\-\_\-files}}
+\index{verilog\-\_\-define\-\_\-files@{verilog\-\_\-define\-\_\-files}!veripy@{veripy}}
+\subsubsection[{verilog\-\_\-define\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-verilog\-\_\-define\-\_\-files = cmdline.\-verilog\-\_\-define\-\_\-files}}\label{namespaceveripy_aaa42df7d9bf399b8f41b39fd8e0d35ea}
+\hypertarget{namespaceveripy_af5cff4136cdf82435499ac37785ac957}{\index{veripy@{veripy}!width\-\_\-numbers\-\_\-regex@{width\-\_\-numbers\-\_\-regex}}
+\index{width\-\_\-numbers\-\_\-regex@{width\-\_\-numbers\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{width\-\_\-numbers\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-width\-\_\-numbers\-\_\-regex = re.\-search(R\-E\-\_\-\-N\-U\-M\-B\-E\-R\-S, {\bf force\-\_\-width})}}\label{namespaceveripy_af5cff4136cdf82435499ac37785ac957}
+\hypertarget{namespaceveripy_aa33d8fd3035f8d40742a86cdcabd1507}{\index{veripy@{veripy}!wire\-\_\-bitdef\-\_\-colon\-\_\-regex@{wire\-\_\-bitdef\-\_\-colon\-\_\-regex}}
+\index{wire\-\_\-bitdef\-\_\-colon\-\_\-regex@{wire\-\_\-bitdef\-\_\-colon\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{wire\-\_\-bitdef\-\_\-colon\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-wire\-\_\-bitdef\-\_\-colon\-\_\-regex}}\label{namespaceveripy_aa33d8fd3035f8d40742a86cdcabd1507}
+{\bfseries Initial value\-:}
+\begin{DoxyCode}
+1 = re.search(RE\_COLON, \(\backslash\)
+2                                               wires[c\_signal][\textcolor{stringliteral}{'bitdef'}])
+\end{DoxyCode}
+\hypertarget{namespaceveripy_a1bf7781cecfa001f9a1c00ad44cb8f59}{\index{veripy@{veripy}!wire\-\_\-declarations@{wire\-\_\-declarations}}
+\index{wire\-\_\-declarations@{wire\-\_\-declarations}!veripy@{veripy}}
+\subsubsection[{wire\-\_\-declarations}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-wire\-\_\-declarations = \mbox{[}$\,$\mbox{]}}}\label{namespaceveripy_a1bf7781cecfa001f9a1c00ad44cb8f59}
+\hypertarget{namespaceveripy_a830a9b7ff5ad16c99be1ec8926435b58}{\index{veripy@{veripy}!wires@{wires}}
+\index{wires@{wires}!veripy@{veripy}}
+\subsubsection[{wires}]{\setlength{\rightskip}{0pt plus 5cm}veripy.\-wires = i\-\_\-verilog\-\_\-parser.\-wires}}\label{namespaceveripy_a830a9b7ff5ad16c99be1ec8926435b58}
+\hypertarget{namespaceveripy_a7f5cee93cf9ba15ed101dff1c5c85a2b}{\index{veripy@{veripy}!wires\-\_\-regex@{wires\-\_\-regex}}
+\index{wires\-\_\-regex@{wires\-\_\-regex}!veripy@{veripy}}
+\subsubsection[{wires\-\_\-regex}]{\setlength{\rightskip}{0pt plus 5cm}tuple veripy.\-wires\-\_\-regex = re.\-search(R\-E\-\_\-\-W\-I\-R\-E\-S, {\bf line})}}\label{namespaceveripy_a7f5cee93cf9ba15ed101dff1c5c85a2b}
+
+
+Declare wires definition if its called. 
+
+R\-E\-\_\-\-W\-I\-R\-E\-S = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}\-Ww\mbox{]}\mbox{[}\-Ii\mbox{]}\mbox{[}\-Rr\mbox{]}\mbox{[}\-Ee\mbox{]}\mbox{[}\-Ss\mbox{]}\char`\"{}) 

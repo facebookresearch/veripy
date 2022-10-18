@@ -1,0 +1,234 @@
+\hypertarget{namespacefb__utils}{\section{fb\-\_\-utils Namespace Reference}
+\label{namespacefb__utils}\index{fb\-\_\-utils@{fb\-\_\-utils}}
+}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classfb__utils_1_1CustomOrderedDict}{Custom\-Ordered\-Dict}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacefb__utils_aeb203efaeb5fcaff5ab95bee3fef33ca}{log2}
+\item 
+def \hyperlink{namespacefb__utils_a2545725f24c3aaa92642a0081cd226d4}{find\-\_\-reg\-\_\-address\-\_\-window}
+\item 
+def \hyperlink{namespacefb__utils_ae6e322979689e4108390d0a6fb5dc055}{convert\-\_\-to\-\_\-hash}
+\item 
+def \hyperlink{namespacefb__utils_a393ba7ef30ea3262fa851a3a708e6d4f}{convert\-\_\-to\-\_\-yaml}
+\item 
+def \hyperlink{namespacefb__utils_a04913a118fa7f2cb75ad69b36fde1b72}{convert\-\_\-to\-\_\-classobject}
+\item 
+def \hyperlink{namespacefb__utils_ae34cab4a7ade9539872b87d591b6b002}{add\-\_\-reserved\-\_\-fields}
+\item 
+def \hyperlink{namespacefb__utils_afb09bda82c3d6df6467ce43c4566bc9e}{convert\-\_\-to\-\_\-pktgen\-\_\-dict}
+\item 
+def \hyperlink{namespacefb__utils_abf8fd295a6dba986029547c0b9ce9211}{convert\-\_\-to\-\_\-csrgen\-\_\-dict}
+\item 
+def \hyperlink{namespacefb__utils_a2bd37605308dd90c42b4388604e79d78}{get\-\_\-args}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespacefb__utils_ada75fccb2ac0a4b4a48c90bdf0821fd2}{files} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespacefb__utils_ae7dbeeac0d9d06d0c8412bc84bd91eed}{buck\-\_\-root} = subprocess.\-check\-\_\-output(\mbox{[}\char`\"{}/usr/local/bin/buck\char`\"{}, \char`\"{}root\char`\"{}\mbox{]})
+\item 
+tuple \hyperlink{namespacefb__utils_aa82478ef5cba8a32c2c7b1354312ae94}{buck\-\_\-root\-\_\-re} = re.\-compile(\char`\"{}(.$\ast$)buck-\/out(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacefb__utils_a0462d4018caf2858ea278a67705d8073}{outputs} = subprocess.\-check\-\_\-output(\mbox{[}\char`\"{}/usr/local/bin/buck\char`\"{}, \char`\"{}build\char`\"{}, target, \char`\"{}-\/-\/deep\char`\"{}, \char`\"{}-\/-\/show-\/full-\/output\char`\"{}\mbox{]})
+\item 
+tuple \hyperlink{namespacefb__utils_a2c908403428ebd5029f8d92d48d5d514}{output\-\_\-dir} = outputs.\-decode(\char`\"{}utf-\/8\char`\"{})
+\item 
+tuple \hyperlink{namespacefb__utils_a711f7adf2968e603be09e31a7a2dc090}{files\-\_\-count} = len(\hyperlink{namespacefb__utils_ada75fccb2ac0a4b4a48c90bdf0821fd2}{files})
+\item 
+list \hyperlink{namespacefb__utils_ac57a5d2600819a0cd95a751784e809c9}{sv\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacefb__utils_a1ee53c4fb1a76769ec7757ab432117e0}{svh\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacefb__utils_a6887692f592843384a67fefe3b9144da}{pkg\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacefb__utils_a905045d2b7aefe95f688c8257c04e455}{rest\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacefb__utils_aca12fc82e453152f81a1819957a5bdbd}{all\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacefb__utils_a3bb6a33cce451d2aa6cd555cbf3f81c9}{ext\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespacefb__utils_abfa8ee516782c6f0fc32b4407b807f65}{files\-\_\-list} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespacefb__utils_a9a64b83b1f280ce221da461c3a1e3f69}{sv\-\_\-pkg\-\_\-re} = re.\-compile(\char`\"{}.$\ast$\-\_\-pkg.\-sv\$\char`\"{})
+\item 
+tuple \hyperlink{namespacefb__utils_a5fafe279f7921831dd52acdc8a7fb0fc}{svh\-\_\-re} = re.\-compile(\char`\"{}.$\ast$.svh\$\char`\"{})
+\item 
+tuple \hyperlink{namespacefb__utils_a73e264c0b4abac47696cb9af5442ff77}{sv\-\_\-re} = re.\-compile(\char`\"{}.$\ast$.sv\$\char`\"{})
+\item 
+tuple \hyperlink{namespacefb__utils_aeede718a07634cd31cd013fae69a9722}{files\-\_\-re} = re.\-compile(\char`\"{}-\/f .$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacefb__utils_acb42658c320fc5500109225f2150f3a5}{buck\-\_\-root\-\_\-reg} = re.\-search(\hyperlink{namespacefb__utils_aa82478ef5cba8a32c2c7b1354312ae94}{buck\-\_\-root\-\_\-re}, \hyperlink{namespacefb__utils_a1fd881f8821084c45c3ee6f19c7d4733}{f})
+\item 
+string \hyperlink{namespacefb__utils_a1fd881f8821084c45c3ee6f19c7d4733}{f} = \hyperlink{namespacefb__utils_ae7dbeeac0d9d06d0c8412bc84bd91eed}{buck\-\_\-root}+\char`\"{}/buck-\/out\char`\"{}
+\item 
+tuple \hyperlink{namespacefb__utils_a1f39868616143f0b1afc09fa31f902a8}{search\-\_\-matched} = Trueiflen(args.\-search\-\_\-pattern)
+\item 
+tuple \hyperlink{namespacefb__utils_a4a9b92731ce5163b4c224b682d51686a}{ext} = ext.\-rstrip()
+\item 
+tuple \hyperlink{namespacefb__utils_a7eac21abed8b5bb8ebd3450cb70c8a80}{bn} = os.\-path.\-basename(\hyperlink{namespacefb__utils_a1fd881f8821084c45c3ee6f19c7d4733}{f})
+\item 
+tuple \hyperlink{namespacefb__utils_a0b4a172289f8da0c591105716fec6a20}{svh\-\_\-file} = f.\-rstrip('\textbackslash{}n')
+\item 
+tuple \hyperlink{namespacefb__utils_a9a7552d7646f614253b152fd60621a1a}{svh\-\_\-dir} = os.\-path.\-dirname(\hyperlink{namespacefb__utils_a0b4a172289f8da0c591105716fec6a20}{svh\-\_\-file})
+\item 
+\hyperlink{namespacefb__utils_ad793aa0bb99875a76c0169394ef87e87}{all\-\_\-files} = \hyperlink{namespacefb__utils_a6887692f592843384a67fefe3b9144da}{pkg\-\_\-list}+\hyperlink{namespacefb__utils_ac57a5d2600819a0cd95a751784e809c9}{sv\-\_\-list}+\hyperlink{namespacefb__utils_a1ee53c4fb1a76769ec7757ab432117e0}{svh\-\_\-list}+\hyperlink{namespacefb__utils_abfa8ee516782c6f0fc32b4407b807f65}{files\-\_\-list}+\hyperlink{namespacefb__utils_a905045d2b7aefe95f688c8257c04e455}{rest\-\_\-list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespacefb__utils_ae34cab4a7ade9539872b87d591b6b002}{\index{fb\-\_\-utils@{fb\-\_\-utils}!add\-\_\-reserved\-\_\-fields@{add\-\_\-reserved\-\_\-fields}}
+\index{add\-\_\-reserved\-\_\-fields@{add\-\_\-reserved\-\_\-fields}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{add\-\_\-reserved\-\_\-fields}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-add\-\_\-reserved\-\_\-fields (
+\begin{DoxyParamCaption}
+\item[{}]{fields}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_ae34cab4a7ade9539872b87d591b6b002}
+\hypertarget{namespacefb__utils_a04913a118fa7f2cb75ad69b36fde1b72}{\index{fb\-\_\-utils@{fb\-\_\-utils}!convert\-\_\-to\-\_\-classobject@{convert\-\_\-to\-\_\-classobject}}
+\index{convert\-\_\-to\-\_\-classobject@{convert\-\_\-to\-\_\-classobject}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{convert\-\_\-to\-\_\-classobject}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-convert\-\_\-to\-\_\-classobject (
+\begin{DoxyParamCaption}
+\item[{}]{a\-Ordered\-Dict}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_a04913a118fa7f2cb75ad69b36fde1b72}
+\hypertarget{namespacefb__utils_abf8fd295a6dba986029547c0b9ce9211}{\index{fb\-\_\-utils@{fb\-\_\-utils}!convert\-\_\-to\-\_\-csrgen\-\_\-dict@{convert\-\_\-to\-\_\-csrgen\-\_\-dict}}
+\index{convert\-\_\-to\-\_\-csrgen\-\_\-dict@{convert\-\_\-to\-\_\-csrgen\-\_\-dict}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{convert\-\_\-to\-\_\-csrgen\-\_\-dict}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-convert\-\_\-to\-\_\-csrgen\-\_\-dict (
+\begin{DoxyParamCaption}
+\item[{}]{registers, }
+\item[{}]{enums = {\ttfamily None}, }
+\item[{}]{offset = {\ttfamily 0}, }
+\item[{}]{prefix = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_abf8fd295a6dba986029547c0b9ce9211}
+\hypertarget{namespacefb__utils_ae6e322979689e4108390d0a6fb5dc055}{\index{fb\-\_\-utils@{fb\-\_\-utils}!convert\-\_\-to\-\_\-hash@{convert\-\_\-to\-\_\-hash}}
+\index{convert\-\_\-to\-\_\-hash@{convert\-\_\-to\-\_\-hash}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{convert\-\_\-to\-\_\-hash}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-convert\-\_\-to\-\_\-hash (
+\begin{DoxyParamCaption}
+\item[{}]{text}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_ae6e322979689e4108390d0a6fb5dc055}
+\hypertarget{namespacefb__utils_afb09bda82c3d6df6467ce43c4566bc9e}{\index{fb\-\_\-utils@{fb\-\_\-utils}!convert\-\_\-to\-\_\-pktgen\-\_\-dict@{convert\-\_\-to\-\_\-pktgen\-\_\-dict}}
+\index{convert\-\_\-to\-\_\-pktgen\-\_\-dict@{convert\-\_\-to\-\_\-pktgen\-\_\-dict}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{convert\-\_\-to\-\_\-pktgen\-\_\-dict}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-convert\-\_\-to\-\_\-pktgen\-\_\-dict (
+\begin{DoxyParamCaption}
+\item[{}]{interfaces, }
+\item[{}]{enums = {\ttfamily None}, }
+\item[{}]{aligned\-\_\-lsb = {\ttfamily None}, }
+\item[{}]{in\-\_\-isa = {\ttfamily None}}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_afb09bda82c3d6df6467ce43c4566bc9e}
+\hypertarget{namespacefb__utils_a393ba7ef30ea3262fa851a3a708e6d4f}{\index{fb\-\_\-utils@{fb\-\_\-utils}!convert\-\_\-to\-\_\-yaml@{convert\-\_\-to\-\_\-yaml}}
+\index{convert\-\_\-to\-\_\-yaml@{convert\-\_\-to\-\_\-yaml}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{convert\-\_\-to\-\_\-yaml}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-convert\-\_\-to\-\_\-yaml (
+\begin{DoxyParamCaption}
+\item[{}]{d}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_a393ba7ef30ea3262fa851a3a708e6d4f}
+\hypertarget{namespacefb__utils_a2545725f24c3aaa92642a0081cd226d4}{\index{fb\-\_\-utils@{fb\-\_\-utils}!find\-\_\-reg\-\_\-address\-\_\-window@{find\-\_\-reg\-\_\-address\-\_\-window}}
+\index{find\-\_\-reg\-\_\-address\-\_\-window@{find\-\_\-reg\-\_\-address\-\_\-window}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{find\-\_\-reg\-\_\-address\-\_\-window}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-find\-\_\-reg\-\_\-address\-\_\-window (
+\begin{DoxyParamCaption}
+\item[{}]{instance, }
+\item[{}]{regs\-\_\-dir = {\ttfamily \char`\"{}\char`\"{}}, }
+\item[{}]{regs\-\_\-package = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_a2545725f24c3aaa92642a0081cd226d4}
+\hypertarget{namespacefb__utils_a2bd37605308dd90c42b4388604e79d78}{\index{fb\-\_\-utils@{fb\-\_\-utils}!get\-\_\-args@{get\-\_\-args}}
+\index{get\-\_\-args@{get\-\_\-args}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{get\-\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-get\-\_\-args (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_a2bd37605308dd90c42b4388604e79d78}
+\hypertarget{namespacefb__utils_aeb203efaeb5fcaff5ab95bee3fef33ca}{\index{fb\-\_\-utils@{fb\-\_\-utils}!log2@{log2}}
+\index{log2@{log2}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{log2}]{\setlength{\rightskip}{0pt plus 5cm}def fb\-\_\-utils.\-log2 (
+\begin{DoxyParamCaption}
+\item[{}]{inp}
+\end{DoxyParamCaption}
+)}}\label{namespacefb__utils_aeb203efaeb5fcaff5ab95bee3fef33ca}
+
+
+\subsection{Variable Documentation}
+\hypertarget{namespacefb__utils_ad793aa0bb99875a76c0169394ef87e87}{\index{fb\-\_\-utils@{fb\-\_\-utils}!all\-\_\-files@{all\-\_\-files}}
+\index{all\-\_\-files@{all\-\_\-files}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{all\-\_\-files}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-all\-\_\-files = {\bf pkg\-\_\-list}+{\bf sv\-\_\-list}+{\bf svh\-\_\-list}+{\bf files\-\_\-list}+{\bf rest\-\_\-list}}}\label{namespacefb__utils_ad793aa0bb99875a76c0169394ef87e87}
+\hypertarget{namespacefb__utils_aca12fc82e453152f81a1819957a5bdbd}{\index{fb\-\_\-utils@{fb\-\_\-utils}!all\-\_\-list@{all\-\_\-list}}
+\index{all\-\_\-list@{all\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{all\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list fb\-\_\-utils.\-all\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_aca12fc82e453152f81a1819957a5bdbd}
+\hypertarget{namespacefb__utils_a7eac21abed8b5bb8ebd3450cb70c8a80}{\index{fb\-\_\-utils@{fb\-\_\-utils}!bn@{bn}}
+\index{bn@{bn}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{bn}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-bn = os.\-path.\-basename({\bf f})}}\label{namespacefb__utils_a7eac21abed8b5bb8ebd3450cb70c8a80}
+\hypertarget{namespacefb__utils_ae7dbeeac0d9d06d0c8412bc84bd91eed}{\index{fb\-\_\-utils@{fb\-\_\-utils}!buck\-\_\-root@{buck\-\_\-root}}
+\index{buck\-\_\-root@{buck\-\_\-root}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{buck\-\_\-root}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-buck\-\_\-root = subprocess.\-check\-\_\-output(\mbox{[}\char`\"{}/usr/local/bin/buck\char`\"{}, \char`\"{}root\char`\"{}\mbox{]})}}\label{namespacefb__utils_ae7dbeeac0d9d06d0c8412bc84bd91eed}
+\hypertarget{namespacefb__utils_aa82478ef5cba8a32c2c7b1354312ae94}{\index{fb\-\_\-utils@{fb\-\_\-utils}!buck\-\_\-root\-\_\-re@{buck\-\_\-root\-\_\-re}}
+\index{buck\-\_\-root\-\_\-re@{buck\-\_\-root\-\_\-re}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{buck\-\_\-root\-\_\-re}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-buck\-\_\-root\-\_\-re = re.\-compile(\char`\"{}(.$\ast$)buck-\/out(.$\ast$)\$\char`\"{})}}\label{namespacefb__utils_aa82478ef5cba8a32c2c7b1354312ae94}
+\hypertarget{namespacefb__utils_acb42658c320fc5500109225f2150f3a5}{\index{fb\-\_\-utils@{fb\-\_\-utils}!buck\-\_\-root\-\_\-reg@{buck\-\_\-root\-\_\-reg}}
+\index{buck\-\_\-root\-\_\-reg@{buck\-\_\-root\-\_\-reg}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{buck\-\_\-root\-\_\-reg}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-buck\-\_\-root\-\_\-reg = re.\-search({\bf buck\-\_\-root\-\_\-re}, {\bf f})}}\label{namespacefb__utils_acb42658c320fc5500109225f2150f3a5}
+\hypertarget{namespacefb__utils_a4a9b92731ce5163b4c224b682d51686a}{\index{fb\-\_\-utils@{fb\-\_\-utils}!ext@{ext}}
+\index{ext@{ext}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{ext}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-ext = ext.\-rstrip()}}\label{namespacefb__utils_a4a9b92731ce5163b4c224b682d51686a}
+\hypertarget{namespacefb__utils_a3bb6a33cce451d2aa6cd555cbf3f81c9}{\index{fb\-\_\-utils@{fb\-\_\-utils}!ext\-\_\-list@{ext\-\_\-list}}
+\index{ext\-\_\-list@{ext\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{ext\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list fb\-\_\-utils.\-ext\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_a3bb6a33cce451d2aa6cd555cbf3f81c9}
+\hypertarget{namespacefb__utils_a1fd881f8821084c45c3ee6f19c7d4733}{\index{fb\-\_\-utils@{fb\-\_\-utils}!f@{f}}
+\index{f@{f}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{f}]{\setlength{\rightskip}{0pt plus 5cm}string fb\-\_\-utils.\-f = {\bf buck\-\_\-root}+\char`\"{}/buck-\/out\char`\"{}}}\label{namespacefb__utils_a1fd881f8821084c45c3ee6f19c7d4733}
+\hypertarget{namespacefb__utils_ada75fccb2ac0a4b4a48c90bdf0821fd2}{\index{fb\-\_\-utils@{fb\-\_\-utils}!files@{files}}
+\index{files@{files}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{files}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-files = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_ada75fccb2ac0a4b4a48c90bdf0821fd2}
+\hypertarget{namespacefb__utils_a711f7adf2968e603be09e31a7a2dc090}{\index{fb\-\_\-utils@{fb\-\_\-utils}!files\-\_\-count@{files\-\_\-count}}
+\index{files\-\_\-count@{files\-\_\-count}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{files\-\_\-count}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-files\-\_\-count = len({\bf files})}}\label{namespacefb__utils_a711f7adf2968e603be09e31a7a2dc090}
+\hypertarget{namespacefb__utils_abfa8ee516782c6f0fc32b4407b807f65}{\index{fb\-\_\-utils@{fb\-\_\-utils}!files\-\_\-list@{files\-\_\-list}}
+\index{files\-\_\-list@{files\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{files\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list fb\-\_\-utils.\-files\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_abfa8ee516782c6f0fc32b4407b807f65}
+\hypertarget{namespacefb__utils_aeede718a07634cd31cd013fae69a9722}{\index{fb\-\_\-utils@{fb\-\_\-utils}!files\-\_\-re@{files\-\_\-re}}
+\index{files\-\_\-re@{files\-\_\-re}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{files\-\_\-re}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-files\-\_\-re = re.\-compile(\char`\"{}-\/f .$\ast$\$\char`\"{})}}\label{namespacefb__utils_aeede718a07634cd31cd013fae69a9722}
+\hypertarget{namespacefb__utils_a2c908403428ebd5029f8d92d48d5d514}{\index{fb\-\_\-utils@{fb\-\_\-utils}!output\-\_\-dir@{output\-\_\-dir}}
+\index{output\-\_\-dir@{output\-\_\-dir}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{output\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-output\-\_\-dir = outputs.\-decode(\char`\"{}utf-\/8\char`\"{})}}\label{namespacefb__utils_a2c908403428ebd5029f8d92d48d5d514}
+\hypertarget{namespacefb__utils_a0462d4018caf2858ea278a67705d8073}{\index{fb\-\_\-utils@{fb\-\_\-utils}!outputs@{outputs}}
+\index{outputs@{outputs}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{outputs}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-outputs = subprocess.\-check\-\_\-output(\mbox{[}\char`\"{}/usr/local/bin/buck\char`\"{}, \char`\"{}build\char`\"{}, target, \char`\"{}-\/-\/deep\char`\"{}, \char`\"{}-\/-\/show-\/full-\/output\char`\"{}\mbox{]})}}\label{namespacefb__utils_a0462d4018caf2858ea278a67705d8073}
+\hypertarget{namespacefb__utils_a6887692f592843384a67fefe3b9144da}{\index{fb\-\_\-utils@{fb\-\_\-utils}!pkg\-\_\-list@{pkg\-\_\-list}}
+\index{pkg\-\_\-list@{pkg\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{pkg\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list fb\-\_\-utils.\-pkg\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_a6887692f592843384a67fefe3b9144da}
+\hypertarget{namespacefb__utils_a905045d2b7aefe95f688c8257c04e455}{\index{fb\-\_\-utils@{fb\-\_\-utils}!rest\-\_\-list@{rest\-\_\-list}}
+\index{rest\-\_\-list@{rest\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{rest\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list fb\-\_\-utils.\-rest\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_a905045d2b7aefe95f688c8257c04e455}
+\hypertarget{namespacefb__utils_a1f39868616143f0b1afc09fa31f902a8}{\index{fb\-\_\-utils@{fb\-\_\-utils}!search\-\_\-matched@{search\-\_\-matched}}
+\index{search\-\_\-matched@{search\-\_\-matched}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{search\-\_\-matched}]{\setlength{\rightskip}{0pt plus 5cm}fb\-\_\-utils.\-search\-\_\-matched = Trueiflen(args.\-search\-\_\-pattern)}}\label{namespacefb__utils_a1f39868616143f0b1afc09fa31f902a8}
+\hypertarget{namespacefb__utils_ac57a5d2600819a0cd95a751784e809c9}{\index{fb\-\_\-utils@{fb\-\_\-utils}!sv\-\_\-list@{sv\-\_\-list}}
+\index{sv\-\_\-list@{sv\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{sv\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}list fb\-\_\-utils.\-sv\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_ac57a5d2600819a0cd95a751784e809c9}
+\hypertarget{namespacefb__utils_a9a64b83b1f280ce221da461c3a1e3f69}{\index{fb\-\_\-utils@{fb\-\_\-utils}!sv\-\_\-pkg\-\_\-re@{sv\-\_\-pkg\-\_\-re}}
+\index{sv\-\_\-pkg\-\_\-re@{sv\-\_\-pkg\-\_\-re}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{sv\-\_\-pkg\-\_\-re}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-sv\-\_\-pkg\-\_\-re = re.\-compile(\char`\"{}.$\ast$\-\_\-pkg.\-sv\$\char`\"{})}}\label{namespacefb__utils_a9a64b83b1f280ce221da461c3a1e3f69}
+\hypertarget{namespacefb__utils_a73e264c0b4abac47696cb9af5442ff77}{\index{fb\-\_\-utils@{fb\-\_\-utils}!sv\-\_\-re@{sv\-\_\-re}}
+\index{sv\-\_\-re@{sv\-\_\-re}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{sv\-\_\-re}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-sv\-\_\-re = re.\-compile(\char`\"{}.$\ast$.sv\$\char`\"{})}}\label{namespacefb__utils_a73e264c0b4abac47696cb9af5442ff77}
+\hypertarget{namespacefb__utils_a9a7552d7646f614253b152fd60621a1a}{\index{fb\-\_\-utils@{fb\-\_\-utils}!svh\-\_\-dir@{svh\-\_\-dir}}
+\index{svh\-\_\-dir@{svh\-\_\-dir}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{svh\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-svh\-\_\-dir = os.\-path.\-dirname({\bf svh\-\_\-file})}}\label{namespacefb__utils_a9a7552d7646f614253b152fd60621a1a}
+\hypertarget{namespacefb__utils_a0b4a172289f8da0c591105716fec6a20}{\index{fb\-\_\-utils@{fb\-\_\-utils}!svh\-\_\-file@{svh\-\_\-file}}
+\index{svh\-\_\-file@{svh\-\_\-file}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{svh\-\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-svh\-\_\-file = f.\-rstrip('\textbackslash{}n')}}\label{namespacefb__utils_a0b4a172289f8da0c591105716fec6a20}
+\hypertarget{namespacefb__utils_a1ee53c4fb1a76769ec7757ab432117e0}{\index{fb\-\_\-utils@{fb\-\_\-utils}!svh\-\_\-list@{svh\-\_\-list}}
+\index{svh\-\_\-list@{svh\-\_\-list}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{svh\-\_\-list}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-svh\-\_\-list = \mbox{[}$\,$\mbox{]}}}\label{namespacefb__utils_a1ee53c4fb1a76769ec7757ab432117e0}
+\hypertarget{namespacefb__utils_a5fafe279f7921831dd52acdc8a7fb0fc}{\index{fb\-\_\-utils@{fb\-\_\-utils}!svh\-\_\-re@{svh\-\_\-re}}
+\index{svh\-\_\-re@{svh\-\_\-re}!fb_utils@{fb\-\_\-utils}}
+\subsubsection[{svh\-\_\-re}]{\setlength{\rightskip}{0pt plus 5cm}tuple fb\-\_\-utils.\-svh\-\_\-re = re.\-compile(\char`\"{}.$\ast$.svh\$\char`\"{})}}\label{namespacefb__utils_a5fafe279f7921831dd52acdc8a7fb0fc}

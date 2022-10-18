@@ -1,0 +1,8 @@
+&module;
+&regs;
+&wires;
+
+wire a = b & c;
+endmodule
+
+

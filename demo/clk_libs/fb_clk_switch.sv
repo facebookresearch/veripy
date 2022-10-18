@@ -1,0 +1,63 @@
+////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+// The following information is considered proprietary and confidential to Facebook,
+// and may not be disclosed to any third party nor be used for any purpose other
+// than to full fill service obligations to Facebook
+////////////////////////////////////////////////////////////////////////////////////
+
+//&Module( parameter N = 4, M = 2);
+module fb_clk_switch # (
+  parameter N = 4,
+            M = 2
+) (
+  output  logic              clk_out,
+  input   logic     [M-1:0]  select,
+  input   logic     [N-1:0]  clk,
+  input   logic     [N-1:0]  reset_n
+); 
+
+   //&Logics;
+   logic     [N-1:0]  select_int;
+   logic     [N-1:0]  sync_data_in;
+   logic     [N-1:0]  sync_data_out;
+   logic     [N-1:0]  sync_clk_d;
+
+
+   //&Force width reset_n N;
+   //&Force width clk N;
+   //&Force width /^sync_/ N;
+
+   // convert select to one-hot encoded vector
+   always_comb begin
+       select_int[N-1:0]         = {N{1'b0}}
+       select_int[select[M-1:0]] = 1'b1;
+   end
+
+   genvar i;
+   generate
+   for (i = 0; i < N; i++) begin
+       if (i==0) begin
+           assign sync_data_in[i] = select_int[i] && &(~sync_clk_d[N-1:1]);
+       end else if (i == N-1) begin
+           assign sync_data_in[i] = select_int[i] && &(~sync_clk_d[N-2:0]);
+       end else begin
+           assign sync_data_in[i] = select_int[i] && &{~sync_clk_d[N-1:i+1], ~sync_clk_d[i-1:0]};
+       end
+
+       fb_bit_sync i_fb_bit_sync (
+           .clk     (clk[i]),
+           .reset_n (reset_n[i]),
+           .sync_in (sync_data_in[i]),
+           .sync_out(sync_data_out[i])
+       );
+
+       always_ff @(negedge clk[i] or negedge reset_n[i]) begin
+           if (~reset_n[i])     sync_clk_d[i] <= 1'b0;
+           else                 sync_clk_d[i] <= sync_data_out[i];
+       end
+   end
+   endgenerate
+
+   assign clk_out = |(sync_clk_d & clk);
+
+endmodule

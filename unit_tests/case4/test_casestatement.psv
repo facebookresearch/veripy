@@ -1,0 +1,76 @@
+
+
+
+
+&module;
+/*
+ test_casestatement (
+input [7:0] irq, //interrupt requests
+output logic [3:0] highest_pri0,
+output logic [3:0] highest_pri1,
+input [7:0] a_in, b_in, c_in, d_in,
+input [1:0] sel,
+output logic [7:0] d_out,
+input [1:0] a, b, c,
+input [1:0] select, 
+output logic      y,
+output logic [1:0] z
+);
+*/
+&Logics;
+ 
+
+always_comb begin
+priority casez (irq)
+8'b1??????? : highest_pri0 = 4'h8;
+8'b?1?????? : highest_pri0 = 4'h7;
+8'b??1????? : highest_pri0 = 4'h6;
+8'b???1???? : highest_pri0 = 4'h5;
+8'b????1??? : highest_pri0 = 4'h4;
+8'b?????1?? : highest_pri0 = 4'h3;
+8'b??????1? : highest_pri0 = 4'h2;
+8'b???????1 : highest_pri0 = 4'h1;
+default : highest_pri0 = 4'h0;
+endcase
+end
+
+always_comb begin
+priority casex (irq)
+8'b1??????? : highest_pri1 = 4'h8;
+8'b?1?????? : highest_pri1 = 4'h7;
+8'b??1????? : highest_pri1 = 4'h6;
+8'b???1???? : highest_pri1 = 4'h5;
+8'b????1??? : highest_pri1 = 4'h4;
+8'b?????1?? : highest_pri1 = 4'h3;
+8'b??????1? : highest_pri1 = 4'h2;
+8'b???????1 : highest_pri1 = 4'h1;
+default : highest_pri1 = 4'h0;
+endcase
+end
+
+always_comb
+case (sel)
+2'b00 : d_out = a_in;
+2'b01 : d_out = b_in;
+2'b10 : d_out = c_in;
+2'b10 : d_out = d_in;
+default : d_out =  8'bx;
+endcase
+
+
+always @* begin
+unique if (select == 2'b00) y = a[0];
+else if (select == 2'b01) y = b[0];
+else if (select == 2'b10) y = c[0];
+end
+
+always @* begin
+unique case (select)
+2'b00: z = a;
+2'b01: z = b;
+2'b10: z = c;
+endcase
+end
+
+
+endmodule

@@ -1,0 +1,12 @@
+&module;
+&regs;
+&wires;
+
+
+`ifdef behavioral 
+     wire a = b & c;
+`else 
+     wire a= d & e;
+`endif
+
+

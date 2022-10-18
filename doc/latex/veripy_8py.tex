@@ -1,0 +1,493 @@
+\hypertarget{veripy_8py}{\section{veripy.\-py File Reference}
+\label{veripy_8py}\index{veripy.\-py@{veripy.\-py}}
+}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceveripy}{veripy}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespaceveripy_aa31f673a176e6344d30ade070309153d}{veripy.\-debug} = 0
+\item 
+string \hyperlink{namespaceveripy_a0d00d319a78d1019f3fe9eecfe1add32}{veripy.\-debug\-\_\-file} = \char`\"{}veripy.\-debug\char`\"{}
+\begin{DoxyCompactList}\small\item\em Opening debug file for debug dump. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceveripy_ae24d8c06b7040a72197b627d31e98657}{veripy.\-parser\-\_\-on} = 1
+\item 
+string \hyperlink{namespaceveripy_a2741464a2b91f4bed59350a121937e21}{veripy.\-parsing\-\_\-format} = \char`\"{}systemverilog\char`\"{}
+\item 
+int \hyperlink{namespaceveripy_af1eba550ad186f9ce48ced0faa2b8cf7}{veripy.\-remove\-\_\-code} = 0
+\item 
+list \hyperlink{namespaceveripy_a7d5b541d0e30b5abbc5760e3ea7b4da2}{veripy.\-incl\-\_\-dirs} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a5c1ad0dd8b61a07185f3e77b9912fad6}{veripy.\-package\-\_\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+int \hyperlink{namespaceveripy_ad4429b3a6163a9c588ca2433f0831fa1}{veripy.\-group\-\_\-ios\-\_\-on\-\_\-dir} = 1
+\item 
+int \hyperlink{namespaceveripy_add6f0c3ebf250f985c69973dd91397c2}{veripy.\-sort\-\_\-ios} = 0
+\item 
+int \hyperlink{namespaceveripy_a5d3c8544e0b626679631fadceac2ccb8}{veripy.\-parse\-\_\-generate} = 1
+\item 
+int \hyperlink{namespaceveripy_a69c679478700bfe8e617efd46659b04b}{veripy.\-generate\-\_\-stub} = 0
+\item 
+int \hyperlink{namespaceveripy_aeed0f7abed041e5ca9bbf9eba4a24416}{veripy.\-generate\-\_\-stub\-\_\-z} = 0
+\item 
+int \hyperlink{namespaceveripy_a4629f2bdb1a9239da0eb7ef127e1e48d}{veripy.\-generate\-\_\-stub\-\_\-0} = 0
+\item 
+int \hyperlink{namespaceveripy_ad9424faeeafd0573d461ca2eb5305c91}{veripy.\-found\-\_\-error} = 0
+\item 
+list \hyperlink{namespaceveripy_ad9b4c40dc5027b1736989cbf60b1d8b7}{veripy.\-hash\-\_\-define\-\_\-vars} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_ad46b6d39594cb67313a7af41ad69d489}{veripy.\-hash\-\_\-define\-\_\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+dictionary \hyperlink{namespaceveripy_aa9f520efe95ce8cdbd3fbe0ce8ef3aca}{veripy.\-stub\-\_\-override\-\_\-val} = \{\}
+\begin{DoxyCompactList}\small\item\em Loading hash define variables. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceveripy_ae6605e6272b7db04b7d3ea58595fdd10}{veripy.\-clock} = \char`\"{}clk\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a65e6d335aa5902f4a18967da2aca2e20}{veripy.\-async\-\_\-reset} = \char`\"{}arst\-\_\-n\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a010f1413a986d15ce37b5d2cb4170578}{veripy.\-sync\-\_\-reset} = \char`\"{}rst\-\_\-n\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_abd4a1cb335c94ddd87dca9c75dacce37}{veripy.\-reset\-\_\-type} = \char`\"{}A\-S\-Y\-N\-C\char`\"{}
+\item 
+tuple \hyperlink{namespaceveripy_a72fa9052a62ff431aca57cfc30c24cf5}{veripy.\-parser}
+\begin{DoxyCompactList}\small\item\em Command line arguments processing. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceveripy_af8a33045ea5c3ce576ddaf55a5ff3c8f}{veripy.\-default} = 'systemverilog'
+\item 
+string \hyperlink{namespaceveripy_a31b5807026890520c5308ce732ed4b9e}{veripy.\-help}
+\item 
+string \hyperlink{namespaceveripy_ab5498e8a8340e80959241b4ca4ba5dc5}{veripy.\-dest} = 'output\-\_\-file'
+\item 
+tuple \hyperlink{namespaceveripy_ad6c4cf7e3033a574cb4412b464af3966}{veripy.\-cmdline} = parser.\-parse\-\_\-args()
+\item 
+\hyperlink{namespaceveripy_af4fff95eb237e9d797e670d3c1a94b61}{veripy.\-in\-\_\-file} = cmdline.\-positional
+\item 
+\hyperlink{namespaceveripy_acf3a579572b494d5b9d6ec35c9df7688}{veripy.\-output\-\_\-file} = cmdline.\-output\-\_\-file
+\item 
+\hyperlink{namespaceveripy_a375e1799aa8688667cbbc85190d8f362}{veripy.\-destination\-\_\-dir} = cmdline.\-destination\-\_\-dir
+\item 
+\hyperlink{namespaceveripy_ab788939628a978e809745e050df2e8b6}{veripy.\-interface\-\_\-spec\-\_\-files} = cmdline.\-intf\-\_\-specs
+\item 
+\hyperlink{namespaceveripy_a60752cd883c2e6bcead5142e8c8b33c6}{veripy.\-interface\-\_\-def\-\_\-files} = cmdline.\-intf\-\_\-defs
+\item 
+\hyperlink{namespaceveripy_ab56a15afcf8acd3e32e33fbb4cea7765}{veripy.\-module\-\_\-def\-\_\-files} = cmdline.\-mod\-\_\-defs
+\item 
+list \hyperlink{namespaceveripy_ab7b6cf37a53cdc1b33b264beff792b41}{veripy.\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_afcb1d5102cf817e349a771a7df45f78e}{veripy.\-python\-\_\-files} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a960ab18337782696026b9181761b16db}{veripy.\-file\-\_\-lists} = \mbox{[}$\,$\mbox{]}
+\item 
+\hyperlink{namespaceveripy_aaa42df7d9bf399b8f41b39fd8e0d35ea}{veripy.\-verilog\-\_\-define\-\_\-files} = cmdline.\-verilog\-\_\-define\-\_\-files
+\item 
+\hyperlink{namespaceveripy_a18bec95d0fbc7d055d8eccf5f9d04060}{veripy.\-gen\-\_\-dependencies} = cmdline.\-generate\-\_\-dependancies
+\item 
+\hyperlink{namespaceveripy_a02329512579947b4e050bedace3bc009}{veripy.\-auto\-\_\-package\-\_\-load} = cmdline.\-auto\-\_\-package\-\_\-load
+\item 
+\hyperlink{namespaceveripy_a8b88691a75f930c9c74bc8e53e4a3ae7}{veripy.\-generate\-\_\-filelist} = cmdline.\-generate\-\_\-filelist
+\item 
+\hyperlink{namespaceveripy_acb8d40a5e53e8dfb03b5cc54272b1798}{veripy.\-disable\-\_\-tick\-\_\-ifdefs} = cmdline.\-disable\-\_\-tick\-\_\-ifdefs
+\item 
+tuple \hyperlink{namespaceveripy_aa41cbf123e5f09c0db694b12b8babbad}{veripy.\-dbg\-\_\-file} = open(debug\-\_\-file + \char`\"{}.write\char`\"{}, 'w')
+\item 
+tuple \hyperlink{namespaceveripy_a1d45ff3e325dfaf68117ad7247341056}{veripy.\-filelist} = set()
+\begin{DoxyCompactList}\small\item\em Gatering all the files in the files list. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a19f042b78eb1792546d8fa9c3bf497c0}{veripy.\-list\-\_\-file} = list()
+\item 
+tuple \hyperlink{namespaceveripy_a6f22577aabdde3d295a3441ce0537364}{veripy.\-lline} = c\-\_\-file.\-rstrip('\textbackslash{}n')
+\item 
+tuple \hyperlink{namespaceveripy_aeec698b4635f08372de56311378d1526}{veripy.\-c\-\_\-file} = c\-\_\-file.\-rstrip()
+\item 
+tuple \hyperlink{namespaceveripy_af2b6d56f745ddde0e41f187cb2bfdf6b}{veripy.\-c\-\_\-filepath} = os.\-path.\-expandvars(c\-\_\-file)
+\item 
+tuple \hyperlink{namespaceveripy_a608d33395d3b79244c5869f6a0f081c6}{veripy.\-data} = re.\-sub(r'-\/f ', r'', c\-\_\-filepath)
+\item 
+tuple \hyperlink{namespaceveripy_acd1090fc8e7408283bb12a2ff26d2750}{veripy.\-a} = recursive\-\_\-filelist(data)
+\item 
+tuple \hyperlink{namespaceveripy_a84ae1500ccef716a1a09a99a0e3711ec}{veripy.\-in\-\_\-file\-\_\-name} = re.\-sub(r'.$\ast$\textbackslash{}/', r'', in\-\_\-file)
+\begin{DoxyCompactList}\small\item\em if no input file, then error out \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_aa088bc1dbe01082dd4220120602b06a5}{veripy.\-split\-\_\-arr} = in\-\_\-file.\-split(\char`\"{}.\char`\"{})
+\begin{DoxyCompactList}\small\item\em If no output file passed in command line, then outfile name is derived. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a6cf4d136450ca28b0d58dc5317ba74eb}{veripy.\-module\-\_\-name} = split\-\_\-arr\mbox{[}0\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_aa6ea69d7177eeedc80f2e1c1ff8b00f6}{veripy.\-output\-\_\-list} = re.\-sub(r'\textbackslash{}.sv\$', r'.f', output\-\_\-file)
+\item 
+string \hyperlink{namespaceveripy_afad07aa9410aaa39c3a55e59c48c67d2}{veripy.\-temporary\-\_\-file} = in\-\_\-file+\char`\"{}.expanded\char`\"{}
+\begin{DoxyCompactList}\small\item\em Error out if input file does not exist. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ae63271cecab2d5e49fee340d8d7f79e5}{veripy.\-f} = open(c\-\_\-py\-\_\-file, 'r')
+\begin{DoxyCompactList}\small\item\em Loading python files if any. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a1f71748b181889d37c2cfcf786822fef}{veripy.\-i\-\_\-codegen}
+\begin{DoxyCompactList}\small\item\em \subsection*{Step\-: 1 }
+
+Parse \#ifdef and work on only enabled code Expand embedded python code output \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_ac8745bd52ea5cd5e91036dc31970af88}{veripy.\-parse\-\_\-lines} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a3c84020f008e06bdb41e3f89811b8fc5}{veripy.\-temp\-\_\-file} = open(temporary\-\_\-file, 'w')
+\begin{DoxyCompactList}\small\item\em Wrting out temporary\-\_\-file for debug T\-O\-D\-O\-: Need to enable dumping when error or debug mode enabled. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a3cf9cf94513841f0d65d3081b08a55cc}{veripy.\-line} = line.\-rstrip()
+\item 
+tuple \hyperlink{namespaceveripy_ae26f09689713ff31ecbd1cc41f4d89e5}{veripy.\-i\-\_\-verilog\-\_\-parser}
+\begin{DoxyCompactList}\small\item\em Creating verilog\-\_\-parser object to parse the generated code. \end{DoxyCompactList}\item 
+dictionary \hyperlink{namespaceveripy_aebe879fba9bff8cd21ceb4e0ed71cfbd}{veripy.\-dependencies} = \{\}
+\item 
+\hyperlink{namespaceveripy_a31f321b7a4d58971598311ec1e9d65d5}{veripy.\-regs} = i\-\_\-verilog\-\_\-parser.\-regs
+\item 
+\hyperlink{namespaceveripy_a830a9b7ff5ad16c99be1ec8926435b58}{veripy.\-wires} = i\-\_\-verilog\-\_\-parser.\-wires
+\item 
+\hyperlink{namespaceveripy_af405930307c7e7f4310d7b720cf3c608}{veripy.\-signals} = i\-\_\-verilog\-\_\-parser.\-signals
+\item 
+\hyperlink{namespaceveripy_ad0eff554700802b50170079f6544c06d}{veripy.\-ports} = i\-\_\-verilog\-\_\-parser.\-ports
+\item 
+\hyperlink{namespaceveripy_a71e44f2f7882785c63f3a572b2d1dc95}{veripy.\-typedef\-\_\-structs} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-structs
+\item 
+\hyperlink{namespaceveripy_a20ec0a39494208c8aad3119964661091}{veripy.\-typedef\-\_\-unions} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-unions
+\item 
+\hyperlink{namespaceveripy_abc6a77d9ee05e424592ceb571f2b4dae}{veripy.\-typedef\-\_\-logics} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-logics
+\item 
+\hyperlink{namespaceveripy_a680f37dc5088c673d909d0871aa4d9a1}{veripy.\-typedef\-\_\-bindings} = i\-\_\-verilog\-\_\-parser.\-typedef\-\_\-bindings
+\item 
+\hyperlink{namespaceveripy_a2c9a3299c6e29cd2d14411235ab6e41c}{veripy.\-functions\-\_\-list} = i\-\_\-verilog\-\_\-parser.\-functions\-\_\-list
+\item 
+\hyperlink{namespaceveripy_ab652869357ad8a97cd180a20659d3647}{veripy.\-params} = i\-\_\-verilog\-\_\-parser.\-params
+\item 
+\hyperlink{namespaceveripy_a2b7f6e748a1166c9272af6cc49f384bb}{veripy.\-sub\-\_\-inst\-\_\-ports} = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-ports
+\item 
+\hyperlink{namespaceveripy_a3d4e4d7b77fb2b4b84c418a101755e7c}{veripy.\-sub\-\_\-inst\-\_\-params} = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-params
+\item 
+\hyperlink{namespaceveripy_aaa9e0a3d2b05e047d295ee78848b3a89}{veripy.\-tick\-\_\-defines} = i\-\_\-verilog\-\_\-parser.\-tick\-\_\-defines
+\item 
+\hyperlink{namespaceveripy_aed29c63170d881d76a0845d94c3d6bdd}{veripy.\-auto\-\_\-reset\-\_\-data} = i\-\_\-verilog\-\_\-parser.\-auto\-\_\-reset\-\_\-data
+\item 
+\hyperlink{namespaceveripy_aa1d344d5e238d367dcaf3acb91dbcc6d}{veripy.\-force\-\_\-internals} = i\-\_\-verilog\-\_\-parser.\-force\-\_\-internals
+\item 
+\hyperlink{namespaceveripy_a807b041df84d51d3d521d3bef8fd0caa}{veripy.\-force\-\_\-widths} = i\-\_\-verilog\-\_\-parser.\-force\-\_\-widths
+\item 
+\hyperlink{namespaceveripy_a99c42ac13d96eb9d80f354e2a1e05c56}{veripy.\-module\-\_\-found} = i\-\_\-verilog\-\_\-parser.\-module\-\_\-found
+\item 
+\hyperlink{namespaceveripy_ad28afa9505ad0efeb718337fc56e525b}{veripy.\-module\-\_\-param\-\_\-line} = i\-\_\-verilog\-\_\-parser.\-module\-\_\-param\-\_\-line
+\item 
+\hyperlink{namespaceveripy_a0adf40cf6c1ebe154b70e8dc46889228}{veripy.\-sub\-\_\-inst\-\_\-files} = i\-\_\-verilog\-\_\-parser.\-sub\-\_\-inst\-\_\-files
+\item 
+\hyperlink{namespaceveripy_abb8af7474ba6f1fe4499f0baf5e6c9da}{veripy.\-pkg2assign\-\_\-info} = i\-\_\-verilog\-\_\-parser.\-pkg2assign\-\_\-info
+\item 
+\hyperlink{namespaceveripy_a95394440df7568c06df836060d2c1f5e}{veripy.\-assign2pkg\-\_\-info} = i\-\_\-verilog\-\_\-parser.\-assign2pkg\-\_\-info
+\item 
+\hyperlink{namespaceveripy_a9a896686fd9fe466ad77dc1090ca93aa}{veripy.\-manual\-\_\-ports} = i\-\_\-verilog\-\_\-parser.\-manual\-\_\-ports
+\item 
+int \hyperlink{namespaceveripy_ad519db7b0f685cc6c804c7ecc3bc02b5}{veripy.\-pkg2assign\-\_\-index} = 0
+\item 
+int \hyperlink{namespaceveripy_ae065d2f646ed5d1156a25bb21084cbd6}{veripy.\-assign2pkg\-\_\-index} = 0
+\item 
+tuple \hyperlink{namespaceveripy_a680636d6f9937fd2b1957fd55a5389b8}{veripy.\-out\-\_\-file} = open(output\-\_\-file, 'w')
+\item 
+tuple \hyperlink{namespaceveripy_ab36a4deea02c6b2d407e6896250e385c}{veripy.\-reg\-\_\-bitdef\-\_\-colon\-\_\-regex}
+\begin{DoxyCompactList}\small\item\em Printing all the gathered registers. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a4eec11a6d141b0afa891ea1ebd3c48ed}{veripy.\-signal\-\_\-bitdef\-\_\-colon\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_aa33d8fd3035f8d40742a86cdcabd1507}{veripy.\-wire\-\_\-bitdef\-\_\-colon\-\_\-regex}
+\item 
+int \hyperlink{namespaceveripy_ad2d051929b4f3a74a076b081dddd2c84}{veripy.\-signal\-\_\-found} = 0
+\begin{DoxyCompactList}\small\item\em Checking all the signals with regs and wires and update input ports. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ad5d479254f68163a413f993072a21670}{veripy.\-c\-\_\-internal} = re.\-sub(r';', r'', c\-\_\-internal)
+\begin{DoxyCompactList}\small\item\em Applying any force internal commands. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a06e433e8b950a487545be60f952e0667}{veripy.\-force\-\_\-internal\-\_\-slash\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H, c\-\_\-internal)
+\item 
+tuple \hyperlink{namespaceveripy_a5e677540fde9f9052f3c7c5a7d12243c}{veripy.\-regex\-\_\-width} = force\-\_\-internal\-\_\-slash\-\_\-regex.\-group(1)
+\item 
+tuple \hyperlink{namespaceveripy_a92e4c231594631dc5b0b3fa84f28c05d}{veripy.\-R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-R\-E\-G\-E\-X} = re.\-compile(regex\-\_\-width)
+\item 
+int \hyperlink{namespaceveripy_a36080b835363b2f49375da1d2031699d}{veripy.\-match\-\_\-found} = 0
+\item 
+tuple \hyperlink{namespaceveripy_a7abce416f31880ab21237252118fad96}{veripy.\-c\-\_\-width} = re.\-sub(r';', r'', c\-\_\-width)
+\begin{DoxyCompactList}\small\item\em Applying any force width commands. \end{DoxyCompactList}\item 
+string \hyperlink{namespaceveripy_a9822bb2309876404c811435995f2d238}{veripy.\-force\-\_\-bitdef} = \char`\"{}\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_abb92d8c13117ba4c4421ceb0de1dc6b8}{veripy.\-force\-\_\-uwdith} = \char`\"{}\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_af4d2239bb757aeee622c2066f0d4b766}{veripy.\-force\-\_\-lwdith} = \char`\"{}\char`\"{}
+\item 
+tuple \hyperlink{namespaceveripy_a13b3bfca586edc9ccb7a76161973958d}{veripy.\-force\-\_\-width\-\_\-split} = c\-\_\-width.\-split(\char`\"{} \char`\"{})
+\item 
+list \hyperlink{namespaceveripy_a562ab1159e6bb9e14c42054833922dba}{veripy.\-force\-\_\-name} = force\-\_\-width\-\_\-split\mbox{[}0\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a16214fafff2c0c57bf66e31585f5d744}{veripy.\-force\-\_\-width} = force\-\_\-width\-\_\-split\mbox{[}1\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_af5cff4136cdf82435499ac37785ac957}{veripy.\-width\-\_\-numbers\-\_\-regex} = re.\-search(R\-E\-\_\-\-N\-U\-M\-B\-E\-R\-S, force\-\_\-width)
+\item 
+tuple \hyperlink{namespaceveripy_a60a97a619c71da8223604f1b12408d8f}{veripy.\-force\-\_\-width\-\_\-val}
+\item 
+tuple \hyperlink{namespaceveripy_a030728d416c89f9e49833da5a3a36e8f}{veripy.\-force\-\_\-width\-\_\-slash\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H, force\-\_\-name)
+\item 
+int \hyperlink{namespaceveripy_acebf2b0050dc39a37718a8ef927abc7c}{veripy.\-skip\-\_\-auto\-\_\-reset\-\_\-line} = 0
+\begin{DoxyCompactList}\small\item\em Remove if port is duplicated in wire/regs/signals. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceveripy_ab3ef77cc1c1bb3b758841e9926029532}{veripy.\-remove\-\_\-reset\-\_\-val} = 0
+\item 
+int \hyperlink{namespaceveripy_a796e24d0f42e97113536ef5675583aa3}{veripy.\-auto\-\_\-reset\-\_\-index} = 0
+\item 
+string \hyperlink{namespaceveripy_af6d3a3b592e0e9621179105b392ab262}{veripy.\-gendrive\-\_\-space} = \char`\"{}\char`\"{}
+\item 
+int \hyperlink{namespaceveripy_a3a1edb61e3fbeca505c17ea042672337}{veripy.\-line\-\_\-no} = 0
+\item 
+int \hyperlink{namespaceveripy_a62ad587d407c4f9be0fe319a908afcc9}{veripy.\-block\-\_\-comment} = 0
+\item 
+int \hyperlink{namespaceveripy_a9592e23a9639a28b61167a30ba6930c3}{veripy.\-look\-\_\-for\-\_\-instance\-\_\-cmds} = 0
+\item 
+int \hyperlink{namespaceveripy_a3ba39ef01b3512b93ff8c35da72555c3}{veripy.\-endmodule\-\_\-found} = 0
+\item 
+int \hyperlink{namespaceveripy_aa38fc4edf33670a01086cbc8d7aca1f8}{veripy.\-generate\-\_\-endmodule} = 0
+\item 
+int \hyperlink{namespaceveripy_a90f28d0208574d62b946c16a42d85318}{veripy.\-gather\-\_\-till\-\_\-semicolon} = 0
+\item 
+string \hyperlink{namespaceveripy_a716a6e8cf97f3b8c4bc93680674397cd}{veripy.\-prev\-\_\-line} = \char`\"{}\char`\"{}
+\begin{DoxyCompactList}\small\item\em Print all other lines. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceveripy_aacb0f311e69b18de8f0222b583ca9d33}{veripy.\-doing\-\_\-python} = 0
+\item 
+\hyperlink{namespaceveripy_ab15a6bb1f76d3b0db1c63066479489eb}{veripy.\-original\-\_\-line} = line
+\item 
+\hyperlink{namespaceveripy_abcadaeae6f3a929e198c9d9255100a7d}{veripy.\-block\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex} = \textbackslash{}
+\begin{DoxyCompactList}\small\item\em Block comment skip. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_af8e07ad7fa073c970f410a7740e03386}{veripy.\-block\-\_\-comment\-\_\-begin\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-B\-E\-G\-I\-N, line)
+\item 
+tuple \hyperlink{namespaceveripy_aa1db3e87be026e6684d07c823dfa6e99}{veripy.\-block\-\_\-comment\-\_\-end\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-E\-N\-D, line)
+\item 
+tuple \hyperlink{namespaceveripy_a20dab80a7e8e079a2d6d78c4dc51b972}{veripy.\-semicolon\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-E\-M\-I\-C\-O\-L\-O\-N, line)
+\item 
+tuple \hyperlink{namespaceveripy_a502cf9f0ccd059abedb0a0e98d783d56}{veripy.\-gendrivez\-\_\-verilog\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z\-\_\-\-V\-E\-R\-I\-L\-O\-G, line)
+\begin{DoxyCompactList}\small\item\em Stub generation from a verilog file where commands are commented out. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a8d38e767dc483e41e1e69ef6e81b514f}{veripy.\-gendrive0\-\_\-verilog\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-\_\-\-V\-E\-R\-I\-L\-O\-G, line)
+\item 
+tuple \hyperlink{namespaceveripy_a59d33ef53803dc897114e47da6616883}{veripy.\-gendrive0andz\-\_\-verilog\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_a842c59e3665a101ff8d4813809eae3ff}{veripy.\-print\-\_\-line} = gendrivez\-\_\-verilog\-\_\-regex.\-group(1)
+\item 
+\hyperlink{namespaceveripy_a314fe1312fbb83c74fb29a23eb5dd7b2}{veripy.\-single\-\_\-comment\-\_\-begin\-\_\-start\-\_\-regex} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_ac72c2df33623add620128261218cd038}{veripy.\-original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex}
+\begin{DoxyCompactList}\small\item\em Declare module definition if its called. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a3816a72d0c349d678a422f19923a5266}{veripy.\-original\-\_\-module\-\_\-space\-\_\-regex} = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E, original\-\_\-line)
+\item 
+tuple \hyperlink{namespaceveripy_a854da7683905a3b5cbf73256a6be33b4}{veripy.\-module\-\_\-def\-\_\-space\-\_\-regex} = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F\-\_\-\-S\-P\-A\-C\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_ae0aec319e1f286eaeeb8ec758137f7a9}{veripy.\-module\-\_\-space\-\_\-regex} = re.\-search(R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_ae247f78446c024b1e35787cb67a44b2b}{veripy.\-begin\-\_\-space} = original\-\_\-module\-\_\-def\-\_\-space\-\_\-regex.\-group(1)
+\item 
+tuple \hyperlink{namespaceveripy_afea06b60383bdad409732711cafd8d5e}{veripy.\-ampersand\-\_\-line} = re.\-sub(r'\&', r'//\&', original\-\_\-line, 1)
+\item 
+tuple \hyperlink{namespaceveripy_a1185ea61fff03e646c641f6d6caf3bdb}{veripy.\-begin\-\_\-space\-\_\-regex}
+\item 
+int \hyperlink{namespaceveripy_a1ee51ba6e57cf9cc093a45eefcdb032e}{veripy.\-ii} = 1
+\item 
+list \hyperlink{namespaceveripy_a99fccb7245b05a502fd01a6cd7ed1c22}{veripy.\-port\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a1d80c92b030a306a025b82c2f229acac}{veripy.\-in\-\_\-port\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a2aa010b557e59bc1d12efd8479d6a242}{veripy.\-out\-\_\-port\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_ac40d1f9532d5dad37c9e4457b28b8298}{veripy.\-ports\-\_\-list} = sorted(ports.\-keys())
+\item 
+list \hyperlink{namespaceveripy_aa17b83309ed85682ee4b3d4da58a9bfc}{veripy.\-c\-\_\-port\-\_\-dir} = ports\mbox{[}c\-\_\-port\mbox{]}
+\item 
+\hyperlink{namespaceveripy_aead00c96f8f701052f787bc35a89ca39}{veripy.\-c\-\_\-port\-\_\-name} = c\-\_\-port
+\item 
+string \hyperlink{namespaceveripy_a80b7caf2bd3933ac6f3120703f632f77}{veripy.\-c\-\_\-port\-\_\-declare\-\_\-type} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a9505272117cc42bae0838d650df825ed}{veripy.\-c\-\_\-port\-\_\-bitdef} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a60d320c655f8b7e2bb3e3169045d9948}{veripy.\-c\-\_\-port\-\_\-signed} = \char`\"{}\#\char`\"{}
+\item 
+int \hyperlink{namespaceveripy_aef466e074087c0147f0f1fc1d73aa1ab}{veripy.\-bitdef\-\_\-has\-\_\-typedef} = 0
+\item 
+string \hyperlink{namespaceveripy_aee62390a4a6359636a358bf40e73d4f0}{veripy.\-bitdef\-\_\-typedef} = \char`\"{}\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a9213d8895de6b2b39f567f688a696762}{veripy.\-curr\-\_\-bitdef\-\_\-package} = \char`\"{}default\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a63f627df880e333c4aa052dcaf2cce59}{veripy.\-curr\-\_\-bitdef\-\_\-class} = \char`\"{}default\char`\"{}
+\item 
+\hyperlink{namespaceveripy_abbda04be83c86eaa60a0e18caace1444}{veripy.\-curr\-\_\-bitdef\-\_\-typedef\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_afec338099217bb624d104ae82fa12569}{veripy.\-curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_af012741317b6a900adf187c07021b594}{veripy.\-curr\-\_\-bitdef\-\_\-typedef\-\_\-double\-\_\-double\-\_\-regex} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_aee8dfa1620d81a57b55d941b6bc353e9}{veripy.\-module\-\_\-param\-\_\-line\-\_\-array} = module\-\_\-param\-\_\-line.\-split(\char`\"{},\char`\"{})
+\item 
+tuple \hyperlink{namespaceveripy_a7dd3d81c188bf962f2192d44030c6c2f}{veripy.\-module\-\_\-param\-\_\-line\-\_\-array\-\_\-len} = len(module\-\_\-param\-\_\-line\-\_\-array)
+\item 
+int \hyperlink{namespaceveripy_a980086a5e8762e72c5a2804ac1901c71}{veripy.\-param\-\_\-line\-\_\-no} = 1
+\item 
+tuple \hyperlink{namespaceveripy_a1a9f35e27689bee768d00ee633d9b263}{veripy.\-num\-\_\-ports} = len(port\-\_\-declarations)
+\item 
+tuple \hyperlink{namespaceveripy_a6bbb38d63d1a7dca8d7fe54bfcd9e40e}{veripy.\-ports\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-O\-R\-T\-S, original\-\_\-line)
+\begin{DoxyCompactList}\small\item\em Declare ports definition if its called. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ad074898a0ed151cd31c981e01863e64b}{veripy.\-port\-\_\-declarations\-\_\-size} = len(port\-\_\-declarations)
+\item 
+int \hyperlink{namespaceveripy_ac0090bfe22807ee67cf30a98d6996df7}{veripy.\-c\-\_\-port\-\_\-index} = 1
+\item 
+tuple \hyperlink{namespaceveripy_a115fffb30dfd5bc7abf758cd49319c4b}{veripy.\-regs\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-E\-G\-S, original\-\_\-line)
+\begin{DoxyCompactList}\small\item\em Declare regs/logic definition if its called. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ae0b7b329f168ad945a5a19f369c6c1a3}{veripy.\-logics\-\_\-regex} = re.\-search(R\-E\-\_\-\-L\-O\-G\-I\-C\-S, original\-\_\-line)
+\item 
+list \hyperlink{namespaceveripy_a8e6f82dc889c14d2c0a5f7eff6fa3e5b}{veripy.\-reg\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_aa819d294a75b937f82b683bc7b600ce5}{veripy.\-binding\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+string \hyperlink{namespaceveripy_a28beb86ef22e1797f2a263e0b7bde37e}{veripy.\-c\-\_\-reg\-\_\-type} = \char`\"{}reg\char`\"{}
+\item 
+\hyperlink{namespaceveripy_afaf13bf78939e59406822568cf5b0a89}{veripy.\-c\-\_\-reg\-\_\-name} = c\-\_\-reg
+\item 
+string \hyperlink{namespaceveripy_a340fd491db72cef85a27ed7d34825e2f}{veripy.\-c\-\_\-reg\-\_\-signed} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_aac1a795f2897a14f50b950dbc2cfa757}{veripy.\-c\-\_\-reg\-\_\-declare\-\_\-type} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a2f11355e71ca5cd6780e85c1e9391a42}{veripy.\-c\-\_\-reg\-\_\-bitdef} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_ae01bdc8e4c1dee6732155756ad5a4cf2}{veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-pkg} = \char`\"{}default\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_af15cb34afe7b4fe3faef8366db34a0a7}{veripy.\-c\-\_\-reg\-\_\-bitdef\-\_\-class} = \char`\"{}default\char`\"{}
+\item 
+\hyperlink{namespaceveripy_a4f676e8fb961627ab4608279f315bf91}{veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a6ed1b232cf9fe15b7d975bb69a7c3ff1}{veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dub\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a77d24d587b4bdcae0ae2a67c8bcf5849}{veripy.\-c\-\_\-reg\-\_\-bdef\-\_\-tdef\-\_\-dubdub\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a9f51ca42dc7f2f54aba501a90f9d804f}{veripy.\-packed\-\_\-bitdef} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_a7f5cee93cf9ba15ed101dff1c5c85a2b}{veripy.\-wires\-\_\-regex} = re.\-search(R\-E\-\_\-\-W\-I\-R\-E\-S, line)
+\begin{DoxyCompactList}\small\item\em Declare wires definition if its called. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a1bf7781cecfa001f9a1c00ad44cb8f59}{veripy.\-wire\-\_\-declarations} = \mbox{[}$\,$\mbox{]}
+\item 
+string \hyperlink{namespaceveripy_a2f7c80ddc952aaaf80ea6413c4d397d5}{veripy.\-c\-\_\-wire\-\_\-type} = \char`\"{}wire\char`\"{}
+\item 
+\hyperlink{namespaceveripy_a7a0ef7d57ddc5b071192307405e285a8}{veripy.\-c\-\_\-wire\-\_\-name} = c\-\_\-wire
+\item 
+string \hyperlink{namespaceveripy_ad604c034cbcf22f36b69ac71bc8d0706}{veripy.\-c\-\_\-wire\-\_\-signed} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_ad71d972cd14cafa486e30a6fea57dd35}{veripy.\-c\-\_\-wire\-\_\-declare\-\_\-type} = \char`\"{}\#\char`\"{}
+\item 
+string \hyperlink{namespaceveripy_a377a5b0657c1d4221cb91341adfdfe0e}{veripy.\-c\-\_\-wire\-\_\-bitdef} = \char`\"{}\#\char`\"{}
+\item 
+tuple \hyperlink{namespaceveripy_a182e7c6ae2aef981c047222e8d1c879a}{veripy.\-post\-\_\-python\-\_\-begin\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-B\-E\-G\-I\-N, line)
+\begin{DoxyCompactList}\small\item\em Post Embedded python script processing. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a62ec90ed0de88469b45538484946a5b7}{veripy.\-post\-\_\-python\-\_\-end\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-E\-N\-D, line)
+\item 
+tuple \hyperlink{namespaceveripy_ac27b8dbb034afa7793ce50076e0b68e3}{veripy.\-begin\-\_\-python\-\_\-space} = post\-\_\-python\-\_\-begin\-\_\-regex.\-group(1)
+\item 
+string \hyperlink{namespaceveripy_a08971c7a0053dfc5c58e4e443ce24122}{veripy.\-code\-\_\-block} = ''
+\item 
+tuple \hyperlink{namespaceveripy_a1767132c455069ae2f3d3eecfe441abd}{veripy.\-comment\-\_\-indent} = post\-\_\-python\-\_\-begin\-\_\-regex.\-group(1)
+\item 
+\hyperlink{namespaceveripy_a4fdf3a6b0a5f3ab656eb7e0bb38322de}{veripy.\-stdout\-\_\-} = sys.\-stdout
+\item 
+tuple \hyperlink{namespaceveripy_a5ab193beb474f15a242fa9d804d0ccb6}{veripy.\-stream} = io.\-String\-I\-O()
+\item 
+tuple \hyperlink{namespaceveripy_a3e3da32ab1aa18c45596c75506718d23}{veripy.\-exec\-\_\-data} = stream.\-getvalue()
+\item 
+tuple \hyperlink{namespaceveripy_ab6310f745bd0a9df4e151b1e5dede66f}{veripy.\-exec\-\_\-data\-\_\-array} = exec\-\_\-data.\-split('\textbackslash{}n')
+\item 
+tuple \hyperlink{namespaceveripy_a10641579d50981ec799455035259addc}{veripy.\-dum} = re.\-sub(r\char`\"{}$^\wedge$(\char`\"{} + comment\-\_\-indent + r\char`\"{})\char`\"{}, r'', line)
+\item 
+tuple \hyperlink{namespaceveripy_ae4bac0ac3bb653fb2c6ccacc770d05f6}{veripy.\-begininstance\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-E\-G\-I\-N\-I\-N\-S\-T\-A\-N\-C\-E, line)
+\begin{DoxyCompactList}\small\item\em Declare module instantiation. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_ace16773ac50b8685d48f7b5c063e3c18}{veripy.\-endinstance\-\_\-regex} = re.\-search(R\-E\-\_\-\-E\-N\-D\-I\-N\-S\-T\-A\-N\-C\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_a7f1757c2a06b63c4d45e1943eebdce18}{veripy.\-buildcommand\-\_\-regex} = re.\-search(R\-E\-\_\-\-B\-U\-I\-L\-D\-\_\-\-C\-O\-M\-M\-A\-N\-D, line)
+\item 
+tuple \hyperlink{namespaceveripy_a67e40ea20ac72f86e578403f7e1e3e22}{veripy.\-include\-\_\-regex} = re.\-search(R\-E\-\_\-\-I\-N\-C\-L\-U\-D\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_a4270387eaf219f4390fc832df8e279d4}{veripy.\-param\-\_\-override\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-A\-R\-A\-M\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_aa1760ba945c51eae52f028d1bbbd7fc1}{veripy.\-connect\-\_\-regex} = re.\-search(R\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T, line)
+\item 
+tuple \hyperlink{namespaceveripy_a872a1b904cb01bc1072ed8e34f3c468d}{veripy.\-begininstance\-\_\-space} = begininstance\-\_\-regex.\-group(1)
+\item 
+tuple \hyperlink{namespaceveripy_a0a3f7bc90b80f1eccaf884f40317af5c}{veripy.\-begininstance\-\_\-info} = begininstance\-\_\-regex.\-group(2)
+\item 
+tuple \hyperlink{namespaceveripy_a7b3d5c606eddfcb4f4e7e1d6c01fac6b}{veripy.\-begininstance\-\_\-info\-\_\-array} = begininstance\-\_\-info.\-split(\char`\"{} \char`\"{})
+\item 
+list \hyperlink{namespaceveripy_ad4f69029876b9bb2e6cb769770e15fd4}{veripy.\-submod\-\_\-name} = begininstance\-\_\-info\-\_\-array\mbox{[}0\mbox{]}
+\item 
+list \hyperlink{namespaceveripy_a7d88d1a02b6ed2027a623447589c4fcd}{veripy.\-inst\-\_\-name} = begininstance\-\_\-info\-\_\-array\mbox{[}1\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a5d77e0ab80b227fb0d6ea69a873da94c}{veripy.\-inst\-\_\-path}
+\item 
+string \hyperlink{namespaceveripy_a8f89f48fcf9323bd5bb9de7d5656a783}{veripy.\-inst\-\_\-line} = begininstance\-\_\-space+\char`\"{}//F\-I\-L\-E\-: \char`\"{}
+\begin{DoxyCompactList}\small\item\em Instantiating a submodule. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a1be2f445d115897ce46823d58aff90c6}{veripy.\-inst\-\_\-array} = \mbox{[}$\,$\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a72b25fc3b125307dcf8fff0f983bea47}{veripy.\-array\-\_\-size} = len(sub\-\_\-inst\-\_\-params\mbox{[}inst\-\_\-name\mbox{]})
+\item 
+tuple \hyperlink{namespaceveripy_a6b7c63fe728396ebc9152876b49a06d0}{veripy.\-topname\-\_\-sqbrct\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_a3b0f5f7cc0eeac48c1b8c8ca764faf0b}{veripy.\-sqbrct\-\_\-2d\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_aef963574b2302ef9e877156896ba492c}{veripy.\-double\-\_\-colon\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_a296a71c1d954e9620e163178151f0a5f}{veripy.\-clock\-\_\-regex} = re.\-search(R\-E\-\_\-\-C\-L\-O\-C\-K, line)
+\begin{DoxyCompactList}\small\item\em \&Posedge, \&Negedge, \&Clock, \&Sync\-Reset and \&Asyncreset \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_aabfe96ccfbd96d91208eb10df3fad611}{veripy.\-asyncreset\-\_\-regex} = re.\-search(R\-E\-\_\-\-A\-S\-Y\-N\-C\-R\-E\-S\-E\-T, line)
+\item 
+tuple \hyperlink{namespaceveripy_a69ba54ab5fdc8fc7d6575a37675bdb8d}{veripy.\-syncreset\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-Y\-N\-C\-R\-E\-S\-E\-T, line)
+\item 
+tuple \hyperlink{namespaceveripy_a539ac3ffa8c747bee3236b8735881ca3}{veripy.\-posedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-P\-O\-S\-E\-D\-G\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_a73d80450abbdcabc03a0ff6e4fbd5d48}{veripy.\-negedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-N\-E\-G\-E\-D\-G\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_a756720df8d8fb83c52d7838e312cbb53}{veripy.\-auto\-\_\-reset\-\_\-space} = posedge\-\_\-regex.\-group(1)
+\item 
+list \hyperlink{namespaceveripy_a0b2d8a820c3d794138a0f30fe95f2617}{veripy.\-reset\-\_\-val} = auto\-\_\-reset\-\_\-data\mbox{[}auto\-\_\-reset\-\_\-index\mbox{]}
+\item 
+int \hyperlink{namespaceveripy_a6c7af7b6f61625967ad76e47ea97feb5}{veripy.\-c\-\_\-signal\-\_\-width} = 1
+\item 
+tuple \hyperlink{namespaceveripy_a236b47105aebf9535a23f5e3584fc8d5}{veripy.\-c\-\_\-signal\-\_\-bitdef\-\_\-regex}
+\item 
+tuple \hyperlink{namespaceveripy_aed3cb62c9f8ae9fa7f95a39dd184db5b}{veripy.\-c\-\_\-signal\-\_\-ubitdef} = c\-\_\-signal\-\_\-bitdef\-\_\-regex.\-group(1)
+\item 
+\hyperlink{namespaceveripy_a0eeaafa3dcfb8500938d8b7fc674b564}{veripy.\-c\-\_\-signal\-\_\-ubitdef\-\_\-minus1\-\_\-regex} = \textbackslash{}
+\item 
+\hyperlink{namespaceveripy_a941996ba01b912fdd56db5908c002a05}{veripy.\-c\-\_\-signal\-\_\-ubitdef\-\_\-number\-\_\-regex} = \textbackslash{}
+\item 
+tuple \hyperlink{namespaceveripy_a9985df4799df5dec0cca48bdf7e184ac}{veripy.\-endnegedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-N\-E\-G\-E\-D\-G\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_afd21c96a818fcc01594b0a193e25f0f3}{veripy.\-endposgedge\-\_\-regex} = re.\-search(R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-P\-O\-S\-E\-D\-G\-E, line)
+\item 
+tuple \hyperlink{namespaceveripy_a818213d44f5908b15037e7f70a2d5882}{veripy.\-pkg2assign\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-K\-G2\-A\-S\-S\-I\-G\-N, line)
+\begin{DoxyCompactList}\small\item\em Writing out Pkg2\-Assign outputs. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_abab8384e1cd583db34af81db27a52544}{veripy.\-pkg2assign\-\_\-list} = pkg2assign\-\_\-info\mbox{[}pkg2assign\-\_\-index\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_a7acecc4bebb723a0ef94b24f5130faac}{veripy.\-assign2pkg\-\_\-regex} = re.\-search(R\-E\-\_\-\-A\-S\-S\-I\-G\-N2\-P\-K\-G, line)
+\begin{DoxyCompactList}\small\item\em Writing out Assign2\-Pkg outputs. \end{DoxyCompactList}\item 
+list \hyperlink{namespaceveripy_a069ecdd68f4a51cf7151b361b4159f4a}{veripy.\-assign2pkg\-\_\-list} = assign2pkg\-\_\-info\mbox{[}assign2pkg\-\_\-index\mbox{]}
+\item 
+tuple \hyperlink{namespaceveripy_af5876ef12bb1a85e8d8cd34cfafe054c}{veripy.\-force\-\_\-regex} = re.\-search(R\-E\-\_\-\-F\-O\-R\-C\-E, line)
+\begin{DoxyCompactList}\small\item\em Commenting out different \& calls. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a77acefbceb0478f3abeb04e6806324a2}{veripy.\-beginskip\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-B\-E\-G\-I\-N, line)
+\item 
+tuple \hyperlink{namespaceveripy_a982e8b68ecc8da4b47d07fce69736f5c}{veripy.\-endskip\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-E\-N\-D, line)
+\item 
+tuple \hyperlink{namespaceveripy_afcccb50dd7b0fb2b644b9c1d2323a3c1}{veripy.\-parser\-\_\-off\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-F\-F, line)
+\item 
+tuple \hyperlink{namespaceveripy_acaab00af25a2a159e2accd5ec9f5ddf2}{veripy.\-parser\-\_\-on\-\_\-regex} = re.\-search(R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-N, line)
+\item 
+tuple \hyperlink{namespaceveripy_a32070d26198948bdf028e393cb565ade}{veripy.\-skipifdefbegin\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-B\-E\-G\-I\-N, line)
+\item 
+tuple \hyperlink{namespaceveripy_a3e2775895f7dc417880c6298fcfbb5db}{veripy.\-skipifdefend\-\_\-regex} = re.\-search(R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-E\-N\-D, line)
+\item 
+tuple \hyperlink{namespaceveripy_a188398590a71f5e7c68337fd92a67bf7}{veripy.\-gendrivez\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z, line)
+\begin{DoxyCompactList}\small\item\em Stub Generation. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_aa2af1923077c3d88816ed1449896be05}{veripy.\-gendrive0\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0, line)
+\item 
+tuple \hyperlink{namespaceveripy_ad9ca8c35b0ba3500e52cbaefc381ee77}{veripy.\-gennoifdefdrive0\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-N\-O\-I\-F\-D\-E\-F\-D\-R\-I\-V\-E0, line)
+\item 
+tuple \hyperlink{namespaceveripy_a6882cd46af143e35f1d53de0c5961049}{veripy.\-gendrive0andz\-\_\-regex} = re.\-search(R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-A\-N\-D\-Z, line)
+\item 
+tuple \hyperlink{namespaceveripy_ac385a661e564ea21a74143edbc147bb9}{veripy.\-endmodule\-\_\-regex} = re.\-search(R\-E\-\_\-\-E\-N\-D\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-C\-L\-A\-R\-A\-T\-I\-O\-N, line)
+\begin{DoxyCompactList}\small\item\em Check if endmodule declaration by user. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespaceveripy_a3c87219c0df570bcd1bebb41ee3c4adc}{veripy.\-out\-\_\-list} = open(output\-\_\-list, 'w')
+\item 
+tuple \hyperlink{namespaceveripy_a20c975857dc6d80de2866942e40e05f5}{veripy.\-dollar\-\_\-infra\-\_\-asic\-\_\-fpga\-\_\-root}
+\item 
+\hyperlink{namespaceveripy_a53d32cc2c5a71562b7e9d2414bca5ccf}{veripy.\-c\-\_\-file\-\_\-abspath} = c\-\_\-file
+\end{DoxyCompactItemize}

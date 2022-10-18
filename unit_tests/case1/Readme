@@ -1,0 +1,8 @@
+always_ff @ (posedge clk or negedge rst_n) begin
+  if (~rst_n) begin
+    state <= IDLE;
+  end
+  else begin
+state <=next ; // no indent
+  end
+

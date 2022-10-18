@@ -1,0 +1,13 @@
+####################################################################################
+#  Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+#  The following information is considered proprietary and confidential to Facebook,
+#  and may not be disclosed to any third party nor be used for any purpose other
+#  than to full fill service obligations to Facebook
+####################################################################################
+
+sch2xdfil: DVS [31:0]
+xdfil2scl: DVS <PACKAGE>=[127:0]
+xdfil2dma_req: DVS [42:0]
+xdfil2dma_wr: DVS [127:0]
+re2xdfil: DVS [63:0]
+xdfilram: DPRAMRW [127:0] [7:0]

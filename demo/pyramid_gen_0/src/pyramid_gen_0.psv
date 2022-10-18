@@ -1,0 +1,135 @@
+
+////////////////////////////////////////////////////////////////////////////////
+// Project Code      : <PROJECT CODE>                                         //
+// Project           : <PROJECT NAME>                                         //
+// Author            : Saminathan Chockalingam                                //
+// Author E-mail     : saminathan@fb.com                                      //
+// File Name         : pyramid_gen.v                                          //
+// Module Name       : pyramid_gen                                            //
+// Function          : Top level Pyramid function                             //
+// Associated modules:                                                        //
+// Note: Please refer Revision History at End of File.                        //
+////////////////////////////////////////////////////////////////////////////////
+//Information                                                                 //
+//===========                                                                 //
+//  (1) This Block will generate the downscaled versions of the images input  //
+//      into "N" stream interfaces.                                           //
+//  (2) Down scaling by 2, 4, 8, 16 and so on                                 //
+////////////////////////////////////////////////////////////////////////////////
+
+#include pyramid_gen_include.h
+
+&Module(parameter NUMLAYERS = 4, CAMSIZEX = 1280, MW = 3, WW = 3, BPP = 8);
+
+#include pyramid_gen_include.vh
+
+   &Force width /o_.*_valid/ NUMLAYERS;
+   &Force width pyr_out_en NUMLAYERS;
+   &Force width o_pixel (NUMLAYERS*BPP);
+   &Force width mode (NUMLAYERS*MW);
+   &Force width weight (NUMLAYERS*MW);
+
+
+   &Regs;
+
+
+   &Wires;
+   
+   
+   &Force width line_valid NUMLAYERS+1; 
+   &Force width frame_valid NUMLAYERS+1; 
+   &Force width pixel_valid NUMLAYERS+1; 
+   &Force width pixel ((NUMLAYERS+1)*BPP);
+   &Force width pyr_clk NUMLAYERS;
+   &Force width pyr_rst_n NUMLAYERS;
+   &Force width downscle_en NUMLAYERS;
+
+
+  //clock gate enable generation logic
+&PythonBegin;
+for a in range (0, self.get_hash_defval("NUMLAYERS")):
+    print_line = """
+       assign downscle_en[{0}] = |(pyr_out_en[NUMLAYERS-1:{0}]);
+    """
+    print(print_line.format(a))
+&PythonEnd;
+
+  
+&PythonBegin;
+for b in range (0, self.get_hash_defval("NUMLAYERS")):
+   print_line = """
+   &BeginInstance clk_gate u_pyr_cg_{0};
+   &Connect clk_in clk;
+   &Connect clk_disable 1'b0;
+   &Connect clk_en downscle_en[{0}];
+   &Connect scan_en 1'b0;
+   &Connect clk_out pyr_clk[{0}];
+   &EndInstance;
+   """
+   print(print_line.format(b))
+&PythonEnd;
+
+ 
+&PythonBegin;
+for c in range (0, self.get_hash_defval("NUMLAYERS")):
+   print_line = """
+   &BeginInstance reset_sync u_pyr_reset_sync_{0};
+   &Param SYNC_STAGE SYNC_STAGE;
+   &Connect clk pyr_clk[{0}];
+   &Connect i_rst_n rst_n;        ),
+   &Connect o_rst_n pyr_rst_n[{0}]; )
+   &EndInstance;
+   """
+   print(print_line.format(c))
+&PythonEnd;
+
+    
+   assign line_valid[0]      = i_line_valid  ;
+   assign frame_valid[0]     = i_frame_valid ;
+   assign pixel_valid[0]     = i_pixel_valid ;
+   assign pixel[BPP-1:0]     = i_pixel[BPP-1:0]       ;
+
+
+&PythonBegin;
+for j in range (0, self.get_hash_defval("NUMLAYERS")):
+   print_line = """
+   assign o_line_valid [{0}]             = pyr_out_en[{0}] ? line_valid[{0}+1]             : 1'b0        ;
+   assign o_frame_valid[{0}]             = pyr_out_en[{0}] ? frame_valid[{0}+1]            : 1'b0        ;
+   assign o_pixel_valid[{0}]             = pyr_out_en[{0}] ? pixel_valid[{0}+1]            : 1'b0        ;
+   assign o_pixel[(({0}+1)*BPP)-1-:BPP]  = pyr_out_en[{0}] ? pixel[(({0}+2)*BPP)-1-:BPP]  : {{BPP{{1'b0}}}} ;
+   """
+   print(print_line.format(j))
+&PythonEnd;
+
+
+&PythonBegin;
+for i in range (0, self.get_hash_defval("NUMLAYERS")):
+   print_line = """
+   &BeginInstance down_scale u_downscale_{0};
+   &Param NUMLAYERS NUMLAYERS;
+   &Param CAMSIZEX CAMSIZEX>>{0};
+   &Param DS_R1W1 DSS_R1W1;
+   &Param DS_BE DSS_BE;
+   &Param MW MW;
+   &Param WW WW;
+   &Param BPP BPP;
+   &BuildCommand --hash_define_vars ENABLE;
+   &Connect clk pyr_clk[{0}];
+   &Connect rst_n pyr_rst_n[{0}];
+   &Connect mode mode[(({0}+1)*MW)-1-:MW];
+   &Connect weight weight[(({0}+1)*WW)-1-:WW];
+   &Connect i_line_valid line_valid[{0}];
+   &Connect i_frame_valid frame_valid[{0}];
+   &Connect i_pixel pixel[(({0}+1)*BPP)-1-:BPP];
+   &Connect i_pixel_valid pixel_valid[{0}];
+   &Connect o_line_valid line_valid[{0}+1];
+   &Connect o_frame_valid frame_valid[{0}+1];
+   &Connect o_pixel pixel[(({0}+2)*BPP)-1-:BPP];
+   &Connect o_pixel_valid pixel_valid[{0}+1];
+   &EndInstance;
+   """
+   print(print_line.format(i))
+&PythonEnd;
+
+      
+endmodule //pyramid_gen

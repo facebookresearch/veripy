@@ -1,0 +1,265 @@
+\hypertarget{namespaceveripy__build}{\section{veripy\-\_\-build Namespace Reference}
+\label{namespaceveripy__build}\index{veripy\-\_\-build@{veripy\-\_\-build}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceveripy__build_a0736b409728c78ed463b0a874c2c2fb7}{set\-\_\-vendor}
+\item 
+def \hyperlink{namespaceveripy__build_a6178761f2ff8928b6a62d67162a40fce}{gen\-\_\-dependency}
+\begin{DoxyCompactList}\small\item\em Generate the ref path for buck target. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceveripy__build_a80261d50df22113324c3836e05d830e0}{get\-\_\-filename}
+\begin{DoxyCompactList}\small\item\em Parse filename (possibly with full path) to get just filename. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceveripy__build_a356cd71b62d265319391ccf724f973be}{check\-\_\-dir}
+\begin{DoxyCompactList}\small\item\em Check if a given file is in the current directory. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceveripy__build_aa5253a43a5638bea6f0bc8443bef6e3b}{up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict}
+\begin{DoxyCompactList}\small\item\em Check whether a file is stored in a dictionary. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceveripy__build_ad15f70c8992262c4ccf73d9ad2d0a5d5}{dbg}
+\item 
+def \hyperlink{namespaceveripy__build_a1ddaebfe1aa25bd26928e8618a8324ba}{get\-\_\-cmd\-\_\-line\-\_\-args}
+\item 
+def \hyperlink{namespaceveripy__build_a8ce0c16c133c1fe238b95b074a4e084e}{gen\-\_\-dependencies}
+\begin{DoxyCompactList}\small\item\em Get dependencies for file hierarchy. \end{DoxyCompactList}\item 
+def \hyperlink{namespaceveripy__build_a4ffd6a4726bf6f5e1ee9de38f8a3d64f}{gen\-\_\-makeinc}
+\item 
+def \hyperlink{namespaceveripy__build_ad9d2867fc12d91b072d6e76a5818bc16}{gen\-\_\-targets}
+\item 
+def \hyperlink{namespaceveripy__build_af086be9a1cae10acf293fbe0d4a47fbb}{main}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{namespaceveripy__build_a356cd71b62d265319391ccf724f973be}{\index{veripy\-\_\-build@{veripy\-\_\-build}!check\-\_\-dir@{check\-\_\-dir}}
+\index{check\-\_\-dir@{check\-\_\-dir}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{check\-\_\-dir}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-check\-\_\-dir (
+\begin{DoxyParamCaption}
+\item[{}]{c\-\_\-dep}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a356cd71b62d265319391ccf724f973be}
+
+
+Check if a given file is in the current directory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\-\_\-dep} & String containing the dependency filename \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespaceveripy__build_ad15f70c8992262c4ccf73d9ad2d0a5d5}{\index{veripy\-\_\-build@{veripy\-\_\-build}!dbg@{dbg}}
+\index{dbg@{dbg}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{dbg}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-dbg (
+\begin{DoxyParamCaption}
+\item[{}]{dbg\-\_\-info}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_ad15f70c8992262c4ccf73d9ad2d0a5d5}
+\begin{DoxyVerb}Write out debug dump file.
+
+@param dbg_info Variable containing the debugging information string(s)
+\end{DoxyVerb}
+ \hypertarget{namespaceveripy__build_a8ce0c16c133c1fe238b95b074a4e084e}{\index{veripy\-\_\-build@{veripy\-\_\-build}!gen\-\_\-dependencies@{gen\-\_\-dependencies}}
+\index{gen\-\_\-dependencies@{gen\-\_\-dependencies}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{gen\-\_\-dependencies}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-gen\-\_\-dependencies (
+\begin{DoxyParamCaption}
+\item[{}]{I\-N\-\_\-\-F\-I\-L\-E\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{F\-O\-R\-M\-A\-T, }
+\item[{}]{I\-N\-C\-L\-\_\-\-D\-I\-R\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{I\-N\-T\-E\-R\-F\-A\-C\-E\-\_\-\-S\-P\-E\-C\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{I\-N\-T\-E\-R\-F\-A\-C\-E\-\_\-\-D\-E\-F\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{L\-I\-S\-T\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-E\-F\-I\-N\-E\-\_\-\-V\-A\-R\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-E\-F\-I\-N\-E\-\_\-\-F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{V\-E\-R\-I\-L\-O\-G\-\_\-\-D\-E\-F\-I\-N\-E\-\_\-\-F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-E\-B\-U\-G\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{R\-E\-M\-O\-V\-E\-\_\-\-C\-O\-D\-E\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{P\-A\-R\-S\-E\-R\-\_\-\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-E\-S\-T\-I\-N\-A\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{P\-A\-C\-K\-A\-G\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{S\-O\-R\-T\-\_\-\-I\-O\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{G\-R\-O\-U\-P\-\_\-\-I\-O\-S\-\_\-\-O\-N\-\_\-\-D\-I\-R\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{P\-A\-R\-S\-E\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-E\-P\-E\-N\-D\-E\-N\-C\-I\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{U\-S\-E\-R\-\_\-\-O\-P\-T\-I\-O\-N\-S, }
+\item[{}]{V\-E\-R\-I\-P\-Y\-\_\-\-S\-C\-R\-I\-P\-T, }
+\item[{}]{D\-I\-S\-A\-B\-L\-E\-\_\-\-T\-I\-C\-K\-\_\-\-I\-F\-D\-E\-F\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-I\-S\-A\-B\-L\-E\-\_\-\-A\-U\-T\-O\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{U\-P\-D\-A\-T\-E\-\_\-\-T\-A\-R\-G\-E\-T\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{P\-Y\-T\-H\-O\-N\-\_\-\-F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{build\-\_\-subdirs\-\_\-dict\-\_\-json, }
+\item[{}]{build\-\_\-subdirs\-\_\-dict, }
+\item[{}]{use\-\_\-dict, }
+\item[{}]{use\-\_\-prev\-\_\-dict}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a8ce0c16c133c1fe238b95b074a4e084e}
+
+
+Get dependencies for file hierarchy. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em I\-N\-\_\-\-F\-I\-L\-E\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} command containing the input filename \\
+\hline
+{\em F\-O\-R\-M\-A\-T} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} command containing the input file format (Verilog/\-System\-Verilog) \\
+\hline
+{\em I\-N\-C\-L\-\_\-\-D\-I\-R\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing a list of the directories to be checked \\
+\hline
+{\em I\-N\-T\-E\-R\-F\-A\-C\-E\-\_\-\-S\-P\-E\-C\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing interface specs \\
+\hline
+{\em I\-N\-T\-E\-R\-F\-A\-C\-E\-\_\-\-D\-E\-F\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing interface defs \\
+\hline
+{\em M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing module defs \\
+\hline
+{\em F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing additional files to check for submodules / include / package / spec \\
+\hline
+{\em L\-I\-S\-T\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing filelists to check for submodules / include / package / spec \\
+\hline
+{\em D\-E\-F\-I\-N\-E\-\_\-\-V\-A\-R\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing \#define vars passed through the command line \\
+\hline
+{\em D\-E\-F\-I\-N\-E\-\_\-\-F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing a file containing \#define vars to be passed to the script \\
+\hline
+{\em V\-E\-R\-I\-L\-O\-G\-\_\-\-D\-E\-F\-I\-N\-E\-\_\-\-F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} containing a Verilog file containing \#define vars to be passed to the script \\
+\hline
+{\em D\-E\-B\-U\-G\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} telling script to generate debug file \\
+\hline
+{\em R\-E\-M\-O\-V\-E\-\_\-\-C\-O\-D\-E\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to remove code disabled by ifdef \\
+\hline
+{\em P\-A\-R\-S\-E\-R\-\_\-\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to turn off parser and only perform preprocessing and embedded Python \\
+\hline
+{\em D\-E\-S\-T\-I\-N\-A\-T\-I\-O\-N\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to select the destination directory \\
+\hline
+{\em P\-A\-C\-K\-A\-G\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to load System\-Verilog package files \\
+\hline
+{\em S\-O\-R\-T\-\_\-\-I\-O\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to sort module ports \\
+\hline
+{\em G\-R\-O\-U\-P\-\_\-\-I\-O\-S\-\_\-\-O\-N\-\_\-\-D\-I\-R\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to group module ports by direction \\
+\hline
+{\em P\-A\-R\-S\-E\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to turn off parsing of generate blocks \\
+\hline
+{\em D\-E\-P\-E\-N\-D\-E\-N\-C\-I\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to generate all dependencies for building current block \\
+\hline
+{\em U\-S\-E\-R\-\_\-\-O\-P\-T\-I\-O\-N\-S} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to specify additional options \\
+\hline
+{\em V\-E\-R\-I\-P\-Y\-\_\-\-S\-C\-R\-I\-P\-T} & String containing Bash variable pointer to the main Veri\-Py script \\
+\hline
+{\em D\-I\-S\-A\-B\-L\-E\-\_\-\-T\-I\-C\-K\-\_\-\-I\-F\-D\-E\-F\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to disable `ifdef parsing \\
+\hline
+{\em D\-I\-S\-A\-B\-L\-E\-\_\-\-A\-U\-T\-O\-\_\-\-P\-A\-C\-K\-A\-G\-E\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to disable auto loading packages \\
+\hline
+{\em U\-P\-D\-A\-T\-E\-\_\-\-T\-A\-R\-G\-E\-T\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Set to 'True', tells script to update T\-A\-R\-G\-E\-T\-S file \\
+\hline
+{\em P\-Y\-T\-H\-O\-N\-\_\-\-F\-I\-L\-E\-S\-\_\-\-O\-P\-T\-I\-O\-N} & Option passed to \hyperlink{veripy_8py}{veripy.\-py} to load additional Python files that contain variables/dictionaries used \\
+\hline
+{\em build\-\_\-subdirs\-\_\-dict\-\_\-json} & String containing file path for J\-S\-O\-N file containing the Python dict object to store build subdirectories \\
+\hline
+{\em build\-\_\-subdirs\-\_\-dict} & Python dict object containing build dependencies \\
+\hline
+{\em use\-\_\-dict} & Boolean to turn on/off the use of a dict to store build dependencies \\
+\hline
+{\em use\-\_\-prev\-\_\-dict} & Boolean to determine whether to generate a new dict for this run or load a previous one \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespaceveripy__build_a6178761f2ff8928b6a62d67162a40fce}{\index{veripy\-\_\-build@{veripy\-\_\-build}!gen\-\_\-dependency@{gen\-\_\-dependency}}
+\index{gen\-\_\-dependency@{gen\-\_\-dependency}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{gen\-\_\-dependency}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-gen\-\_\-dependency (
+\begin{DoxyParamCaption}
+\item[{}]{c\-\_\-dep}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a6178761f2ff8928b6a62d67162a40fce}
+
+
+Generate the ref path for buck target. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cdep} & String containing dependency path \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespaceveripy__build_a4ffd6a4726bf6f5e1ee9de38f8a3d64f}{\index{veripy\-\_\-build@{veripy\-\_\-build}!gen\-\_\-makeinc@{gen\-\_\-makeinc}}
+\index{gen\-\_\-makeinc@{gen\-\_\-makeinc}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{gen\-\_\-makeinc}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-gen\-\_\-makeinc (
+\begin{DoxyParamCaption}
+\item[{}]{update\-\_\-inc, }
+\item[{}]{root\-\_\-path, }
+\item[{}]{hierarchical\-\_\-dependencies, }
+\item[{}]{U\-P\-D\-A\-T\-E\-\_\-\-T\-A\-R\-G\-E\-T\-S\-\_\-\-O\-P\-T\-I\-O\-N}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a4ffd6a4726bf6f5e1ee9de38f8a3d64f}
+\begin{DoxyVerb}Generating makefile.inc
+\end{DoxyVerb}
+ \hypertarget{namespaceveripy__build_ad9d2867fc12d91b072d6e76a5818bc16}{\index{veripy\-\_\-build@{veripy\-\_\-build}!gen\-\_\-targets@{gen\-\_\-targets}}
+\index{gen\-\_\-targets@{gen\-\_\-targets}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{gen\-\_\-targets}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-gen\-\_\-targets (
+\begin{DoxyParamCaption}
+\item[{}]{U\-P\-D\-A\-T\-E\-\_\-\-T\-A\-R\-G\-E\-T\-S\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{D\-E\-B\-U\-G\-\_\-\-O\-P\-T\-I\-O\-N, }
+\item[{}]{hierarchical\-\_\-dependencies, }
+\item[{}]{target\-\_\-vendors, }
+\item[{}]{U\-S\-E\-R\-\_\-\-O\-P\-T\-I\-O\-N\-S}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_ad9d2867fc12d91b072d6e76a5818bc16}
+\begin{DoxyVerb}Generating TARGETS file for Buck Build
+\end{DoxyVerb}
+ \hypertarget{namespaceveripy__build_a1ddaebfe1aa25bd26928e8618a8324ba}{\index{veripy\-\_\-build@{veripy\-\_\-build}!get\-\_\-cmd\-\_\-line\-\_\-args@{get\-\_\-cmd\-\_\-line\-\_\-args}}
+\index{get\-\_\-cmd\-\_\-line\-\_\-args@{get\-\_\-cmd\-\_\-line\-\_\-args}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{get\-\_\-cmd\-\_\-line\-\_\-args}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-get\-\_\-cmd\-\_\-line\-\_\-args (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a1ddaebfe1aa25bd26928e8618a8324ba}
+\hypertarget{namespaceveripy__build_a80261d50df22113324c3836e05d830e0}{\index{veripy\-\_\-build@{veripy\-\_\-build}!get\-\_\-filename@{get\-\_\-filename}}
+\index{get\-\_\-filename@{get\-\_\-filename}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{get\-\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-get\-\_\-filename (
+\begin{DoxyParamCaption}
+\item[{}]{c\-\_\-dep}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a80261d50df22113324c3836e05d830e0}
+
+
+Parse filename (possibly with full path) to get just filename. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c\-\_\-dep} & String containing dependency path \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespaceveripy__build_af086be9a1cae10acf293fbe0d4a47fbb}{\index{veripy\-\_\-build@{veripy\-\_\-build}!main@{main}}
+\index{main@{main}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_af086be9a1cae10acf293fbe0d4a47fbb}
+\hypertarget{namespaceveripy__build_a0736b409728c78ed463b0a874c2c2fb7}{\index{veripy\-\_\-build@{veripy\-\_\-build}!set\-\_\-vendor@{set\-\_\-vendor}}
+\index{set\-\_\-vendor@{set\-\_\-vendor}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{set\-\_\-vendor}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-set\-\_\-vendor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_a0736b409728c78ed463b0a874c2c2fb7}
+\begin{DoxyVerb}Check FB_CHIP environment variable and return vendor.
+\end{DoxyVerb}
+ \hypertarget{namespaceveripy__build_aa5253a43a5638bea6f0bc8443bef6e3b}{\index{veripy\-\_\-build@{veripy\-\_\-build}!up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict@{up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict}}
+\index{up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict@{up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict}!veripy_build@{veripy\-\_\-build}}
+\subsubsection[{up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict}]{\setlength{\rightskip}{0pt plus 5cm}def veripy\-\_\-build.\-up\-\_\-to\-\_\-date\-\_\-file\-\_\-in\-\_\-dict (
+\begin{DoxyParamCaption}
+\item[{}]{fname, }
+\item[{}]{dictionary, }
+\item[{}]{old\-\_\-dict}
+\end{DoxyParamCaption}
+)}}\label{namespaceveripy__build_aa5253a43a5638bea6f0bc8443bef6e3b}
+
+
+Check whether a file is stored in a dictionary. 
+
+If it is, check if it and its dependencies are up to date.
+
+
+\begin{DoxyParams}{Parameters}
+{\em fname} & Filename of dependency \\
+\hline
+{\em dictionary} & Python dict object containing all dependencies generated thus far \\
+\hline
+{\em old\-\_\-dict} & Boolean variable to reuse dictionary from previous runs (may lead to speedup) \\
+\hline
+\end{DoxyParams}

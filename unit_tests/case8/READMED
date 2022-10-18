@@ -1,0 +1,2 @@
+expect: inout [7:0] c or inout c
+but: get wire c or logic c;

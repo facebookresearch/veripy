@@ -1,0 +1,22 @@
+####################################################################################
+#  Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+#  The following information is considered proprietary and confidential to Facebook,
+#  and may not be disclosed to any third party nor be used for any purpose other
+#  than to full fill service obligations to Facebook
+####################################################################################
+xdfil:
+    PARAM:
+        - RAM_DEPTH = 128
+        - RAM_WIDTH = 32
+    IN:
+        - xdfil_clk
+        - xdfil_rst_n
+        - xdfil_in [1:0][2:0] [0-9]
+        - sch2xdfil
+        - re2xdfil
+    OUT:
+        - xdfil2dma_req prefix_iter=[s0_,s1_]
+        - xdfil2dma_wr
+        - xdfil2scl
+        - xdfil_intr
+        - xdfilram

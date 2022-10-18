@@ -1,0 +1,20 @@
+////////////////////////////////////////////////////////////////////////////////////
+// Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
+// The following information is considered proprietary and confidential to Facebook,
+// and may not be disclosed to any third party nor be used for any purpose other
+// than to full fill service obligations to Facebook
+////////////////////////////////////////////////////////////////////////////////////
+
+&Module;
+
+
+&Logics;
+
+
+&FB_ENFLOP (clk, local_lb_we, local_lb_wdata[3:0], local_lb_buf[3:0])
+
+
+&FB_ENFLOP_RST (clk, rst_n, local_lb_rd, local_lb_raddrR, local_lb_raddrRR)
+
+
+&FB_ENFLOP_RS(clk, rst_n, 2'b00, pre_gnt_we, pre_gnt_nt[8:0], pre_gntR[8:0])

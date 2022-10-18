@@ -1,0 +1,48 @@
+//&module;
+module test_verilog_basic2 (
+  output  reg        cc,
+  output  reg        dd,
+  output  reg        ee,
+  output  reg        ff,
+  input              b,
+  input              c,
+  input              d,
+  input              e
+); 
+
+/*
+module verilog_basic2 (
+  input          b,
+  input          c,
+  input          d,
+  input          e,
+  output         aa,
+  output         bb,
+  output         cc,
+  output         dd,
+  output         ee,
+  output         ff
+);
+*/
+
+//&regs;
+//&wires;
+
+wire aa = b&c&d&e;
+wire bb = b&&c&&d&&e;
+
+/*
+reg cc;
+reg dd;
+reg ee;
+reg ff;
+*/
+
+always@(*) begin
+     cc=b&&c&&d&&e;
+     dd=b&&c&&d&&e;
+     ee=b||c||d||e;
+     ff=b||c||d||e;
+end
+endmodule
+

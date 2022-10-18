@@ -1,0 +1,547 @@
+\hypertarget{regex_8py}{\section{src/regex.py File Reference}
+\label{regex_8py}\index{src/regex.\-py@{src/regex.\-py}}
+}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacesrc_1_1regex}{src.\-regex}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4bbc8eb677d4088a93d907056d718c9a}{src.\-regex.\-R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-B\-E\-G\-I\-N\-\_\-\-S\-T\-A\-R\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}/\textbackslash{}$\ast$\char`\"{})
+\begin{DoxyCompactList}\small\item\em All the regular expressions. \end{DoxyCompactList}\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4178334cd19fdaf15bee28a9d4982f78}{src.\-regex.\-R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}\textbackslash{}/\textbackslash{}$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8091f209d3a5b2884407944a5f2fe96b}{src.\-regex.\-R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}\textbackslash{}$\ast$\textbackslash{}/\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a094ab3a7d8b3aa051875b6bc52b9e373}{src.\-regex.\-R\-E\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-B\-E\-G\-I\-N\-\_\-\-S\-T\-A\-R\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}/\textbackslash{}/\char`\"{})
+\begin{DoxyCompactList}\small\item\em Do not use for performance reasons -\/ use \hyperlink{namespacesrc_1_1utils_aeb934e59b76906b5837a00557f0ef750}{remove\-\_\-single\-\_\-line\-\_\-comment()} instead R\-E\-\_\-\-B\-L\-O\-C\-K\-\_\-\-C\-O\-M\-M\-E\-N\-T\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-L\-I\-N\-E = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}/\textbackslash{}$\ast$(.$\ast$)\textbackslash{}$\ast$\textbackslash{}/(.$\ast$)\char`\"{}) \end{DoxyCompactList}\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4a1e54d938fbf6236d6d50135fb18f1d}{src.\-regex.\-R\-E\-\_\-\-E\-M\-P\-T\-Y\-\_\-\-L\-I\-N\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac256d6d206de3cdbdcc838d46f3dc8d8}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-I\-N\-C\-L\-U\-D\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#include\textbackslash{}s+\mbox{[}\textbackslash{}\char`\"{}\mbox{]}\{0,1\}(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\mbox{[}\textbackslash{}\char`\"{}\mbox{]}\{0,1\}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8250e9b27e13553413c3fd8680d99348}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-D\-E\-F\-I\-N\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#define\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a0fc6ae328989750bba3349fe8c74d419}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-U\-N\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#undef\textbackslash{}s+(\textbackslash{}w$\ast$)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a03f6feb4b0ad6bda36e1d7c0878c30fe}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-I\-F\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#ifdef\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa500c35a7c6e04a69cab83aea86afccf}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-I\-F\-N\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#ifndef\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4041372fdcfc96f1c54040360235f008}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-E\-L\-I\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#elif\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ada84074dfe7c76282dd9c276b132256e}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-E\-L\-S\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#else.$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7087d9e02abfe787381eace18029064a}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-E\-N\-D\-I\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\#endif.$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa29208a089924b6ca6de77d0ce260a38}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-I\-F\-D\-E\-F\-\_\-\-S\-T\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}w$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aedef0b43e8edc555d38d4c10fbacf5f7}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\textbackslash{}w+)\textbackslash{}s+(.+)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a2c971b22dfac3f240df57813857aeefd}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-D\-E\-F\-\_\-\-W\-O\-\_\-\-V\-A\-L} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\textbackslash{}w+)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a2c55bd8387e44744536b42a10eb31ac7}{src.\-regex.\-R\-E\-\_\-\-I\-M\-P\-O\-R\-T\-\_\-\-C\-O\-L\-O\-N\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$import\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\-::(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aaed56bef8d30504e8c3dcbc460113bb4}{src.\-regex.\-R\-E\-\_\-\-I\-M\-P\-O\-R\-T\-\_\-\-I\-N\-M\-O\-D\-\_\-\-S\-E\-M\-I\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}s+import\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\-::\textbackslash{}s$\ast$\mbox{[}\textbackslash{}$\ast$\textbackslash{}w\mbox{]}+\textbackslash{}s$\ast$;(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a2e33bcc0db973deb34c30cfdb17ed1e2}{src.\-regex.\-R\-E\-\_\-\-I\-M\-P\-O\-R\-T\-\_\-\-I\-N\-M\-O\-D\-\_\-\-C\-O\-M\-M\-A} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}s+import\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\-::\textbackslash{}s$\ast$\mbox{[}\textbackslash{}$\ast$\textbackslash{}w\mbox{]}+\textbackslash{}s$\ast$,(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a37e1bb1b20686d74fd1e8f3498c8a5cc}{src.\-regex.\-R\-E\-\_\-\-I\-M\-P\-O\-R\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$import\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\mbox{[};\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ab1fb0dbc4be0060e4bf4d304e273a9b7}{src.\-regex.\-R\-E\-\_\-\-P\-A\-C\-K\-A\-G\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$package\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\mbox{[};\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_afd7f18f1e9420146db3abfbc7716c3b8}{src.\-regex.\-R\-E\-\_\-\-V\-I\-R\-T\-U\-A\-L\-\_\-\-C\-L\-A\-S\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$virtual\textbackslash{}s+class\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\mbox{[};\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae722982be3810457beb6591f1ad8786b}{src.\-regex.\-R\-E\-\_\-\-C\-L\-A\-S\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$class\textbackslash{}s+(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}s$\ast$\mbox{[};\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a76f5288ee51a094469709268ab9a56f0}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-C\-L\-A\-S\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$endclass\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae69a7c456a3589208559f5347d7221ad}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-I\-N\-C\-L\-U\-D\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`include\textbackslash{}s+\textbackslash{}\char`\"{}(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\textbackslash{}.\mbox{]}+)\textbackslash{}\char`\"{}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a082b6e2cd74e499fd9dfc349fd137285}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-D\-E\-F\-I\-N\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`define\textbackslash{}s+(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aec14c5cdf0e22540fed3923a358dc928}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-U\-N\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`undef\textbackslash{}s+(\textbackslash{}w$\ast$)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ade2998c2e2b41720cd6cdf9776cd28de}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-I\-F\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`ifdef\textbackslash{}s+(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac8f063a17b1525cb2e13b5e5ebdabee2}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-I\-F\-N\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`ifndef\textbackslash{}s+(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac813c5c2fd6c17cdfe5686ab1eeb3640}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-E\-L\-S\-I\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`elsif\textbackslash{}s+(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a56d5f3fcc341b5cd282452c6cb155826}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-E\-L\-S\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`else.$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3adb11d0fc5bf8a49bc769375563bbfd}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-E\-N\-D\-I\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`endif.$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a615e332e4311b59420bcb3aeab332527}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-I\-F\-D\-E\-F\-\_\-\-S\-T\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}w$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a300290019acc926fd55fd4406ae113de}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-D\-E\-F\-\_\-\-W\-O\-\_\-\-V\-A\-L} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\textbackslash{}w+)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6023cd5b32d4c70590c421f23edfedbc}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\textbackslash{}w+)\textbackslash{}s+(.+)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_acd48c29153f9fd47cbc3794c95937797}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H} = re.\-compile(r\char`\"{}(.+)\#(.+)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a531e561bc03101f2f529c3542959949f}{src.\-regex.\-R\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-H\-A\-S\-H} = re.\-compile(r\char`\"{}(\textbackslash{}w+)\#(\textbackslash{}w+)\#(\textbackslash{}w+)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3087ab0759ee08c52d5d2245dc444e44}{src.\-regex.\-R\-E\-\_\-\-T\-R\-I\-P\-L\-E\-\_\-\-H\-A\-S\-H} = re.\-compile(r\char`\"{}(.$\ast$)\#\#\#(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aade96c8d59bf34d132098ae30a6f62dd}{src.\-regex.\-R\-E\-\_\-\-D\-O\-T} = re.\-compile(r\char`\"{}(\textbackslash{}w$\ast$)\textbackslash{}.(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_afb9128166bea761d4a0cf80b9d672e05}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N\-\_\-\-B\-E\-F\-O\-R\-E\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\-::(\textbackslash{}w+)\-::(\textbackslash{}w+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7e136b3ec7a100ddc8d3a3a50a8af216}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N\-\_\-\-B\-E\-F\-O\-R\-E\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\-::(\textbackslash{}w+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad52741e67988ade4fa748769d98bb9b5}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-B\-E\-F\-O\-R\-E\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ab79ce804120083ee760214723349ed11}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\-::(\textbackslash{}w+)\-::(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a113c5e4cd181089c7ac1415b1fa67d38}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w$\ast$)\-::(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad93a8293149aaf420501efb6daba523f}{src.\-regex.\-R\-E\-\_\-\-P\-O\-R\-T\-\_\-\-W\-I\-T\-H\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\-::(\textbackslash{}w+)\-::(\textbackslash{}w+)\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa5afec46e0c6943277e3888ba7e38511}{src.\-regex.\-R\-E\-\_\-\-P\-O\-R\-T\-\_\-\-W\-I\-T\-H\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w$\ast$)\-::(\textbackslash{}w+)\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aae8c1f2567933a0d6a12bdc2ab505baf}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-E\-N\-U\-M\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+enum\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\textbackslash{}\{(.$\ast$)\textbackslash{}\}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a00196e0e53675c02e259668b26109c8f}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-E\-N\-U\-M} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+enum\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae388af59d56dc2df9faf7175657b3ad9}{src.\-regex.\-R\-E\-\_\-\-E\-N\-U\-M\-\_\-\-I\-M\-P\-L\-I\-C\-I\-T\-\_\-\-R\-A\-N\-G\-E} = re.\-compile(r\char`\"{}(\textbackslash{}w$\ast$)\textbackslash{}\mbox{[}(\mbox{[}0-\/9\mbox{]}$\ast$)\-:(\mbox{[}0-\/9\mbox{]}$\ast$)\textbackslash{}\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac607fce0aa1564bce6705ea5e321516b}{src.\-regex.\-R\-E\-\_\-\-E\-N\-U\-M\-\_\-\-I\-M\-P\-L\-I\-C\-I\-T\-\_\-\-C\-O\-U\-N\-T} = re.\-compile(r\char`\"{}(\textbackslash{}w$\ast$)\textbackslash{}\mbox{[}(\mbox{[}0-\/9\mbox{]}$\ast$)\textbackslash{}\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a41964b62a783025d50229dd3b1839d95}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-L\-O\-G\-I\-C} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+logic\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a05216b8fda75aed760fa7b249bd9b82a}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-S\-T\-R\-U\-C\-T\-\_\-\-N\-O\-S\-P\-A\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+struct\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aebff068eb3879a3f1fbfbfdfedf71e67}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-S\-T\-R\-U\-C\-T\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+struct\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ab4e2f9969b94e72e37a0b3408c960c40}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-S\-T\-R\-U\-C\-T\-\_\-\-P\-A\-C\-K\-E\-D\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+struct\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\textbackslash{}\{(.$\ast$)\textbackslash{}\}\textbackslash{}s$\ast$(\mbox{[}a-\/z\-A-\/Z\-\_\-0-\/9\mbox{]}$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_acc79fb8dadfd647b9fcd39556f8b66ab}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-U\-N\-I\-O\-N\-\_\-\-P\-A\-C\-K\-E\-D\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+union\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\textbackslash{}\{(.$\ast$)\textbackslash{}\}\textbackslash{}s$\ast$(\mbox{[}a-\/z\-A-\/Z\-\_\-0-\/9\mbox{]}$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a55c447db66ba7f394b0bc0450c2cde5c}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-S\-T\-R\-U\-C\-T\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+struct\textbackslash{}s$\ast$\textbackslash{}\{(.$\ast$)\textbackslash{}\}\textbackslash{}s$\ast$(\mbox{[}a-\/z\-A-\/Z\-\_\-0-\/9\mbox{]}$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a47015bb89029c41716cd0988f3621ae6}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-U\-N\-I\-O\-N\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+union\textbackslash{}s$\ast$\textbackslash{}\{(.$\ast$)\textbackslash{}\}\textbackslash{}s$\ast$(\mbox{[}a-\/z\-A-\/Z\-\_\-0-\/9\mbox{]}$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac837f014881b63defbf22c657550a43f}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-U\-N\-I\-O\-N\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+union\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac6e919ca3e8ba2edbee446722fe8ffdd}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-U\-N\-I\-O\-N\-\_\-\-N\-O\-S\-P\-A\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$typedef\textbackslash{}s+union\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8ab431b189b258df06951b5b38371936}{src.\-regex.\-R\-E\-\_\-\-P\-A\-C\-K\-E\-D\-\_\-\-A\-R\-R\-A\-Y} = re.\-compile(r\char`\"{}\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\textbackslash{}\mbox{[}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af6fc08b34cd9ab90ca4f1dc0b82f8120}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-S\-I\-N\-G\-\_\-\-B\-R\-A\-C\-E} = re.\-compile(r\char`\"{}\textbackslash{}\}.$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae708653bd993d243472b411534bab724}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-N\-O\-\_\-\-B\-I\-T\-D\-E\-F\-\_\-\-N\-O\-\_\-\-D\-E\-P\-T\-H} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s+(\mbox{[}\textbackslash{}w,\mbox{]}+)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_acc4865a439bc7517e73389dd819374e2}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-B\-I\-T\-D\-E\-F\-\_\-\-N\-O\-\_\-\-D\-E\-P\-T\-H} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w,\mbox{]}+)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a9ae4103c026ef3f7811a52e17beafc5c}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-N\-O\-\_\-\-B\-I\-T\-D\-E\-F\-\_\-\-D\-E\-P\-T\-H} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s+(\mbox{[}\textbackslash{}w,\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a81f0e132e012964cda4ecd13e909dc0b}{src.\-regex.\-R\-E\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-B\-I\-T\-D\-E\-F\-\_\-\-D\-E\-P\-T\-H} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w,\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a15857aad4b7ca1a97fb7eac4fce17336}{src.\-regex.\-R\-E\-\_\-\-S\-U\-B\-P\-O\-R\-T\-\_\-\-W\-I\-T\-H\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\-::(\textbackslash{}w+)\-::(\textbackslash{}w+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_acfa022765950d182790d5fafcba42b62}{src.\-regex.\-R\-E\-\_\-\-S\-U\-B\-P\-O\-R\-T\-\_\-\-W\-I\-T\-H\-\_\-\-T\-Y\-P\-E\-D\-E\-F\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}w+)\-::(\textbackslash{}w+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac9116c703bbb8f7840b81c535f03218c}{src.\-regex.\-R\-E\-\_\-\-P\-A\-R\-A\-M} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$parameter\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae43e1bd4a4c2138510ad6a466f919380}{src.\-regex.\-R\-E\-\_\-\-L\-O\-C\-A\-L\-P\-A\-R\-A\-M} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$localparam\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a1be39b603c3992f11ede9a1591636f9d}{src.\-regex.\-R\-E\-\_\-\-P\-A\-R\-A\-M\-\_\-\-S\-P\-L\-I\-T} = re.\-compile(r\char`\"{}(.$\ast$)=(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae7a763293a55cb767e2fd3abd69247a1}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-S\-P\-L\-I\-T} = re.\-compile(r\char`\"{}(.$\ast$)\#(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af7aee76f666fcda81f9cf0f1fa12641a}{src.\-regex.\-R\-E\-\_\-\-S\-E\-M\-I\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{};\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a79ecaa21eb028d541077e037c02ca6e8}{src.\-regex.\-R\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}(.$\ast$)\-:(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a5f007b56ca09ea55d7c68559c16b21dc}{src.\-regex.\-R\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}(.$\ast$)\-::(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aedd842d031aea4fe0739ceaccc4d38bd}{src.\-regex.\-R\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-D\-O\-U\-B\-L\-E\-\_\-\-C\-O\-L\-O\-N} = re.\-compile(r\char`\"{}(.$\ast$)\-::(.$\ast$)\-::(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8cb9e83aa28c0fcc989e80187ee4033c}{src.\-regex.\-R\-E\-\_\-\-S\-P\-A\-C\-E\-\_\-\-B\-W} = re.\-compile(r\char`\"{}(.+)\textbackslash{}s+(.+)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a59dc81bc857406078f80dc26d12510e7}{src.\-regex.\-R\-E\-\_\-\-O\-P\-E\-N\-\_\-\-C\-U\-R\-L\-Y} = re.\-compile(r\char`\"{}\{\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad704afcaad5c594908d369d49901768b}{src.\-regex.\-R\-E\-\_\-\-C\-O\-M\-M\-A} = re.\-compile(r\char`\"{},\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aca165a42adddc0acfc303d8bdf468920}{src.\-regex.\-R\-E\-\_\-\-I\-F\-\_\-\-I\-T\-E\-R\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}iter\textbackslash{}s$\ast$=\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a84d5f9faa03d1345f485f7ca55a2e06c}{src.\-regex.\-R\-E\-\_\-\-I\-F\-\_\-\-P\-R\-E\-F\-I\-X\-\_\-\-I\-T\-E\-R\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}prefix\-\_\-iter\textbackslash{}s$\ast$=\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a0733ed201d567931f64d73e2ccefc437}{src.\-regex.\-R\-E\-\_\-\-I\-F\-\_\-\-S\-U\-F\-F\-I\-X\-\_\-\-I\-T\-E\-R\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}suffix\-\_\-iter\textbackslash{}s$\ast$=\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a1c029933418650ab4a76a602b9a39782}{src.\-regex.\-R\-E\-\_\-\-E\-Q\-U\-A\-L\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}(.$\ast$)=(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af819a98bbdc42520bdb567e879887969}{src.\-regex.\-R\-E\-\_\-\-E\-Q\-U\-A\-L\-\_\-\-E\-X\-T\-R\-A\-C\-T\-\_\-\-S\-P\-A\-C\-E} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}s$\ast$=\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a733717dbc576a717f902b0fe9eb8fd15}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-S\-E\-\_\-\-S\-Q\-B\-R\-C\-T\-\_\-\-W\-I\-T\-H\-\_\-\-D\-O\-T} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}.(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a18272676c1783d071c15bb1588a48752}{src.\-regex.\-R\-E\-\_\-\-O\-P\-E\-N\-\_\-\-S\-Q\-B\-R\-C\-T} = re.\-compile(r\char`\"{}\textbackslash{}\mbox{[}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af6ea0ac7329ac12f030437327f23ee04}{src.\-regex.\-R\-E\-\_\-\-O\-P\-E\-N\-\_\-\-S\-Q\-B\-R\-C\-T\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}\mbox{[}(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7d53107007745155a209a47972ce6457}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-S\-E\-\_\-\-S\-Q\-B\-R\-C\-T\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3c7a6afd9cf2804f061f0bed11a0c77d}{src.\-regex.\-R\-E\-\_\-\-E\-X\-T\-R\-A\-C\-T\-\_\-\-D\-E\-P\-T\-H} = re.\-compile(r\char`\"{}(.$\ast$)\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a0f26ec043d2d37bb5138bd65f4164a9f}{src.\-regex.\-R\-E\-\_\-\-S\-Q\-B\-R\-C\-T\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$(.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aaf5f8dbccd7de768ff3a216025040fbb}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-S\-E\-\_\-\-S\-Q\-B\-R\-C\-T} = re.\-compile(r\char`\"{}\textbackslash{}\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a1ed7c9be7f7df2a48bc80dc2c5bd71d9}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-S\-E\-\_\-2\-D\-\_\-\-S\-Q\-B\-R\-C\-T} = re.\-compile(r\char`\"{}\textbackslash{}\mbox{]}\textbackslash{}\mbox{[}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7ff7ef8dfc5c6b803b01510174721810}{src.\-regex.\-R\-E\-\_\-\-N\-U\-M\-\_\-\-T\-I\-C\-K} = re.\-compile(r\char`\"{}'\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_afc5659799b8ade9c9e05856a1e9a50d0}{src.\-regex.\-R\-E\-\_\-\-D\-E\-F\-I\-N\-E\-\_\-\-T\-I\-C\-K} = re.\-compile(r\char`\"{}`\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a61e835b717313b150306a906e77edd72}{src.\-regex.\-R\-E\-\_\-\-D\-E\-F\-I\-N\-E\-\_\-\-T\-I\-C\-K\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac29035cc1727397ad2866ae568a2fffc}{src.\-regex.\-R\-E\-\_\-\-D\-E\-F\-I\-N\-E\-\_\-\-T\-I\-C\-K\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$`(\textbackslash{}w+)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a561107014dfbb72a888014d41680fa3a}{src.\-regex.\-R\-E\-\_\-\-C\-O\-N\-S\-T\-A\-N\-T} = re.\-compile(r\char`\"{}$^\wedge$\mbox{[}0-\/9\mbox{]}$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aed620bd129bd6111d9ae75c9477fac7d}{src.\-regex.\-R\-E\-\_\-\-R\-E\-S\-E\-T\-\_\-\-V\-A\-L} = re.\-compile(r\char`\"{}$^\wedge$(.$\ast$$<$)(\mbox{[}s0-\/9\-A-\/\-Za-\/z'\-\_\-\mbox{]}+)(=.$\ast$)\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a185c66d2fe426b18267b7a44c2325f9f}{src.\-regex.\-R\-E\-\_\-\-M\-I\-N\-U\-S1} = re.\-compile(r\char`\"{}-\/\textbackslash{}s$\ast$1\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a2ddc23515b8f7340050512d7f022759a}{src.\-regex.\-R\-E\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Hh\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Bb\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}(\textbackslash{}s$\ast$);$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a332ce422f61c277928427ffd195da6cf}{src.\-regex.\-R\-E\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-E\-N\-D} = re.\-compile(r'$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Hh\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}(\textbackslash{}s$\ast$);$\ast$\$')
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac8058ed7ab44c013b226ff68d6d1edd8}{src.\-regex.\-R\-E\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-S\-I\-N\-G\-L\-E\-\_\-\-L\-I\-N\-E} = re.\-compile(r'$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Hh\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}(\textbackslash{}s+)(.$\ast$);$\ast$\$')
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a259dd5df1bcb3d73ca23aaf21aeecb11}{src.\-regex.\-R\-E\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-V\-A\-R\-I\-A\-B\-L\-E} = re.\-compile(r\char`\"{}\textbackslash{}\$\textbackslash{}\$\{(.$\ast$?)\}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a09cb1b96d5583b3d9a25acce9e6fa219}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-V\-A\-R\-I\-A\-B\-L\-E\-\_\-\-S\-Y\-N\-T\-A\-X} = re.\-compile(r\char`\"{}\#\{\textbackslash{}w+\}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a1a2d8ca724a3a99e1c0451071645fe93}{src.\-regex.\-R\-E\-\_\-\-H\-A\-S\-H\-\_\-\-V\-A\-R\-I\-A\-B\-L\-E} = re.\-compile(r\char`\"{}\#\{(\textbackslash{}w+)\}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a99a61ab957846a0c5b5a2440f272cef0}{src.\-regex.\-R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Hh\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Pp\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Bb\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}(\textbackslash{}s$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a60a51adea7cffe99025f5e83729263b5}{src.\-regex.\-R\-E\-\_\-\-P\-O\-S\-T\-\_\-\-P\-Y\-T\-H\-O\-N\-\_\-\-B\-L\-O\-C\-K\-\_\-\-E\-N\-D} = re.\-compile(r'$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Hh\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Pp\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}(\textbackslash{}s$\ast$)')
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ab7e46e883798307a72bb83ab941766b1}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}(.$\ast$)`\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a9c20d65b96e47ed4d4c0ed399c896b65}{src.\-regex.\-R\-E\-\_\-\-T\-I\-C\-K\-\_\-\-D\-E\-F\-\_\-\-C\-H\-E\-C\-K\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\-:\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a728a077eb302fe974927695df1359300}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-C\-L\-A\-R\-A\-T\-I\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$module\textbackslash{}s+(\textbackslash{}w$\ast$)\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a1e2e4b186a9cd0ebeab9281d6fecbbce}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-P\-A\-R\-A\-M} = re.\-compile(r\char`\"{}\#\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$parameter\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a136b550c5e9a55c8efb6c5596a23d114}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-N\-O\-P\-A\-R\-A\-M} = re.\-compile(r\char`\"{}\#\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3ee298d64558fe0d75b353a888087afa}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-C\-L\-A\-R\-A\-T\-I\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$endmodule\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a901c8f20b6ede384934a08371aa826cb}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Ff\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3a828b80db9ce837d80c70f3bd669df4}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-B\-I\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\mbox{[}Bb\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6af1e507594bdc8b84ec16f8a4722d5b}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-W\-I\-D\-T\-H} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\mbox{[}Ww\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Hh\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a5a50309e38c960a29a8133ff361f8a49}{src.\-regex.\-R\-E\-\_\-\-W\-I\-D\-T\-H\-\_\-\-S\-L\-A\-S\-H} = re.\-compile(r\char`\"{}\textbackslash{}/(.$\ast$)\textbackslash{}/\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7f83ff6aa8c60ead1a2b325bc4e5b438}{src.\-regex.\-R\-E\-\_\-\-R\-E\-G\-E\-X\-\_\-\-S\-L\-A\-S\-H} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}/(.$\ast$)\textbackslash{}/\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a2eab5ea3af78edbe7dfd685e870f16ec}{src.\-regex.\-R\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T\-\_\-\-S\-L\-A\-S\-H} = re.\-compile(r\char`\"{}\textbackslash{}/(.$\ast$)\textbackslash{}/\textbackslash{}s+\textbackslash{}/(.$\ast$)\textbackslash{}/\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3b341c15a86da2a7eb9973c76fda4990}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-I\-N\-T\-E\-R\-N\-A\-L} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Ll\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8b026bb1e7c8c0a755cb6a6efb27adff}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-C\-E\-\_\-\-O\-T\-H\-E\-R\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\textbackslash{}w+)\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa867c52851d888ca67312cd7c32fb4aa}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-I\-N\-P\-U\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}binput\textbackslash{}b\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6705bef4edaaa358fe4178626517b0f3}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-O\-U\-T\-P\-U\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}boutput\textbackslash{}b\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac8f184a8578c268d75dd3a6a3d87e8bb}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-I\-N\-O\-U\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}binout\textbackslash{}b\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7c5c572b7ea014ffe5e1aff26e34e13d}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-W\-I\-R\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bwire\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa1b385486ee72a2074c74a7bc9f6a903}{src.\-regex.\-R\-E\-\_\-\-W\-I\-R\-E\-\_\-\-A\-S\-S\-I\-G\-N\-M\-E\-N\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bwire\textbackslash{}b\textbackslash{}s+(\textbackslash{}w+)\textbackslash{}s$\ast$=\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a529a487b8e57c42527540c9e41a39812}{src.\-regex.\-R\-E\-\_\-\-W\-I\-R\-E\-\_\-\-A\-S\-S\-I\-G\-N\-M\-E\-N\-T\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bwire\textbackslash{}b\textbackslash{}s+\textbackslash{}\mbox{[}.$\ast$\textbackslash{}\mbox{]}\textbackslash{}s+(\textbackslash{}w+)\textbackslash{}s$\ast$=\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae231fc04204ba1ad4c43cf6bbcb0a8de}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-R\-E\-G} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}breg\textbackslash{}b\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3673c4dfda97c58d79251bcc52bcbaca}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-L\-O\-G\-I\-C} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}blogic\textbackslash{}b\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a85c9bcafe8fed86e9f7053838e950259}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-S\-I\-G\-N\-E\-D} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$\textbackslash{}bsigned\textbackslash{}b\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a5c3c7c145cdbc544029818e8dff75c1e}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$(\textbackslash{}w.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a834762d6e921617b164a9203c7893016}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-P\-A\-C\-K\-E\-D\-\_\-\-B\-I\-T\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$(\textbackslash{}w.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7990130fc037d49b0c6942055c4ae022}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-N\-A\-M\-E} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(\textbackslash{}w+)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aab8c4627b6f16cd59c1667e4cd90e52b}{src.\-regex.\-R\-E\-\_\-\-D\-E\-C\-L\-A\-R\-E\-\_\-\-D\-E\-P\-T\-H} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\textbackslash{}s\mbox{]}$\ast$)\textbackslash{}s$\ast$\textbackslash{}\mbox{[}(.$\ast$)\textbackslash{}\mbox{]}\textbackslash{}s$\ast$\mbox{[};\mbox{]}$\ast$\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_afa3544b597c3ba3e73bb4da32cbb1dfd}{src.\-regex.\-R\-E\-\_\-\-A\-S\-S\-I\-G\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bassign\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7b588c9948b4e0eda1a9c08589121230}{src.\-regex.\-R\-E\-\_\-\-A\-L\-W\-A\-Y\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}balways\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3eee15ff85556bd4bcb71975090c2094}{src.\-regex.\-R\-E\-\_\-\-A\-L\-W\-A\-Y\-S\-\_\-\-F\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}balways\-\_\-ff\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aeac24fb2b4718937029f9f4109341377}{src.\-regex.\-R\-E\-\_\-\-A\-L\-W\-A\-Y\-S\-\_\-\-C\-O\-M\-B} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}balways\-\_\-comb\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4fb30c3a32a222ea3c674d49c385b32b}{src.\-regex.\-R\-E\-\_\-\-O\-P\-E\-N\-\_\-\-C\-U\-R\-L\-Y\-\_\-\-B\-R\-A\-C\-K\-E\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\{\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a015131507b9992fbd10f0bab91847695}{src.\-regex.\-R\-E\-\_\-\-O\-P\-E\-N\-\_\-\-W\-O\-R\-D\-\_\-\-C\-H\-A\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}w\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad396f8f5a688c59704a56795c206e30a}{src.\-regex.\-R\-E\-\_\-\-U\-N\-I\-Q\-U\-E\-\_\-\-C\-A\-S\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bunique\textbackslash{}s+case\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a5ae4abff9bd1f9ce1c3e9da976060fce}{src.\-regex.\-R\-E\-\_\-\-C\-A\-S\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bcase\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a171b6ef72b3bf09efac126c2c1088b0b}{src.\-regex.\-R\-E\-\_\-\-C\-A\-S\-E\-Z} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bcasez\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a50994b87d5e17a46ab1e8784784ddd11}{src.\-regex.\-R\-E\-\_\-\-C\-A\-S\-E\-X} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bcasex\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3eadb320c0e007f250e95fd27d29eee7}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-C\-A\-S\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bendcase\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6505f86e33d213265d2382176cbc7a51}{src.\-regex.\-R\-E\-\_\-\-C\-A\-S\-E\-\_\-\-E\-X\-P\-R\-E\-S\-S\-I\-O\-N} = re.\-compile(r\char`\"{}\#\#\#\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a68dbf817fc39663f5d75e25e84a5ebd9}{src.\-regex.\-R\-E\-\_\-\-E\-M\-P\-T\-Y\-\_\-\-C\-A\-S\-E\-\_\-\-E\-X\-P\-R\-E\-S\-S\-I\-O\-N} = re.\-compile(r\char`\"{}\#\#\#\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a18587eb22024aa258919366da7f03cc7}{src.\-regex.\-R\-E\-\_\-\-I\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bif\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a0b3c0ae8066bffceca258d02e62f8278}{src.\-regex.\-R\-E\-\_\-\-E\-L\-S\-E\-I\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}belse\textbackslash{}s+if\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa8f1435a818c8f3f26b48cb28f084c7a}{src.\-regex.\-R\-E\-\_\-\-E\-L\-S\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}belse\textbackslash{}b(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7ed92189e12513a5adfc0a3be5af6ebc}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bbegin\textbackslash{}b(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a37b9ab4c9ac518d64bf7b6fdaf351e31}{src.\-regex.\-R\-E\-\_\-\-A2\-Z\-\_\-\-S\-T\-A\-R\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\mbox{[}A-\/Za-\/z\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_adf4d4772e12c29e5f3ef28cdccc446ce}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-B\-E\-G\-I\-N\-\_\-\-W\-I\-T\-H\-\_\-\-L\-A\-B\-E\-L} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bbegin\textbackslash{}s$\ast$\-:(\textbackslash{}w+)\textbackslash{}b(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a19aabe8e63bfc26dfc686cf63bd2138b}{src.\-regex.\-R\-E\-\_\-\-W\-I\-T\-H\-\_\-\-L\-A\-B\-E\-L} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\-:\textbackslash{}s$\ast$(\textbackslash{}w+)\textbackslash{}b(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aef7f22585f350b07dde6de3411cde07d}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}\textbackslash{}bbegin\textbackslash{}b(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a792df301d2ccfc5b4fa4cfe70c1f04c3}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-N\-O\-\_\-\-G\-R\-O\-U\-P} = re.\-compile(r\char`\"{}\textbackslash{}bbegin\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af038a49f2c08aa8f2edd2607f74e5ed4}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-O\-N\-L\-Y} = re.\-compile(r\char`\"{}\textbackslash{}bbegin\textbackslash{}b\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a94eadab581e7c5c775eb7143ae94d7e3}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bend\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a282195cf68fc1f4d418133f31ea12fe7}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-\_\-\-O\-N\-L\-Y} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bend\textbackslash{}b\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_adda728085772e32486a79f4791ee3f05}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$begin\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a31367bbe6cd72c1fa18841c3ebec75da}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-\_\-\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$end\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a39dadd5d54df1b7b8096e04973310006}{src.\-regex.\-R\-E\-\_\-\-I\-F\-\_\-\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}bif\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af2f2f18573da5c31e5c81f162b7a8fa0}{src.\-regex.\-R\-E\-\_\-\-E\-L\-S\-E\-I\-F\-\_\-\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}belse\textbackslash{}s$\ast$if\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8ccdfb52508f9b6a49082bb4fb1ae188}{src.\-regex.\-R\-E\-\_\-\-E\-L\-S\-E\-\_\-\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}belse\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ab87ee1ae93d242626458645c69dd20e1}{src.\-regex.\-R\-E\-\_\-\-A\-M\-B\-E\-R\-S\-A\-N\-D\-\_\-\-I\-N\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a651a9fb141d3d150d175a02fb9acaf6b}{src.\-regex.\-R\-E\-\_\-\-M\-A\-N\-U\-A\-L\-\_\-\-M\-O\-D\-U\-L\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w`\mbox{]}+)\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa69fbaf097f82d033074ca123d08b1c6}{src.\-regex.\-R\-E\-\_\-\-M\-A\-N\-U\-A\-L\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w`\mbox{]}+)\textbackslash{}s$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a2ae20a6dad2c48d53bbbd98f4296ea83}{src.\-regex.\-R\-E\-\_\-\-P\-O\-S\-E\-D\-G\-E} = re.\-compile(r\char`\"{}\textbackslash{}bposedge\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4057131e7a4dcaa11c36bd0013fdec6d}{src.\-regex.\-R\-E\-\_\-\-N\-E\-G\-E\-D\-G\-E} = re.\-compile(r\char`\"{}\textbackslash{}bnegedge\textbackslash{}b\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae23a5feb43bb616771baf96b22b6edf9}{src.\-regex.\-R\-E\-\_\-\-L\-A\-B\-E\-L\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\-:\textbackslash{}s$\ast$\textbackslash{}w+\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ab87052932bdf55f558ae3d8bfeb8d55e}{src.\-regex.\-R\-E\-\_\-\-L\-A\-B\-E\-L} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\-:\textbackslash{}s$\ast$\textbackslash{}w+\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae47cd46c8489265ed1c4301740816b21}{src.\-regex.\-R\-E\-\_\-\-T\-A\-S\-K} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$task\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_adc990896c4f715969c56f9acad331bcc}{src.\-regex.\-R\-E\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$function\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4d116a57b7d32cc5465b64723bab8315}{src.\-regex.\-R\-E\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-A\-M\-E1} = re.\-compile(r\char`\"{}\textbackslash{}s+(\textbackslash{}w$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3e71207d2a419d805edc4c5793ab835e}{src.\-regex.\-R\-E\-\_\-\-F\-U\-N\-C\-T\-I\-O\-N\-\_\-\-N\-A\-M\-E2} = re.\-compile(r\char`\"{}\textbackslash{}s+(\textbackslash{}w$\ast$)\textbackslash{}s$\ast$\textbackslash{}(\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6ef4de9bb7a113c76162ac09959df60c}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-F\-U\-N\-C\-T\-I\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$endfunction\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a902a7f2eb802dd9f415f07bfb51dce2e}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-T\-A\-S\-K} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$endtask\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a88a544404f103c3166f2782b063aea3d}{src.\-regex.\-R\-E\-\_\-\-I\-N\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$int\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a246819d4a1df3adcc504d309818a23c8}{src.\-regex.\-R\-E\-\_\-\-I\-N\-T\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$int\textbackslash{}s+(.$\ast$);\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3ebbaae008baa0d672050788477a3d51}{src.\-regex.\-R\-E\-\_\-\-I\-N\-T\-E\-G\-E\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$integer\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a89bbbe20930b1ec041718234b9edaf09}{src.\-regex.\-R\-E\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$integer\textbackslash{}s+(.$\ast$);\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad86a0025e7622f45af135071d2138f69}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-L\-O\-O\-P\-\_\-\-I\-N\-T\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$int\textbackslash{}s+(\textbackslash{}w+)\textbackslash{}s$\ast$=\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3bbbc8b5aa5d8c6bf680836362a98ae9}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-L\-O\-O\-P\-\_\-\-I\-N\-T\-E\-G\-E\-R\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$integer\textbackslash{}s+(\textbackslash{}w+)\textbackslash{}s$\ast$=\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a91ffc13827ce161b947038e052906c75}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-V\-A\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$genvar\textbackslash{}s+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a60335fe5825b519aff08991a2c96c757}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-V\-A\-R\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$genvar\textbackslash{}s+(.$\ast$);\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad055c3a6fb834d0a285136d0256b33f8}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)generate\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aea898f2c869223fb544c3f4127677ac9}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E\-\_\-\-F\-O\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$for\textbackslash{}s$\ast$\textbackslash{}(\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac0c168590e9df99c91ca4c1951212419}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-E\-R\-A\-T\-E\-\_\-\-F\-O\-R\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$for\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$;\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$;\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac7955a5195cf4962ca8528da746bd5d7}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$for\textbackslash{}b\textbackslash{}s$\ast$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a049da174d91b05869c3af59f9b78e4f0}{src.\-regex.\-R\-E\-\_\-\-F\-O\-R\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$;\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$;\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a768cea115f18317f98fa08f037639c82}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-G\-E\-N\-E\-R\-A\-T\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$endgenerate\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7069179868eeea3e9ac3b3e6a3a1e014}{src.\-regex.\-R\-E\-\_\-\-A\-S\-S\-E\-R\-T\-\_\-\-P\-R\-O\-P\-E\-R\-T\-Y} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$assert\textbackslash{}s+property\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aca6e6879b06e8f0dbc52b55d910387e5}{src.\-regex.\-R\-E\-\_\-\-C\-O\-M\-M\-E\-N\-T\-E\-D\-\_\-\-S\-K\-I\-P\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}/\textbackslash{}/\textbackslash{}s$\ast$\&\mbox{[}Bb\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}ii\mbox{]}\mbox{[}Pp\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a898b794f4f52ea429a53ce8cdd32731d}{src.\-regex.\-R\-E\-\_\-\-C\-O\-M\-M\-E\-N\-T\-E\-D\-\_\-\-S\-K\-I\-P\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\textbackslash{}/\textbackslash{}/\textbackslash{}s$\ast$\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Pp\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a607f21c9159f5e50832b5c458cce7c80}{src.\-regex.\-R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Bb\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}ii\mbox{]}\mbox{[}Pp\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a431bcb21f8201e11fbae1619163b269b}{src.\-regex.\-R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Pp\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a69046794f60d9286c57701374b9eb6b9}{src.\-regex.\-R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Bb\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}ii\mbox{]}\mbox{[}Pp\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ff\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a0aa035996ed9ef61df34ad86849d7b04}{src.\-regex.\-R\-E\-\_\-\-S\-K\-I\-P\-\_\-\-I\-F\-D\-E\-F\-\_\-\-E\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Pp\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ff\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a38573dab2556e8c2727a19f54f2cd6b1}{src.\-regex.\-R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-F\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Pp\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Ff\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae22c01346c8428aee105b11ab237044d}{src.\-regex.\-R\-E\-\_\-\-P\-A\-R\-S\-E\-R\-\_\-\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Pp\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a82cb4e30862c4f685131ec792d314afc}{src.\-regex.\-R\-E\-\_\-\-M\-I\-N\-U\-S\-\_\-\-M\-I\-N\-U\-S} = re.\-compile(r\char`\"{}$^\wedge$-\/-\/\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a65a59c62d114452fd207603a73ad5585}{src.\-regex.\-R\-E\-\_\-\-P\-L\-U\-S\-\_\-\-P\-L\-U\-S} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}+\textbackslash{}+\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a20346c89d3695ca8dfa528c4217b8b6f}{src.\-regex.\-R\-E\-\_\-\-M\-I\-N\-U\-S\-\_\-\-N\-U\-M\-B\-E\-R} = re.\-compile(r\char`\"{}(\textbackslash{}w$\ast$)=(\textbackslash{}w$\ast$)-\/(\textbackslash{}d$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a64c56edef930bad666a7c52d0b2fdba5}{src.\-regex.\-R\-E\-\_\-\-P\-L\-U\-S\-\_\-\-N\-U\-M\-B\-E\-R} = re.\-compile(r\char`\"{}(\textbackslash{}w$\ast$)=(\textbackslash{}w$\ast$)\textbackslash{}+(\textbackslash{}d)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6e714a90fa251f77c5b838f3bef87f3a}{src.\-regex.\-R\-E\-\_\-\-L\-E\-S\-S\-\_\-\-T\-H\-A\-N\-\_\-\-E\-Q\-U\-A\-L} = re.\-compile(r\char`\"{}(.$\ast$)$<$=(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a033b323a439ec413a434843234f0cc21}{src.\-regex.\-R\-E\-\_\-\-L\-E\-S\-S\-\_\-\-T\-H\-A\-N} = re.\-compile(r\char`\"{}(.$\ast$)$<$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af312faea51e23c7295397a7eb00fd41d}{src.\-regex.\-R\-E\-\_\-\-G\-R\-E\-A\-T\-E\-R\-\_\-\-T\-H\-A\-N\-\_\-\-E\-Q\-U\-A\-L} = re.\-compile(r\char`\"{}(.$\ast$)$>$=(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ace242488f0a9e41cfa003b2f3f3f279a}{src.\-regex.\-R\-E\-\_\-\-G\-R\-E\-A\-T\-E\-R\-\_\-\-T\-H\-A\-N} = re.\-compile(r\char`\"{}(.$\ast$)$>$(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a8e9c2e37721ade4612f373bc4d287829}{src.\-regex.\-R\-E\-\_\-\-D\-O\-L\-L\-A\-R\-\_\-\-B\-I\-T\-S\-\_\-\-C\-H\-E\-C\-K} = re.\-compile(r\char`\"{}\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$(\textbackslash{}\$bits\textbackslash{}()(\mbox{[}a-\/z\-A-\/Z0-\/9\-\_\-\textbackslash{}.\-:\#\mbox{]}$\ast$)(\textbackslash{}))\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a78f69a86dd4bd75494d4e4abd195dbd1}{src.\-regex.\-R\-E\-\_\-\-D\-O\-L\-L\-A\-R\-\_\-\-B\-I\-T\-S\-\_\-\-E\-X\-T\-R\-A\-C\-T} = re.\-compile(r\char`\"{}(.$\ast$)(\textbackslash{}\$bits\textbackslash{}(\textbackslash{}w+\textbackslash{}))(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a0d92469a9be615d803d8fef785bde13f}{src.\-regex.\-R\-E\-\_\-\-D\-O\-L\-L\-A\-R\-\_\-\-C\-L\-O\-G2} = re.\-compile(r\char`\"{}\textbackslash{}\$clog2\textbackslash{}s$\ast$\textbackslash{}(\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a5898644907f851513788c52dba8454ff}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-G2} = re.\-compile(r\char`\"{}clog2\textbackslash{}s$\ast$\textbackslash{}(\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a608949493486b4ae20640a12a55888c4}{src.\-regex.\-R\-E\-\_\-\-N\-U\-M\-B\-E\-R\-S} = re.\-compile(r\char`\"{}$^\wedge$\mbox{[}0-\/9\mbox{]}$\ast$\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_add225ad490cc0f47df2f4fc81f1ad66a}{src.\-regex.\-R\-E\-\_\-\-N\-U\-M\-B\-E\-R\-S\-\_\-\-O\-N\-L\-Y} = re.\-compile(r\char`\"{}$^\wedge$\mbox{[}0-\/9\mbox{]}+\$\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aacf12894450959f9e09e4f0a3a7b9e36}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Mm\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ff\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a559ff72fbe5a09f25dc74a33b2895de7}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-D\-E\-F\-\_\-\-S\-P\-A\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Mm\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ff\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa2310cf0e6887261721930421ba8c5ea}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-S\-P\-A\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Mm\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Ee\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad4cf895752a1cdf4439bb4d565796b15}{src.\-regex.\-R\-E\-\_\-\-M\-O\-D\-U\-L\-E\-\_\-\-P\-A\-R\-A\-M\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Mm\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$\textbackslash{}((.$\ast$)\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a41b4e94c5e6f0de4482981fb2a80a6cb}{src.\-regex.\-R\-E\-\_\-\-P\-O\-R\-T\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Ss\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a77897e390173c7fccbb5530ec5df6f37}{src.\-regex.\-R\-E\-\_\-\-R\-E\-G\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Rr\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ss\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_abbb4440391681e05336f4c523b2df528}{src.\-regex.\-R\-E\-\_\-\-L\-O\-G\-I\-C\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Ss\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a225957dab3c76d4d32070ee8333a65f1}{src.\-regex.\-R\-E\-\_\-\-W\-I\-R\-E\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ww\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ss\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a5b2e471e40b31b12aea129c024ddaed1}{src.\-regex.\-R\-E\-\_\-\-B\-I\-N\-D\-I\-N\-G\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Bb\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ss\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a90c41c49bca5bb74167fba0c22d719e6}{src.\-regex.\-R\-E\-\_\-\-P\-A\-R\-A\-M\-\_\-\-O\-V\-E\-R\-R\-I\-D\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Pp\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Mm\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a274be3799ea3a9e86322f3a13b8d50b7}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-I\-N\-S\-T\-A\-N\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Bb\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s+(.$\ast$);\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae5372020720a2ffcc15374e77c477790}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-I\-N\-S\-T\-A\-N\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a1f0592903851e0dbbc2103d8635cb0e0}{src.\-regex.\-R\-E\-\_\-\-B\-U\-I\-L\-D\-\_\-\-C\-O\-M\-M\-A\-N\-D} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Bb\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Mm\mbox{]}\mbox{[}Mm\mbox{]}\mbox{[}Aa\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac559435ec0311892bd84da0e9f204a66}{src.\-regex.\-R\-E\-\_\-\-I\-N\-C\-L\-U\-D\-E} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Ii\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a61b3778ed726b2a6b5d5ac6e4341f8f5}{src.\-regex.\-R\-E\-\_\-\-C\-O\-N\-N\-E\-C\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Cc\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Tt\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4369ef6cb68e6f8fd70ebad3d02c20e0}{src.\-regex.\-R\-E\-\_\-\-N\-A\-M\-E\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\mbox{[}A-\/Za-\/z0-\/9\-\_\-`\mbox{]}$\ast$)\textbackslash{}s+(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a9160a0c555a9af21f5143d56a010f364}{src.\-regex.\-R\-E\-\_\-\-N\-A\-M\-E\-\_\-\-B\-R\-A\-C\-K\-E\-T\-\_\-\-B\-E\-G\-I\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$(\mbox{[}A-\/Za-\/z0-\/9\-\_\-\mbox{]}$\ast$)\textbackslash{}s$\ast$\textbackslash{}((.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a74a9c58b10580d28dd7df4ec2df33355}{src.\-regex.\-R\-E\-\_\-\-B\-E\-G\-I\-N\-\_\-\-S\-P\-A\-C\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)(.$\ast$)\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa281591aa1a33b595f2e65919536dbb8}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-C\-K} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Cc\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Kk\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aac34f33213c716491145cfe1cbabf467}{src.\-regex.\-R\-E\-\_\-\-A\-S\-Y\-N\-C\-R\-E\-S\-E\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Aa\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Tt\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac076693881cddcb390503594ef4003d0}{src.\-regex.\-R\-E\-\_\-\-S\-Y\-N\-C\-R\-E\-S\-E\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$\&\mbox{[}Ss\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Tt\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_afa1175087f670152b7cc86a821f9548c}{src.\-regex.\-R\-E\-\_\-\-R\-\_\-\-P\-O\-S\-E\-D\-G\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a105e748334ac043df88e38efd47f4e61}{src.\-regex.\-R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-P\-O\-S\-E\-D\-G\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Pp\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a861682891ae7bb4bab8cfef6a3274606}{src.\-regex.\-R\-E\-\_\-\-R\-\_\-\-N\-E\-G\-E\-D\-G\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Nn\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_afad9cf9ad3473c5ad876f42d5f85a972}{src.\-regex.\-R\-E\-\_\-\-R\-\_\-\-E\-N\-D\-N\-E\-G\-E\-D\-G\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae264eaa454e7aed0e27300e294c5fbe6}{src.\-regex.\-R\-E\-\_\-\-F\-S\-M} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ff\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Mm\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af199feb6d584969abe571c3978a0e920}{src.\-regex.\-R\-E\-\_\-\-E\-N\-D\-F\-S\-M} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Mm\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a9bfab2c83b0d9e0db1f4e8915d8c688f}{src.\-regex.\-R\-E\-\_\-\-P\-I\-P\-E} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Pp\mbox{]}\mbox{[}Ee\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae12e0f2f559392f1cc4e496864f63772}{src.\-regex.\-R\-E\-\_\-\-M\-E\-M\-G\-E\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Mm\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Mm\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aff1b17a7428328db7c0058c225adb21b}{src.\-regex.\-R\-E\-\_\-\-M\-E\-M\-G\-E\-N\-\_\-\-H\-L\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Hh\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Ss\mbox{]}\-\_\-\mbox{[}Mm\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Mm\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a156ab883a721d2a446faefaf9620953b}{src.\-regex.\-R\-E\-\_\-\-M\-E\-M\-G\-E\-N\-\_\-\-E\-C\-C} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ee\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Cc\mbox{]}\-\_\-\mbox{[}Mm\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Mm\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6d0912e01b5f6c03ac3abe469d563fa9}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-C\-K\-G\-E\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Cc\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a9c409ca249888eb67d8296ec5c7e5ba0}{src.\-regex.\-R\-E\-\_\-\-C\-L\-O\-C\-K\-R\-E\-S\-E\-T\-G\-E\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Cc\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af5c8c0471bd63f5415e88d433272434b}{src.\-regex.\-R\-E\-\_\-\-S\-Y\-N\-C\-G\-E\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ss\mbox{]}\mbox{[}Yy\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Cc\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ad6f3a1c01ad772aacfe1ae26a93297e1}{src.\-regex.\-R\-E\-\_\-\-F\-B\-\_\-\-E\-N\-F\-L\-O\-P} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ff\mbox{]}\mbox{[}Bb\mbox{]}\-\_\-\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Pp\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a7307406c527905e22123341888830f60}{src.\-regex.\-R\-E\-\_\-\-F\-B\-\_\-\-E\-N\-F\-L\-O\-P\-\_\-\-R\-S} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ff\mbox{]}\mbox{[}Bb\mbox{]}\-\_\-\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Pp\mbox{]}\-\_\-\mbox{[}Rr\mbox{]}\mbox{[}Ss\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ae494ff9c23fd3edb9fef46d6e80f9ed9}{src.\-regex.\-R\-E\-\_\-\-F\-B\-\_\-\-E\-N\-F\-L\-O\-P\-\_\-\-R\-S\-T} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ff\mbox{]}\mbox{[}Bb\mbox{]}\-\_\-\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Ll\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Pp\mbox{]}\-\_\-\mbox{[}Rr\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$(.$\ast$)\textbackslash{}s$\ast$\textbackslash{})\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aca3d240c44bd8b7107e98f35b84c6cf3}{src.\-regex.\-R\-E\-\_\-\-S\-T\-U\-B\-O\-U\-T} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Bb\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Tt\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aaee382916094159756fb39ffdc24b2af}{src.\-regex.\-R\-E\-\_\-\-S\-T\-U\-B\-O\-U\-T\-\_\-\-V\-E\-R\-I\-L\-O\-G} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\textbackslash{}/\textbackslash{}/\textbackslash{}s$\ast$\&\mbox{[}Ss\mbox{]}\mbox{[}Tt\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Bb\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Uu\mbox{]}\mbox{[}Tt\mbox{]}\textbackslash{}s+(.$\ast$)\textbackslash{}s+(.$\ast$)\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_af1c74060e9f9c72a872b6dc2c5f62d31}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Zz\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa6914fb0c9195e0410ae28c6d710f0c0}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E\-Z\-\_\-\-V\-E\-R\-I\-L\-O\-G} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\textbackslash{}/\textbackslash{}/\textbackslash{}s$\ast$\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Zz\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a6c95073e5d870c11b3ea374f36cdcb9d}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}0\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa7071c39ab8d20e39438b20e70ea5314}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-N\-O\-I\-F\-D\-E\-F\-D\-R\-I\-V\-E0} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Oo\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ff\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}0\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac3b722b63dfebecb2f9e4d57808fafd6}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-\_\-\-V\-E\-R\-I\-L\-O\-G} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\textbackslash{}/\textbackslash{}/\textbackslash{}s$\ast$\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}0\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a73dc7ef54b508ab2d8952e6102d5f544}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-A\-N\-D\-Z} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}0\mbox{[}Aa\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Zz\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aaabe4775992c97fe63c6fc23d9c0258a}{src.\-regex.\-R\-E\-\_\-\-G\-E\-N\-D\-R\-I\-V\-E0\-A\-N\-D\-Z\-\_\-\-V\-E\-R\-I\-L\-O\-G} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\textbackslash{}/\textbackslash{}/\textbackslash{}s$\ast$\&\mbox{[}Gg\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}0\mbox{[}Aa\mbox{]}\mbox{[}Nn\mbox{]}\mbox{[}Dd\mbox{]}\mbox{[}Zz\mbox{]}\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac28055b8ef6cc518fc5398dbc61d9a83}{src.\-regex.\-R\-E\-\_\-\-I\-N\-F\-R\-A\-\_\-\-A\-S\-I\-C\-\_\-\-F\-P\-G\-A\-\_\-\-R\-O\-O\-T} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}\$I\-N\-F\-R\-A\-\_\-\-A\-S\-I\-C\-\_\-\-F\-P\-G\-A\-\_\-\-R\-O\-O\-T\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_ac4e94f740a8e656b5223f0c51e0a7835}{src.\-regex.\-R\-E\-\_\-\-P\-K\-G2\-A\-S\-S\-I\-G\-N} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Pp\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Gg\mbox{]}2\mbox{[}Aa\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Nn\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$,\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$,\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aae44d3d4c5d987de8d14273de4199e99}{src.\-regex.\-R\-E\-\_\-\-A\-S\-S\-I\-G\-N2\-P\-K\-G} = re.\-compile(r\char`\"{}$^\wedge$(\textbackslash{}s$\ast$)\&\mbox{[}Aa\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ii\mbox{]}\mbox{[}Gg\mbox{]}\mbox{[}Nn\mbox{]}2\mbox{[}Pp\mbox{]}\mbox{[}Kk\mbox{]}\mbox{[}Gg\mbox{]}\textbackslash{}s$\ast$\textbackslash{}(\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$,\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\-:\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$,\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$(\mbox{[}\textbackslash{}w\mbox{]}+)\textbackslash{}s$\ast$\textbackslash{}\char`\"{}\textbackslash{}s$\ast$\textbackslash{})\textbackslash{}s$\ast$;\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_aa98aca764dcf2bb5a7f16b1fe95339b9}{src.\-regex.\-R\-E\-\_\-\-R\-E\-S\-E\-R\-V\-E\-D} = re.\-compile(r\char`\"{}\mbox{[}Rr\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Ss\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Rr\mbox{]}\mbox{[}Vv\mbox{]}\mbox{[}Ee\mbox{]}\mbox{[}Dd\mbox{]}\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a3bfb4bbec2ba8a173fda401c59fa1971}{src.\-regex.\-R\-E\-\_\-\-T\-R\-A\-N\-S\-L\-A\-T\-E\-\_\-\-O\-F\-F} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$//\textbackslash{}s$\ast$pragma\textbackslash{}s+translate\-\_\-off\char`\"{})
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_adad929fcd4cae39a37ba80e817be9a19}{src.\-regex.\-R\-E\-\_\-\-T\-R\-A\-N\-S\-L\-A\-T\-E\-\_\-\-O\-N} = re.\-compile(r\char`\"{}$^\wedge$\textbackslash{}s$\ast$//\textbackslash{}s$\ast$pragma\textbackslash{}s+translate\-\_\-on\char`\"{})
+\item 
+list \hyperlink{namespacesrc_1_1regex_ab3d09d9623eb7271de1f52c2385bcc92}{src.\-regex.\-M\-O\-N\-S\-T\-E\-R\-\_\-\-R\-E\-G\-E\-X\-\_\-\-L\-I\-S\-T}
+\item 
+tuple \hyperlink{namespacesrc_1_1regex_a4b7cfef18aaf22683243447a59148dde}{src.\-regex.\-A\-N\-Y\-\_\-\-M\-O\-N\-S\-T\-E\-R\-\_\-\-R\-E\-G\-E\-X} = re.\-compile('$|$'.join(x.\-pattern for x in M\-O\-N\-S\-T\-E\-R\-\_\-\-R\-E\-G\-E\-X\-\_\-\-L\-I\-S\-T))
+\item 
+list \hyperlink{namespacesrc_1_1regex_aafeb3af1bbb97ccdc0ddc3eefbd2e048}{src.\-regex.\-sv\-\_\-keywords}
+\end{DoxyCompactItemize}
