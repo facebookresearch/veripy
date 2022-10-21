@@ -18,7 +18,7 @@ module fb_fifo
     input [WIDTH-1:0] in,
 
     input clk,
-    input rst_n,
+    input rst_n
     );
 
 

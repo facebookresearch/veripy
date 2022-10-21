@@ -7,12 +7,14 @@
 
 #!/usr/bin/env python3
 
+num_inputs = 16
+
 
 def inst_syncfifo(prefix, clk, rst, width, depth):
-    print("&BeginInstance fifo u_" + prefix + "_fifo;")
+    print("&BeginInstance fb_fifo u_" + prefix + "_fb_fifo;")
     print("&Param DEPTH " + str(width) + ";")
     print("&Param WIDTH " + str(depth) + ";")
     print("&Connect /^/ /" + prefix + "_/;")
     print("&Connect clk " + clk + ";")
-    print("&Connect reset " + rst + ";")
+    print("&Connect rst_n " + rst + ";")
     print("&EndInstance;")

@@ -7,17 +7,43 @@
 
 //&Module;
 module test (
+  output  logic     [3:0]   fil2dma_out,
+  output  logic             fil2dma_full,
+  output  logic             fil2dma_empty,
   output  logic     [15:0]  out,
+  input   logic             fil2dma_push,
+  input   logic             fil2dma_pop,
+  input   logic     [3:0]   fil2dma_in,
+  input   logic             fil_clk,
+  input   logic             fill_rstn,
   input   logic     [15:0]  in_a,
   input   logic     [15:0]  in_b
 ); 
 
 //&Logics;
 
-//&Python self.inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
-
-//&Python num_inputs = 16
-
+//&Python inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
+//&BeginInstance fb_fifo u_fil2dma_fb_fifo;
+//&Param DEPTH 32;
+//&Param WIDTH 4;
+//&Connect /^/ /fil2dma_/;
+//&Connect clk fil_clk;
+//&Connect rst_n fill_rstn;
+//&EndInstance;
+//FILE: fb_fifo.v
+fb_fifo # (
+    .DEPTH  (32),
+    .WIDTH  (4)
+) u_fil2dma_fb_fifo (
+    .out    (fil2dma_out[3:0]),
+    .full   (fil2dma_full),
+    .empty  (fil2dma_empty),
+    .push   (fil2dma_push),
+    .pop    (fil2dma_pop),
+    .in     (fil2dma_in[3:0]),
+    .clk    (fil_clk),
+    .rst_n  (fill_rstn)
+);
 
 //&pythonBegin;
 // for a in range (0, num_inputs):

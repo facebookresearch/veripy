@@ -9,9 +9,7 @@
 
 &Logics;
 
-//&Python self.inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
-
-&Python num_inputs = 16
+&Python inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
 
 &pythonBegin;
 for a in range (0, num_inputs):

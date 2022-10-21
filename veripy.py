@@ -72,6 +72,7 @@ if __name__ == "__main__":
     async_reset = "arst_n"
     sync_reset = "rst_n"
     reset_type = "ASYNC"
+    py_ns = {}
 
     ############################################################################
     # Command line arguments processing
@@ -586,7 +587,7 @@ if __name__ == "__main__":
             print("  # Loading Python file", c_py_file)
             # exec(open(c_py_file).read())
             f = open(c_py_file, "r")
-            exec(f.read())
+            exec(f.read(), py_ns)
             f.close()
 
     ############################################################################
@@ -604,6 +605,7 @@ if __name__ == "__main__":
         debug_file,
         gen_dependencies,
         cmdline,
+        py_ns,
     )
 
     ############################################################################
