@@ -22,7 +22,7 @@ module test (
 
 //&Logics;
 
-//&Python inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
+//&Python self.inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
 //&BeginInstance fb_fifo u_fil2dma_fb_fifo;
 //&Param DEPTH 32;
 //&Param WIDTH 4;
@@ -46,7 +46,7 @@ fb_fifo # (
 );
 
 //&pythonBegin;
-// for a in range (0, num_inputs):
+// for a in range (0, self.num_inputs):
 //   print_line = """
 //   assign out[{0}] = in_a[{0}] & in_b[{0}];
 //   """

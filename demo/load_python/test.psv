@@ -9,10 +9,10 @@
 
 &Logics;
 
-&Python inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
-
+&Python self.inst_syncfifo("fil2dma", "fil_clk", "fill_rstn", "32", "4");
+8895
 &pythonBegin;
-for a in range (0, num_inputs):
+for a in range (0, self.num_inputs):
   print_line = """
   assign out[{0}] = in_a[{0}] & in_b[{0}];
   """

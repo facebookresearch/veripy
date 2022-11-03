@@ -108,6 +108,7 @@ class codegen:
         self.gen_dependencies
 
         self.py_ns = py_ns
+        vars(self).update(py_ns)
 
         if self.debug:
             self.dbg_file = open(self.debug_file, "w")
@@ -1016,7 +1017,7 @@ class codegen:
                     sys.stdout = stream
 
                     try:
-                        exec(code_block, self.py_ns)
+                        exec(code_block)
                     except Exception:
                         print("Error in code:\n" + code_block + "\n")
                         self.found_error = 1
@@ -1060,7 +1061,7 @@ class codegen:
                     sys.stdout = stream
 
                     try:
-                        exec(single_python_regex.group(3), self.py_ns)
+                        exec(single_python_regex.group(3))
 
                     except Exception:
                         print(

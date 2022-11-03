@@ -253,9 +253,9 @@ ifeq ($(PROF),1)
 endif
 
 ################################################################################
-# Target to generate buck MAKEINC file
+# Target to generate buck TARGETS file
 ################################################################################
-MAKEINC makeinc: SUB_MAKEINC $(ADDITIONAL_DEPENDENCIES)
+makefile.inc: $(MODULE_EXT) $(ADDITIONAL_DEPENDENCIES)
 	$(VERIPY_BUILD_SCRIPT) $(MODULE_EXT) $(FORMAT_OPTION) \
             $(BUILD_INCLUDE_OPTION) \
             $(INTERFACE_SPEC_OPTION) \
@@ -274,6 +274,12 @@ MAKEINC makeinc: SUB_MAKEINC $(ADDITIONAL_DEPENDENCIES)
 	@mv makefile.inc.new makefile.inc
 	@echo "### Generated makefile.inc successfully ###"
 
+.PHONY: make_makeinc_module make_build_module
+make_makeinc_module:
+	@echo "########################################################n"
+	@echo "### Make Makeinc $(MODULE) ..."
+
+MAKEINC makeinc: make_makeinc_module makefile.inc $(ADDITIONAL_DEPENDENCIES)
 
 SUB_MAKEINC sub_makeinc:
 ifeq ($(BUILD_SUBS),1)
@@ -286,8 +292,11 @@ endif
 ################################################################################
 # Build command for the top module
 ####################################m ############################################
-Build build: makefile.inc $(RUN_DIR)/$(MODULE)_lib $(ADDITIONAL_DEPENDENCIES) SUB_BUILD
+make_build_module:
+	@echo "########################################################"
+	@echo "### Make Build $(MODULE) ..."
 
+Build build: make_build_module makeinc $(RUN_DIR)/$(MODULE)_lib $(ADDITIONAL_DEPENDENCIES)
 
 SUB_BUILD sub_build:
 ifeq ($(BUILD_SUBS),1)
@@ -326,6 +335,24 @@ ifneq ($(BUILD_SUB_DIRS),)
 endif
 endif
 
+VERILOG_SYNTAX_CHECK_SCRIPT = $(shell which verilog_syntax_check.py)
+
+################################################################################
+# Verilog lint using verilog_syntax_check.py for each block
+################################################################################
+verilog_lint VERILOG_LINT: SUB_VERILOG_LINT ../$(TARGET)/$(MODULE)_syntax_errors
+
+
+../$(TARGET)/$(MODULE)_syntax_errors: ../$(TARGET)/$(MODULE).f
+	$(VERILOG_SYNTAX_CHECK_SCRIPT) -i ../$(TARGET)/$(MODULE).f -o ../$(TARGET)/$(MODULE)_syntax_errors
+
+
+SUB_VERILOG_LINT sub_verilog_lint:
+ifeq ($(BUILD_SUBS),1)
+ifneq ($(BUILD_SUB_DIRS),)
+	for dir in $(BUILD_SUB_DIRS); do cd $$dir && make verilog_lint || exit 1; done
+endif
+endif
 
 ################################################################################
 # Clean the dependancies touched files
