@@ -298,9 +298,9 @@ class codegen:
                 hash_def_val_ret = self.hash_def_getval(hash_def_regex.group(2))
                 self.hash_defines[hash_def_regex.group(1)]["type"] = hash_def_val_ret[0]
                 self.hash_defines[hash_def_regex.group(1)]["val"] = hash_def_val_ret[1]
-                self.hash_defines[hash_def_regex.group(1)][
-                    "exp"
-                ] = hash_def_regex.group(2)
+                self.hash_defines[hash_def_regex.group(1)]["exp"] = (
+                    hash_def_regex.group(2)
+                )
 
                 self.dbg("#define " + hash_def_in)
                 self.dbg(
@@ -778,9 +778,9 @@ class codegen:
             stubout_verilog_regex = RE_STUBOUT_VERILOG.search(line)
 
             if stubout_verilog_regex:
-                self.stub_override_val[
-                    stubout_verilog_regex.group(2)
-                ] = stubout_verilog_regex.group(3)
+                self.stub_override_val[stubout_verilog_regex.group(2)] = (
+                    stubout_verilog_regex.group(3)
+                )
 
                 if self.hash_ifdef_en:
                     self.lines.append(original_line)
@@ -2084,15 +2084,15 @@ class codegen:
         log2_w = (
             6
             if (st_idx >= 32)
-            else 5
-            if (st_idx >= 16)
-            else 4
-            if (st_idx >= 8)
-            else 3
-            if (st_idx >= 4)
-            else 2
-            if (st_idx >= 2)
-            else 1
+            else (
+                5
+                if (st_idx >= 16)
+                else (
+                    4
+                    if (st_idx >= 8)
+                    else 3 if (st_idx >= 4) else 2 if (st_idx >= 2) else 1
+                )
+            )
         )
         log2_ex = st_idx == (1 << log2_w)
 

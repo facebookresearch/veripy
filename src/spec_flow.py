@@ -39,6 +39,7 @@ from typing import Dict, Set
 
 import yaml as yaml
 
+
 ################################################################################
 # Spec flow to parse all the spec files and generate ports and params details
 ################################################################################

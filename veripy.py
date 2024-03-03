@@ -2138,9 +2138,9 @@ if __name__ == "__main__":
                                 + "::"
                                 + curr_bitdef_typedef_double_double_regex.group(3)
                             )
-                            ports[c_port][
-                                "bitdef"
-                            ] = curr_bitdef_typedef_double_double_regex.group(4)
+                            ports[c_port]["bitdef"] = (
+                                curr_bitdef_typedef_double_double_regex.group(4)
+                            )
                         elif curr_bitdef_typedef_double_regex:
                             bitdef_has_typedef = 1
                             bitdef_typedef = (
@@ -2148,9 +2148,9 @@ if __name__ == "__main__":
                                 + "::"
                                 + curr_bitdef_typedef_double_regex.group(2)
                             )
-                            ports[c_port][
-                                "bitdef"
-                            ] = curr_bitdef_typedef_double_regex.group(3)
+                            ports[c_port]["bitdef"] = (
+                                curr_bitdef_typedef_double_regex.group(3)
+                            )
                         elif curr_bitdef_typedef_regex:
                             if (
                                 curr_bitdef_typedef_regex.group(1)
@@ -2160,9 +2160,9 @@ if __name__ == "__main__":
                             ):
                                 bitdef_has_typedef = 1
                                 bitdef_typedef = curr_bitdef_typedef_regex.group(1)
-                                ports[c_port][
-                                    "bitdef"
-                                ] = curr_bitdef_typedef_regex.group(2)
+                                ports[c_port]["bitdef"] = (
+                                    curr_bitdef_typedef_regex.group(2)
+                                )
                             elif (
                                 curr_bitdef_typedef_regex.group(1)
                                 in typedef_structs[curr_bitdef_package][
@@ -2171,9 +2171,9 @@ if __name__ == "__main__":
                             ):
                                 bitdef_has_typedef = 1
                                 bitdef_typedef = curr_bitdef_typedef_regex.group(1)
-                                ports[c_port][
-                                    "bitdef"
-                                ] = curr_bitdef_typedef_regex.group(2)
+                                ports[c_port]["bitdef"] = (
+                                    curr_bitdef_typedef_regex.group(2)
+                                )
                             elif (
                                 curr_bitdef_typedef_regex.group(1)
                                 in typedef_unions[curr_bitdef_package][
@@ -2182,9 +2182,9 @@ if __name__ == "__main__":
                             ):
                                 bitdef_has_typedef = 1
                                 bitdef_typedef = curr_bitdef_typedef_regex.group(1)
-                                ports[c_port][
-                                    "bitdef"
-                                ] = curr_bitdef_typedef_regex.group(2)
+                                ports[c_port]["bitdef"] = (
+                                    curr_bitdef_typedef_regex.group(2)
+                                )
 
                     if ports[c_port]["typedef"] == "LOGIC":
                         if bitdef_has_typedef:
@@ -2418,9 +2418,9 @@ if __name__ == "__main__":
                             + "::"
                             + curr_bitdef_typedef_double_double_regex.group(3)
                         )
-                        ports[c_port][
-                            "bitdef"
-                        ] = curr_bitdef_typedef_double_double_regex.group(4)
+                        ports[c_port]["bitdef"] = (
+                            curr_bitdef_typedef_double_double_regex.group(4)
+                        )
                     elif curr_bitdef_typedef_double_regex:
                         bitdef_has_typedef = 1
                         bitdef_typedef = (
@@ -2428,9 +2428,9 @@ if __name__ == "__main__":
                             + "::"
                             + curr_bitdef_typedef_double_regex.group(2)
                         )
-                        ports[c_port][
-                            "bitdef"
-                        ] = curr_bitdef_typedef_double_regex.group(3)
+                        ports[c_port]["bitdef"] = (
+                            curr_bitdef_typedef_double_regex.group(3)
+                        )
                     elif curr_bitdef_typedef_regex:
                         if (
                             curr_bitdef_typedef_regex.group(1)

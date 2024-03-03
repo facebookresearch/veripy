@@ -1060,9 +1060,9 @@ def gen_dependencies(
                         files_hierarchy[next_level][veripy_sub]["PARENT"] = c_file
 
                         if c_dependancies["veripy_subs"][veripy_sub]["flags"] != "":
-                            files_hierarchy[next_level][veripy_sub][
-                                "BUILD_CMD"
-                            ] = c_dependancies["veripy_subs"][veripy_sub]["flags"]
+                            files_hierarchy[next_level][veripy_sub]["BUILD_CMD"] = (
+                                c_dependancies["veripy_subs"][veripy_sub]["flags"]
+                            )
 
                 for category in list(c_dependancies.keys()):
                     if len(c_dependancies[category]) > 0:
