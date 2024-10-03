@@ -250,7 +250,6 @@ class UserRam:
     #     logging.debug ("Memory Type " + str(self.sram_type))
 
     def ecc_print(self):
-
         if self.pipeline == 0:
             str_tmp = "dout_int"
         if self.pipeline == 1:
@@ -277,9 +276,7 @@ assign dout_chkbits[ECC_WIDTH-1:0]  = {1}[WIDTH_WITH_ECC-1:WIDTH];
 &Connect in_chkbits dout_chkbits;
 &Connect out_data dout;
 &EndInstance;
-""".format(
-            self.ecc_width, str_tmp
-        )
+""".format(self.ecc_width, str_tmp)
 
         if self.pipeline == 1:
             if self.typ == "1p":
@@ -415,9 +412,7 @@ assign dout_chkbits[ECC_WIDTH-1:0]  = {1}[WIDTH_WITH_ECC-1:WIDTH];
             memWrapper.write(
                 "&Module(parameter WIDTH = {0}, DEPTH = {1}, ADDR_WIDTH = $clog2(DEPTH));\n\n".format(
                     self.width, self.depth
-                ).format(
-                    self.addrSize
-                )
+                ).format(self.addrSize)
             )
             memWrapper.write("`ifdef FB_BEH_MEM // {\n")
             self.print_beh_mem(memWrapper)
@@ -970,10 +965,13 @@ class memgen:
             logging.debug(f"\t\tBANK: {tuple_list}\n")
 
         min_sort_key = min(tuple_list)
-        (depth_iter, depth_residue, pic_depth), (
-            width_iter,
-            width_residue,
-            pic_widths,
+        (
+            (depth_iter, depth_residue, pic_depth),
+            (
+                width_iter,
+                width_residue,
+                pic_widths,
+            ),
         ) = min_sort_key
         result = MemgenResult(
             self.sram_type,
@@ -1254,7 +1252,6 @@ class memgen:
         blank_width,
         user_width,
     ):
-
         phyMemA_str = ""
         if self.user_ram.bitWrite == 0:
             if phy_mem_bwe:

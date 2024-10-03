@@ -124,7 +124,6 @@ def up_to_date_file_in_dict(fname, dictionary, old_dict):
     ]
 
     if fname in dictionary:
-
         # Check if using dictionary from previous run
         # If not, file modification times are irrelevant
         if old_dict:
@@ -139,7 +138,6 @@ def up_to_date_file_in_dict(fname, dictionary, old_dict):
             # to see if any of them have changed since last run
             else:
                 for category in dictionary[fname][fname]:
-
                     if category in categories:
                         for dep in dictionary[fname][fname][category]:
                             mtime = getmtime(next(iter(dep)))
@@ -1052,7 +1050,6 @@ def gen_dependencies(
 
                 if len(c_dependancies["veripy_subs"]) > 0:
                     for veripy_sub in c_dependancies["veripy_subs"]:
-
                         if files_hierarchy[next_level] is None:
                             files_hierarchy[next_level] = {}
 
@@ -1269,7 +1266,6 @@ def gen_targets(
 
     if UPDATE_TARGETS_OPTION:
         with open("TARGETS.new", "w") as targets_file:
-
             # print_line = "load(\"@fbcode_macros//build_defs:python_library.bzl\", \"python_library\")"
             # targets_file.write(print_line + '\n')
             # dbg(print_line)

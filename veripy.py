@@ -1446,7 +1446,6 @@ if __name__ == "__main__":
                     or ports[c_port]["typedef"] == "TYPEDEF_LOGICS"
                     or ports[c_port]["typedef"] == "TYPEDEF_LOGIC"
                 ):
-
                     # If the port is found in wires, then make it local wire
                     # for declaration
                     if c_port in wires:

@@ -2090,7 +2090,11 @@ class codegen:
                 else (
                     4
                     if (st_idx >= 8)
-                    else 3 if (st_idx >= 4) else 2 if (st_idx >= 2) else 1
+                    else 3
+                    if (st_idx >= 4)
+                    else 2
+                    if (st_idx >= 2)
+                    else 1
                 )
             )
         )
