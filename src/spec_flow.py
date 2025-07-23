@@ -35,7 +35,6 @@ from src.regex import *
 from collections import OrderedDict
 from csv import reader
 from math import ceil, log
-from typing import Dict, Set
 
 import yaml as yaml
 
