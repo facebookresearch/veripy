@@ -30,7 +30,6 @@ import sys
 
 from src.utils import *
 from src.regex import *
-from collections import OrderedDict
 from csv import reader
 from math import ceil, log
 
