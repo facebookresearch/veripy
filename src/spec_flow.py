@@ -22,7 +22,6 @@ import io
 import itertools
 import json
 import logging
-import math
 import os
 import os.path
 import re
@@ -31,7 +30,6 @@ import sys
 from src.utils import *
 from src.regex import *
 from csv import reader
-from math import ceil, log
 
 import yaml as yaml
 
