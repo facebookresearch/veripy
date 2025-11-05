@@ -29,19 +29,75 @@ import re
 import string
 import subprocess
 import sys
-
-import yaml as yaml
-from src.codegen import *
-from src.verilog_parser import *
-from src.spec_flow import *
-from src.utils import *
-from src.regex import *
 from collections import OrderedDict
 from csv import reader
 from math import ceil, log
+from os.path import getmtime
 from typing import Dict, Set
 
+import yaml as yaml
+from src.codegen import codegen
+
 from src.memgen import memgen
+from src.regex import (
+    RE_ASSIGN2PKG,
+    RE_ASYNCRESET,
+    RE_BEGIN_SPACE,
+    RE_BEGININSTANCE,
+    RE_BLOCK_COMMENT_BEGIN,
+    RE_BLOCK_COMMENT_BEGIN_START,
+    RE_BLOCK_COMMENT_END,
+    RE_BUILD_COMMAND,
+    RE_CLOCK,
+    RE_CLOSE_2D_SQBRCT,
+    RE_COLON,
+    RE_CONNECT,
+    RE_DOUBLE_COLON,
+    RE_END_MODULE_DECLARATION,
+    RE_ENDINSTANCE,
+    RE_FORCE,
+    RE_GENDRIVE0,
+    RE_GENDRIVE0_VERILOG,
+    RE_GENDRIVE0ANDZ,
+    RE_GENDRIVE0ANDZ_VERILOG,
+    RE_GENDRIVEZ,
+    RE_GENDRIVEZ_VERILOG,
+    RE_GENNOIFDEFDRIVE0,
+    RE_INCLUDE,
+    RE_LOGICS,
+    RE_MINUS1,
+    RE_MODULE_DEF_SPACE,
+    RE_MODULE_SPACE,
+    RE_NUMBERS,
+    RE_NUMBERS_ONLY,
+    RE_OPEN_SQBRCT,
+    RE_PARAM_OVERRIDE,
+    RE_PARSER_OFF,
+    RE_PARSER_ON,
+    RE_PKG2ASSIGN,
+    RE_PORTS,
+    RE_POST_PYTHON_BLOCK_BEGIN,
+    RE_POST_PYTHON_BLOCK_END,
+    RE_R_ENDNEGEDGE,
+    RE_R_ENDPOSEDGE,
+    RE_R_NEGEDGE,
+    RE_R_POSEDGE,
+    RE_REGEX_SLASH,
+    RE_REGS,
+    RE_SEMICOLON,
+    RE_SINGLE_COMMENT_BEGIN_START,
+    RE_SKIP_BEGIN,
+    RE_SKIP_END,
+    RE_SKIP_IFDEF_BEGIN,
+    RE_SKIP_IFDEF_END,
+    RE_SYNCRESET,
+    RE_TYPEDEF_BEFORE_BITDEF,
+    RE_TYPEDEF_DOUBLE_COLON_BEFORE_BITDEF,
+    RE_TYPEDEF_DOUBLE_DOUBLE_COLON_BEFORE_BITDEF,
+    RE_WIRES,
+)
+from src.utils import dbg, indent_array, nonblank_lines, recursive_filelist
+from src.verilog_parser import verilog_parser
 
 sys.setrecursionlimit(3000)
 
