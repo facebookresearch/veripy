@@ -22,7 +22,33 @@ import sys
 from collections import defaultdict
 
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
-from memgen_util import *
+from memgen_util import (
+    addr_ports,
+    bwe_ports,
+    clog2,
+    combinationSum,
+    cs_ports,
+    dec_to_bin,
+    dec_to_bin_non_pow_two,
+    dict_keys_str_to_int,
+    din_ports,
+    dout_ports,
+    fb_chip_2_vendor_name,
+    is_mersenne_prime,
+    isPowerOfTwo,
+    mem_mapping_file,
+    mem_ports_file,
+    memory_release_search_paths,
+    nearest_2_pow,
+    OrderedDict,
+    re,
+    str_to_list,
+    SumTheList,
+    valid_sram_types,
+    valid_vendor_names,
+    vendor_name_mapping,
+    we_ports,
+)
 
 # from memgen_data import *
 # from vendor import Vendor
