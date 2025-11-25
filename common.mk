@@ -146,7 +146,7 @@ VERIPY_PATH_OPTION = --veripy_path $(VERIPY_SCRIPT)
 VERIPY_BUILD_UPDATE_INC_OPTION = --update_inc
 
 ################################################################################
-# USER_OPTIONS contect to be added as target_args in TARGETS
+# USER_OPTIONS contect to be added as target_args in BUCK
 ################################################################################
 BUILD_USER_OPTIONS = # Intentionally left blank here
 ifneq ($(USER_OPTIONS),)
@@ -209,7 +209,7 @@ endif
 DEST_DIR_OPTION = --targetdir $(DEST_DIR)
 
 ################################################################################
-# Target to generate buck TARGETS file
+# Target to generate buck BUCK file
 ################################################################################
 TARGETS targets: DEL_PROF SUB_TARGETS $(ADDITIONAL_DEPENDENCIES)
 	@echo -e $(SUBDIRS_DICT_MSG)
@@ -230,8 +230,8 @@ TARGETS targets: DEL_PROF SUB_TARGETS $(ADDITIONAL_DEPENDENCIES)
             $(USER_OPTIONS) \
             $(PROFILING_OPTION) \
 	    $(DEST_DIR_OPTION)
-	@mv TARGETS.new ${PWD}/../TARGETS
-	@echo "### Generated ../TARGETS successfully ###"
+	@mv BUCK.new ${PWD}/../BUCK
+	@echo "### Generated ../BUCK successfully ###"
 
 SUB_TARGETS sub_targets:
 ifeq ($(BUILD_SUBS),1)
@@ -253,7 +253,7 @@ ifeq ($(PROF),1)
 endif
 
 ################################################################################
-# Target to generate buck TARGETS file
+# Target to generate buck BUCK file
 ################################################################################
 makefile.inc: $(MODULE_EXT) $(ADDITIONAL_DEPENDENCIES)
 	$(VERIPY_BUILD_SCRIPT) $(MODULE_EXT) $(FORMAT_OPTION) \
@@ -372,5 +372,3 @@ endif
 ifneq ($(wildcard ./makefile.inc),)
 include makefile.inc
 endif
-
-

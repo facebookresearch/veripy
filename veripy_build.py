@@ -21,7 +21,7 @@
 ################################################################################
 """
 !@package veripy_build
-veripy_build.py is a script to generate the TARGETS files containing Verilog and VeriPy
+veripy_build.py is a script to generate the BUCK files containing Verilog and VeriPy
 dependencies for a given file or set of files.
 """
 
@@ -473,7 +473,7 @@ def get_cmd_line_args():
         action="store_true",
         default=False,
         dest="update_inc",
-        help="Generate makefile.inc. By default it generates TARGETS file.",
+        help="Generate makefile.inc. By default it generates BUCK file.",
     )
 
     # -root path
@@ -503,7 +503,7 @@ def get_cmd_line_args():
         nargs="*",
         dest="user_options",
         help="Option to pass user option from make flow to add the user option part \
-        of target_args in TARGETS",
+        of target_args in BUCK",
     )
 
     # -disable_tick_ifdefs
@@ -885,7 +885,7 @@ def gen_dependencies(
     @param VERIPY_SCRIPT String containing Bash variable pointer to the main VeriPy script
     @param DISABLE_TICK_IFDEFS_OPTION Option passed to veripy.py to disable `ifdef parsing
     @param DISABLE_AUTO_PACKAGE_OPTION Option passed to veripy.py to disable auto loading packages
-    @param UPDATE_TARGETS_OPTION Set to 'True', tells script to update TARGETS file
+    @param UPDATE_TARGETS_OPTION Set to 'True', tells script to update BUCK file
     @param PYTHON_FILES_OPTION Option passed to veripy.py to load additional Python files that contain variables/dictionaries used
     @param build_subdirs_dict_json String containing file path for JSON file containing the Python dict object to store build subdirectories
     @param build_subdirs_dict Python dict object containing build dependencies
@@ -1237,7 +1237,7 @@ def gen_targets(
     DEST_DIR,
 ):
     """
-    Generating TARGETS file for Buck Build
+    Generating BUCK file for Buck Build
     """
 
     global debug
@@ -1265,7 +1265,7 @@ def gen_targets(
     current_dir = os.getcwd()
 
     if UPDATE_TARGETS_OPTION:
-        with open("TARGETS.new", "w") as targets_file:
+        with open("BUCK.new", "w") as targets_file:
             # print_line = "load(\"@fbcode_macros//build_defs:python_library.bzl\", \"python_library\")"
             # targets_file.write(print_line + '\n')
             # dbg(print_line)
