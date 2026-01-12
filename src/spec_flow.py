@@ -29,7 +29,6 @@ import sys
 from csv import reader
 
 import yaml as yaml
-
 from src.regex import RE_EQUAL_EXTRACT, RE_IF_PREFIX_ITER_CHECK, RE_IF_SUFFIX_ITER_CHECK
 
 

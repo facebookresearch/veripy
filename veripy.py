@@ -37,7 +37,6 @@ from typing import Dict, Set
 
 import yaml as yaml
 from src.codegen import codegen
-
 from src.memgen import memgen
 from src.regex import (
     RE_ASSIGN2PKG,

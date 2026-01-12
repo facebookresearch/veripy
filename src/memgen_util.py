@@ -43,7 +43,7 @@ valid_vendor_names = set(
 
 bwe_ports = ["bwe", "bwea", "BW", "BWA", "WEMA", "wema", "WEM", "wem"]
 we_ports = ["we", "wea", "web", "WE", "WEA", "WEB"]
-cs_ports = ["cs", "mea", "meb" "CS"]
+cs_ports = ["cs", "mea", "mebCS"]
 din_ports = ["D", "DA", "din", "dina"]
 dout_ports = ["QP", "QPB", "doutb", "dout", "Q", "QB"]
 addr_ports = ["A", "ra", "wa", "AA", "AB", "adda", "addb", "add"]
