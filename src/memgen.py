@@ -593,10 +593,6 @@ assign dout_chkbits[ECC_WIDTH-1:0]  = {1}[WIDTH_WITH_ECC-1:WIDTH];
             content += "&Connect w_clk " + self.wclk + ";" + "\n"
         elif (self.typ == "1p") or (self.typ == "1f"):
             content += "&Connect clk " + self.wclk + ";" + "\n"
-            if (self.vendor.name == "brcm_ccx_n7") and (self.typ != "1f"):
-                content += "&Connect tm_sp_ram tm_sp_ram;" + "\n"
-            if (self.vendor.name == "brcm_ccx_n5") and (self.typ != "1f"):
-                content += "&Connect tm_sp_ram tm_sp_ram;" + "\n"
 
         content += "&Connect reset_n " + self.rst + ";" + "\n"
         content += "&EndInstance;" + "\n"

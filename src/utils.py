@@ -119,30 +119,10 @@ def set_vendor():
     else:
         logging.error("Missing Envr Variable FB_CHIP.")
     if "freya" in vendor:
-        vendor = "brcm_apd_n7"
-        return vendor
-    elif "tenjin" in vendor:
-        vendor = "brcm_ccx_n7"
-        return vendor
-    elif "fujin" in vendor:
-        vendor = "brcm_ccx_n5"
-        return vendor
-    elif "terminus_gen1" in vendor:
-        vendor = "mrvl_n5"
-        return vendor
-    elif "terminus" in vendor:
-        vendor = "xilinx"
-        return vendor
-    elif "artemis" in vendor:
-        vendor = "brcm_apd_n5"
-        return vendor
-    elif "voyager" in vendor:
-        vendor = "mrvl_n5"
+        vendor = "n7"
         return vendor
     else:
-        logging.error(
-            "Error in vendor name. envr variable FB_CHIP doesnt have freya/tenjin/terminus/terminus_gen1/fujin/artemis2.0"
-        )
+        logging.error("Error in vendor name. envr variable FB_CHIP doesnt have freya")
         sys.exit(1)
 
 

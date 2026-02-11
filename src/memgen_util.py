@@ -20,21 +20,11 @@ from collections import OrderedDict
 from itertools import combinations_with_replacement
 
 vendor_name_mapping = {
-    "ccx": "brcm_ccx_n7",
-    "ccx_n5": "brcm_apd_n5",
-    "apd": "brcm_apd_n7",
-    "terminus_gen1": "mrvl_n5",
-    "terminus": "xilinx",
-    "mt5": "mrvl_n5",
+    "ccx": "_n7",
 }
 
 fb_chip_2_vendor_name = {
-    "freya": "brcm_apd_n7",
-    "artemis": "brcm_apd_n5",
-    "tenjin": "brcm_ccx_n7",
-    "fujin": "brcm_ccx_n5",
-    "terminus_gen1": "mrvl_n5",
-    "terminus": "xilinx",
+    "freya": "n7",
 }
 
 valid_vendor_names = set(
@@ -49,9 +39,6 @@ dout_ports = ["QP", "QPB", "doutb", "dout", "Q", "QB"]
 addr_ports = ["A", "ra", "wa", "AA", "AB", "adda", "addb", "add"]
 
 memory_release_search_paths = {
-    "brcm_apd_n5": "%(infra)s/ip/fb_inference_gen2/third_party/memories/%(vendor)s",
-    "brcm_ccx_n5": "%(infra)s/ip/xcoder2_0/third_party/memories/%(vendor)s",
-    "mrvl_n5": "%(infra)s/ip/fb_nic_gen1/third_party/memories/%(vendor)s",
     "default": "%(infra)s/third_party/memories/%(vendor)s",
 }
 
