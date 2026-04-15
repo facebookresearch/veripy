@@ -4,28 +4,32 @@
 #   and may not be disclosed to any third party nor be used for any purpose other
 #   than to full fill service obligations to Facebook
 ####################################################################################
-################################################################################
-#                                                                              #
-#     Author: Baheerathan Anandharengan                                        #
-#     E-Mail: baheerathan@meta.com                                             #
-#                                                                              #
-#     Key Contributor: Dheepak Jayaraman                                       #
-#     E-Mail: dheepak@meta.com                                                 #
-#                                                                              #
-#     Additional Contributor: Yunqing Chen                                     #
-#     E-Mail: yqchen@meta.com                                                  #
-#                                                                              #
-################################################################################
 
+import argparse
+import csv
+import datetime
 import io
+import itertools
+import json
+import logging
+import math
 import os
 import os.path
 import re
+import string
+import subprocess
 import sys
-from src.utils import *
-from src.regex import *
+from .utils import *
+from .regex import *
+from collections import OrderedDict
+from csv import reader
+from math import ceil, log
+from typing import Dict, Set
 
-from src.memgen import memgen
+import oyaml as yaml
+
+from .memgen import memgen
+from verilog_generator import *
 
 
 class codegen:
@@ -46,7 +50,6 @@ class codegen:
         debug_file,
         gen_dependencies,
         cmdline,
-        py_ns,
     ):
         """
         Constructor
@@ -61,19 +64,18 @@ class codegen:
         self.gen_dependencies = gen_dependencies
         self.parsing_format = cmdline.format
         self.debug_print = 0
+        self.dv_api = cmdline.enable_dv_api
+        self.no_generated_python_comment = False
+        self.no_ampersand_lines = cmdline.no_ampersand_lines
+        self.cmdline = cmdline
 
-        self.hash_define_vars = []
-        self.hash_define_files = []
         self.hash_defines = {}
         self.hash_ifdef_en = 1
-        self.hash_ifdef_arr = []
-        self.hash_decisions = []
-        self.hash_types = []
-        self.hash_served = []
         self.hash_curr_decision = 1
-        self.hash_curr_type = ""
-        self.hash_curr_served = 0
-        self.last_hash_loc = 0
+        self.hash_curr_level = -1
+        self.hash_stack = []
+        self.hash_all_decisions = []
+        self.hash_for_else_decisions = []
 
         self.line_no = 0
         self.in_lines = []
@@ -92,9 +94,6 @@ class codegen:
         self.header_files = []
 
         self.gen_dependencies
-
-        self.py_ns = py_ns
-        vars(self).update(py_ns)
 
         if self.debug:
             self.dbg_file = open(self.debug_file, "w")
@@ -186,7 +185,7 @@ class codegen:
         """
 
         for c_file in self.files:
-            file_search_regex = filename + "$"
+            file_search_regex = "\\b" + filename + "$"
             RE_SEARCH_FILE_REGEX = re.compile(file_search_regex)
             search_file_regex = RE_SEARCH_FILE_REGEX.search(c_file)
 
@@ -304,262 +303,89 @@ class codegen:
 
         return
 
-    def hash_ifdef_proc(self, hash_ifdef_type, hash_ifdef_str):
-        """
-        Function to process #ifdef and it returns current ifdef status
-        to skip the code or parse it
-        """
-
-        last_hash_decision = 0
-        popped_hash_decision = 0
-        popped_hash_type = ""
-        popped_hash_served = 0
-
-        if hash_ifdef_type == "ifdef":
-            hash_level = len(self.hash_decisions)
-            self.dbg(
-                "\n### HASH LEVEL: "
-                + str(hash_level)
-                + ", "
-                + hash_ifdef_type
-                + ", "
-                + hash_ifdef_str
-            )
-        else:
-            hash_level = len(self.hash_decisions) - 1
-            self.dbg(
-                "\n### HASH LEVEL: "
-                + str(hash_level)
-                + ", "
-                + hash_ifdef_type
-                + ", "
-                + hash_ifdef_str
-            )
-
+    def eval_decision(self, hash_ifdef_str):
         hash_ifdef_str_regex = RE_HASH_IFDEF_STR.search(hash_ifdef_str)
 
-        if hash_ifdef_type == "else":
-            # Pop the last ifdef/elif of the same level
-            if len(self.hash_decisions) > 0:
-                self.dbg(
-                    "# HASH: Popping previous construct "
-                    + popped_hash_type
-                    + " for else"
-                )
-                popped_hash_decision = self.hash_decisions.pop()
-                popped_hash_type = self.hash_types.pop()
-                popped_hash_served = self.hash_served.pop()
-                self.dbg(
-                    "  Type: "
-                    + popped_hash_type
-                    + ",  Decision: "
-                    + str(popped_hash_decision)
-                    + ",  Served: "
-                    + str(popped_hash_served)
-                )
+        if hash_ifdef_str_regex:
+            return hash_ifdef_str in self.hash_defines
+        else:
+            ifdef_exp_val = self.hash_def_getval(hash_ifdef_str)
+            return ifdef_exp_val[0] == "NUMBER" and ifdef_exp_val[1]
 
-            if len(self.hash_decisions) > 0:
-                self.last_hash_loc = len(self.hash_decisions) - 1
-                last_hash_decision = self.hash_decisions[self.last_hash_loc]
-            else:
-                last_hash_decision = 1
-
-            # if the current hash ifdef/elif already served, then else will be disabled
-            if self.hash_curr_served:
-                self.hash_curr_decision = 0
-                self.hash_decisions.append(0)
-                self.hash_types.append("else")
-                self.hash_served.append(1)
-            else:
-                if last_hash_decision:
-                    self.hash_curr_decision = 1
-                    self.hash_decisions.append(1)
-                    self.hash_types.append("else")
-                    self.hash_served.append(1)
-                else:
-                    self.hash_curr_decision = 0
-                    self.hash_decisions.append(0)
-                    self.hash_types.append("else")
-                    self.hash_served.append(1)
-
-            self.dbg("# HASH: Pushing current construct else")
-            if len(self.hash_decisions) > 0:
-                self.dbg(self.hash_types)
-                self.dbg(self.hash_decisions)
-                self.dbg(self.hash_served)
-        elif hash_ifdef_type == "endif":
-            if len(self.hash_decisions) > 0:
-                self.dbg(
-                    "# HASH: Popping previous construct "
-                    + popped_hash_type
-                    + " for endif"
-                )
-                popped_hash_decision = self.hash_decisions.pop()
-                popped_hash_type = self.hash_types.pop()
-                popped_hash_served = self.hash_served.pop()
-                self.dbg(
-                    "  Type: "
-                    + popped_hash_type
-                    + ",  Decision: "
-                    + str(popped_hash_decision)
-                    + ",  Served: "
-                    + str(popped_hash_served)
-                )
-
-                if len(self.hash_decisions) > 0:
-                    self.last_hash_loc = len(self.hash_decisions) - 1
-                    self.hash_curr_decision = self.hash_decisions[self.last_hash_loc]
-                    self.hash_curr_type = self.hash_types[self.last_hash_loc]
-                    self.hash_curr_served = self.hash_served[self.last_hash_loc]
-                else:
-                    # Out of all the ifdef and hence its enabled
-                    self.hash_curr_decision = 1
-                    self.hash_curr_type = ""
-                    self.hash_curr_served = 0
-
-            else:
-                self.dbg(
-                    "\nError: There is no pending #ifdef/#elif in the buffer, but reaching #endif at line "
-                    + str(self.line_no)
-                )
-                print(
-                    "\nError: There is no pending #ifdef/#elif in the buffer, but reaching #endif at line "
-                    + str(self.line_no)
-                )
+    def hash_ifdef_proc(self, hash_ifdef_type, hash_ifdef_str):
+        if hash_ifdef_type == "ifdef" or hash_ifdef_type == "ifndef":
+            self.hash_curr_level += 1
+            self.hash_curr_decision = self.eval_decision(hash_ifdef_str)
+            if hash_ifdef_type == "ifndef":
+                self.hash_curr_decision = not self.hash_curr_decision
+            curr_decision = [
+                self.hash_curr_level,
+                hash_ifdef_type,
+                self.hash_curr_decision,
+            ]
+            self.hash_stack.append(curr_decision)
+            self.hash_all_decisions.append(curr_decision)
+            self.hash_for_else_decisions.append([self.hash_curr_decision])
+            return all([level_decision[2] for level_decision in self.hash_stack])
+        elif hash_ifdef_type == "elif":
+            last_ifdef_type = self.hash_stack[len(self.hash_stack) - 1][1]
+            if last_ifdef_type == "else" or last_ifdef_type == "endif":
+                print("\nError: #else or #endif followed by #elif  detected")
                 sys.exit(1)
-        else:  # ifdef / ifndef / elif
-            # for all other ifdef, ifndef, elif to process hash_ifdef_str evaluation
-            # TODO: For elif, if ifdef is already served, then no need to evaluate the expression
-            if len(self.hash_decisions) > 0:
-                self.last_hash_loc = len(self.hash_decisions) - 1
-                last_hash_decision = self.hash_decisions[self.last_hash_loc]
+
+            self.hash_stack.pop()
+            true_so_far = any(self.hash_for_else_decisions[self.hash_curr_level])
+            if true_so_far:
+                self.hash_curr_decision = False
             else:
-                last_hash_decision = 1
+                self.hash_curr_decision = self.eval_decision(hash_ifdef_str)
+            curr_decision = [
+                self.hash_curr_level,
+                hash_ifdef_type,
+                self.hash_curr_decision,
+            ]
+            self.hash_stack.append(curr_decision)
+            self.hash_all_decisions.append(curr_decision)
+            self.hash_for_else_decisions[self.hash_curr_level].append(
+                self.hash_curr_decision
+            )
+            return all([level_decision[2] for level_decision in self.hash_stack])
+        elif hash_ifdef_type == "else":
+            last_ifdef_type = self.hash_stack[len(self.hash_stack) - 1][1]
+            if last_ifdef_type == "else" or last_ifdef_type == "endif":
+                print("\nError: #else or #endif followed by #else  detected")
+                sys.exit(1)
 
-            if (
-                (hash_ifdef_type == "elif" and self.hash_curr_served == 0)
-                or hash_ifdef_type == "ifdef"
-                or hash_ifdef_type == "ifndef"
-            ):
-                # Need to pop previous elif or ifdef or ifndef for elif case
-                if hash_ifdef_type == "elif":
-                    self.dbg(
-                        "# HASH: Popping previous construct "
-                        + popped_hash_type
-                        + " for elif"
-                    )
-                    popped_hash_decision = self.hash_decisions.pop()
-                    popped_hash_type = self.hash_types.pop()
-                    popped_hash_served = self.hash_served.pop()
-                    self.dbg(
-                        "  Type: "
-                        + popped_hash_type
-                        + ",  Decision: "
-                        + str(popped_hash_decision)
-                        + ",  Served: "
-                        + str(popped_hash_served)
-                    )
-
-                if hash_ifdef_str_regex:  # Check if this is without expression
-                    # TODO: Need to add tick check here
-                    if (
-                        hash_ifdef_str in self.hash_defines
-                    ):  # define is present in the hash database
-                        if hash_ifdef_type == "ifndef":
-                            self.hash_curr_decision = 0
-                            self.hash_curr_type = hash_ifdef_type
-                            self.hash_curr_served = 0
-                        else:
-                            # Current decision is set only if previous decision is 1
-                            if last_hash_decision:
-                                self.hash_curr_decision = 1
-                                self.hash_curr_type = hash_ifdef_type
-                                self.hash_curr_served = 1
-                            else:
-                                self.hash_curr_decision = 0
-                                self.hash_curr_type = hash_ifdef_type
-                                self.hash_curr_served = 1
-
-                        self.hash_decisions.append(self.hash_curr_decision)
-                        self.hash_types.append(self.hash_curr_type)
-                        self.hash_served.append(self.hash_curr_served)
-                    else:
-                        if hash_ifdef_type == "ifndef":
-                            if last_hash_decision:
-                                self.hash_curr_decision = 1
-                                self.hash_curr_served = 1
-                                self.hash_curr_type = hash_ifdef_type
-                            else:
-                                self.hash_curr_decision = 0
-                                self.hash_curr_served = 1
-                                self.hash_curr_type = hash_ifdef_type
-                        else:
-                            self.hash_curr_decision = 0
-                            self.hash_curr_served = 0
-                            self.hash_curr_type = hash_ifdef_type
-
-                        self.hash_decisions.append(self.hash_curr_decision)
-                        self.hash_types.append(self.hash_curr_type)
-                        self.hash_served.append(self.hash_curr_served)
-
-                    self.dbg("# HASH: Pushing current construct " + self.hash_curr_type)
-                    if len(self.hash_decisions) > 0:
-                        self.dbg(self.hash_types)
-                        self.dbg(self.hash_decisions)
-                        self.dbg(self.hash_served)
-                else:
-                    # If ifdef has an expression, then we need to get the result of expression
-                    # TODO: Need to add tick check here
-                    ifdef_exp_val = self.hash_def_getval(hash_ifdef_str)
-
-                    if hash_ifdef_type == "ifndef":
-                        if ifdef_exp_val[1]:
-                            self.hash_curr_decision = 0
-                            self.hash_curr_type = hash_ifdef_type
-                            self.hash_curr_served = 0
-                        else:
-                            if last_hash_decision:
-                                self.hash_curr_decision = 1
-                                self.hash_curr_type = hash_ifdef_type
-                                self.hash_curr_served = 1
-                            else:
-                                self.hash_curr_decision = 0
-                                self.hash_curr_type = hash_ifdef_type
-                                self.hash_curr_served = 1
-
-                        self.hash_decisions.append(self.hash_curr_decision)
-                        self.hash_types.append(self.hash_curr_type)
-                        self.hash_served.append(self.hash_curr_served)
-                    else:
-                        if ifdef_exp_val[1]:
-                            if last_hash_decision:
-                                self.hash_curr_decision = 1
-                                self.hash_curr_type = hash_ifdef_type
-                                self.hash_curr_served = 1
-                            else:
-                                self.hash_curr_decision = 0
-                                self.hash_curr_type = hash_ifdef_type
-                                self.hash_curr_served = 1
-                        else:
-                            self.hash_curr_decision = 0
-                            self.hash_curr_type = hash_ifdef_type
-                            self.hash_curr_served = 0
-
-                        self.hash_decisions.append(self.hash_curr_decision)
-                        self.hash_types.append(self.hash_curr_type)
-                        self.hash_served.append(self.hash_curr_served)
-
-                    self.dbg("# HASH: Pushing current construct " + self.hash_curr_type)
-                    if len(self.hash_decisions) > 0:
-                        self.dbg(self.hash_types)
-                        self.dbg(self.hash_decisions)
-                        self.dbg(self.hash_served)
+            self.hash_stack.pop()
+            true_so_far = any(self.hash_for_else_decisions[self.hash_curr_level])
+            self.hash_curr_decision = not true_so_far
+            curr_decision = [
+                self.hash_curr_level,
+                hash_ifdef_type,
+                self.hash_curr_decision,
+            ]
+            self.hash_stack.append(curr_decision)
+            self.hash_all_decisions.append(curr_decision)
+            self.hash_for_else_decisions[self.hash_curr_level].append(
+                self.hash_curr_decision
+            )
+            return all([level_decision[2] for level_decision in self.hash_stack])
+        elif hash_ifdef_type == "endif":
+            # len(self.hash_stack) > 0
+            # self.hash_curr_level == self.hash_stack[len(self.hash_stack)-1]["hash_level"]
+            self.hash_all_decisions.append(
+                [self.hash_curr_level, hash_ifdef_type, True]
+            )
+            self.hash_stack.pop()
+            self.hash_for_else_decisions.pop()
+            self.hash_curr_level -= 1
+            if len(self.hash_stack) > 0:
+                return all([level_decision[2] for level_decision in self.hash_stack])
             else:
-                self.hash_curr_decision = 0
-
-        self.dbg("# HASH: DECISION: " + str(self.hash_curr_decision))
-
-        return self.hash_curr_decision
+                return True
+        else:
+            print("\nError: Invalid preprocessor type detected" + hash_ifdef_type)
+            sys.exit(1)
 
     def load_hash_include_file(self, hash_inc_file):
         """
@@ -748,8 +574,12 @@ class codegen:
         codegen_skip = 0
 
         ram = memgen()
-        ram_hls = memgen()
-        ram_ecc = memgen()
+        if self.cmdline.vendor is not None:
+            ram.set_vendor(self.cmdline.vendor)
+        if self.cmdline.chip is not None:
+            ram.fb_chip = self.cmdline.chip
+
+        ram.beh_wrapper_only = self.cmdline.beh_wrapper_only
 
         input_file = open(self.in_file, "r")
         self.in_lines = input_file.readlines()
@@ -835,7 +665,8 @@ class codegen:
                 )
                 ampersand_line = re.sub(r"&", r"//&", original_line, 1)
                 self.dbg(ampersand_line)
-                self.lines.append(ampersand_line)
+                if not self.no_ampersand_lines:
+                    self.lines.append(ampersand_line)
                 continue
 
             ################################################################################
@@ -972,10 +803,26 @@ class codegen:
                 ################################################################################
                 # Embedded python script processing
                 ################################################################################
+                python_comment_on_regex = RE_PYTHON_COMMENT_ON.search(line)
+                python_comment_off_regex = RE_PYTHON_COMMENT_OFF.search(line)
                 python_begin_regex = RE_PYTHON_BLOCK_BEGIN.search(line)
                 python_end_regex = RE_PYTHON_BLOCK_END.search(line)
                 single_python_regex = RE_PYTHON_SINGLE_LINE.search(line)
                 variable_replacement_regex = RE_PYTHON_VARIABLE.search(line)
+
+                if python_comment_on_regex:
+                    ampersand_line = re.sub(r"&", r"//&", original_line, 1)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
+                    self.no_generated_python_comment = False
+                    continue
+
+                if python_comment_off_regex:
+                    ampersand_line = re.sub(r"&", r"//&", original_line, 1)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
+                    self.no_generated_python_comment = True
+                    continue
 
                 if not doing_python and python_begin_regex:
                     begin_python_space = python_begin_regex.group(1)
@@ -986,15 +833,19 @@ class codegen:
                         + str(self.line_no)
                     )
 
-                    ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if self.no_generated_python_comment == False:
+                        ampersand_line = re.sub(r"&", r"//&", original_line, 1)
+                        if not self.no_ampersand_lines:
+                            self.lines.append(ampersand_line)
 
                     comment_indent = python_begin_regex.group(1)
                     # auto_indent = comment_indent
                     continue
                 elif doing_python and python_end_regex:
-                    ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if self.no_generated_python_comment == False:
+                        ampersand_line = re.sub(r"&", r"//&", original_line, 1)
+                        if not self.no_ampersand_lines:
+                            self.lines.append(ampersand_line)
 
                     doing_python = 0
 
@@ -1034,13 +885,16 @@ class codegen:
                 elif doing_python:
                     dum = re.sub(r"^(" + comment_indent + r")", r"", original_line)
                     code_block += dum
-                    self.lines.append("// " + original_line)
+                    if self.no_generated_python_comment == False:
+                        self.lines.append("// " + original_line)
 
                     continue
                 elif not doing_python and single_python_regex:
                     begin_python_space = single_python_regex.group(1)
-                    ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if self.no_generated_python_comment == False:
+                        ampersand_line = re.sub(r"&", r"//&", original_line, 1)
+                        if not self.no_ampersand_lines:
+                            self.lines.append(ampersand_line)
 
                     stdout_ = sys.stdout  # Keep track of the previous value.
                     stream = io.StringIO()
@@ -1104,7 +958,8 @@ class codegen:
                 if gather_fsm_data:
                     if endfsm_regex:
                         ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                        self.lines.append(ampersand_line)
+                        if not self.no_ampersand_lines:
+                            self.lines.append(ampersand_line)
                         gather_fsm_data = 0
 
                         fsm_output = self.fsm(fsm_data)
@@ -1128,22 +983,25 @@ class codegen:
 
                 if fb_enflop_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
                     flop_begin_space = fb_enflop_regex.group(1)
 
                     flop_output = self.flop("fb_enflop", fb_enflop_regex.group(2))
-                    flop_output = re.sub(r"[\n]+", r"\n", flop_output)
+                    flop_output = re.sub(r"[\n]+", r"\n", flop_outpu)
                     flop_output_list = re.split(r"\n", flop_output)
+                    self.in_lines[self.line_no : self.line_no] = flop_output
 
-                    for c_flop_line in flop_output_list:
-                        if c_flop_line != "":
-                            self.lines.append(flop_begin_space + c_flop_line)
+                    # for c_flop_line in flop_output_list:
+                    # if c_flop_line != "":
+                    # self.lines.append(flop_begin_space + c_flop_line)
 
                     continue
 
                 if fb_enflop_rs_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
                     flop_begin_space = fb_enflop_rs_regex.group(1)
 
                     flop_output = self.flop("fb_enflop_rs", fb_enflop_rs_regex.group(2))
@@ -1158,7 +1016,8 @@ class codegen:
 
                 if fb_enflop_rst_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
                     flop_begin_space = fb_enflop_rst_regex.group(1)
 
                     flop_output = self.flop(
@@ -1180,7 +1039,8 @@ class codegen:
 
                 if pipe_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
                     pipe_begin_space = pipe_regex.group(1)
                     pipe_data = pipe_regex.group(2)
 
@@ -1193,70 +1053,165 @@ class codegen:
 
                     continue
 
-                ################################################################################
-                # &MemGen Plugin
-                ################################################################################
-                memgen_regex = RE_MEMGEN.search(line)
-                hls_memgen_regex = RE_MEMGEN_HLS.search(line)
-                ecc_memgen_regex = RE_MEMGEN_ECC.search(line)
+                # ################################################################################
+                # Combine Memgen, Hls_MemGen and Ecc_Memgen
+                # ################################################################################
+                memgen_params = {
+                    "prefix": None,
+                    "width": 0,
+                    "depth": 0,
+                    "type": None,
+                    "pipeline": False,
+                    "bitwrite": False,
+                    "rst": None,
+                    "wclk": None,
+                    "rclk": None,
+                    "loop": None,
+                    "memory_mode": "default",
+                    "vendor": None,
+                    "vendor_memories": None,
+                    "beh_wrapper_only": None,
+                    "internal_use": None,
+                    "no_wrapper_instantiation": None,
+                    "cam_memory": None,
+                    "num_ecc_syndromes": 1,
+                    "enable_error_injection": False,
+                    "vendor_tiling": None,
+                    "port_prefix": None,
+                    "use_2cyc_memory": False,
+                }
+                memgen_keys = list(memgen_params.keys())
+                max_memgen_positionals = 9
+                RE_KEY_VALUE = re.compile(r"(?P<key>\S+)\s*=\s*(?P<value>\S+)")
+                memgen_regex = RE_ALL_MEMGEN.match(line)
 
                 if memgen_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
-                    memgen_begin_space = memgen_regex.group(1)
-                    memgen_data = memgen_regex.group(2)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
+                    ram.memgen_line = original_line.strip()
+
+                    memgen_begin_space = memgen_regex.group("begin_space")
+                    memgen_name = memgen_regex.group("memgen_name")
+                    memgen_data = memgen_regex.group("memgen_data")
                     memgen_data_split = re.split(
                         r",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", memgen_data
                     )
-                    memgen_data_split = [i.replace('"', "") for i in memgen_data_split]
-                    memgen_data_split = [i.replace(" ", "") for i in memgen_data_split]
-                    ram_prefix = str(memgen_data_split[0])
-                    ram_width = int(memgen_data_split[1])
-                    ram_depth = int(memgen_data_split[2])
-                    ram_type = str(memgen_data_split[3])
-                    ram_pipe_en = int(memgen_data_split[4])
-                    ram_bitwrite_en = int(memgen_data_split[5])
-                    ram_rst = str(memgen_data_split[6])
-                    ram_list = None
+                    memgen_data_list = [
+                        re.sub(r" ", "", data.strip('" ')) for data in memgen_data_split
+                    ]
 
-                    if (
-                        ram_type == "2P"
-                        or ram_type == "2p"
-                        or ram_type == "2F"
-                        or ram_type == "2f"
-                    ):
-                        ram_wclk = str(memgen_data_split[7])
-                        ram_rclk = str(memgen_data_split[8])
-                        if len(memgen_data_split) > 9:
-                            ram_list = memgen_data_split[9]
-                    elif (
-                        ram_type == "1P"
-                        or ram_type == "1p"
-                        or ram_type == "1F"
-                        or ram_type == "1f"
-                    ):
-                        ram_wclk = str(memgen_data_split[7])
-                        ram_rclk = str(memgen_data_split[7])
-                        if len(memgen_data_split) > 8:
-                            ram_list = memgen_data_split[8]
-                    else:
-                        self.dbg("\nError: SRAM Type passed in incorrect " + ram_type)
-                        print("\nError: SRAM Type passed in incorrect " + ram_type)
+                    print(
+                        f"memgen_params: {memgen_params}, memgen_data_list: {memgen_data_list}"
+                    )
+
+                    if memgen_data_list[3].lower() == "1p":
+                        del memgen_params["rclk"]
+                        max_memgen_positionals = 8
+                        memgen_keys = list(memgen_params.keys())
+
+                    for i, param in enumerate(memgen_data_list):
+                        key_value_regex = RE_KEY_VALUE.search(param)
+                        if not key_value_regex:
+                            if memgen_keys[i] in (
+                                "width",
+                                "depth",
+                                "pipeline",
+                                "bitwrite",
+                            ):
+                                memgen_params[memgen_keys[i]] = int(param)
+                            else:
+                                memgen_params[memgen_keys[i]] = param
+                        else:
+                            key = key_value_regex.group("key")
+                            value = key_value_regex.group("value")
+
+                            if key not in memgen_keys:
+                                print(f"\nWarning: {key} is not a memgen parameter.")
+                                continue
+
+                            if key in ("width", "depth", "pipeline", "bitwrite"):
+                                value = int(value)
+
+                            if key == "vendor_memories":
+                                ram.vendor_memories = value.split(":")
+
+                            if key == "vendor_tiling":
+                                vendor_tiling = value.split(":")
+                                ram.vendor_tiling = tuple(
+                                    map(
+                                        lambda v: int(v) if re.match(r"\d+", v) else v,
+                                        vendor_tiling,
+                                    )
+                                )
+
+                            if i < max_memgen_positionals and key == memgen_keys[i]:
+                                memgen_params[key] = value
+                            elif i >= max_memgen_positionals:
+                                memgen_params[key] = value
+
+                                if key == "memory_mode":
+                                    ram.add_vendor_memory_release_search_paths(value)
+                                if key == "vendor":
+                                    ram.set_vendor(value)
+                                if key == "loop" and value != "":
+                                    ram.set_loop(value)
+                                if key == "beh_wrapper_only" and bool(value):
+                                    ram.set_beh_wrapper_only(True)
+                                if key == "internal_use" and bool(value):
+                                    ram.set_internal_use(True)
+                                if key == "no_wrapper_instantiation" and bool(value):
+                                    ram.set_no_wrapper_instantiation(True)
+                                if key == "cam_memory" and bool(value):
+                                    ram.set_cam_memory(True)
+                                if (
+                                    key == "num_ecc_syndromes"
+                                    and memgen_name.lower() == "ecc_memgen"
+                                ):
+                                    ram.num_ecc_syndromes = int(value)
+                                if (
+                                    key == "enable_error_injection"
+                                    and memgen_name.lower() == "ecc_memgen"
+                                ):
+                                    ram.enable_error_injection = bool(value)
 
                     ram.set_ram_info(
-                        ram_prefix,
-                        ram_width,
-                        ram_depth,
-                        ram_type,
-                        ram_pipe_en,
-                        ram_bitwrite_en,
-                        ram_rst,
-                        ram_wclk,
-                        ram_rclk,
+                        *(
+                            [
+                                memgen_params[memgen_key]
+                                for memgen_key in memgen_keys[:max_memgen_positionals]
+                            ]
+                        )
                     )
-                    ram.set_phy_info()
-                    if ram_list:
-                        ram.set_loop(ram_list)
+                    if memgen_params["port_prefix"] is not None:
+                        ram.user_ram.port_prefix = memgen_params["port_prefix"]
+
+                    if memgen_params["use_2cyc_memory"] is not None:
+                        ram.user_ram.use_2cyc_memory = bool(
+                            memgen_params["use_2cyc_memory"]
+                        )
+
+                    if memgen_name.lower() == "hls_memgen":
+                        ram.set_hls()
+
+                    if memgen_name.lower() == "ecc_memgen":
+                        if memgen_params["bitwrite"]:
+                            self.dbg(
+                                "\nError: ECC SRAM Type passed in incorrect "
+                                + memgen_params["bitwrite"]
+                            )
+                            print(
+                                "\nError: ECC SRAM Type passed in incorrect "
+                                + memgen_params["bitwrite"]
+                            )
+                            ram_bitwrite_en = False
+                        ram.set_ecc()
+
+                    if not ram.beh_wrapper_only:
+                        ram.set_phy_info(self.gen_dependencies)
+                        ram.set_dv_api(self.dv_api)
+                    else:
+                        ram.user_ram.defineWrapperName()
 
                     # Generate ram wrapper module only in build mode
                     if self.gen_dependencies:
@@ -1264,195 +1219,19 @@ class codegen:
 
                     ram_wrapper_name = ram.returnWrapperName()
 
-                    ram_inst_data = ram.returnInstance()
-
-                    ram.clear_ram_info()
-
-                    memgen_output_list = re.split(r"\n", ram_inst_data)
-
-                    # Appending the instance commands
-                    for c_memgen_line in memgen_output_list:
-                        self.lines.append(memgen_begin_space + c_memgen_line)
-
-                    continue
-
-                ################################################################################
-                # &HlsMemGen Plugin
-                ################################################################################
-                if hls_memgen_regex:
-                    hls_ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(hls_ampersand_line)
-                    hls_memgen_begin_space = hls_memgen_regex.group(1)
-                    hls_memgen_data = hls_memgen_regex.group(2)
-                    hls_memgen_data_split = re.split(
-                        r",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", hls_memgen_data
-                    )
-                    hls_memgen_data_split = [
-                        i.replace('"', "") for i in hls_memgen_data_split
-                    ]
-                    hls_memgen_data_split = [
-                        i.replace(" ", "") for i in hls_memgen_data_split
-                    ]
-
-                    ram_prefix = str(hls_memgen_data_split[0])
-                    ram_width = int(hls_memgen_data_split[1])
-                    ram_depth = int(hls_memgen_data_split[2])
-                    ram_type = str(hls_memgen_data_split[3])
-                    ram_pipe_en = int(hls_memgen_data_split[4])
-                    ram_bitwrite_en = int(hls_memgen_data_split[5])
-                    ram_rst = str(hls_memgen_data_split[6])
-                    ram_list = None
-
                     if (
-                        ram_type == "2P"
-                        or ram_type == "2p"
-                        or ram_type == "2F"
-                        or ram_type == "2f"
+                        not self.cmdline.no_memgen_wrapper_instantiation
+                        and not ram.no_wrapper_instantiation
                     ):
-                        ram_wclk = str(hls_memgen_data_split[7])
-                        ram_rclk = str(hls_memgen_data_split[8])
-                        if len(hls_memgen_data_split) > 9:
-                            ram_list = hls_memgen_data_split[9]
-                    elif (
-                        ram_type == "1P"
-                        or ram_type == "1p"
-                        or ram_type == "1F"
-                        or ram_type == "1f"
-                    ):
-                        ram_wclk = str(hls_memgen_data_split[7])
-                        ram_rclk = str(hls_memgen_data_split[7])
-                        if len(hls_memgen_data_split) > 8:
-                            ram_list = hls_memgen_data_split[8]
-                    else:
-                        self.dbg(
-                            "\nError: HLS SRAM Type passed in incorrect " + ram_type
-                        )
-                        print(
-                            ("\nError: HLS SRAM Type passed in incorrect " + ram_type)
-                        )
+                        ram_inst_data = ram.returnInstance()
 
-                    ram_hls.set_ram_info(
-                        ram_prefix,
-                        ram_width,
-                        ram_depth,
-                        ram_type,
-                        ram_pipe_en,
-                        ram_bitwrite_en,
-                        ram_rst,
-                        ram_wclk,
-                        ram_rclk,
-                    )
-                    ram_hls.set_hls()
-                    ram_hls.set_phy_info()
-                    if ram_list:
-                        ram_hls.set_loop(ram_list)
+                        memgen_output_list = re.split(r"\n", ram_inst_data)
 
-                    # Generate ram wrapper module only in build mode
-                    if self.gen_dependencies:
-                        ram_hls.verilog_write()
+                        # Appending the instance commands
+                        for c_memgen_line in memgen_output_list:
+                            self.lines.append(memgen_begin_space + c_memgen_line)
 
-                    hls_ram_wrapper_name = ram_hls.returnWrapperName()
-
-                    hls_ram_inst_data = ram_hls.returnInstance()
-                    ram_hls.clear_ram_info()
-
-                    hls_memgen_output_list = re.split(r"\n", hls_ram_inst_data)
-
-                    # Appending the instance commands
-                    for hls_c_memgen_line in hls_memgen_output_list:
-                        self.lines.append(hls_memgen_begin_space + hls_c_memgen_line)
-
-                    continue
-
-                ################################################################################
-                # &ECCMemGen Plugin
-                ################################################################################
-                if ecc_memgen_regex:
-                    ecc_ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ecc_ampersand_line)
-                    ecc_memgen_begin_space = ecc_memgen_regex.group(1)
-                    ecc_memgen_data = ecc_memgen_regex.group(2)
-                    ecc_memgen_data_split = re.split(
-                        r",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", ecc_memgen_data
-                    )
-                    ecc_memgen_data_split = [
-                        i.replace('"', "") for i in ecc_memgen_data_split
-                    ]
-                    ecc_memgen_data_split = [
-                        i.replace(" ", "") for i in ecc_memgen_data_split
-                    ]
-
-                    ram_prefix = str(ecc_memgen_data_split[0])
-                    ram_width = int(ecc_memgen_data_split[1])
-                    ram_depth = int(ecc_memgen_data_split[2])
-                    ram_type = str(ecc_memgen_data_split[3])
-                    ram_pipe_en = int(ecc_memgen_data_split[4])
-                    ram_bitwrite_en = int(ecc_memgen_data_split[5])
-                    ram_rst = str(ecc_memgen_data_split[6])
-                    ram_list = None
-
-                    if ram_type == "2P" or ram_type == "2p":
-                        ram_wclk = str(ecc_memgen_data_split[7])
-                        ram_rclk = str(ecc_memgen_data_split[8])
-                        if len(ecc_memgen_data_split) > 9:
-                            ram_list = ecc_memgen_data_split[9]
-                    elif ram_type == "1P" or ram_type == "1p":
-                        ram_wclk = str(ecc_memgen_data_split[7])
-                        ram_rclk = str(ecc_memgen_data_split[7])
-                        if len(ecc_memgen_data_split) > 8:
-                            ram_list = ecc_memgen_data_split[8]
-                    else:
-                        self.dbg(
-                            "\nError: ECC SRAM Type passed in incorrect " + ram_type
-                        )
-                        print("\nError: ECC SRAM Type passed in incorrect " + ram_type)
-                    if ram_bitwrite_en == 1:
-                        self.dbg(
-                            "\nError: ECC SRAM Type passed in incorrect "
-                            + ram_bitwrite_en
-                        )
-                        print(
-                            "\nError: ECC SRAM Type passed in incorrect "
-                            + ram_bitwrite_en
-                        )
-                        ram_bitwrite_en = 0
-                    ####
-                    # Calculation on Width and Depth for ECC
-                    # for example: 128 X 320 - 2(128 X 160)
-                    # Depth remain same - 128
-                    # 320 - 2^(r-1) >= r+w
-                    ####
-                    ecc_ram_width = calculate_ecc_width(ram_width)
-                    ram_ecc.set_ram_info(
-                        ram_prefix,
-                        ram_width,
-                        ram_depth,
-                        ram_type,
-                        ram_pipe_en,
-                        ram_bitwrite_en,
-                        ram_rst,
-                        ram_wclk,
-                        ram_rclk,
-                    )
-                    ram_ecc.set_ecc(ecc_ram_width)
-                    ram_ecc.set_phy_info()
-                    if ram_list:
-                        ram_ecc.set_loop(ram_list)
-
-                    # Generate ram wrapper module only in build mode
-                    if self.gen_dependencies:
-                        ram_ecc.verilog_write()
-
-                    ecc_ram_wrapper_name = ram_ecc.returnWrapperName()
-
-                    ecc_ram_inst_data = ram_ecc.returnInstance()
-                    ram_ecc.clear_ram_info()
-
-                    ecc_memgen_output_list = re.split(r"\n", ecc_ram_inst_data)
-
-                    # Appending the instance commands
-                    for ecc_c_memgen_line in ecc_memgen_output_list:
-                        self.lines.append(ecc_memgen_begin_space + ecc_c_memgen_line)
+                    ram.clear_ram_info(self.cmdline.beh_wrapper_only)
 
                     continue
 
@@ -1463,7 +1242,8 @@ class codegen:
 
                 if clockgen_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
                     clkgen_begin_space = clockgen_regex.group(1)
                     # Fetch the first argument of the &ClockGen and use it as input clock
                     clkgen_inclk = clockgen_regex.group(2).split(",", 1)[0].strip()
@@ -1502,7 +1282,8 @@ class codegen:
 
                 if clockgen_v2_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
                     clkgen_begin_space = clockgen_v2_regex.group(1)
                     # Fetch the first argument of the &ClockGen and use it as input clock
                     clkgen_inclk = clockgen_v2_regex.group(2).split(",", 1)[0].strip()
@@ -1522,8 +1303,8 @@ class codegen:
 &BeginInstance fb_cgc_ovrd_en_dis  u_{1}_clkgate;
 &Connect free_running_clk_i     {0};
 &Connect enable_i               {1}_clken;
-&Connect override_en_i          {1}_clken_ovrd_en;
-&Connect override_dis_i         {1}_clken_ovrd_dis;
+&Connect override_en_i          {1}_clken_ovrd;
+&Connect override_dis_i         {1}_clkstop_ovrd;
 &Connect test_enable_i          1'b0;
 &Connect gated_clk_o            {1}_clk;
 &EndInstance;
@@ -1547,7 +1328,8 @@ class codegen:
 
                 if syncgen_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
 
                     syncgen_begin_space = syncgen_regex.group(1)
 
@@ -1607,7 +1389,8 @@ class codegen:
 
                 if syncgen_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
 
                     syncgen_begin_space = syncgen_regex.group(1)
 
@@ -1668,7 +1451,8 @@ class codegen:
 
                 if clockresetgen_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
 
                     clockresetgen_begin_space = clockresetgen_regex.group(1)
                     clockresetgen_args = re.sub(
@@ -1689,16 +1473,26 @@ class codegen:
                     if clockresetgen_args_list:
                         for clkgen_outclk in clockresetgen_args_list:
                             clkgen_outclk = clkgen_outclk.strip()
-                            clkgen_str = (
-                                """
+                            if (
+                                (set_vendor() == "brcm_apd_n7")
+                                or (set_vendor() == "brcm_apd_n5")
+                                or (set_vendor() == "mrvl_n5")
+                            ):
+                                clkgen_str = (
+                                    """
+&BeginInstance fb_clkrst_inf u_{0}_fb_clkrst_unit;
+"""
+                                ).format(clkgen_outclk)
+                            else:
+                                clkgen_str = (
+                                    """
 &BeginInstance fb_clkrst u_{0}_fb_clkrst_unit;
 """
-                            ).format(clkgen_outclk)
-
+                                ).format(clkgen_outclk)
                             clkgen_str += (
                                 """
 &Connect free_running_clk_i {0};
-&Connect wait_cycles_i 4'd15;
+&Connect wait_cycles_i `FBIP_CLKRST_WAIT_CYCLES;
 &Connect power_on_reset_n_i {1};
 &Connect sw_rst_n_i {2}_sw_reset_n;
 &Connect ip_clk_enable_i {2}_clken;
@@ -1729,7 +1523,8 @@ class codegen:
 
                 if artclockresetgen_regex:
                     ampersand_line = re.sub(r"&", r"//&", original_line, 1)
-                    self.lines.append(ampersand_line)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
 
                     artclockresetgen_begin_space = artclockresetgen_regex.group(1)
                     artclockresetgen_args = re.sub(
@@ -1750,16 +1545,27 @@ class codegen:
                     if artclockresetgen_args_list:
                         for artclkgen_outclk in artclockresetgen_args_list:
                             artclkgen_outclk = artclkgen_outclk.strip()
-                            artclkgen_str = (
-                                """
+                            if (
+                                (set_vendor() == "brcm_apd_n7")
+                                or (set_vendor() == "brcm_apd_n5")
+                                or (set_vendor() == "mrvl_n5")
+                            ):
+                                artclkgen_str = (
+                                    """
+&BeginInstance fb_clkrst_inf u_{0}_fb_clkrst_unit;
+&Connect wait_cycles_i 5'hf;
+"""
+                                ).format(artclkgen_outclk)
+                            else:
+                                artclkgen_str = (
+                                    """
 &BeginInstance fb_clkrst u_{0}_fb_clkrst_unit;
 """
-                            ).format(artclkgen_outclk)
-
+                                ).format(artclkgen_outclk)
                             artclkgen_str += (
                                 """
+&Connect wait_cycles_i 4'hf;
 &Connect free_running_clk_i {0};
-&Connect wait_cycles_i 5'hf;
 &Connect power_on_reset_n_i {1};
 &Connect sw_rst_n_i {2}_sw_reset_n;
 &Connect ip_clk_enable_i {2}_clken;
@@ -1775,6 +1581,86 @@ class codegen:
                             for artclkgen_line in clk_output_list:
                                 self.lines.append(
                                     artclockresetgen_begin_space + artclkgen_line
+                                )
+
+                    continue
+
+                ################################################################################
+                # &AthClockResetGen Plugin instantiates clock and reset syncronizer from free
+                # running clock and power on reset.
+                # &AthClockResetGen(<input clock>, <input reset>, <input csr reset>, "<output prefix>")
+                # "output prefix" can be one or more separated by ,
+                ################################################################################
+
+                athclockresetgen_regex = RE_ATHCLOCKRESETGEN.search(line)
+
+                if athclockresetgen_regex:
+                    ampersand_line = re.sub(r"&", r"//&", original_line, 1)
+                    if not self.no_ampersand_lines:
+                        self.lines.append(ampersand_line)
+
+                    athclockresetgen_begin_space = athclockresetgen_regex.group(1)
+                    athclockresetgen_args = re.sub(
+                        r'[\s"]', r"", athclockresetgen_regex.group(2)
+                    )
+                    athclockresetgen_args_list = athclockresetgen_args.split(",")
+
+                    # Extracting input clock
+                    athclkgen_inclk = athclockresetgen_args_list[0]
+
+                    # Extracting input reset
+                    athclkgen_inrst = athclockresetgen_args_list[1]
+
+                    # Extracting input CSR reset
+                    athclkgen_incsrrst = athclockresetgen_args_list[2]
+
+                    # Removing first three args
+                    del athclockresetgen_args_list[0:3]
+
+                    # Only expand to CG instances if the gated output clock list is not empty.
+                    if athclockresetgen_args_list:
+                        for athclkgen_outclk in athclockresetgen_args_list:
+                            athclkgen_outclk = athclkgen_outclk.strip()
+                            if (
+                                (set_vendor() == "brcm_apd_n7")
+                                or (set_vendor() == "brcm_apd_n5")
+                                or (set_vendor() == "mrvl_n5")
+                            ):
+                                athclkgen_str = (
+                                    """
+&BeginInstance ath_clkrst u_{0}_fb_clkrst_unit;
+&Param WAIT_CYCLES CLKRST_WAIT_CYCLES;
+"""
+                                ).format(athclkgen_outclk)
+                            else:
+                                athclkgen_str = (
+                                    """
+&BeginInstance ath_clkrst u_{0}_fb_clkrst_unit;
+&Param WAIT_CYCLES CLKRST_WAIT_CYCLES;
+"""
+                                ).format(athclkgen_outclk)
+                            athclkgen_str += (
+                                """
+&Connect free_running_clk {0};
+&Connect power_on_reset_n {1};
+&Connect csr_soft_reset   ~{2};
+&Connect csr_clk_enable   {3}_clken;
+&Connect gated_clk        {3}_clk;
+&Connect syncd_reset_n    {3}_reset_n;
+&EndInstance;
+"""
+                            ).format(
+                                athclkgen_inclk,
+                                athclkgen_inrst,
+                                athclkgen_incsrrst,
+                                athclkgen_outclk,
+                            )
+
+                            clk_output_list = re.split(r"\n", athclkgen_str)
+
+                            for athclkgen_line in clk_output_list:
+                                self.lines.append(
+                                    athclockresetgen_begin_space + athclkgen_line
                                 )
 
                     continue

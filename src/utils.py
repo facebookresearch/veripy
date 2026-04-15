@@ -4,23 +4,24 @@
 #   and may not be disclosed to any third party nor be used for any purpose other
 #   than to full fill service obligations to Facebook
 ####################################################################################
-################################################################################
-#                                                                              #
-#     Author: Baheerathan Anandharengan                                        #
-#     E-Mail: baheerathan@meta.com                                               #
-#                                                                              #
-#     Key Contributor: Dheepak Jayaraman                                       #
-#     E-Mail: dheepak@meta.com                                                   #
-#                                                                              #
-################################################################################
 
+import csv
+import datetime
+import io
 import itertools
+import json
 import logging
+import math
 import os
 import os.path
 import re
+import string
+import subprocess
 import sys
-from typing import Set
+from collections import OrderedDict
+from csv import reader
+from math import ceil, log
+from typing import Dict, Set
 
 
 ################################################################################
@@ -113,16 +114,90 @@ def indent_array(array, separator, empty_char):
     return indented_array
 
 
+def indent_dict(mydict, separator, empty_char):
+    indented_dict = {}
+    indent_size = []
+
+    for c_port in mydict:
+        c_line = mydict[c_port]
+        c_line_split = c_line.split(separator)
+        index = 0
+
+        for col in c_line_split:
+            col_len = len(col)
+
+            try:
+                indent_size[index]
+            except IndexError:
+                indent_size.append(0)
+
+            if indent_size[index] < col_len:
+                indent_size[index] = col_len
+
+            index = index + 1
+
+    for c_port in mydict:
+        c_line = mydict[c_port]
+        c_line_split = c_line.split(separator)
+
+        indented_line = ""
+        index = 0
+
+        for col in c_line_split:
+            col_len = len(col)
+
+            if col == empty_char:
+                col = " "
+
+            space_dup = indent_size[index] - col_len
+            col += " " * space_dup
+
+            col = col + "  "
+
+            indented_line = indented_line + col
+
+            index = index + 1
+
+        # Removing end of line spaces
+        indented_line = re.sub(r"\s*$", r"", indented_line)
+        indented_dict[c_port] = indented_line
+
+    return indented_dict
+
+
 def set_vendor():
     if "FB_CHIP" in os.environ:
         vendor = os.environ["FB_CHIP"]
     else:
         logging.error("Missing Envr Variable FB_CHIP.")
     if "freya" in vendor:
-        vendor = "n7"
+        vendor = "brcm_apd_n7"
+        return vendor
+    elif "tenjin" in vendor:
+        vendor = "brcm_ccx_n7"
+        return vendor
+    elif "fujin" in vendor:
+        vendor = "brcm_ccx_n5"
+        return vendor
+    elif "terminus_gen1" in vendor:
+        vendor = "mrvl_n5"
+        return vendor
+    elif "terminus" in vendor:
+        vendor = "xilinx"
+        return vendor
+    elif "artemis" in vendor:
+        vendor = "brcm_apd_n5"
+        return vendor
+    elif "athena" in vendor:
+        vendor = "brcm_apd_n3"
+        return vendor
+    elif "voyager" in vendor:
+        vendor = "mrvl_n5"
         return vendor
     else:
-        logging.error("Error in vendor name. envr variable FB_CHIP doesnt have freya")
+        logging.error(
+            "Error in vendor name. envr variable FB_CHIP doesnt have freya/tenjin/terminus/terminus_gen1/fujin/artemis2.0"
+        )
         sys.exit(1)
 
 
@@ -172,22 +247,8 @@ def check_path(line: str, filename: str) -> None:
         sys.exit(1)
 
 
-def calculate_ecc_width(width):
-    # for example: 128 X 320 - 2(128 X 160)
-    # Depth remain same - 128
-    # 320 - 2^(r-1) >= r+w
-    for i in range(1, 20):
-        # print ("calculating LHS:" +str(2**(i-1)))
-        # print ("calculating RHS:" +str(i + width))
-        if 2 ** (i - 1) >= (i + width):
-            # print ("Iterating:" +str(i))
-            # print ("Iterating:" +str(width))
-            value = i + width
-            return i
-
-
 def recursive_filelist(filename: str) -> Set[str]:
-    filelist = set()
+    filelist = list()
     lineList = list()
     with open(filename) as filep:
         for c_file in nonblank_lines(filep):
@@ -202,12 +263,12 @@ def recursive_filelist(filename: str) -> Set[str]:
             data = re.sub(r"-f ", r"", line)
             check_path(data, filename)
             a = recursive_filelist(data)
-            filelist.update(a)
+            filelist.extend(a)
         elif re.search("filelist.txt$", line):
             data = re.sub(r"-f ", r"", line)
             check_path(data, filename)
             a = recursive_filelist(data)
-            filelist.update(a)
+            filelist.extend(a)
         elif line.startswith("+incdir+"):
             incdir = line[8:]
             expanded_incdir = os.path.expandvars(incdir)
@@ -217,7 +278,7 @@ def recursive_filelist(filename: str) -> Set[str]:
             else:
                 print(f"Could not find {expanded_incdir}")
                 sys.exit(1)
-            filelist.update(
+            filelist.extend(
                 [
                     os.path.join(incdir, f)
                     for f in incdir_files
@@ -225,6 +286,6 @@ def recursive_filelist(filename: str) -> Set[str]:
                 ]
             )
         else:
-            filelist.add(line)
+            filelist.append(line)
 
     return filelist

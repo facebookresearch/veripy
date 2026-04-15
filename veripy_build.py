@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/local/bin/asicpy
 ####################################################################################
 #   Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved.
 #   The following information is considered proprietary and confidential to Facebook,
@@ -13,12 +13,10 @@
 # bottom buid flow for veripy.                                                 #
 #                                                                              #
 #     Author: Baheerathan Anandharengan                                        #
-#     E-Mail: baheerathan@meta.com                                               #
-#                                                                              #
-#     Key Contributor: Dheepak Jayaraman                                       #
-#     E-Mail: dheepak@meta.com                                        #
+#     E-Mail: baheerathan@fb.com                                               #
 #                                                                              #
 ################################################################################
+
 """
 !@package veripy_build
 veripy_build.py is a script to generate the BUCK files containing Verilog and VeriPy
@@ -35,11 +33,50 @@ import re
 import string
 import subprocess
 import sys
+import time
 import warnings
-from os.path import getmtime
+from os.path import getmtime, isfile
 
-import yaml as yaml
+import oyaml as yaml
 
+_DEFAULT_INFRA_COMMON_PATH = "infra_asic_fpga/ip/infra_common/main"
+def get_common_ip_path() -> str:
+    """
+    Get the common IP path from the environment or use the default.
+    Returns the path starting from "infra_asic_fpga" prefix.
+    This method can be mocked in tests to avoid setting environment variables.
+    """
+    raw_path = os.getenv("INFRA_COMMON_MAIN", _DEFAULT_INFRA_COMMON_PATH)
+    if "infra_asic_fpga" not in raw_path:
+        raise ValueError(
+            f"Invalid path: {raw_path}. Path must contain 'infra_asic_fpga'"
+        )
+    else:
+        # Normalize to start with "infra_asic_fpga"
+        return raw_path[raw_path.index("infra_asic_fpga") :]
+
+glob_config = {
+    "rtl_targets": [],
+    "chip": os.environ.get("FB_CHIP", None),
+    "vendor": os.environ.get("ASIC_VENDOR", None),
+    "rtldir_suffix": os.environ.get("ASIC_VENDOR_CODE", None),
+    "common_ip_path": get_common_ip_path(),
+}
+configuration_names = tuple(glob_config.keys())
+
+default_prune_dep_targets = [
+    f"//{glob_config['common_ip_path']}/design/dev/lib_design/std_cell_wrappers",
+    f"//{glob_config['common_ip_path']}/design/dev/lib_design/common",
+    f"//{glob_config['common_ip_path']}/incl/packages",
+    "//infra_asic_fpga/ip/mtia/hermes/main/incl/packages",
+    "//infra_asic_fpga/ip/mtia/metis/main/incl/packages",
+    "//infra_asic_fpga/ip/mtia/mnemo/main/incl/packages",
+    "//infra_asic_fpga/ip/mtia/mnemo/main/design/common",
+    "//infra_asic_fpga/ip/mtia/olympus/main/incl/packages",
+    "//infra_asic_fpga/ip/mtia/zeus/main/incl/packages",
+    "//infra_asic_fpga/ip/mtia/mnemo/main/design/common/noc_dest_id_wrapper",
+    "//infra_asic_fpga/ip/mtia/mnemo/main/design/sihub/sidma",
+]
 
 def gen_dependency(c_dep):
     """!
@@ -124,6 +161,7 @@ def up_to_date_file_in_dict(fname, dictionary, old_dict):
     ]
 
     if fname in dictionary:
+
         # Check if using dictionary from previous run
         # If not, file modification times are irrelevant
         if old_dict:
@@ -138,6 +176,7 @@ def up_to_date_file_in_dict(fname, dictionary, old_dict):
             # to see if any of them have changed since last run
             else:
                 for category in dictionary[fname][fname]:
+
                     if category in categories:
                         for dep in dictionary[fname][fname][category]:
                             mtime = getmtime(next(iter(dep)))
@@ -188,8 +227,25 @@ def dbg(dbg_info):
 
     return
 
+def eval_config_file(config_file):
+        global glob_config
+        # Check if file exists.
+        exists = os.path.isfile(config_file)
+        if not exists:
+            logging.error(f"Unable to Access the config file")
+            logging.info("config file provided: " + config_file)
+            logging.info(
+                """==============================================================\n"""
+            )
+            sys.exit(1)
+
+        logging.info("Reading data from: " + config_file)
+        with open(config_file) as configfp:
+            exec(configfp.read(), globals())
+            glob_config.update(config)
 
 def get_cmd_line_args():
+    global glob_config
     print(
         "#############################################################################################"
     )
@@ -318,6 +374,18 @@ def get_cmd_line_args():
         dest="lists",
         help="Optional -list option to pass in a file that has the list of files to \
         look for submodules / include / package / spec files",
+    )
+
+    # -flist option
+    parser.add_argument(
+        "-fl",
+        "--flist",
+        nargs="*",
+        dest="flists",
+        help="Optional -flist option to pass in a file that has the list \
+            of files to look for submodules / include / package / spec files. \
+            This can be used for including third-party IPs. \
+            The filelist itself will be tagged as a dependency instead of any specific verilog files.",
     )
 
     # -hash_define_vars option
@@ -568,6 +636,16 @@ def get_cmd_line_args():
         for subsequent runs, slower for initial run).",
     )
 
+    # -prune_deps option
+    parser.add_argument(
+        "--prune_deps",
+        action="store_true",
+        default=False,
+        dest="prune_deps",
+        help="Option to prune dependencies to only the minimal set needed by the block, \
+        rather than the full file list of each referenced sub directory.",
+    )
+
     # -profiling
     parser.add_argument(
         "-prof",
@@ -588,7 +666,64 @@ def get_cmd_line_args():
         help="target directory such as rtl_bc5,rtl_bc7. ",
     )
 
+    # -prune_dep_target
+    parser.add_argument(
+        "-pdt",
+        "--prune_dep_target",
+        nargs="*",
+        default=[],
+        dest="prune_dep_target",
+        help="Prune dependencies (PRUNE_DEPS=1) for specified targets.",
+    )
+
+    parser.add_argument(
+        "-fc",
+        "--chip",
+        action="store",
+        default=None,
+        dest="chip",
+        help="chip to use for veripy_build run.",
+    )
+
+    parser.add_argument(
+        "-acv",
+        "--vendor",
+        action="store",
+        default=None,
+        dest="vendor",
+        help="vendor to use for veripy_build run.",
+    )
+
+    # --rtldir_suffix
+    parser.add_argument(
+        "-rs",
+        "--rtldir_suffix",
+        action="store",
+        default=None,
+        dest="rtldir_suffix",
+        help="the rtl directory suffix to use for veripy_build run.",
+    )
+
+    parser.add_argument(
+        "-c",
+        "--config_file",
+        dest="config_file",
+        default=None,
+        help="""the input python configuration file.""",
+        metavar="FILE",
+    )
+
     cmdline = parser.parse_args()
+
+    if cmdline.config_file is not None:
+        eval_config_file(cmdline.config_file)
+
+    if len(glob_config["rtl_targets"]) == 0:
+        glob_config["rtl_targets"].append({
+            "chip": glob_config["chip"],
+            "vendor": glob_config["vendor"],
+            "rtldir_suffix": glob_config["rtldir_suffix"],
+        })
 
     in_file = cmdline.positional
     parsing_format = cmdline.format
@@ -614,6 +749,11 @@ def get_cmd_line_args():
     else:
         file_lists = cmdline.lists
 
+    if cmdline.flists is None:
+        file_lists_3pip = []
+    else:
+        file_lists_3pip = cmdline.flists
+
     hash_define_vars = cmdline.hash_define_vars
     hash_define_files = cmdline.hash_define_files
     verilog_define_files = cmdline.verilog_define_files
@@ -636,8 +776,16 @@ def get_cmd_line_args():
     target_vendors = cmdline.target_vendors
     build_subdirs_dict_json = cmdline.build_subdirs_dict_json
     use_prev_dict = cmdline.use_prev_dict
+    prune_deps = cmdline.prune_deps
+    prune_dep_target = cmdline.prune_dep_target
+    prune_dep_target.extend(default_prune_dep_targets)
     profiling_file = cmdline.profiling_file
     targetdir = cmdline.targetdir
+    chip = cmdline.chip
+    vendor = cmdline.vendor
+    rtldir_suffix = cmdline.rtldir_suffix
+    if rtldir_suffix is None:
+        rtldir_suffix = os.environ.get("ASIC_VENDOR_CODE", None)
 
     gather_verilog_subs_include_files = cmdline.gather_verilog_subs_include_files
     if gather_verilog_subs_include_files:
@@ -646,10 +794,7 @@ def get_cmd_line_args():
             DeprecationWarning,
         )
 
-    if update_inc:
-        update_targets = False
-    else:
-        update_targets = True
+    update_targets = True
 
     ################################################################################
     # Gathering commandline options to call Veripy script                          #
@@ -689,6 +834,11 @@ def get_cmd_line_args():
     if file_lists is not None:
         if len(file_lists) > 0:
             LIST_OPTION += " --list " + " ".join(file_lists)
+
+    FLIST_OPTION = ""
+    if file_lists_3pip is not None:
+        if len(file_lists_3pip) > 0:
+            FLIST_OPTION += " --flist " + " ".join(file_lists_3pip)
 
     DEFINE_VARS_OPTION = ""
     if hash_define_vars is not None:
@@ -746,7 +896,7 @@ def get_cmd_line_args():
     else:
         VERIPY_SCRIPT = "$(VERIPY_SCRIPT) "
 
-    if disable_tick_ifdefs:
+    if not disable_tick_ifdefs:
         DISABLE_TICK_IFDEFS_OPTION = ""
     else:
         DISABLE_TICK_IFDEFS_OPTION = "--disable_tick_ifdefs"
@@ -794,6 +944,7 @@ def get_cmd_line_args():
         MODULE_DEFS_OPTION,
         FILES_OPTION,
         LIST_OPTION,
+        FLIST_OPTION,
         DEFINE_VARS_OPTION,
         DEFINE_FILES_OPTION,
         VERILOG_DEFINE_FILES_OPTION,
@@ -816,11 +967,14 @@ def get_cmd_line_args():
         build_subdirs_dict,
         use_dict,
         use_prev_dict,
+        prune_deps,
+        prune_dep_target,
         update_inc,
         root_path,
         target_vendors,
         PROFILING_FILE_OPTION,
         DEST_DIR,
+        rtldir_suffix,
     )
 
 
@@ -833,6 +987,7 @@ def gen_dependencies(
     MODULE_DEFS_OPTION,
     FILES_OPTION,
     LIST_OPTION,
+    FLIST_OPTION,
     DEFINE_VARS_OPTION,
     DEFINE_FILES_OPTION,
     VERILOG_DEFINE_FILES_OPTION,
@@ -857,6 +1012,7 @@ def gen_dependencies(
     use_prev_dict,
     PROFILING_FILE_OPTION,
     DEST_DIR,
+    use_default_mem_wrapper_name,
 ):
     """!
     Get dependencies for file hierarchy
@@ -869,6 +1025,7 @@ def gen_dependencies(
     @param MODULE_DEFS_OPTION Option passed to veripy.py containing module defs
     @param FILES_OPTION Option passed to veripy.py containing additional files to check for submodules / include / package / spec
     @param LIST_OPTION Option passed to veripy.py containing filelists to check for submodules / include / package / spec
+    @param FLIST_OPTION Option passed to veripy.py containing filelists to check for submodules / include / package / spec. Filelist itself is marked as the dependency.
     @param DEFINE_VARS_OPTION Option passed to veripy.py containing #define vars passed through the command line
     @param DEFINE_FILES_OPTION Option passed to veripy.py containing a file containing #define vars to be passed to the script
     @param VERILOG_DEFINE_FILES_OPTION Option passed to veripy.py containing a Verilog file containing #define vars to be passed to the script
@@ -934,7 +1091,7 @@ def gen_dependencies(
                     ADDL_BUILD_CMD = ""
 
                 IN_FILE = c_file
-                OUTPUT_FILE = c_file + ".dep_list"
+                OUTPUT_FILE = c_file + ".dep_list" + str(time.time())
                 RUN_LOG = c_file + ".run.log"
 
                 c_file_slash_regex = RE_SLASH.search(c_file)
@@ -971,6 +1128,8 @@ def gen_dependencies(
                     + " "
                     + LIST_OPTION
                     + " "
+                    + FLIST_OPTION
+                    + " "
                     + DEFINE_VARS_OPTION
                     + " "
                     + DEFINE_FILES_OPTION
@@ -991,6 +1150,8 @@ def gen_dependencies(
                     + DISABLE_AUTO_PACKAGE_OPTION
                     + " "
                     + PYTHON_FILES_OPTION
+                    + " "
+                    + use_default_mem_wrapper_name
                     + " "
                     + PROFILING_FILE_OPTION
                 )
@@ -1025,23 +1186,24 @@ def gen_dependencies(
 
                 print("### Gathering Dependencies for " + IN_FILE)
 
-                if DEBUG_OPTION:
+                if True:
                     print("  # RUN COMMAND: " + RUN_CMD)
 
                 # Run veripy.py to generate dependency list
                 p = subprocess.Popen(RUN_CMD, stdout=subprocess.PIPE, shell=True)
                 out, err = p.communicate()
                 if p.returncode != 0:
-                    print(out)
+                    print(out.decode())
                     print("\n\nError: Please fix the build error for " + IN_FILE + "\n")
-                    print("RUN COMMAND: " + RUN_CMD + "\n")
+                    print("RUN COMMAND:\n" + RUN_CMD + "\n")
                     sys.exit(1)
 
-                c_dependancies = {}
-
                 # Load dependency list from file generated by Veripy script
-                with open(OUTPUT_FILE, "r") as Yamlparameters:
-                    c_dependancies = yaml.safe_load(Yamlparameters)
+                with open(OUTPUT_FILE, "r") as fileh:
+                    fdata = fileh.read()
+
+                c_dependancies = {}
+                c_dependancies = yaml.load(fdata, Loader=yaml.FullLoader)
 
                 if level > 0:
                     c_dependancies["build_cmd"] = files_hierarchy[level][IN_FILE][
@@ -1050,6 +1212,7 @@ def gen_dependencies(
 
                 if len(c_dependancies["veripy_subs"]) > 0:
                     for veripy_sub in c_dependancies["veripy_subs"]:
+
                         if files_hierarchy[next_level] is None:
                             files_hierarchy[next_level] = {}
 
@@ -1124,117 +1287,141 @@ def gen_dependencies(
 
 
 def gen_makeinc(
-    update_inc, root_path, hierarchical_dependencies, UPDATE_TARGETS_OPTION, DEST_DIR
+    update_inc,
+    root_path,
+    hierarchical_dependencies,
+    UPDATE_TARGETS_OPTION,
+    DEST_DIR,
+    prune_deps=True,
 ):
     """
     Generating makefile.inc
     """
 
     subdirs_list = []
+    module_lines = []
+    clean_targets = []
 
     if update_inc:
         root_path = re.sub(r"\?", r"\\?", root_path)
 
-        with open("makefile.inc.new", "w") as makeinc:
+        with open("makefile.inc", "w") as makeinc:
+            makeinc.write("# @" + "generated\n")
+
             for c_mod in hierarchical_dependencies:
-                # c_lib = re.sub(r"\..*", r"", c_mod)
                 c_lib = os.path.splitext(c_mod)[0]
                 c_lib_slash_regex = RE_SLASH.search(c_lib)
 
                 if c_lib_slash_regex:
                     sub_dir = c_lib_slash_regex.group(1)
-                    c_lib = c_lib_slash_regex.group(2) + "_lib"
-
-                    target_line = "$(RUN_DIR)/" + c_lib + ": "
-                    target_line = re.sub(root_path, r"$(ROOT)", target_line)
-                    print_line = target_line
-                    makeinc.write(print_line + "\n")
-
-                    # Pushing the sub dir to array for clean and other targets
-                    subdirs_list.append(sub_dir)
-
-                    print_line = "ifeq ($(BUILD_SUBS),1)"
-                    makeinc.write(print_line + "\n")
-
-                    print_line = "\tmake -C " + sub_dir + " Build"
-                    print_line = re.sub(root_path, r"$(ROOT)", print_line)
-                    makeinc.write(print_line + "\n")
-
-                    print_line = "endif"
-                    makeinc.write(print_line + "\n")
-
-                    c_lib = re.sub(root_path, r"$(ROOT)", c_lib)
-                    print_line = "\t" + "touch $(RUN_DIR)/" + c_lib
-                    makeinc.write(print_line + "\n")
-
-                    print_line = "\n"
-                    makeinc.write(print_line + "\n")
+                    module = c_lib_slash_regex.group(2)
+                    if (sub_dir, module) not in subdirs_list:
+                        subdirs_list.append((sub_dir, module))
                 else:
-                    c_lib += "_lib"
-                    target_line = "$(RUN_DIR)/" + c_lib + ": " + c_mod + " "
-
+                    target_line = (
+                        "../$(TARGET)/"
+                        + os.path.splitext(c_mod)[0]
+                        + ".sv"
+                        + ": "
+                        + c_mod
+                        + " "
+                    )
+                    clean_targets.append(
+                        "../$(TARGET)/" + os.path.splitext(c_mod)[0] + ".sv"
+                    )
                     addl_build_cmd = ""
-
+                    prerequisities = []
                     for c_cat in hierarchical_dependencies[c_mod]:
                         for c_dep in hierarchical_dependencies[c_mod][c_cat]:
                             if c_cat == "veripy_subs":
-                                # c_dep = re.sub(r"\..*", r"", c_dep)
+                                c_dep = re.sub(r"\..*", r"", c_dep)
                                 c_dep = os.path.splitext(c_dep)[0]
                                 c_dep_slash_regex = RE_SLASH.search(c_dep)
 
                                 if c_dep_slash_regex:
-                                    target_line += (
-                                        "$(RUN_DIR)/"
-                                        + c_dep_slash_regex.group(2)
-                                        + "_lib "
-                                    )
+                                    if prune_deps == False:
+                                        prerequisite = os.path.dirname(c_dep)
+                                        if prerequisite not in prerequisities:
+                                            prerequisities.append(prerequisite)
+                                    else:
+                                        prerequisite = (
+                                            c_dep.replace("src", "$(TARGET)") + ".sv"
+                                        )
+                                        if prerequisite not in prerequisities:
+                                            prerequisities.append(prerequisite)
                                 else:
-                                    target_line += "$(RUN_DIR)/" + c_dep + "_lib "
-                            elif c_cat == "include_files":
-                                target_line += next(iter(c_dep)) + " "
-                            elif c_cat == "spec_files":
-                                target_line += next(iter(c_dep)) + " "
-                            elif c_cat == "interface_files":
-                                target_line += next(iter(c_dep)) + " "
-                            elif c_cat == "module_files":
-                                target_line += next(iter(c_dep)) + " "
+                                    prerequisite = f"../$(TARGET)/{c_dep}.sv"
+                                    if prerequisite not in prerequisities:
+                                        prerequisities.append(prerequisite)
+                            elif (
+                                c_cat == "include_files"
+                                or c_cat == "spec_files"
+                                or c_cat == "interface_files"
+                                or c_cat == "module_files"
+                            ):
+                                prerequisite = next(iter(c_dep))
+                                if prerequisite not in prerequisities:
+                                    prerequisities.append(prerequisite)
                             elif c_cat == "build_cmd":
                                 for c_cmd in hierarchical_dependencies[c_mod][c_cat]:
                                     addl_build_cmd += str(c_cmd) + " "
 
+                    target_line += " ".join(prerequisities)
                     target_line = re.sub(root_path, r"$(ROOT)", target_line)
-                    print_line = target_line
-                    makeinc.write(print_line + "\n")
+                    module_lines.append(f"{target_line}\n")
 
+                    module_lines.append("ifeq ($(BUILD_DEBUG),1)\n")
+                    module_lines.append('\t@echo "Newer prereq: $?"\n')
+                    module_lines.append("endif\n")
                     RUN_CMD = (
-                        "$(VERIPY_LIB) "
+                        "veripy.py "
                         + c_mod
-                        + " $(FORMAT_OPTION) $(INCLUDE_OPTION) $(INTERFACE_SPEC_OPTION) \
-                        $(INTERFACE_DEF_OPTION) $(MODULE_DEF_OPTION) $(FILES_OPTION) \
-                        $(LIST_OPTION) $(VERILOG_INCLUDE_FILES_OPTION) \
-                        $(HASH_DEFINE_FILES_OPTION) $(HASH_DEFINE_VARS_OPTION) \
-                        $(PARSE_GENERATE_OPTION) --destination $(DEST_DIR) $(USER_OPTIONS) \
-                        $(ADDITIONAL_OPTIONS) "
+                        + " $(FORMAT_OPTION) $(INCLUDE_OPTION) $(INTERFACE_SPEC_OPTION)"
+                        + " $(INTERFACE_DEF_OPTION) $(MODULE_DEF_OPTION) $(FILES_OPTION)"
+                        + " $(LIST_OPTION) $(FLIST_OPTION) $(VERILOG_INCLUDE_FILES_OPTION)"
+                        + " $(HASH_DEFINE_FILES_OPTION) $(HASH_DEFINE_VARS_OPTION)"
+                        + " $(PARSE_GENERATE_OPTION) --destination $(DEST_DIR) $(USER_OPTIONS)"
+                        + " $(ADDITIONAL_OPTIONS) "
                         + str(addl_build_cmd)
                     )
 
                     RUN_CMD = re.sub(root_path, r"$(ROOT)", RUN_CMD)
                     print_line = "\t" + RUN_CMD
-                    makeinc.write(print_line + "\n")
+                    module_lines.append(f"{print_line}\n\n")
 
-                    c_lib = re.sub(root_path, r"$(ROOT)", c_lib)
-                    print_line = "\t" + "touch $(RUN_DIR)/" + c_lib
-                    makeinc.write(print_line + "\n\n\n")
+            makeinc.write(f"CLEAN_TARGETS = {' '.join(clean_targets)}\n\n")
+            if len(subdirs_list) > 0:
+                makeinc.write("ifeq ($(BUILD_SUBS),1)\n")
+                makeinc.write("ifeq ($(GENERATED_BUILD_SUB_DIRS),1)\n")
+                makeinc.write(
+                    f"BUILD_SUB_DIRS = {re.sub(root_path, r'$(ROOT)', ' '.join([dir for dir, mod in subdirs_list]))}\n\n"
+                )
+                makeinc.write("endif\n")
+                makeinc.write("endif\n\n")
+                if prune_deps:
+                    for dir, mod in subdirs_list:
+                        dir = re.sub(root_path, r"$(ROOT)", dir)
+                        target_name = os.path.join(
+                            dir.replace("src", "$(TARGET)"), f"{mod}.sv"
+                        )
+                        makeinc.write(f"{target_name}:\n")
+                        makeinc.write(
+                            f"\t$(MAKE) --directory={dir} ../$(TARGET)/{mod}.sv\n\n"
+                        )
 
+            makeinc.writelines(module_lines)
 
 def gen_targets(
     UPDATE_TARGETS_OPTION,
     DEBUG_OPTION,
-    hierarchical_dependencies,
+    rtl_target_hierarchical_dependencies,
     target_vendors,
     USER_OPTIONS,
     INCL_DIRS_OPTION,
     DEST_DIR,
+    prune_deps,
+    prune_dep_target,
+    rtldir_suffix,
 ):
     """
     Generating BUCK file for Buck Build
@@ -1265,17 +1452,36 @@ def gen_targets(
     current_dir = os.getcwd()
 
     if UPDATE_TARGETS_OPTION:
-        with open("BUCK.new", "w") as targets_file:
-            # print_line = "load(\"@fbcode_macros//build_defs:python_library.bzl\", \"python_library\")"
-            # targets_file.write(print_line + '\n')
-            # dbg(print_line)
+        with open("../BUCK", "w") as targets_file:
+
+            print_line = "# @generated"
+            targets_file.write(print_line + "\n\n")
+            dbg(print_line)
 
             print_line = "load("
             targets_file.write(print_line + "\n")
             dbg(print_line)
 
             print_line = (
-                "    " + '"//infra_asic_fpga/common/tools/src/buck:asic_macros.bzl",'
+                    "    " + '"//asic/buck:asic.bzl",'
+            )
+            targets_file.write(print_line + "\n")
+            dbg(print_line)
+
+            print_line = "    " + '"source_directory",'
+            targets_file.write(print_line + "\n")
+            dbg(print_line)
+
+            print_line = ")"
+            targets_file.write(print_line + "\n")
+            dbg(print_line)
+
+            print_line = "load("
+            targets_file.write(print_line + "\n")
+            dbg(print_line)
+
+            print_line = (
+                    "    " + '"//infra_asic_fpga/common/tools/src/buck:asic_macros.bzl",'
             )
             targets_file.write(print_line + "\n")
             dbg(print_line)
@@ -1292,64 +1498,60 @@ def gen_targets(
             targets_file.write(print_line + "\n")
             dbg(print_line)
 
-            print_line = "asic_library("
-            targets_file.write(print_line + "\n")
+            print_line = '\noncall("share_asic_cad")'
+            targets_file.write(print_line + "\n\n")
             dbg(print_line)
 
-            print_line = "    " + 'name = "rtl_f_list",'
-            targets_file.write(print_line + "\n")
+            targets_file.write(get_source_directory_target() + "\n")
             dbg(print_line)
 
-            print_line = "    " + "srcs = ["
-            targets_file.write(print_line + "\n")
-            dbg(print_line)
+            is_multi_rtls = False
+            # if len(rtl_target_hierarchical_dependencies) > 1:
+            #     is_multi_rtls = True
+            #
+            #     print_line = "asic_library("
+            #     targets_file.write(print_line + "\n")
+            #     dbg(print_line)
+            #
+            #     print_line = f'    name = "rtl_f_list",'
+            #     targets_file.write(print_line + "\n")
+            #     dbg(print_line)
+            #
+            #     print_line = "    deps = ["
+            #     targets_file.write(print_line + "\n")
+            #     dbg(print_line)
+            #
+            #     rtl_targets = list(rtl_target_hierarchical_dependencies.keys())
+            #     for rtl_target in rtl_targets:
+            #         chip, vendor, rtldir_suffix, USER_OPTIONS = rtl_target
+            #         print_line = f'        ":rtl_{chip}_{rtldir_suffix}_f_list",'
+            #         targets_file.write(print_line + "\n")
+            #         dbg(print_line)
+            #
+            #     print_line = "    " + "],"
+            #     targets_file.write(print_line + "\n")
+            #     dbg(print_line)
+            #
+            #     print_line = ")"
+            #     targets_file.write(print_line + "\n\n")
+            #     dbg(print_line)
 
-            print_line = "    " + '"rtl/filelist.txt",'
-            targets_file.write(print_line + "\n")
-            dbg(print_line)
-
-            print_line = "    " + "],"
-            targets_file.write(print_line + "\n")
-            dbg(print_line)
-
-            ### incdirs = []
-            ### print_line = '    ' + "incdirs = ["
-            ### dbg(print_line)
-            ### targets_file.write(print_line + '\n')
-            ### for onedir in incdirs:
-            ###     print_line = '    ' + '"' + onedir  + '",'
-            ###     targets_file.write(print_line + '\n')
-            ###     dbg(print_line)
-            ### print_line = '    ' + '],'
-            ### targets_file.write(print_line + '\n')
-            ### dbg(print_line)
-
-            print_line = "    deps = ["
-            targets_file.write(print_line + "\n")
-            dbg(print_line)
-
-            if hierarchical_dependencies:
-                top_module_hier = list(hierarchical_dependencies)
-                top_module_hier_no_ext = re.sub(r"\.psv", r"", top_module_hier[0])
-                top_module_hier_no_ext1 = re.sub(r"\.sv", r"", top_module_hier_no_ext)
-                print_line = '        ":' + top_module_hier_no_ext1 + '",'
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-            print_line = "    " + "],"
-            targets_file.write(print_line + "\n")
-            dbg(print_line)
-
-            print_line = ")"
-            targets_file.write(print_line + "\n")
-            dbg(print_line)
-            if target_vendors:
-                ####
+            for chip_rtldir_suffix in rtl_target_hierarchical_dependencies:
+                hierarchical_dependencies = rtl_target_hierarchical_dependencies[chip_rtldir_suffix]
+                chip, vendor, rtldir_suffix, USER_OPTIONS = chip_rtldir_suffix
+                if (chip != glob_config["chip"] or vendor != glob_config["vendor"]
+                    or rtldir_suffix != glob_config["rtldir_suffix"]):
+                    rtl_infix = chip + "_" + rtldir_suffix
+                    dep_suffix = "_" + rtl_infix
+                    is_multi_rtls = True
+                else:
+                    rtl_infix = rtldir_suffix
+                    dep_suffix = ""
                 print_line = "asic_library("
                 targets_file.write(print_line + "\n")
                 dbg(print_line)
 
-                print_line = "    " + 'name = "rtl_b_f_list",'
+                print_line = f'    name = "rtl_{rtl_infix}_f_list",'
                 targets_file.write(print_line + "\n")
                 dbg(print_line)
 
@@ -1357,273 +1559,358 @@ def gen_targets(
                 targets_file.write(print_line + "\n")
                 dbg(print_line)
 
-                print_line = "    " + '"rtl_b/filelist.txt",'
+                print_line = " " * 8 + f'"rtl_{rtldir_suffix}/filelist.txt",'
                 targets_file.write(print_line + "\n")
                 dbg(print_line)
 
                 print_line = "    " + "],"
                 targets_file.write(print_line + "\n")
                 dbg(print_line)
-
-                ### incdirs = []
-                ###  print_line = '    ' + "incdirs = ["
-                ###  dbg(print_line)
-                ###  targets_file.write(print_line + '\n')
-                ###  for onedir in incdirs:
-                ###      print_line = '    ' + '"' + onedir  + '",'
-                ###      targets_file.write(print_line + '\n')
-                ###      dbg(print_line)
-                ###  print_line = '    ' + '],'
-                ###  targets_file.write(print_line + '\n')
-                ###  dbg(print_line)
 
                 print_line = "    deps = ["
                 targets_file.write(print_line + "\n")
                 dbg(print_line)
-
                 if hierarchical_dependencies:
                     top_module_hier = list(hierarchical_dependencies)
                     top_module_hier_no_ext = re.sub(r"\.psv", r"", top_module_hier[0])
-                    top_module_hier_no_ext1 = re.sub(
-                        r"\.sv", r"", top_module_hier_no_ext
-                    )
-                    print_line = '        ":' + top_module_hier_no_ext1 + '",'
+                    top_module_hier_no_ext1 = re.sub(r"\.sv", r"", top_module_hier_no_ext)
+                    print_line = '        ":' + top_module_hier_no_ext1 + dep_suffix + '",'
                     targets_file.write(print_line + "\n")
                     dbg(print_line)
 
-                print_line = "    " + "],"
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
+                    print_line = "    " + "],"
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                print_line = ")"
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-                ####
+                    print_line = ")"
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-            for c_mod in hierarchical_dependencies:
-                dbg("### ### ### " + c_mod)
+                if target_vendors:
+                    ####
+                    print_line = "asic_library("
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                c_target_args = ""
+                    print_line = "    " + 'name = "rtl_' + rtl_infix + '_f_list",'
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                c_target_args = " " + USER_OPTIONS
+                    print_line = "    " + "srcs = ["
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                c_deps_list = []
+                    print_line = "    " + '"rtl_' + rtldir_suffix + '/filelist.txt",'
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                c_mod_in_diff_dir = check_dir(c_mod)
-                if c_mod_in_diff_dir:
-                    continue
+                    print_line = "    " + "],"
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                for c_dep_category in hierarchical_dependencies[c_mod]:
-                    if c_dep_category == "include_files":
-                        for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
-                            c_dep = gen_dependency(next(iter(c_dep)))
-                            c_deps_list.append(c_dep)
-                            dbg("    ### ### " + c_dep)
-
-                    elif c_dep_category == "header_files":
-                        dbg("    ### ### " + c_dep_category)
-
-                        if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
-                            c_dep_filenames = set()
-
-                            for c_dep in hierarchical_dependencies[c_mod][
-                                c_dep_category
-                            ]:
-                                c_dep_map = gen_dependency(next(iter(c_dep)))
-                                c_deps_list.append(c_dep_map)
-
-                                c_dep_filenames.add(get_filename(next(iter(c_dep))))
-                                dbg("        ### " + c_dep_map)
-
-                            c_target_args = (
-                                c_target_args
-                                + " --hash_define_files "
-                                + " ".join(sorted(c_dep_filenames))
-                            )
-
-                    elif c_dep_category == "verilog_subs":
-                        dbg("    ### ### " + c_dep_category)
-                        for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
-                            c_dep_map = gen_dependency(next(iter(c_dep)))
-                            c_deps_list.append(c_dep_map)
-                            dbg("        ### " + c_dep_map)
-
-                    elif c_dep_category == "veripy_subs":
-                        dbg("    ### ### " + c_dep_category)
-                        for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
-                            c_dep_map = gen_dependency(c_dep)
-                            c_deps_list.append(c_dep_map)
-                            dbg("        ### " + c_dep_map)
-
-                    elif c_dep_category == "spec_files":
-                        dbg("    ### ### " + c_dep_category)
-
-                        if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
-                            c_dep_filenames = set()
-
-                            for c_dep in hierarchical_dependencies[c_mod][
-                                c_dep_category
-                            ]:
-                                c_dep_map = gen_dependency(next(iter(c_dep)))
-                                c_deps_list.append(c_dep_map)
-
-                                c_dep_filenames.add(get_filename(next(iter(c_dep))))
-                                dbg("        ### " + c_dep_map)
-
-                            c_target_args = (
-                                c_target_args
-                                + " --interface_spec "
-                                + " ".join(sorted(c_dep_filenames))
-                            )
-
-                    elif c_dep_category == "interface_files":
-                        dbg("    ### ### " + c_dep_category)
-
-                        if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
-                            c_dep_filenames = set()
-
-                            for c_dep in hierarchical_dependencies[c_mod][
-                                c_dep_category
-                            ]:
-                                c_dep_map = gen_dependency(next(iter(c_dep)))
-                                c_deps_list.append(c_dep_map)
-
-                                c_dep_filenames.add(get_filename(next(iter(c_dep))))
-                                dbg("        ### " + c_dep_map)
-
-                            c_target_args = (
-                                c_target_args
-                                + " --interface_def "
-                                + " ".join(sorted(c_dep_filenames))
-                            )
-
-                    elif c_dep_category == "module_files":
-                        dbg("    ### ### " + c_dep_category)
-
-                        if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
-                            c_dep_filenames = set()
-
-                            for c_dep in hierarchical_dependencies[c_mod][
-                                c_dep_category
-                            ]:
-                                c_dep_map = gen_dependency(next(iter(c_dep)))
-                                c_deps_list.append(c_dep_map)
-
-                                c_dep_filenames.add(get_filename(next(iter(c_dep))))
-                                dbg("        ### " + c_dep_map)
-
-                            c_target_args = (
-                                c_target_args
-                                + " --module_def "
-                                + " ".join(sorted(c_dep_filenames))
-                            )
-
-                    elif c_dep_category == "depends":
-                        dbg("    ### ### " + c_dep_category)
-                        for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
-                            c_deps_list.append(next(iter(c_dep)))
-                            dbg("        ### " + next(iter(c_dep)))
-
-                    elif c_dep_category == "build_cmd":
-                        dbg("    ### ### " + c_dep_category)
-                        c_target_args += " " + " ".join(
-                            hierarchical_dependencies[c_mod][c_dep_category]
-                        )
-                        dbg("        ### " + c_target_args)
-
-                print_line = "asic_library("
-                targets_file.write("\n" + print_line + "\n")
-                dbg(print_line)
-
-                c_mod_wo_ext = re.sub(r"\..*", r"", c_mod)
-
-                print_line = '    name = "' + c_mod_wo_ext + '",'
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                ### incdirs = []
-                ### print_line = '    ' + "incdirs = ["
-                ### dbg(print_line)
-                ### targets_file.write(print_line + '\n')
-                ### for onedir in incdirs:
-                ###     print_line = '    ' + '"' + onedir  + '",'
-                ###     targets_file.write(print_line + '\n')
-                ###     dbg(print_line)
-                ### print_line = '    ' + '],'
-                ### targets_file.write(print_line + '\n')
-                ### dbg(print_line)
-
-                print_line = "    srcs = ["
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                print_line = '        "src/' + c_mod + '",'
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                print_line = "    ],"
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                print_line = "    embedded_generator = VERIPY_TARGET,"
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                print_line = "    input_arg = None,"
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                if incdir_string:
-                    dbg("    ### ### INCLUDE")
-                    c_target_args = c_target_args + " --include"
-                    c_target_args += " " + incdir_string
-                    dbg("        ### " + incdir_string)
-
-                print_line = '    target_args = "' + c_target_args + '",'
-                targets_file.write(print_line + "\n")
-                dbg(print_line)
-
-                if len(c_deps_list) > 0:
                     print_line = "    deps = ["
                     targets_file.write(print_line + "\n")
                     dbg(print_line)
 
-                    c_deps_list = sorted(set(c_deps_list))
+                    if hierarchical_dependencies:
+                        top_module_hier = list(hierarchical_dependencies)
+                        top_module_hier_no_ext = re.sub(r"\.psv", r"", top_module_hier[0])
+                        top_module_hier_no_ext1 = re.sub(
+                            r"\.sv", r"", top_module_hier_no_ext
+                        )
+                        print_line = '        ":' + top_module_hier_no_ext1 + dep_suffix + '",'
+                        targets_file.write(print_line + "\n")
+                        dbg(print_line)
 
-                    for c_dep in c_deps_list:
-                        dep_regex = re.search(re.compile(r"^:"), c_dep)
+                    print_line = "    " + "],"
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
-                        if dep_regex:
-                            c_dep_wo_ext = re.sub(r"\.psv", r"", c_dep)
-                            c_dep_wo_ext = re.sub(r"\.pv", r"", c_dep_wo_ext)
-                            c_dep_wo_ext = re.sub(r"\/src:", r":", c_dep_wo_ext)
-                            print_line = '        "' + c_dep_wo_ext + '",'
-                            targets_file.write(print_line + "\n")
-                            dbg(print_line)
+                    print_line = ")"
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
+                    ####
 
-                    for c_dep in c_deps_list:
-                        dep_regex = re.search(re.compile(r"^\/\/"), c_dep)
+                for c_mod in hierarchical_dependencies:
+                    dbg("### ### ### " + c_mod)
 
-                        if dep_regex:
-                            c_dep_wo_ext = re.sub(r"\.psv", r"", c_dep)
-                            c_dep_wo_ext = re.sub(r"\.pv", r"", c_dep_wo_ext)
+                    c_target_args = ""
 
-                            c_dep_wo_ext = re.sub(
-                                r"\/src:(.*)$", r":rtl_f_list", c_dep_wo_ext
+                    c_target_args = " " + USER_OPTIONS
+
+                    c_deps_list = []
+
+                    c_mod_in_diff_dir = check_dir(c_mod)
+                    if c_mod_in_diff_dir:
+                        continue
+
+                    for c_dep_category in hierarchical_dependencies[c_mod]:
+                        if c_dep_category == "include_files":
+                            for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
+                                c_dep_map = gen_dependency(next(iter(c_dep)))
+                                if c_dep_map not in c_deps_list:
+                                    c_deps_list.append(c_dep_map)
+                                dbg("    ### ### " + c_dep_map)
+
+                        elif c_dep_category == "depends":
+                            for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
+                                c_dep = next(iter(c_dep))
+                                c_deps_list.append(c_dep)
+                                dbg("    ### ### " + c_dep)
+
+                        elif c_dep_category == "header_files":
+                            dbg("    ### ### " + c_dep_category)
+
+                            if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
+                                c_dep_filenames = set()
+
+                                for c_dep in hierarchical_dependencies[c_mod][
+                                    c_dep_category
+                                ]:
+                                    c_dep_map = gen_dependency(next(iter(c_dep)))
+                                    if c_dep_map not in c_deps_list:
+                                        c_deps_list.append(c_dep_map)
+
+                                    c_dep_filenames.add(get_filename(next(iter(c_dep))))
+                                    dbg("        ### " + c_dep_map)
+
+                                c_target_args = (
+                                    c_target_args
+                                    + " --hash_define_files "
+                                    + " ".join(sorted(c_dep_filenames))
+                                )
+
+                        elif c_dep_category == "verilog_subs":
+                            dbg("    ### ### " + c_dep_category)
+                            for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
+                                c_dep_map = gen_dependency(next(iter(c_dep)))
+                                if c_dep_map not in c_deps_list:
+                                    c_deps_list.append(c_dep_map)
+                                dbg("        ### " + c_dep_map)
+
+                        elif c_dep_category == "veripy_subs":
+                            dbg("    ### ### " + c_dep_category)
+                            for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
+                                c_dep_map = gen_dependency(c_dep)
+                                if c_dep_map not in c_deps_list:
+                                    c_deps_list.append(c_dep_map)
+                                dbg("        ### " + c_dep_map)
+
+                        elif c_dep_category == "spec_files":
+                            dbg("    ### ### " + c_dep_category)
+
+                            if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
+                                c_dep_filenames = set()
+
+                                for c_dep in hierarchical_dependencies[c_mod][
+                                    c_dep_category
+                                ]:
+                                    c_dep_map = gen_dependency(next(iter(c_dep)))
+                                    if c_dep_map not in c_deps_list:
+                                        c_deps_list.append(c_dep_map)
+
+                                    c_dep_filenames.add(get_filename(next(iter(c_dep))))
+                                    dbg("        ### " + c_dep_map)
+
+                                c_target_args = (
+                                    c_target_args
+                                    + " --interface_spec "
+                                    + " ".join(sorted(c_dep_filenames))
+                                )
+
+                        elif c_dep_category == "interface_files":
+                            dbg("    ### ### " + c_dep_category)
+
+                            if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
+                                c_dep_filenames = set()
+
+                                for c_dep in hierarchical_dependencies[c_mod][
+                                    c_dep_category
+                                ]:
+                                    c_dep_map = gen_dependency(next(iter(c_dep)))
+                                    if c_dep_map not in c_deps_list:
+                                        c_deps_list.append(c_dep_map)
+
+                                    c_dep_filenames.add(get_filename(next(iter(c_dep))))
+                                    dbg("        ### " + c_dep_map)
+
+                                c_target_args = (
+                                    c_target_args
+                                    + " --interface_def "
+                                    + " ".join(sorted(c_dep_filenames))
+                                )
+
+                        elif c_dep_category == "module_files":
+                            dbg("    ### ### " + c_dep_category)
+
+                            if len(hierarchical_dependencies[c_mod][c_dep_category]) > 0:
+                                c_dep_filenames = set()
+
+                                for c_dep in hierarchical_dependencies[c_mod][
+                                    c_dep_category
+                                ]:
+                                    c_dep_map = gen_dependency(next(iter(c_dep)))
+                                    if c_dep_map not in c_deps_list:
+                                        c_deps_list.append(c_dep_map)
+
+                                    c_dep_filenames.add(get_filename(next(iter(c_dep))))
+                                    dbg("        ### " + c_dep_map)
+
+                                c_target_args = (
+                                    c_target_args
+                                    + " --module_def "
+                                    + " ".join(sorted(c_dep_filenames))
+                                )
+
+                        elif c_dep_category == "depends":
+                            dbg("    ### ### " + c_dep_category)
+                            for c_dep in hierarchical_dependencies[c_mod][c_dep_category]:
+                                c_dep_map = next(iter(c_dep))
+                                if c_dep_map not in c_deps_list:
+                                    c_deps_list.append(c_dep_map)
+                                dbg("        ### " + c_dep_map)
+
+                        elif c_dep_category == "build_cmd":
+                            dbg("    ### ### " + c_dep_category)
+                            c_target_args += " " + " ".join(
+                                hierarchical_dependencies[c_mod][c_dep_category]
                             )
+                            dbg("        ### " + c_target_args)
 
-                            print_line = '        "' + c_dep_wo_ext + '",'
-                            targets_file.write(print_line + "\n")
-                            dbg(print_line)
+                    print_line = "asic_library("
+                    targets_file.write("\n" + print_line + "\n")
+                    dbg(print_line)
+
+                    c_mod = os.path.basename(c_mod)
+                    c_mod_wo_ext = re.sub(r"\..*", r"", c_mod)
+
+                    print_line = '    name = "' + c_mod_wo_ext + dep_suffix + '",'
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
+
+                    print_line = "    srcs = ["
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
+
+                    print_line = '        "src/' + c_mod + '",'
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
 
                     print_line = "    ],"
                     targets_file.write(print_line + "\n")
                     dbg(print_line)
 
-                print_line = ")"
-                targets_file.write(print_line + "\n")
-                dbg(print_line + "\n")
+                    # Only add embedded_generator for .psv/.pv files, not vanilla .sv files
+                    if c_mod.endswith(('.psv', '.pv')):
+                        print_line = "    embedded_generator = VERIPY_TARGET,"
+                        targets_file.write(print_line + "\n")
+                        dbg(print_line)
 
+                        print_line = "    input_arg = None,"
+                        targets_file.write(print_line + "\n")
+                        dbg(print_line)
+
+                    if incdir_string:
+                        dbg("    ### ### INCLUDE")
+                        c_target_args = c_target_args + " --include"
+                        c_target_args += " " + incdir_string
+                        dbg("        ### " + incdir_string)
+
+                    print_line = '    target_args = "' + c_target_args + '",'
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line)
+
+                    generated_deps = set()
+                    if len(c_deps_list) > 0:
+                        print_line = "    deps = ["
+                        targets_file.write(print_line + "\n")
+                        dbg(print_line)
+
+                        for c_dep in c_deps_list:
+                            dep_regex = re.search(re.compile(r"^:"), c_dep)
+
+                            if dep_regex:
+                                c_dep_wo_ext = re.sub(r"\.psv", r"", c_dep)
+                                c_dep_wo_ext = re.sub(r"\.pv", r"", c_dep_wo_ext)
+                                c_dep_wo_ext = re.sub(r"\.sv", r"", c_dep_wo_ext)
+                                c_dep_wo_ext = re.sub(r"\/src:", r":", c_dep_wo_ext)
+                                print_line = '        "' + c_dep_wo_ext + dep_suffix + '",'
+                                if print_line not in generated_deps:
+                                    targets_file.write(print_line + "\n")
+                                    dbg(print_line)
+                                    generated_deps.add(print_line)
+
+                        for c_dep in c_deps_list:
+                            dep_regex = re.search(re.compile(r"^\/\/"), c_dep)
+                            _, ext = os.path.splitext(c_dep)
+
+                            if dep_regex and ext in (".psv", ".pv"):
+                                c_dep_wo_ext = re.sub(r"\.psv", r"", c_dep)
+                                c_dep_wo_ext = re.sub(r"\.pv", r"", c_dep_wo_ext)
+
+                                full_dep = re.sub(
+                                    r"\/src:(.*)$", f":rtl_{rtl_infix}_f_list", c_dep_wo_ext
+                                )
+                                if prune_deps or full_dep.split(":")[0] in prune_dep_target:
+                                    generated_dep = re.sub(r"\/src:", r":", c_dep_wo_ext)
+                                else:
+                                    generated_dep = full_dep
+                                print_line = '        "' + generated_dep + '",'
+                                if print_line not in generated_deps:
+                                    targets_file.write(print_line + "\n")
+                                    dbg(print_line)
+                                    generated_deps.add(print_line)
+                                dbg(print_line)
+
+                        for c_dep in c_deps_list:
+                            dep_regex = re.search(re.compile(r"^\/\/"), c_dep)
+                            _, ext = os.path.splitext(c_dep)
+
+                            if dep_regex and ext not in (".psv", ".pv"):
+                                print_line = '        "' + c_dep + '",'
+                                if print_line not in generated_deps:
+                                    targets_file.write(print_line + "\n")
+                                    dbg(print_line)
+                                    generated_deps.add(print_line)
+
+                        print_line = "    ],"
+                        targets_file.write(print_line + "\n")
+                        dbg(print_line)
+
+                    print_line = ")"
+                    targets_file.write(print_line + "\n")
+                    dbg(print_line + "\n")
+
+
+def get_source_directory_target() :
+    infra_root = os.environ.get("INFRA_ASIC_FPGA_ROOT", None) 
+    extn_list = []  
+    prefix = '                     "**/*'
+    suffix = '",'
+    
+    with open(os.path.join(infra_root,"../asic/buck/source-file-extensions.txt"),"r") as extns:
+        extn_line = extns.readline()
+        extn_list = sorted(extn_line.split())
+        for i in range(len(extn_list)):
+            extn_list[i] = prefix + extn_list[i] + suffix
+    extn_str = "\n".join(extn_list)      
+    ret_str = """
+source_directory(
+    name = "source_directory",
+    contents = {
+        ".": glob([
+%s
+                    ],
+                  exclude = [
+                              "**/TARGETS",
+                              "**/TARGETS.v2",
+                              "**/BUCK",
+                              "**/BUCK.v2",
+                            ]),
+    },
+)
+""" % extn_str
+    return ret_str
 
 def main():
     """
@@ -1639,6 +1926,7 @@ def main():
         MODULE_DEFS_OPTION,
         FILES_OPTION,
         LIST_OPTION,
+        FLIST_OPTION,
         DEFINE_VARS_OPTION,
         DEFINE_FILES_OPTION,
         VERILOG_DEFINE_FILES_OPTION,
@@ -1661,64 +1949,75 @@ def main():
         build_subdirs_dict,
         use_dict,
         use_prev_dict,
+        prune_deps,
+        prune_dep_target,
         update_inc,
         root_path,
         target_vendors,
         PROFILING_FILE_OPTION,
         DEST_DIR,
+        rtldir_suffix,
     ) = get_cmd_line_args()
 
-    hierarchical_dependencies = gen_dependencies(
-        IN_FILE_OPTION,
-        FORMAT,
-        INCL_DIRS_OPTION,
-        INTERFACE_SPECS_OPTION,
-        INTERFACE_DEFS_OPTION,
-        MODULE_DEFS_OPTION,
-        FILES_OPTION,
-        LIST_OPTION,
-        DEFINE_VARS_OPTION,
-        DEFINE_FILES_OPTION,
-        VERILOG_DEFINE_FILES_OPTION,
-        DEBUG_OPTION,
-        REMOVE_CODE_OPTION,
-        PARSER_ON_OPTION,
-        DESTINATION_OPTION,
-        PACKAGES_OPTION,
-        SORT_IOS_OPTION,
-        GROUP_IOS_ON_DIR_OPTION,
-        PARSE_GENERATE_OPTION,
-        DEPENDENCIES_OPTION,
-        USER_OPTIONS,
-        VERIPY_SCRIPT,
-        DISABLE_TICK_IFDEFS_OPTION,
-        DISABLE_AUTO_PACKAGE_OPTION,
-        UPDATE_TARGETS_OPTION,
-        PYTHON_FILES_OPTION,
-        build_subdirs_dict_json,
-        build_subdirs_dict,
-        use_dict,
-        use_prev_dict,
-        PROFILING_FILE_OPTION,
-        DEST_DIR,
-    )
-
-    gen_makeinc(
-        update_inc,
-        root_path,
-        hierarchical_dependencies,
-        UPDATE_TARGETS_OPTION,
-        DEST_DIR,
-    )
+    rtl_target_hierarchical_dependencies = {}
+    for rtl_target in glob_config["rtl_targets"]:
+        chip, vendor, rtldir_suffix = rtl_target.values()
+        if (chip != glob_config["chip"] or vendor != glob_config["vendor"]
+            or rtldir_suffix != glob_config["rtldir_suffix"]):
+            user_options = USER_OPTIONS + f" --chip {chip} --vendor {vendor}"
+            use_default_mem_wrapper_option = ""
+        else:
+            user_options = USER_OPTIONS
+            use_default_mem_wrapper_option = ""
+        hierarchical_dependencies = gen_dependencies(
+            IN_FILE_OPTION,
+            FORMAT,
+            INCL_DIRS_OPTION,
+            INTERFACE_SPECS_OPTION,
+            INTERFACE_DEFS_OPTION,
+            MODULE_DEFS_OPTION,
+            FILES_OPTION,
+            LIST_OPTION,
+            FLIST_OPTION,
+            DEFINE_VARS_OPTION,
+            DEFINE_FILES_OPTION,
+            VERILOG_DEFINE_FILES_OPTION,
+            DEBUG_OPTION,
+            REMOVE_CODE_OPTION,
+            PARSER_ON_OPTION,
+            DESTINATION_OPTION,
+            PACKAGES_OPTION,
+            SORT_IOS_OPTION,
+            GROUP_IOS_ON_DIR_OPTION,
+            PARSE_GENERATE_OPTION,
+            DEPENDENCIES_OPTION,
+            user_options,
+            VERIPY_SCRIPT,
+            DISABLE_TICK_IFDEFS_OPTION,
+            DISABLE_AUTO_PACKAGE_OPTION,
+            UPDATE_TARGETS_OPTION,
+            PYTHON_FILES_OPTION,
+            build_subdirs_dict_json,
+            build_subdirs_dict,
+            use_dict,
+            use_prev_dict,
+            PROFILING_FILE_OPTION,
+            "../rtl_" + rtldir_suffix,
+            use_default_mem_wrapper_option,
+        )
+        rtl_target_hierarchical_dependencies[(chip, vendor, rtldir_suffix, user_options)] = hierarchical_dependencies
 
     gen_targets(
         UPDATE_TARGETS_OPTION,
         DEBUG_OPTION,
-        hierarchical_dependencies,
+        rtl_target_hierarchical_dependencies,
         target_vendors,
         USER_OPTIONS,
         INCL_DIRS_OPTION,
         DEST_DIR,
+        prune_deps,
+        prune_dep_target,
+        rtldir_suffix,
     )
 
 

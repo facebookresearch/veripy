@@ -4,62 +4,65 @@
 #   and may not be disclosed to any third party nor be used for any purpose other
 #   than to full fill service obligations to Facebook
 ####################################################################################
-################################################################################
-#                                                                              #
-#     Author: Baheerathan Anandharengan                                        #
-#     E-Mail: baheerathan@meta.com                                               #
-#                                                                              #
-#     Key Contributor: Dheepak Jayaraman                                       #
-#     E-Mail: dheepak@meta.com                                                   #
-#                                                                              #
-################################################################################
+
 import logging
 import math
+import os
 import re
 from collections import OrderedDict
 from itertools import combinations_with_replacement
 
-vendor_name_mapping = {
-    "ccx": "_n7",
-}
 
-fb_chip_2_vendor_name = {
-    "freya": "n7",
-}
-
-valid_vendor_names = set(
-    list(vendor_name_mapping.values()) + list(fb_chip_2_vendor_name.values())
-)
+ASIC_VENDORS = os.environ.get("ASIC_VENDORS", "").split() + [
+    "brcm_apd_n2",
+    "brcm_apd_n3",
+    "brcm_apd_n3p",
+    "mrvl_n3",
+]
 
 bwe_ports = ["bwe", "bwea", "BW", "BWA", "WEMA", "wema", "WEM", "wem"]
-we_ports = ["we", "wea", "web", "WE", "WEA", "WEB"]
-cs_ports = ["cs", "mea", "mebCS"]
-din_ports = ["D", "DA", "din", "dina"]
+we_ports = ["we", "wea", "web", "WE", "WEA", "WEB", "MEA", "MEB", "RE"]
+cs_ports = ["cs", "mea", "meb", "CS", "ME"]
+din_ports = ["D", "DA", "din", "dina", "CDI", "CE", "MASK"]
 dout_ports = ["QP", "QPB", "doutb", "dout", "Q", "QB"]
-addr_ports = ["A", "ra", "wa", "AA", "AB", "adda", "addb", "add"]
+one_bit_ports = ["QVLD", "QHIT", "QPV"]
+addr_ports = ["A", "ra", "wa", "AA", "AB", "ADR", "ADRA", "ADRB", "adda", "addb", "add"]
+# depth_partition_ports = ["RHL", "QHR", "RVLD"]
+depth_partition_ports = ["RHL", "QHR"]
+# depth_partition_input_ports = ["RVLD"]
+depth_partition_input_ports = []
+cam_spl_in_ports = ["VWE", "SWE", "DINV", "VBE"]
+cam_spl_out_ports = ["QV"]
 
-memory_release_search_paths = {
-    "default": "%(infra)s/third_party/memories/%(vendor)s",
-}
+memory_release_search_paths = [
+    "%(infra)s/ip/mtia/%(chip)s/third_party/memories/%(vendor)s",
+    "%(infra)s/ip/mnic/%(chip)s/third_party/memories/%(vendor)s",
+    "%(infra)s/soc/mtia/%(chip)s/third_party/memories/%(vendor)s",
+    "%(infra)s/ip/%(chip)s/third_party/memories/%(vendor)s",
+    "%(infra)s/ip/mtia/%(chip)s/third_party/memories/custom/%(vendor)s",
+    "%(infra)s/ip/mnic/%(chip)s/third_party/memories/custom/%(vendor)s",
+    "%(infra)s/soc/mtia/%(chip)s/third_party/memories/custom/%(vendor)s",
+]
 
 mem_mapping_file = "mem_mapping.json"
+mem_vendor_mapping_file = "mem_vendor_mapping.json"
 mem_ports_file = "mem_ports.json"
 
 valid_sram_types = ("1p", "2p", "1f", "2f")
 
 
-def calculate_ecc_width(width):
-    # for example: 128 X 320 - 2(128 X 160)
-    # Depth remain same - 128
-    # 320 - 2^(r-1) >= r+w
-    for i in range(1, 20):
-        # print ("calculating LHS:" +str(2**(i-1)))
-        # print ("calculating RHS:" +str(i + width))
-        if 2 ** (i - 1) >= (i + width):
-            # print ("Iterating:" +str(i))
-            # print ("Iterating:" +str(width))
-            value = i + width
-            return i
+def calculate_ecc_width(width, num_ecc):
+    if num_ecc == 0:
+        num_ecc = 1
+
+    min_dw = width / num_ecc
+    num_max_dw = width % num_ecc
+    max_dw = (min_dw + 1) if (num_max_dw > 0) else min_dw
+    min_ecc = 5 if (min_dw < 12) else (clog2(min_dw + clog2(min_dw) + 1) + 1)
+    max_ecc = 5 if (max_dw < 12) else (clog2(max_dw + clog2(max_dw) + 1) + 1)
+
+    ecc_width = (num_ecc - num_max_dw) * min_ecc + num_max_dw * max_ecc
+    return ecc_width
 
 
 def dict_keys_str_to_int(d):
@@ -87,21 +90,36 @@ def SumTheList(thelist, target):
     arr = []
     residue = 0
     selected = []
-    phy_mem_list = 0
+    phy_mem_list = []
+    max_list_len = -(target // -max(thelist))
+    thelist.sort(reverse=True)
+
+    if len(thelist) >= 16:
+        thelist = thelist[:: -(len(thelist) // -10)]
+
+    count = 0
+    reserved_phy_mem_list = None
+    if max_list_len > len(thelist):
+        count = max_list_len - len(thelist)
+        reserved_phy_mem_list = [max(thelist)] * count
+        target -= max(thelist) * count
+
     if len(thelist) > 0:
         # Step 1. Iterate all possible widths
-        for r in range(0, len(thelist) + 1):
+        for r in range(1, -(target // -max(thelist)) + 1):
             # this will return all possible combinations in steps
             arr = list(combinations_with_replacement(thelist, r))
             # logging.debug("Array:" + str(arr))
             # Iterate array
             for item in arr:
                 if sum(item) == target:
-                    selected.append(item)
+                    selected.append(item[::-1])
                 elif sum(item) > target:
-                    residue = get_change(sum(item), target)
+                    residue = get_change(
+                        max(thelist) * count + sum(item), max(thelist) * count + target
+                    )
                     if residue <= 15:
-                        selected.append(item)
+                        selected.append(item[::-1])
             if selected:
                 logging.debug("Selected:" + str(selected))
                 # below gives the best result but it is too late
@@ -109,14 +127,18 @@ def SumTheList(thelist, target):
                 # for Now just pick the one with min and move on
                 # selected.sort(key = lambda x: x[0] - x[1],reverse=True)
                 logging.debug("Sorted Selected:" + str(selected))
-                phy_mem_list = min(selected, key=lambda i: len(i))
+                phy_mem_list = min(selected, key=lambda i: (len(i), sum(i)))
                 # minLength = len(phy_mem_list)
-                logging.debug("Equal: choosen" + str(phy_mem_list))
+                logging.debug("Equal: chosen" + str(phy_mem_list))
                 selected = []
                 if phy_mem_list:
+                    if reserved_phy_mem_list is not None:
+                        phy_mem_list = (*phy_mem_list, *reserved_phy_mem_list)
                     return phy_mem_list
 
-    logging.error("MEMGEN: No width found to be Equal or Greater than " + str(target))
+    logging.debug(
+        f"MEMGEN: No summed widths from the widths list {thelist} found to be Equal or Greater than {target}"
+    )
     return phy_mem_list
 
 
@@ -226,3 +248,11 @@ def str_to_list(myString):
             str_list = myString.split(",")
             return str_list
     return None
+
+
+def dec_to_one_hot_bin(i, bits):
+    if i < 1:
+        return str(bits) + "'b" + "0" * bits
+    one_hot_value = 2 ** (i - 1)
+    binary_str = str(bits) + "'b" + format(one_hot_value, f"0{bits}b")
+    return binary_str

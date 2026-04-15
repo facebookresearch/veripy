@@ -4,16 +4,10 @@
 #   and may not be disclosed to any third party nor be used for any purpose other
 #   than to full fill service obligations to Facebook
 ####################################################################################
-################################################################################
-#                                                                              #
-#     Author: Baheerathan Anandharengan                                        #
-#     E-Mail: baheerathan@meta.com                                               #
-#                                                                              #
-#     Key Contributor: Dheepak Jayaraman                                       #
-#     E-Mail: dheepak@meta.com                                                   #
-#                                                                              #
-################################################################################
+
 import re
+
+enable_custom_stub_macro = "ENABLE_CUSTOM_STUB"
 
 ################################################################################
 # All the regular expressions
@@ -56,6 +50,9 @@ RE_TICK_INCLUDE = re.compile(r"^\s*`include\s+\"([A-Za-z0-9_\.]+)\"\s*$")
 RE_TICK_DEFINE = re.compile(r"^\s*`define\s+(.*)$")
 RE_TICK_UNDEF = re.compile(r"^\s*`undef\s+(\w*)\s*$")
 RE_TICK_IFDEF = re.compile(r"^\s*`ifdef\s+(.*)$")
+RE_TICK_IFDEF_ENABLE_CUSTOM_STUB = re.compile(
+    f"^\s*`ifdef\s+({enable_custom_stub_macro})\s*$"
+)
 RE_TICK_IFNDEF = re.compile(r"^\s*`ifndef\s+(.*)$")
 RE_TICK_ELSIF = re.compile(r"^\s*`elsif\s+(.*)$")
 RE_TICK_ELSE = re.compile(r"^\s*`else.*$")
@@ -72,8 +69,8 @@ RE_TYPEDEF_DOUBLE_DOUBLE_COLON_BEFORE_BITDEF = re.compile(
 )
 RE_TYPEDEF_DOUBLE_COLON_BEFORE_BITDEF = re.compile(r"^(\w+)::(\w+)\s*\[(.*)")
 RE_TYPEDEF_BEFORE_BITDEF = re.compile(r"^(\w+)\s*\[(.*)")
-RE_TYPEDEF_DOUBLE_DOUBLE_COLON = re.compile(r"^(\w+)::(\w+)::(.*)")
-RE_TYPEDEF_DOUBLE_COLON = re.compile(r"^(\w*)::(.*)")
+RE_TYPEDEF_DOUBLE_DOUBLE_COLON = re.compile(r"^(\w+)::(\w+)::(\w+)\b")
+RE_TYPEDEF_DOUBLE_COLON = re.compile(r"^(\w+)::(\w+)\b")
 RE_PORT_WITH_TYPEDEF_DOUBLE_DOUBLE_COLON = re.compile(r"^(\w+)::(\w+)::(\w+)\b")
 RE_PORT_WITH_TYPEDEF_DOUBLE_COLON = re.compile(r"^(\w*)::(\w+)\b")
 RE_TYPEDEF_ENUM_EXTRACT = re.compile(r"^\s*typedef\s+enum\s+(.*)\s*\{(.*)\}\s+(.*)\s*")
@@ -115,9 +112,9 @@ RE_PARAM_SPLIT = re.compile(r"(.*)=(.*)")
 RE_HASH_SPLIT = re.compile(r"(.*)#(.*)")
 RE_SEMICOLON = re.compile(r";")
 RE_COLON = re.compile(r"(.*):(.*)")
-RE_DOUBLE_COLON = re.compile(r"(.*)::(.*)")
+RE_DOUBLE_COLON = re.compile(r"(\w+)::(.*)")
 RE_DOUBLE_DOUBLE_COLON = re.compile(r"(.*)::(.*)::(.*)")
-RE_SPACE_BW = re.compile(r"(.+)\s+(.+)")
+RE_SPACE_BW = re.compile(r"(\S+)\s+(.+)")
 RE_OPEN_CURLY = re.compile(r"{")
 RE_COMMA = re.compile(r",")
 RE_IF_ITER_CHECK = re.compile(r"iter\s*=\s*\[(.*)\]\s*")
@@ -138,7 +135,7 @@ RE_DEFINE_TICK = re.compile(r"`")
 RE_DEFINE_TICK_BEGIN = re.compile(r"^\s*`")
 RE_DEFINE_TICK_EXTRACT = re.compile(r"^\s*`(\w+)")
 RE_CONSTANT = re.compile(r"^[0-9]*$")
-RE_RESET_VAL = re.compile(r"^(.*<)([s0-9A-Za-z'_]+)(=.*)$")
+RE_RESET_VAL = re.compile(r"^(.*<)([0-9A-Za-z'_{},]+)(=.*)$")
 RE_MINUS1 = re.compile(r"-\s*1$")
 
 RE_PYTHON_BLOCK_BEGIN = re.compile(
@@ -149,6 +146,12 @@ RE_PYTHON_SINGLE_LINE = re.compile(r"^(\s*)&[Pp][Yy][Tt][Hh][Oo][Nn](\s+)(.*);*$
 RE_PYTHON_VARIABLE = re.compile(r"\$\${(.*?)}")
 RE_HASH_VARIABLE_SYNTAX = re.compile(r"#{\w+}")
 RE_HASH_VARIABLE = re.compile(r"#{(\w+)}")
+RE_PYTHON_COMMENT_ON = re.compile(
+    r"^(\s*)&[Pp][Yy][Tt][Hh][Oo][Nn][Cc][Oo][Mm][Mm][Ee][Nn][Tt][Oo][Nn](\s*);*$"
+)
+RE_PYTHON_COMMENT_OFF = re.compile(
+    r"^(\s*)&[Pp][Yy][Tt][Hh][Oo][Nn][Cc][Oo][Mm][Mm][Ee][Nn][Tt][Oo][Ff][Ff](\s*);*$"
+)
 
 RE_POST_PYTHON_BLOCK_BEGIN = re.compile(
     r"^(\s*)&[Pp][Yy][Tt][Hh][Oo][Nn][Pp][Oo][Ss][Tt][Bb][Ee][Gg][Ii][Nn](\s*)"
@@ -157,6 +160,7 @@ RE_POST_PYTHON_BLOCK_END = re.compile(
     r"^(\s*)&[Pp][Yy][Tt][Hh][Oo][Nn][Pp][Oo][Ss][Tt][Ee][Nn][Dd](\s*)"
 )
 RE_TICK_CHECK = re.compile(r"(.*)`$")
+RE_TICK_TERNARY_PARAM = re.compile(r"\s*(.*)\s*\?\s*(.*)\s*:\s*(.*)\s*")
 RE_TICK_DEF_CHECK_BITDEF = re.compile(r"\s*(.*)\s*:\s*(.*)\s*")
 
 RE_MODULE_DECLARATION = re.compile(r"^\s*module\s+(\w*)\s*(.*)")
@@ -231,7 +235,7 @@ RE_FUNCTION = re.compile(r"^\s*function\s+")
 RE_FUNCTION_NAME1 = re.compile(r"\s+(\w*)\s*;")
 RE_FUNCTION_NAME2 = re.compile(r"\s+(\w*)\s*\(")
 
-RE_ENDFUNCTION = re.compile(r"^\s*endfunction")
+RE_ENDFUNCTION = re.compile(r"\s*endfunction")
 RE_ENDTASK = re.compile(r"^\s*endtask")
 RE_INT = re.compile(r"^\s*int\s+")
 RE_INT_EXTRACT = re.compile(r"^\s*int\s+(.*);")
@@ -298,6 +302,8 @@ RE_BUILD_COMMAND = re.compile(
 )
 RE_INCLUDE = re.compile(r"^\s*&[Ii][Nn][Cc][Ll][Uu][Dd][Ee]\s+(.*)\s*;")
 RE_CONNECT = re.compile(r"^\s*&[Cc][Oo][Nn][Nn][Ee][Cc][Tt]\s+(.*)\s*;")
+RE_PRINTTEXT = re.compile(r"^\s*&[Pp][Rr][Ii][Nn][Tt][Tt][Ee][Xx][Tt]\s+(.*)\s*;")
+RE_PRINTIO = re.compile(r"^\s*&[Pp][Rr][Ii][Nn][Tt][Ii][Oo]\s+(.*)\s*;")
 RE_NAME_BEGIN = re.compile(r"^\s*([A-Za-z0-9_`]*)\s+(.*)")
 RE_NAME_BRACKET_BEGIN = re.compile(r"^\s*([A-Za-z0-9_]*)\s*\((.*)")
 RE_BEGIN_SPACE = re.compile(r"^(\s*)(.*)")
@@ -320,6 +326,9 @@ RE_MEMGEN_HLS = re.compile(
 RE_MEMGEN_ECC = re.compile(
     r"^(\s*)&[Ee][Cc][Cc]_[Mm][Ee][Mm][Gg][Ee][Nn]\s*\(\s*(.*)\s*\)\s*;"
 )
+RE_ALL_MEMGEN = re.compile(
+    "^(?P<begin_space>\s*)&(?P<memgen_name>(([Ee][Cc][Cc]|[Hh][Ll][Ss])_)*[Mm][Ee][Mm][Gg][Ee][Nn])\s*\(\s*(?P<memgen_data>.*)\s*\)\s*;"
+)
 RE_CLOCKGEN = re.compile(
     r"^(\s*)&[Cc][Ll][Oo][Cc][Kk][Gg][Ee][Nn]\s*\(\s*(.*)\s*\)\s*;"
 )
@@ -331,6 +340,9 @@ RE_CLOCKRESETGEN = re.compile(
 )
 RE_ARTCLOCKRESETGEN = re.compile(
     r"^(\s*)&[Aa][Rr][Tt][Cc][Ll][Oo][Cc][Kk][Rr][Ee][Ss][Ee][Tt][Gg][Ee][Nn]\s*\(\s*(.*)\s*\)\s*;"
+)
+RE_ATHCLOCKRESETGEN = re.compile(
+    r"^(\s*)&[Aa][Tt][Hh][Cc][Ll][Oo][Cc][Kk][Rr][Ee][Ss][Ee][Tt][Gg][Ee][Nn]\s*\(\s*(.*)\s*\)\s*;"
 )
 RE_SYNCGEN = re.compile(r"^(\s*)&[Ss][Yy][Nn][Cc][Gg][Ee][Nn]\s*\(\s*(.*)\s*\)\s*;")
 RE_SYNCGEN3 = re.compile(r"^(\s*)&[Ss][Yy][Nn][Cc][Gg][Ee][Nn]3\s*\(\s*(.*)\s*\)\s*;")
@@ -363,7 +375,13 @@ RE_GENDRIVE0ANDZ = re.compile(
 RE_GENDRIVE0ANDZ_VERILOG = re.compile(
     r"^(\s*)\/\/\s*&[Gg][Ee][Nn][Dd][Rr][Ii][Vv][Ee]0[Aa][Nn][Dd][Zz]\s*;"
 )
-
+RE_GENDRIVE0_PARAMETER = re.compile(
+    r"^(\s*)&[Gg][Ee][Nn][Dd][Rr][Ii][Vv][Ee]0_[Pp][Aa][Rr][Aa][Mm][Ee][Tt][Ee][Rr]\s*;"
+)
+RE_GENPARAM = re.compile(r"^(\s*)&[Gg][Ee][Nn][Pp][Aa][Rr][Aa][Mm]\s*;")
+RE_GENPARAM_NO_GEN_RTL = re.compile(
+    r"^(\s*)&[Gg][Ee][Nn][Pp][Aa][Rr][Aa][Mm][Nn][Oo][Gg][Ee][Nn][Rr][Tt][Ll]\s*;"
+)
 RE_INFRA_ASIC_FPGA_ROOT = re.compile(r"^\$INFRA_ASIC_FPGA_ROOT")
 
 RE_PKG2ASSIGN = re.compile(
@@ -376,6 +394,8 @@ RE_RESERVED = re.compile(r"[Rr][Ee][Ss][Ee][Rr][Vv][Ee][Dd]")
 RE_TRANSLATE_OFF = re.compile(r"^\s*//\s*pragma\s+translate_off")
 RE_TRANSLATE_ON = re.compile(r"^\s*//\s*pragma\s+translate_on")
 
+RE_DEPEND = re.compile(r"^\s*&[Dd][Ee][Pp][Ee][Nn][Dd]\s+(.*)\s*;")
+
 MONSTER_REGEX_LIST = [
     RE_GENDRIVEZ_VERILOG,
     RE_GENDRIVE0_VERILOG,
@@ -387,6 +407,7 @@ MONSTER_REGEX_LIST = [
     RE_PARSER_OFF,
     RE_PARSER_ON,
     RE_TICK_IFDEF,
+    RE_TICK_IFDEF_ENABLE_CUSTOM_STUB,
     RE_TICK_IFNDEF,
     RE_TICK_ELSIF,
     RE_TICK_ELSE,
@@ -406,7 +427,7 @@ MONSTER_REGEX_LIST = [
     RE_MODULE_PARAMS,
     RE_MODULE_DECLARATION,
     # RE_PARAM,
-    RE_LOCALPARAM,
+    # RE_LOCALPARAM,
     RE_TICK_INCLUDE,
     RE_IMPORT,
     RE_R_POSEDGE,
@@ -439,9 +460,25 @@ MONSTER_REGEX_LIST = [
     RE_PARAM_OVERRIDE,
     RE_CONNECT,
     RE_END_MODULE_DECLARATION,
+    RE_DEPEND,
 ]
 ANY_MONSTER_REGEX = re.compile("|".join(x.pattern for x in MONSTER_REGEX_LIST))
 
+RE_CUSTOM_STUB_DEF = re.compile(
+    r"^\s*((?P<assign>assign)\s+)?(?P<oport>\S+)\s*(=\s*)?(?P<rhs_value>[^(]*);\s*$"
+)
+
+RE_EXPLICIT_PORT_MAP_REGEX = re.compile(
+    r"(\.(?P<inst_port>\S+)\s*\(\s*(?P<module_port>\w+)(\[\w+\])?\s*\))+"
+)
+
+RE_IP_FILE_REGEX = re.compile(
+    r".*(?P<memory_release>(?P<release>/release/(?P<chip>[^/]*)/fba/(?P<asic_vendor>[^/]*)/.*)/ip/(?P<ip_name>[^/]*)/)"
+)
+
+RE_CWD_REGEX = re.compile(
+    r"/project/(?P<repo_chip>[^/].*)/fba/design/[^/]*/(?P<workspace>[^/]*)/.*/infra_asic_fpga/(soc|ip)/(?P<chiplet>[^/].*)/(?P<project_chip>[^/]*)/main/design"
+)
 
 # System verilog keywords to be used
 sv_keywords = [
