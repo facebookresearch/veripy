@@ -385,7 +385,7 @@ Buck buck:
 ifeq ($(BUCK_CHIPLET_LIB_GEN),1)
 	import-filelists --upload-volumettes
 else ifeq ($(BUCK_LIB_GEN),1)
-	import-all-filelists
+	import-all-filelists $(if $(FB_CHIP),--chip $(FB_CHIP))
 endif
 
 nvBuck nvbuck:
@@ -396,7 +396,7 @@ Buck2 buck2:
 ifeq ($(BUCK_CHIPLET_LIB_GEN),1)
 	import-filelists --upload-volumettes
 else ifeq ($(BUCK_LIB_GEN),1)
-	import-all-filelists
+	import-all-filelists $(if $(FB_CHIP),--chip $(FB_CHIP))
 endif
 
 ################################################################################
