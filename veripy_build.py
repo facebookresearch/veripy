@@ -1885,7 +1885,7 @@ def gen_targets(
 def get_source_directory_target() :
     infra_root = os.environ.get("INFRA_ASIC_FPGA_ROOT", None) 
     extn_list = []  
-    prefix = '                     "**/*'
+    prefix = '                "**/*'
     suffix = '",'
     
     with open(os.path.join(infra_root,"../asic/buck/source-file-extensions.txt"),"r") as extns:
@@ -1898,15 +1898,17 @@ def get_source_directory_target() :
 source_directory(
     name = "source_directory",
     contents = {
-        ".": glob([
+        ".": glob(
+            [
 %s
-                    ],
-                  exclude = [
-                              "**/TARGETS",
-                              "**/TARGETS.v2",
-                              "**/BUCK",
-                              "**/BUCK.v2",
-                            ]),
+            ],
+            exclude = [
+                "**/TARGETS",
+                "**/TARGETS.v2",
+                "**/BUCK",
+                "**/BUCK.v2",
+            ],
+        ),
     },
 )
 """ % extn_str
