@@ -8432,7 +8432,7 @@ class psv_parser:
                         repl_func = eval(replace_expr_str)
                         if callable(repl_func):
                             replace_expr_str = repl_func
-                    except:
+                    except Exception:
                         pass
                 else:
                     replace_direct_str = top_param_name
@@ -9147,7 +9147,7 @@ class psv_parser:
                         repl_func = eval(replace_expr_str)
                         if callable(repl_func):
                             replace_expr_str = repl_func
-                    except:
+                    except Exception:
                         pass
                 else:
                     replace_direct_str = connect_cmd_array[1]
