@@ -406,7 +406,6 @@ assign in_valid = {wr_valid};
 &Param NUM_ECC {self.num_ecc_syndromes};
 &Connect clk {w_clk};
 &Connect in_data din;
-&Connect in_poison '0;
 &Connect out_data ecc_data;
 &Connect out_chkbits ecc_chkbits;
 {str_err_inj_tied_0}&EndInstance;
@@ -426,7 +425,6 @@ assign dout_chkbits[ECC_WIDTH-1:0]  = {str_tmp}[WIDTH_WITH_ECC-1:WIDTH];
 &Connect in_err_inj_2b 1'b0;
 &Connect out_chkbits ; // spyglass disable W287b
 &Connect out_data dout;
-&Connect out_poison ; // spyglass disable W287b
 &Connect ecc_state ; // spyglass disable W287b
 &Connect out_err_detect out_err_detect_int;
 &Connect out_err_multiple out_err_multiple_int;
